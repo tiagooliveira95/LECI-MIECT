@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CNN</title>
+    <link rel="shortcut icon" href="../imagens/machine-learning.png" type="image/x-icon">
+    <script src="../js/ajax/libs/jquery.mim.js"></script>
+    <script src="../js/ajax/libs/popper.mim.js"></script>
+    <script src="../js/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../node_modules/material-components-web/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cnn-style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="../node_modules/material-components-web/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body class="home">
+    <header>
+        <nav class="shadow-lg navbar navbar-expand-md navbar-dark bg-dark sticky-top" role="navigation">
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapse_target">
+                <a href="../index.html" class="navbar-brand">
+                    <img src="../imagens/machine-learning.png" href="../html/index.html"
+                        style="max-width: 48px; max-height: 48px" alt="">
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../html/dlevs.html">DL e VC</a></li>
+                    <li class="nav-item "><a class="nav-link" href="../html/cnn.html">CNN</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../html/rnn.html">RNN</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../html/about.html">Acerca</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <h1>Redes Neurais Convolucionais</h1>
+
+                    <p>
+                        Os frameworks mais conhecidos são o TenserFlow e PyTorch, a rede neural
+                        recebe como input os pixeis de uma imagem, n*1, em que n é o numero de pixeis
+                        determinada imagem.
+                    </p>
+                    <p>
+                        As imagens são redimensionadas para um valor que pode ser definido, assim
+                        a camada inicial terá sempre o mesmo numero de neurónios independentemente
+                        do tamanho da imagem de entrada.</p>
+                    <p>
+                        A imagem passara depois a outras camadas escondidas, o número de camadas,
+                        é também definido manualmente, este pode ter um impacto quer positivo
+                        quer negativo, tendo este valor de ser afinado para obter os melhores resultados.
+                    </p>
+                    <p>
+                        Numa das camadas seram aplicados filtros conhecidos como kernels.
+                    </p>
+                    <p>
+                        Um kernel é uma matriz n*n, que sendo aplicado a uma matriz de pixeis, o
+                        resultado final será uma imagem com um filtro aplicado.
+                        <br>
+                        Em visão computacional existem vários filtros, uns que detectam linhas verticais,
+                        linhas horizontais entre outros.
+                    </p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="../imagens/brain_2.png" style="width: 320px; margin-top: 50px;" alt="Imagem rede neural">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-6 text-center">
+                    <img class="img-fluid" src="../imagens/matriz.png">
+                </div>
+                <div class="col-md-6">
+
+                    <p>
+                        Um kernel consegue detectar diferenças de intensidade sobre pixeis vizinhos,
+                        a soma dos seus elementos é igual a zero,
+                        se parte esquerda assumir valores negativos e a direita positivos, ao colocar esta
+                        matriz sobre outra matriz de pixeis, e multiplicarmos os elementos da matriz,
+                        pela matriz de pixeis, iremos obter uma matriz X a esta matriz vamos somar todos os elementos,
+                        se a matriz de pixeis for consistente, a soma da matriz
+                        X será 0 ou perto de 0.
+                    </p>
+                    <p>
+                        Contudo se os valores a esquerda forem inferiores aos da direita, a soma dos elementos da matriz
+                        X terá valores mais elevados a direita e negativos a esquerda que não se
+                        cancelam um ao outro, assim na soma dos elementos desta matriz se obtivermos
+                        um valor elevado, vamos poder dizer com certeza que na imagem existe uma
+                        grande variação da esquerda para a direita, o que significa que estamos perante
+                        uma aresta de um objecto.
+                    </p>
+
+                    <a class="btn btn-link" href="#kernelFilter">Experimentar</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container-fluid" id="kernelFilter" style="background: white">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mdc-card shadow-lg">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Aplicar um Kernel a uma imagem.
+                            </h3>
+                            <div class="card-text" style="white-space: pre-line;  padding-right: 16%">Aqui vai poder
+                                aplicar um kernel 3x3 numa imagem.
+
+                                Abaixo vai encontrar uma matriz 3*3 esta sera convolucionada por todos os píxeis da
+                                imagem escolhida.
+
+                                Preparamos alguns filtros para si, estes podem ser encontrados no menu dropdown onde
+                                pode escolher entre vários kernels tais como kernels verticais, horizontais e Gaussian.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="caption col-12 ">
+                    <div class="input-group mt-2 ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file shadow-sm">
+                            <input type="file" class="custom-file-input " id="fileInput" name="file"
+                                aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="fileInput" id="labelFile">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-lg-5">
+                    <div class="input-group">
+                        <input id="kernel-0" class="shadow-sm form-control form-control-lg" value="-1" type="number">
+                        <input id="kernel-1" class="shadow-sm form-control form-control-lg ml-1" value="0"
+                            type="number">
+                        <input id="kernel-2" class="shadow-sm form-control form-control-lg ml-1" value="1"
+                            type="number">
+                    </div>
+                    <div class="input-group  mt-1">
+                        <input id="kernel-3" class="shadow-sm form-control form-control-lg" value="-1" type="number">
+                        <input id="kernel-4" class="shadow-sm form-control form-control-lg ml-1" value="0"
+                            type="number">
+                        <input id="kernel-5" class="shadow-sm form-control form-control-lg ml-1" value="1"
+                            type="number">
+                    </div>
+                    <div class="input-group  mt-1">
+                        <input id="kernel-6" class="shadow-sm form-control form-control-lg" value="-1" type="number">
+                        <input id="kernel-7" class="shadow-sm form-control form-control-lg ml-1" value="0"
+                            type="number">
+                        <input id="kernel-8" class="shadow-sm form-control form-control-lg ml-1" value="1"
+                            type="number">
+                    </div>
+                </div>
+
+                <div class="col-lg-7 mt-1">
+                    <button title="Aplicar filtro à imagem" class="btn  btn-outline-primary" onclick="load()">Gerar
+                        imagem</button>
+
+                    <div class="btn-group">
+                        <button title="Escolher um kernel pre-definido" type="button"
+                            class="btn  btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Kernels
+                        </button>
+
+                        <div class="dropdown-menu">
+                            <a style="cursor: pointer" class="dropdown-item" onclick="onDropDownClicked(0)">Vertical</a>
+                            <a style="cursor: pointer" class="dropdown-item"
+                                onclick="onDropDownClicked(1)">Horizontal</a>
+                            <a style="cursor: pointer" class="dropdown-item" onclick="onDropDownClicked(2)">Gaussian</a>
+                            <a style="cursor: pointer" class="dropdown-item" onclick="onDropDownClicked(4)">Sharpen</a>
+                            <div class="dropdown-divider"></div>
+                            <a style="cursor: pointer" class="dropdown-item" onclick="onDropDownClicked(3)">Kernel
+                                XY</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                </div>
+            </div>
+
+
+            <div class="row mt-5">
+                <div class="border shadow-lg" style="width: 49.1%; background: white; border-radius: 8px">
+                    <img id="imageSrc" alt="No Image"
+                        style="width: 100%; border-top-left-radius: 8px; border-top-right-radius: 8px" />
+                    <p class="text-center">Imagem Original</p>
+                </div>
+
+                <div class="border shadow-lg"
+                    style="width: 49.1%; background: white; margin-left: 8px; border-radius: 8px">
+                    <canvas id="canvasOutput"
+                        style="width: 100%; border-top-left-radius: 8px; border-top-right-radius: 8px"></canvas>
+                    <p class="text-center">Imagem Filtrada</p>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <script src="./../js/pages/cnn/kernel.js"></script>
+    <script async src="../js/pages/cnn/opencv.js" type="text/javascript"></script>
+</body>
+
+
+<footer class=" bottom bg-dark" style="margin-bottom: 0; padding: 25px; color:#ffffff">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <a href="#"><img src="../imagens/logo_ua.png" class="logo" alt="Logotipo UA"></a>
+        </div>
+        <div class="col-4">
+            <p> Nicole Rakov (96661) e Tiago Oliveira (99064) </p>
+        </div>
+    </div>
+</footer>
+
+</html>

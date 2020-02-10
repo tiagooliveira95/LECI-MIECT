@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Home</title>
+	<link rel="shortcut icon" href="imagens/machine-learning.png" type="image/x-icon">
+	<script src="js/ajax/libs/jquery.mim.js"></script>
+	<script src="js/ajax/libs/popper.mim.js"></script>
+	<script src="js/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="node_modules/material-components-web/dist/material-components-web.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/cnn-style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="node_modules/material-components-web/dist/material-components-web.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body class="home">
+
+	<!-- navbar -->
+
+	<header>
+		<nav class="shadow-lg navbar navbar-expand-md navbar-dark bg-dark sticky-top" role="navigation">
+
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="collapse_target">
+				<a href="index.html" class="navbar-brand">
+					<img src="imagens/machine-learning.png" href="../html/index.html"
+						style="max-width: 48px; max-height: 48px" alt="">
+				</a>
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+					<li class="nav-item"><a class="nav-link" href="html/dlevs.html">DL e VC</a></li>
+					<li class="nav-item "><a class="nav-link" href="html/cnn.html">CNN</a></li>
+					<li class="nav-item"><a class="nav-link" href="html/rnn.html">RNN</a></li>
+					<li class="nav-item"><a class="nav-link" href="html/about.html">Acerca</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<!-- conteúdo -->
+	<main>
+		<!-- BLOCO 01 -->
+		<div class="container-fluid">
+			<div class="row">
+
+				<div class="col-sm-6">
+
+					<h1>Home</h1>
+
+					<p>
+						Deep Learning e Visão Computacional, duas tecnologias que se constituem a partir do uso de redes
+						neurais. Redes essas que formam a base para a Visão Computacional, permitindo assim o
+						processamento de imagens de maneira inteligente e eficaz. Tornando um processos que antes eram
+						restrito a seres vivos, possível à máquinas.
+					</p>
+
+					<a class="home_button" href="html/dlevs.html">
+						Leia mais sobre DL e VC
+					</a>
+				</div>
+				<div class="col-sm-6 text-center">
+					<img src="imagens/olho.png">
+				</div>
+			</div>
+		</div>
+
+		<!-- BLOCO 02  -->
+
+
+		<div class="container-fluid">
+			<div class="row">
+
+				<div class="col-sm-6 text-center">
+					<img src="imagens/cnn.png">
+				</div>
+				<div class="col-sm-6">
+
+					<p>
+						Para um humano, é simples olhar para uma imagem e identificá-la, contudo, para um computador é
+						necessário converter a imagem para algo mais simples. Tendo em vista que uma imagem não passa de
+						uma matriz tridimensional que contém valores de Red, Green, Blue (RGB) o computador simplifica a
+						imagem e a transforma em uma matriz de valores e será possível aplicar diversos filtros que
+						possibilitam a detecção e compreensão da imagem. Tudo isto é possível através do uso de Redes
+						Neurais. Sejam Recorrente (RNN) ou Convolucionais (CNN).
+					</p>
+					<a class="home_button" href="html/cnn.html">
+						Leia mais sobre CNN
+					</a>
+
+					<a class="home_button" href="html/rnn.html">
+						leia mais sobre RNN
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- footer -->
+
+
+	<footer class="bottom bg-dark" style="margin-bottom: 0; padding: 25px; color:#ffffff; background-color: #000;">
+		<div class="row justify-content-between">
+			<div class="col-4">
+				<a href="#"><img src="imagens/logo_ua.png" class="logo" alt="Logotipo UA"></a>
+			</div>
+			<div class="col-4">
+				<p> Nicole Rakov (96661) e Tiago Oliveira (99064) </p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>

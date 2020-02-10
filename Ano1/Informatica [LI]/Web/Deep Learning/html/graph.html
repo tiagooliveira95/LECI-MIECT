@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Graph</title>
+	<style>
+		body {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.bar-group {
+			width: 360px;
+			padding: 30px;
+			box-sizing: border-box;
+			margin: auto;
+		}
+
+		.bar-group ul {
+			padding: 0px;
+		}
+
+		.bar-group ul li {
+			list-style-type: none;
+			;
+			height: 30px;
+			width: 300px;
+			margin-bottom: 5px;
+			position: relative;
+			border-radius: 20px;
+			box-shadow: inset 0px 0px 3px 0px #939393;
+
+		}
+
+		.bar-group ul li: :last-child {
+			margin-bottom: 0px;
+
+		}
+
+		.bar-group ul li:after {
+			border-radius: 20px;
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 0px;
+			height: 100%;
+			background: rgb(128, 71, 71);
+			content: "";
+			text-align: right;
+			color: white;
+			list-style: none;
+			height 26px;
+			overflow: hidden;
+			transition: 1s;
+			padding-right: 10px;
+		}
+
+		.bar-group ul li:nth-child(1):after {
+			content: "Homepage";
+
+		}
+
+		.bar-group ul li:nth-child(2):after {
+			content: "DL e VS";
+
+		}
+
+		.bar-group ul li:nth-child(3):after {
+			content: "DL e VS";
+
+		}
+
+		.bar-group ul li:nth-child(4):after {
+			content: "CNN";
+
+		}
+
+		.bar-group ul li:nth-child(5):after {
+			content: "DNN";
+
+		}
+
+		.bar-group ul li:nth-child(6):after {
+			content: "Acerca";
+
+		}
+
+		.active-bar ul li: {
+			box-sizing: border-box;
+			padding-right: 5px;
+
+		}
+
+		.col-sm-6:first-child ul li.active-bar:nth-child(1):after {
+			width: calc(100% - 4px);
+		}
+
+		.col-sm-6:first-child ul li.active-bar:nth-child(2):after {
+			width: calc(90% - 4px);
+		}
+
+		.col-sm-6:first-child ul li.active-bar:nth-child(3):after {
+			width: calc(90% - 4px);
+		}
+
+		.col-sm-6:first-child ul li.active-bar:nth-child(4):after {
+			width: calc(20% - 4px);
+		}
+
+		.col-sm-6:first-child ul li.active-bar:nth-child(5):after {
+			width: calc(20% - 4px);
+		}
+
+		.col-sm-6:first-child ul li.active-bar:nth-child(6):after {
+			width: calc(75% - 4px);
+		}
+
+		.col-sm-6:last-child ul li.active-bar:nth-child(1):after {
+			width: calc(10% - 4px);
+		}
+
+		.col-sm-6:last-child ul li.active-bar:nth-child(2):after {
+			width: calc(10% - 4px);
+		}
+
+		.col-sm-6:last-child ul li.active-bar:nth-child(3):after {
+			width: calc(10% - 4px);
+		}
+
+		.col-sm-6:last-child ul li.active-bar:nth-child(4):after {
+			width: calc(10% - 4px);
+		}
+
+		.col-sm-6:last-child ul li.active-bar:nth-child(5):after {
+			width: calc(10% - 4px);
+		}
+
+		.col-sm-6:last-child ul li.active-bar:nth-child(6):after {
+			width: calc(10% - 4px);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="bar-group" id="allBar">
+						<h2>Nicole</h2>
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="bar-group" id="allBar">
+						<h2>Tiago</h2>
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	function myFunction() {
+
+		var allBar = document.querySelectorAll('#allBar li');
+		allBar.forEach(function (bar) {
+			bar.classList.add('active-bar');
+		});
+
+	}
+
+	myFunction();
+</script>
+
+</html>

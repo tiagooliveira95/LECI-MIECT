@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Home</title>
+	<link rel="shortcut icon" href="../imagens/machine-learning.png" type="image/x-icon">
+	<script src="../js/ajax/libs/jquery.mim.js"></script>
+	<script src="../js/ajax/libs/popper.mim.js"></script>
+	<script src="../js/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="../node_modules/material-components-web/dist/material-components-web.min.js"></script>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/cnn-style.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link href="../node_modules/material-components-web/dist/material-components-web.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body class="home">
+
+	<!-- navbar -->
+
+	<header>
+		<nav class="shadow-lg navbar navbar-expand-md navbar-dark bg-dark sticky-top" role="navigation">
+
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="collapse_target">
+				<a href="../index.html" class="navbar-brand">
+					<img src="../imagens/machine-learning.png" href="../html/index.html"
+						style="max-width: 48px; max-height: 48px" alt="">
+				</a>
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+					<li class="nav-item"><a class="nav-link" href="../html/dlevs.html">DL e VC</a></li>
+					<li class="nav-item "><a class="nav-link" href="../html/cnn.html">CNN</a></li>
+					<li class="nav-item"><a class="nav-link" href="../html/rnn.html">RNN</a></li>
+					<li class="nav-item"><a class="nav-link" href="../html/about.html">Acerca</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+
+	<!-- conteúdo -->
+
+	<main>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-6">
+
+					<h1>Redes Neurais Recorrentes</h1>
+
+					<p>
+						Uma rede neural recorrente, ou Recurrent Neural Networks (RNN) é idêntica
+						com uma CNN funcionam lado a lado, mas uma RNN toma em atenção informação
+						sequencial.
+					</p>
+					<p>
+						A Google usa uma RNN para prever a nossa pesquisa, a medida que vamos
+						introduzindo caracteres, a rede neural vai tentar prever qual será o carácter
+						seguinte mais provável tendo em conta os caracteres inseridos pelo utilizador,
+						como a Google passou anos a treinar este modelo, hoje em dia, por vezes basta
+						introduzirmos uma simples letra para a Google detectar as pesquisas mais prováveis.</p>
+					<p>
+						Enquanto uma CNN usa as suas entradas para determinar a saída, uma RNN
+						usa as entradas e informações passadas para determinar a saída.
+					</p>
+					<p>
+						As RNN têm bastante utilidade, desde prever qual o filme ou vídeo recomendar,
+						padrões de tráfego automóvel e até assistentes virtuais como o Assistente
+						da Google, Seri da Apple, e Alexa da Amazon.
+					</p>
+					<p>
+						Combinando as duas tecnologias, podemos usar uma CNN para extrair os
+						aspectos mais importantes de uma imagem e usar RNN nos locais onde necessitamos
+						de um contexto.
+					</p>
+				</div>
+				<div class="col-sm-6 text-center">
+					<img src="../imagens/tensorflow_pytorch.png" style="width: 320px; margin-top: 50px;"
+						alt="Imagem rede neural">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container-fluid">
+			<div class="row">
+
+				<div class="col-sm-6 text-center">
+					<img src="../imagens/brain.png">
+				</div>
+				<div class="col-sm-6">
+
+					<p>
+						Uma RNN é também utilizada em carros autónomos para prever o que os outros condutores vão fazer
+						a
+						seguir, isto ajuda a evitar acidentes, e usado também para ajudar pessoas com
+						problemas de saúde, como por exemplo traduzir linguagem gestual para oral, e
+						vice versa, assim uma pessoa que não saiba linguagem gestual pode facilmente
+						comunicar com uma pessoa com problemas auditivos sem necessitar de aprender
+						linguagem gestual, pois existem RNN capasses de fazer a tradução em tempo
+						real, para que ambos consigam comunicar.
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- footer -->
+
+
+	<footer class="bottom bg-dark" style="margin-bottom: 0; padding: 25px; color:#ffffff; background-color: #000;">
+		<div class="row justify-content-between">
+			<div class="col-4">
+				<a href="#"><img src="../imagens/logo_ua.png" class="logo" alt="Logotipo UA"></a>
+			</div>
+			<div class="col-4">
+				<p> Nicole Rakov (96661) e Tiago Oliveira (99064) </p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>

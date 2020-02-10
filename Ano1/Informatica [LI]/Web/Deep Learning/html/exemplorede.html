@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		body {
+			display: flex;
+			flex-direction: row;
+			margin: 0;
+			background-color: #fff;
+		}
+
+		.options div {
+			width: 50px;
+			height: 50px;
+			border-radius: 100px;
+			background-color: #e8e8e8;
+			border: 3px solid #d7d7d7;
+			margin: 15px 0px;
+			background-position: center;
+			background-size: contain;
+		}
+
+		.cachorro {
+			background-image: url(../imagens/dog.png);
+		}
+
+		.gato {
+			background-image: url(../imagens/cat.png);
+		}
+
+		.hidden_layers {
+			width: 50vw;
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.anwser,
+		.options,
+		.hidden_layers div[class*="layer"] {
+			display: flex;
+			flex-direction: column;
+			align-self: center;
+		}
+
+		.anwser {
+			min-width: 150px;
+		}
+
+		.hidden_layers div div {
+			width: 50px;
+			height: 50px;
+			border-radius: 100px;
+			background-color: #e8e8e8;
+			border: 3px solid #d7d7d7;
+			margin: 30px;
+			transition: 0.9s;
+		}
+
+		.hidden_layers div div.wrong {
+			background-color: red;
+		}
+
+		.hidden_layers div div.right {
+			background-color: green;
+		}
+
+		.processing {
+			background-color: #404040;
+		}
+
+		main {
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			justify-content: space-around;
+		}
+
+		@media screen and (max-width: 767px) {
+			main {
+				flex-direction: column;
+			}
+
+			.hidden_layers {
+				width: auto;
+			}
+
+			.hidden_layers div div {
+				margin: 10px;
+				height: 20px;
+				width: 20px;
+			}
+
+			.anwser {
+				text-align: center;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<main>
+		<div class="options">
+			<div class="cachorro">
+
+			</div>
+
+			<div class="gato">
+
+			</div>
+		</div>
+
+		<div class="hidden_layers">
+			<div class="layer1">
+				<div>
+					<line></line>
+				</div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="layer2">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="layer2">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="layer2">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="layer3">
+				<div></div>
+			</div>
+		</div>
+
+		<div class="anwser">Clique no cão ou gato.</div>
+
+	</main>
+
+
+	<script>
+		var options = ["gato", "cachorro"];
+		var choice = document.querySelectorAll(".options div");
+		var waittime = 500;
+
+		function change_color(choice, output) {
+			anwser = choice.className;
+			var layers = document.querySelectorAll(".hidden_layers div div");
+
+			var rnd = Math.floor(Math.random() * layers.length);
+			for (var l = 0; l < layers.length; l++) {
+				if (layers[l] == rnd) {
+					setTimeout(function () {
+						layers[l].add("processing")
+					}, waittime);
+					setTimeout(function () {
+						layers[l].remove("processing")
+					}, waittime);
+				}
+			}
+
+
+			if (anwser != output) {
+				layers.forEach(function (layer) {
+					layer.classList.add("wrong");
+					setTimeout(function () {
+						layer.classList.remove("wrong");
+					}, waittime);
+
+				});
+			} else {
+				layers.forEach(function (layer) {
+					layer.classList.add("right");
+					setTimeout(function () {
+						layer.classList.remove("right");
+					}, waittime);
+
+				});
+			}
+		}
+
+		function layers(choice) {
+
+			console.log(choice.className);
+			var anwser_holder = document.querySelector(".anwser");
+			var random = Math.floor(Math.random() * 2);
+			var output = options[random];
+
+			change_color(choice, output);
+
+			anwser_holder.textContent = output + "?";
+		}
+
+		for (var i = 0; i < choice.length; i++) {
+			choice[i].addEventListener("click", function () {
+				layers(this);
+			});
+		};
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Acerca</title>
+	<link rel="shortcut icon" href="../imagens/machine-learning.png" type="image/x-icon">
+	<script src="../js/ajax/libs/jquery.mim.js"></script>
+	<script src="../js/ajax/libs/popper.mim.js"></script>
+	<script src="../js/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="../node_modules/material-components-web/dist/material-components-web.min.js"></script>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/cnn-style.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link href="../node_modules/material-components-web/dist/material-components-web.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<body class="acerca">
+	<header>
+		<nav class="shadow-lg navbar navbar-expand-md navbar-dark bg-dark sticky-top" role="navigation">
+
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="collapse_target">
+				<a href="../index.html" class="navbar-brand">
+					<img src="../imagens\machine-learning.png" href="../html/index.html"
+						style="max-width: 48px; max-height: 48px" alt="">
+				</a>
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+					<li class="nav-item"><a class="nav-link" href="../html/dlevs.html">DL e VC</a></li>
+					<li class="nav-item "><a class="nav-link" href="../html/cnn.html">CNN</a></li>
+					<li class="nav-item"><a class="nav-link" href="../html/rnn.html">RNN</a></li>
+					<li class="nav-item"><a class="nav-link" href="../html/about.html">Acerca</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<p>
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<h3>
+							Acerca deste projeto
+						</h3>
+						<div class="content">
+							<p>
+								O objetivo deste projeto é o desenvolvimento de um conjunto de páginas Web utilizando
+								HTML, CSS e Javascript para a disciplina de Laboratório de Informática do curso do
+								Mestrado Integrado em Engenharia de Computadores e Telemática, da Universidade
+								de Aveiro.
+							</p>
+
+							<p>
+								Foram utilizados os seguintes recursos externos:
+								<br>
+								<a href="http://www.flaticon.com" target="_blank">Ícones;</a>
+								<br>
+								<a href="https://getbootstrap.com/" target="_blank">Bootstrap;</a>
+								<br>
+								<a href="https://opencv.org/" target="_blank">Opencv;</a>
+								<br>
+								Imagens;
+								<br>
+								E material de Design.
+							</p>
+							<p>
+								Website finalizado em: 19/01/2020<br>
+								<br>
+								Desenvolvido por: Nicole Rakov (96661) e Tiago Oliveira (99064). <br>
+								<br>
+								O gráfico abaixo apesenta a participação de cada elemento no desenvolvimento de cada página
+								deste website.
+								<br>
+
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="bar-group" id="allBar">
+							<h2 class="graph_names">Nicole</h2>
+							<ul>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
+						<div class="bar-group" id="allBar">
+							<h2 class="graph_names">Tiago</h2>
+							<ul>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="bottom bg-dark" style="margin-bottom: 0; padding: 25px; color:#ffffff">
+			<div class="row justify-content-between">
+				<div class="col-4">
+					<a href="#"><img src="../imagens/logo_ua.png" class="logo" alt="Logotipo UA"></a>
+				</div>
+				<div class="col-4">
+					<p> Nicole Rakov (96661) e Tiago Oliveira (99064) </p>
+				</div>
+			</div>
+		</footer>
+		<script>
+			function myFunction() {
+
+				var allBar = document.querySelectorAll('#allBar li');
+				allBar.forEach(function (bar) {
+					bar.classList.add('active-bar');
+				});
+
+			}
+
+			myFunction();
+		</script>
+
+
+</body>
+
+</html>
