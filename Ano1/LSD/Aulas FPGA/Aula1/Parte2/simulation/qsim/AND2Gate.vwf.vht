@@ -18,9 +18,9 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "02/21/2020 11:02:45"
+-- Generated on "02/21/2020 23:42:59"
                                                              
--- Vhdl Test Bench(with test vectors) for design  :          AND2Gate
+-- Vhdl Test Bench(with test vectors) for design  :          GateDemo
 -- 
 -- Simulation tool : 3rd Party
 -- 
@@ -28,65 +28,24 @@
 LIBRARY ieee;                                               
 USE ieee.std_logic_1164.all;                                
 
-ENTITY AND2Gate_vhd_vec_tst IS
-END AND2Gate_vhd_vec_tst;
-ARCHITECTURE AND2Gate_arch OF AND2Gate_vhd_vec_tst IS
+ENTITY GateDemo_vhd_vec_tst IS
+END GateDemo_vhd_vec_tst;
+ARCHITECTURE GateDemo_arch OF GateDemo_vhd_vec_tst IS
 -- constants                                                 
 -- signals                                                   
-SIGNAL inPort0 : STD_LOGIC;
-SIGNAL inPort1 : STD_LOGIC;
-SIGNAL outPort : STD_LOGIC;
-COMPONENT AND2Gate
+SIGNAL LEDR : STD_LOGIC_VECTOR(0 DOWNTO 0);
+SIGNAL sw : STD_LOGIC_VECTOR(1 DOWNTO 0);
+COMPONENT GateDemo
 	PORT (
-	inPort0 : IN STD_LOGIC;
-	inPort1 : IN STD_LOGIC;
-	outPort : OUT STD_LOGIC
+	LEDR : BUFFER STD_LOGIC_VECTOR(0 DOWNTO 0);
+	sw : IN STD_LOGIC_VECTOR(1 DOWNTO 0)
 	);
 END COMPONENT;
 BEGIN
-	i1 : AND2Gate
+	i1 : GateDemo
 	PORT MAP (
 -- list connections between master ports and signals
-	inPort0 => inPort0,
-	inPort1 => inPort1,
-	outPort => outPort
+	LEDR => LEDR,
+	sw => sw
 	);
-
--- inPort0
-t_prcs_inPort0: PROCESS
-BEGIN
-	inPort0 <= '0';
-	WAIT FOR 40000 ps;
-	inPort0 <= '1';
-	WAIT FOR 180000 ps;
-	inPort0 <= '0';
-	WAIT FOR 220000 ps;
-	inPort0 <= '1';
-	WAIT FOR 220000 ps;
-	inPort0 <= '0';
-	WAIT FOR 100000 ps;
-	inPort0 <= '1';
-	WAIT FOR 140000 ps;
-	inPort0 <= '0';
-WAIT;
-END PROCESS t_prcs_inPort0;
-
--- inPort1
-t_prcs_inPort1: PROCESS
-BEGIN
-	inPort1 <= '0';
-	WAIT FOR 280000 ps;
-	inPort1 <= '1';
-	WAIT FOR 80000 ps;
-	inPort1 <= '0';
-	WAIT FOR 140000 ps;
-	inPort1 <= '1';
-	WAIT FOR 120000 ps;
-	inPort1 <= '0';
-	WAIT FOR 80000 ps;
-	inPort1 <= '1';
-	WAIT FOR 240000 ps;
-	inPort1 <= '0';
-WAIT;
-END PROCESS t_prcs_inPort1;
-END AND2Gate_arch;
+END GateDemo_arch;

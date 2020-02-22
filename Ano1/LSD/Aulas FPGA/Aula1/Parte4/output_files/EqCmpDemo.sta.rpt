@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for EqCmpDemo
-Fri Feb 21 12:22:14 2020
+Fri Feb 21 20:14:00 2020
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -87,15 +87,15 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
 ;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.1%      ;
+;     Processors 2-6         ;   0.2%      ;
 +----------------------------+-------------+
 
 
@@ -257,14 +257,22 @@ No synchronizer chains to report.
 +-------------------------+--------------+-----------------+-----------------+
 ; Pin                     ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
 +-------------------------+--------------+-----------------+-----------------+
-; SW[4]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[5]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[8]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[9]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[1]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[0]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[6]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[7]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[10]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[11]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[3]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[2]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[12]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[13]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[5]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[4]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[14]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[15]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[7]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SW[6]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; AUD_ADCDAT              ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; CLOCK2_50               ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; CLOCK3_50               ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
@@ -306,16 +314,8 @@ No synchronizer chains to report.
 ; OTG_INT                 ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SD_WP_N                 ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SMA_CLKIN               ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[10]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[11]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[12]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[13]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[14]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[15]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[16]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; SW[17]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[8]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; SW[9]                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; TD_CLK27                ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; TD_DATA[0]              ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; TD_DATA[1]              ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
@@ -393,10 +393,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 8     ; 8    ;
-; Unconstrained Input Port Paths  ; 8     ; 8    ;
+; Unconstrained Input Ports       ; 16    ; 16   ;
+; Unconstrained Input Port Paths  ; 16    ; 16   ;
 ; Unconstrained Output Ports      ; 1     ; 1    ;
-; Unconstrained Output Port Paths ; 8     ; 8    ;
+; Unconstrained Output Port Paths ; 16    ; 16   ;
 +---------------------------------+-------+------+
 
 
@@ -413,6 +413,14 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; SW[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[6]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[7]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[8]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[9]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[10]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[11]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[12]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[13]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[14]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[15]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -438,6 +446,14 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; SW[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[6]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[7]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[8]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[9]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[10]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[11]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[12]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[13]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[14]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[15]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -456,11 +472,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Feb 21 12:22:12 2020
+    Info: Processing started: Fri Feb 21 20:13:56 2020
 Info: Command: quartus_sta EqCmpDemo -c EqCmpDemo
 Info: qsta_default_script.tcl version: #3
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'EqCmpDemo.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
@@ -504,9 +520,9 @@ Info (332140): No Minimum Pulse Width paths to report
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 732 megabytes
-    Info: Processing ended: Fri Feb 21 12:22:14 2020
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 4866 megabytes
+    Info: Processing ended: Fri Feb 21 20:14:00 2020
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 

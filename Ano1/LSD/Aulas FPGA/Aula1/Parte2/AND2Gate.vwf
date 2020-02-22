@@ -1,16 +1,16 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off VHDLDemo -c AND2Gate --vector_source="C:/Users/tiagooliveira95/LSDig/Aula1/Parte2/AND2Gate.vwf" --testbench_file="C:/Users/tiagooliveira95/LSDig/Aula1/Parte2/simulation/qsim/AND2Gate.vwf.vht"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off VHDLDemo -c AND2Gate --vector_source="C:/Users/tiagooliveira95/LSDig/Aula1/Parte2/AND2Gate.vwf" --testbench_file="C:/Users/tiagooliveira95/LSDig/Aula1/Parte2/simulation/qsim/AND2Gate.vwf.vht"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tiagooliveira95/LSDig/Aula1/Parte2/simulation/qsim/" VHDLDemo -c AND2Gate</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tiagooliveira95/LSDig/Aula1/Parte2/simulation/qsim/" VHDLDemo -c AND2Gate</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off VHDLDemo -c AND2Gate --vector_source="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/AND2Gate.vwf" --testbench_file="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/simulation/qsim/AND2Gate.vwf.vht"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off VHDLDemo -c AND2Gate --vector_source="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/AND2Gate.vwf" --testbench_file="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/simulation/qsim/AND2Gate.vwf.vht"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/simulation/qsim/" VHDLDemo -c AND2Gate</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/simulation/qsim/" VHDLDemo -c AND2Gate</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vcom -work work AND2Gate.vho
 vcom -work work AND2Gate.vwf.vht
-vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.AND2Gate_vhd_vec_tst
+vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.GateDemo_vhd_vec_tst
 vcd file -direction VHDLDemo.msim.vcd
-vcd add -internal AND2Gate_vhd_vec_tst/*
-vcd add -internal AND2Gate_vhd_vec_tst/i1/*
+vcd add -internal GateDemo_vhd_vec_tst/*
+vcd add -internal GateDemo_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -25,10 +25,10 @@ quit -f
 vlib work
 vcom -work work AND2Gate.vho
 vcom -work work AND2Gate.vwf.vht
-vsim -novopt -c -t 1ps -sdfmax AND2Gate_vhd_vec_tst/i1=AND2Gate_vhd.sdo -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.AND2Gate_vhd_vec_tst
+vsim -novopt -c -t 1ps -sdfmax GateDemo_vhd_vec_tst/i1=AND2Gate_vhd.sdo -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.GateDemo_vhd_vec_tst
 vcd file -direction VHDLDemo.msim.vcd
-vcd add -internal AND2Gate_vhd_vec_tst/*
-vcd add -internal AND2Gate_vhd_vec_tst/i1/*
+vcd add -internal GateDemo_vhd_vec_tst/*
+vcd add -internal GateDemo_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {

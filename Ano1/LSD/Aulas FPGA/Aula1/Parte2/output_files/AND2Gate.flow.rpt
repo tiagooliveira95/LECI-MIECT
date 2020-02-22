@@ -1,5 +1,5 @@
 Flow report for AND2Gate
-Fri Feb 21 11:35:49 2020
+Fri Feb 21 23:43:01 2020
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri Feb 21 11:35:45 2020       ;
+; Flow Status                        ; Successful - Fri Feb 21 23:43:01 2020       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; AND2Gate                                    ;
 ; Top-level Entity Name              ; GateDemo                                    ;
@@ -96,7 +96,10 @@ refer to the applicable agreement for further details.
 ; Fitter                    ; 00:00:10     ; 1.0                     ; 1565 MB             ; 00:00:14                           ;
 ; Assembler                 ; 00:00:03     ; 1.0                     ; 570 MB              ; 00:00:03                           ;
 ; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 726 MB              ; 00:00:02                           ;
-; Total                     ; 00:00:26     ; --                      ; --                  ; 00:00:40                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 4646 MB             ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4646 MB             ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4655 MB             ; 00:00:02                           ;
+; Total                     ; 00:00:30     ; --                      ; --                  ; 00:00:44                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -109,6 +112,9 @@ refer to the applicable agreement for further details.
 ; Fitter                    ; L230214-WS07     ; Windows 10 ; 10.0       ; x86_64         ;
 ; Assembler                 ; L230214-WS07     ; Windows 10 ; 10.0       ; x86_64         ;
 ; TimeQuest Timing Analyzer ; L230214-WS07     ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; DESKTOP-M857RTS  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; DESKTOP-M857RTS  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; DESKTOP-M857RTS  ; Windows 10 ; 10.0       ; x86_64         ;
 +---------------------------+------------------+------------+------------+----------------+
 
 
@@ -119,6 +125,9 @@ quartus_map --read_settings_files=on --write_settings_files=off VHDLDemo -c AND2
 quartus_fit --read_settings_files=off --write_settings_files=off VHDLDemo -c AND2Gate
 quartus_asm --read_settings_files=off --write_settings_files=off VHDLDemo -c AND2Gate
 quartus_sta VHDLDemo -c AND2Gate
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off VHDLDemo -c AND2Gate --vector_source=C:/Users/tiagooliveira95/LSDig/Aula1/Parte2/AND2Gate.vwf --testbench_file=C:/Users/tiagooliveira95/LSDig/Aula1/Parte2/simulation/qsim/AND2Gate.vwf.vht
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off VHDLDemo -c AND2Gate --vector_source="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/AND2Gate.vwf" --testbench_file="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/simulation/qsim/AND2Gate.vwf.vht"
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/simulation/qsim/" VHDLDemo -c AND2Gate
 
 
 

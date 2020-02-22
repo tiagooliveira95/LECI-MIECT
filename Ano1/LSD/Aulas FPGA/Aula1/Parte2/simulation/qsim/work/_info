@@ -94,3 +94,136 @@ R21
 !i113 1
 R15
 R16
+Egatedemo
+Z22 w1582328581
+R2
+R3
+R4
+R5
+R6
+R7
+Z23 dC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula1/Parte2/simulation/qsim
+R8
+R9
+l0
+L77
+VLRe=<Ca29W`2[Kb7^RNeY1
+!s100 001J2P8RT9TOZ7@4VN6z31
+R10
+32
+Z24 !s110 1582328586
+!i10b 1
+Z25 !s108 1582328585.000000
+R13
+R14
+!i113 1
+R15
+R16
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+DEx4 work 8 gatedemo 0 22 LRe=<Ca29W`2[Kb7^RNeY1
+l115
+L90
+VMKAEPGfo>;ofaBkVP4[n=2
+!s100 Ec5;4QH_Hc4nTURnEdOg<2
+R10
+32
+R24
+!i10b 1
+R25
+R13
+R14
+!i113 1
+R15
+R16
+Egatedemo_vhd_vec_tst
+Z26 w1582328579
+R5
+R6
+R23
+R18
+R19
+l0
+L31
+VVc]OPJ4jL6:1UI6Dkdb791
+!s100 1nChj0AG]nBc1H8cS_cSj3
+R10
+32
+R24
+!i10b 1
+Z27 !s108 1582328586.000000
+R20
+R21
+!i113 1
+R15
+R16
+Agatedemo_arch
+R5
+R6
+DEx4 work 20 gatedemo_vhd_vec_tst 0 22 Vc]OPJ4jL6:1UI6Dkdb791
+l44
+L33
+VRJ>0f_miBaljGAM[a5VTP2
+!s100 hhQ8nMQSWazgdfnAkZ2zA2
+R10
+32
+R24
+!i10b 1
+R27
+R20
+R21
+!i113 1
+R15
+R16
+Ehard_block
+R22
+R2
+R3
+R4
+R5
+R6
+R7
+R23
+R8
+R9
+l0
+L34
+VOgIg9T_BR7joedFDVM>H13
+!s100 A`ID_i56<Ua56=ZD=[EG=2
+R10
+32
+R24
+!i10b 1
+R25
+R13
+R14
+!i113 1
+R15
+R16
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+DEx4 work 10 hard_block 0 22 OgIg9T_BR7joedFDVM>H13
+l64
+L50
+V`^CmQg<48W[ez[JL_5@Yn2
+!s100 2S?JL;LJ@<3:BHXTNcXS]3
+R10
+32
+R24
+!i10b 1
+R25
+R13
+R14
+!i113 1
+R15
+R16

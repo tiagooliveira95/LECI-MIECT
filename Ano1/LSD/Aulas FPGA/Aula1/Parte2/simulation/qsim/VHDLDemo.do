@@ -2,10 +2,10 @@ onerror {exit -code 1}
 vlib work
 vcom -work work AND2Gate.vho
 vcom -work work AND2Gate.vwf.vht
-vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.AND2Gate_vhd_vec_tst
+vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.GateDemo_vhd_vec_tst
 vcd file -direction VHDLDemo.msim.vcd
-vcd add -internal AND2Gate_vhd_vec_tst/*
-vcd add -internal AND2Gate_vhd_vec_tst/i1/*
+vcd add -internal GateDemo_vhd_vec_tst/*
+vcd add -internal GateDemo_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {

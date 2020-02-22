@@ -3,7 +3,7 @@ $comment
 		vcd file VHDLDemo.msim.vcd -direction
 $end
 $date
-	Fri Feb 21 11:02:49 2020
+	Fri Feb 21 23:43:07 2020
 $end
 $version
 	ModelSim Version 10.5b
@@ -12,10 +12,10 @@ $timescale
 	1ps
 $end
 
-$scope module and2gate_vhd_vec_tst $end
-$var wire 1 ! inPort0 $end
-$var wire 1 " inPort1 $end
-$var wire 1 # outPort $end
+$scope module gatedemo_vhd_vec_tst $end
+$var wire 1 ! LEDR [0] $end
+$var wire 1 " sw [1] $end
+$var wire 1 # sw [0] $end
 
 $scope module i1 $end
 $var wire 1 $ gnd $end
@@ -27,21 +27,19 @@ $var wire 1 ) devpor $end
 $var wire 1 * ww_devoe $end
 $var wire 1 + ww_devclrn $end
 $var wire 1 , ww_devpor $end
-$var wire 1 - ww_inPort0 $end
-$var wire 1 . ww_inPort1 $end
-$var wire 1 / ww_outPort $end
-$var wire 1 0 \outPort~output_o\ $end
-$var wire 1 1 \inPort0~input_o\ $end
-$var wire 1 2 \inPort1~input_o\ $end
-$var wire 1 3 \outPort~0_combout\ $end
+$var wire 1 - ww_sw [1] $end
+$var wire 1 . ww_sw [0] $end
+$var wire 1 / ww_LEDR [0] $end
+$var wire 1 0 \LEDR[0]~output_o\ $end
+$var wire 1 1 \sw[1]~input_o\ $end
+$var wire 1 2 \sw[0]~input_o\ $end
+$var wire 1 3 \system_core|and_gate|outPort~combout\ $end
+$var wire 1 4 \system_core|and_gate|ALT_INV_outPort~combout\ $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-0!
-0"
-0#
 0$
 1%
 x&
@@ -51,76 +49,16 @@ x&
 1*
 1+
 1,
-0-
-0.
-0/
-00
-01
-02
-03
+x0
+x1
+x2
+x3
+x4
+x!
+x-
+x.
+x/
+x"
+x#
 $end
-#40000
-1!
-1-
-11
-#220000
-0!
-0-
-01
-#280000
-1"
-1.
-12
-#360000
-0"
-0.
-02
-#440000
-1!
-1-
-11
-#500000
-1"
-1.
-12
-13
-10
-1/
-1#
-#620000
-0"
-0.
-02
-03
-00
-0/
-0#
-#660000
-0!
-0-
-01
-#700000
-1"
-1.
-12
-#760000
-1!
-1-
-11
-13
-10
-1/
-1#
-#900000
-0!
-0-
-01
-03
-00
-0/
-0#
-#940000
-0"
-0.
-02
 #1000000
