@@ -1,11 +1,11 @@
 vendor_name = ModelSim
-source_file = 1, C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En.vhd
-source_file = 1, C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En_1.vwf
+source_file = 1, C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En.vhd
+source_file = 1, C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En_1.vwf
 source_file = 1, c:/intelfpga_lite/17.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, c:/intelfpga_lite/17.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
 source_file = 1, c:/intelfpga_lite/17.1/quartus/libraries/vhdl/ieee/timing_b.vhd
 source_file = 1, c:/intelfpga_lite/17.1/quartus/libraries/vhdl/ieee/timing_p.vhd
-source_file = 1, C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/db/Dec2_4EnDemo.cbx.xml
+source_file = 1, C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/db/Dec2_4EnDemo.cbx.xml
 design_name = hard_block
 design_name = Dec2_4En
 instance = comp, \outputs[0]~output\, outputs[0]~output, Dec2_4En, 1

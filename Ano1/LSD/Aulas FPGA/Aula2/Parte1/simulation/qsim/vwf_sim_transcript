@@ -7,7 +7,7 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Dec2_4EnDemo -c Dec2_4EnDemo --vector_source="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En_1.vwf" --testbench_file="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4En_1.vwf.vht"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Dec2_4EnDemo -c Dec2_4EnDemo --vector_source="C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En_1.vwf" --testbench_file="C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4En_1.vwf.vht"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -25,15 +25,15 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Fri Feb 21 23:44:33 2020
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Dec2_4EnDemo -c Dec2_4EnDemo --vector_source="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En_1.vwf" --testbench_file="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4En_1.vwf.vht"
+    Info: Processing started: Fri Feb 28 00:38:43 2020
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Dec2_4EnDemo -c Dec2_4EnDemo --vector_source="C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En_1.vwf" --testbench_file="C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4En_1.vwf.vht"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
 Completed successfully. 
 
 **** Generating the functional simulation netlist ****
 
-quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/" Dec2_4EnDemo -c Dec2_4EnDemo
+quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/" Dec2_4EnDemo -c Dec2_4EnDemo
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -51,13 +51,13 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Fri Feb 21 23:44:35 2020
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/" Dec2_4EnDemo -c Dec2_4EnDemo
+    Info: Processing started: Fri Feb 28 00:38:44 2020
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/" Dec2_4EnDemo -c Dec2_4EnDemo
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file Dec2_4EnDemo.vho in folder "C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Dec2_4EnDemo.vho in folder "C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4655 megabytes
-    Info: Processing ended: Fri Feb 21 23:44:36 2020
+    Info: Peak virtual memory: 4644 megabytes
+    Info: Processing ended: Fri Feb 28 00:38:45 2020
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
@@ -65,7 +65,7 @@ Completed successfully.
 
 **** Generating the ModelSim .do script ****
 
-C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4EnDemo.do generated.
+C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4EnDemo.do generated.
 
 Completed successfully. 
 
@@ -79,38 +79,39 @@ Reading C:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
 
 
 # do Dec2_4EnDemo.do
+# ** Warning: (vlib-34) Library already exists at "work".
 
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:38 on Feb 21,2020
+# Start time: 00:38:46 on Feb 28,2020
 # vcom -work work Dec2_4EnDemo.vho 
 # -- Loading package STANDARD
-
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package VITAL_Timing
 # -- Loading package VITAL_Primitives
 # -- Loading package cycloneive_atom_pack
 # -- Loading package cycloneive_components
+
 # -- Compiling entity hard_block
 # -- Compiling architecture structure of hard_block
 # -- Compiling entity Dec2_4En
 # -- Compiling architecture structure of Dec2_4En
-# End time: 23:44:38 on Feb 21,2020, Elapsed time: 0:00:00
+# End time: 00:38:46 on Feb 28,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:38 on Feb 21,2020
+# Start time: 00:38:46 on Feb 28,2020
 # vcom -work work Dec2_4En_1.vwf.vht 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
+
 # -- Loading package std_logic_1164
 # -- Compiling entity Dec2_4En_vhd_vec_tst
 # -- Compiling architecture Dec2_4En_arch of Dec2_4En_vhd_vec_tst
-# End time: 23:44:38 on Feb 21,2020, Elapsed time: 0:00:00
+# End time: 00:38:46 on Feb 28,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.Dec2_4En_vhd_vec_tst 
-# Start time: 23:44:38 on Feb 21,2020
+# Start time: 00:38:47 on Feb 28,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -125,22 +126,22 @@ Reading C:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
 # Loading cycloneive.cycloneive_io_obuf(arch)
 # Loading cycloneive.cycloneive_io_ibuf(arch)
 # Loading cycloneive.cycloneive_lcell_comb(vital_lcell_comb)
-# after#31
+# after#33
 
-# End time: 23:44:39 on Feb 21,2020, Elapsed time: 0:00:01
+# End time: 00:38:47 on Feb 28,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En_1.vwf...
+Reading C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/Dec2_4En_1.vwf...
 
-Reading C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4EnDemo.msim.vcd...
+Reading C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4EnDemo.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4EnDemo_20200221234439.sim.vwf
+Writing the resulting VWF to C:/Users/Tiago/Desktop/ECT/Projectos-ECT/Ano1/LSD/Aulas FPGA/Aula2/Parte1/simulation/qsim/Dec2_4EnDemo_20200228003848.sim.vwf
 
 Finished VCD to VWF conversion.
 

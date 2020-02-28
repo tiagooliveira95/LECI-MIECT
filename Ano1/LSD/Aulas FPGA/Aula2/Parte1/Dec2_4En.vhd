@@ -23,3 +23,12 @@ begin
 	-- output 3 fica ativo quando o input 1..0 = 11
 	outputs(3) <= enable and  (    inputs(1)) and (    inputs(0));
 end BehavEquations;
+
+architecture BehavAssign of Dec2_4En is
+begin
+	outputs <= "0000" when (enable = '0') else
+		"0001" when (inputs = "00") else
+		"0010" when (inputs = "01") else
+		"0100" when (inputs = "10") else
+		"1000";
+end BehavAssign; 
