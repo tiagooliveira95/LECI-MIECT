@@ -9,6 +9,8 @@ end FullAdder;
 architecture Behavioral of FullAdder is
 begin
  -- Especifique aqui as equações lógicas para as saídas “s” e “cout”
-	s <=  (cin) XOR (a XOR b);
-	cout <= ( (a XOR b) AND (cin) )  OR (b AND a);
+	
+	s <=  a XOR b XOR cin;
+	cout <=  (b and cin) or (a and b) or (a and cin);
+	
 end Behavioral;
