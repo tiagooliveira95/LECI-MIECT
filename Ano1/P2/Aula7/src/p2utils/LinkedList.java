@@ -218,6 +218,64 @@ public class LinkedList<E> {
         //Guarda o ultimo node no node atual
         first = lastNode;
     }
+
+    /*********Usando recursividade***********/
+
+    public LinkedList<E> cloneR(){
+        return cloneR(first);
+    }
+
+    private LinkedList<E> cloneR(Node<E> n){
+        if(n == null) return new LinkedList<E>();
+        LinkedList<E> lst = cloneR(n.next);
+        lst.addFirst(n.elem);
+        return lst;
+    }
+
+    //Same as clone() but it uses addLast
+    public LinkedList<E> reverseR(){
+        return reverse(first);
+    }
+
+    private LinkedList<E> reverse(Node<E> n){
+        if(n == null) return new LinkedList<E>();
+        LinkedList<E> lst = reverse(n.next);
+        lst.addLast(n.elem);
+        return lst;
+    }
+
+    public E getR(int pos){
+        assert 0 <= pos && pos < size();
+        return getR(pos, first);
+    }
+
+    private E getR(int pos, Node<E> n){
+        if(pos == 0) return n.elem;
+        return getR(pos - 1, n.next);
+    }
+
+    public LinkedList<E> concatenateR(LinkedList<E> lst){
+        return concatenateR(clone(), lst.first);
+    }
+
+    private LinkedList<E> concatenateR(LinkedList<E> conc, Node<E> n){
+        if(n == null) return conc;
+        conc.addLast(n.elem);
+        return concatenateR(conc, n.next);
+    }
+
+    public void removeR(E e){
+        removeR(e, first);
+    }
+
+    private void removeR(E e, Node<E> n){
+        if(e.equals(n.elem)) first = n.next;
+        if(e.equals(n.next.elem)) n.next = n.next.next;
+        else removeR(e, n.next);
+    }
+
+    /*********Usando recursividade***********/
+
 }
 
 // entregadar com while fors... 7.2, com recursividade
