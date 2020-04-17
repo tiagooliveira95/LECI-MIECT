@@ -18,14 +18,14 @@
 #
 # Quartus Prime
 # Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-# Date created = 12:06:22  March 06, 2020
+# Date created = 09:55:38  April 17, 2020
 #
 # -------------------------------------------------------------------------- #
 #
 # Notes:
 #
 # 1) The default values for assignments are stored in the file:
-#		ALUDemo_assignment_defaults.qdf
+#		ShiftRegister_Demo_assignment_defaults.qdf
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
@@ -38,18 +38,23 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE115F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY ALUDemo
+set_global_assignment -name TOP_LEVEL_ENTITY ShiftRegister_Demo
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:06:22  MARCH 06, 2020"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:55:38  APRIL 17, 2020"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name VHDL_FILE ShiftRegister.vhd
+set_global_assignment -name VHDL_FILE ShiftRegister_Demo.vhd
+set_global_assignment -name VHDL_FILE ShiftRegisterN.vhd
+set_global_assignment -name VHDL_FILE ClkDividerN.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_location_assignment PIN_Y2 -to CLOCK_50
 set_location_assignment PIN_AG14 -to CLOCK2_50
 set_location_assignment PIN_AG15 -to CLOCK3_50
@@ -569,9 +574,4 @@ set_location_assignment PIN_H14 -to EX_IO[3]
 set_location_assignment PIN_F14 -to EX_IO[4]
 set_location_assignment PIN_E10 -to EX_IO[5]
 set_location_assignment PIN_D9 -to EX_IO[6]
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VHDL_FILE ../../Aula2/Parte3/Bin7SegDecoder.vhd
-set_global_assignment -name VHDL_FILE ALU4.vhd
-set_global_assignment -name BDF_FILE ALUDemo.bdf
