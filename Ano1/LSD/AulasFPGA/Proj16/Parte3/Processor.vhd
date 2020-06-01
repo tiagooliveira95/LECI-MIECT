@@ -3,8 +3,8 @@ use IEEE.STD_LOGIC_1164.all;
 
 entity Processor is
 	port(
-		clk: std_logic;
-		rst: std_logic
+		clk: in std_logic;
+		rst: in std_logic
 	);
 	
 end Processor;

@@ -6,14 +6,14 @@ entity ControlUnit is
 		clk: in std_logic;
 		opcode: in std_logic_vector(2 downto 0);
 		func: in std_logic_vector(3 downto 0);
-		EnPC      : out std_logic;
-		RI        : out std_logic;
-		RegDst    : out std_logic;		
-		RegWr     : out std_logic; 
-		ALUSrc    : out std_logic;          
-		ALUOp     : out std_logic_vector(3 downto 0);  
-		MemWr     : out std_logic;           
-		MemToReg  : out std_logic;
+		EnPC: out std_logic;
+		RI: out std_logic;
+		RegDst: out std_logic;		
+		RegWr: out std_logic; 
+		ALUSrc: out std_logic;          
+		ALUOp: out std_logic_vector(3 downto 0);  
+		MemWr: out std_logic;           
+		MemToReg: out std_logic;
 		rst: out std_logic
 	);
 end ControlUnit;
@@ -55,14 +55,20 @@ begin
 				elsif opcode = "111" then --LW
 					RegDst <= '1'; -- selecionar a saida da mux para entrada 1 uma vez que para op de tipo 2 o WA esta entre 9..7
 					ALUSrc <= '1'; -- selecionar a saida da mux para entrada 1 para converter o Addr de 7 para 8 bits, para mais tarde ser somado ao registo x
-					MemToReg <= '0';
+					MemToReg <= '0'; -- define o mux para a entrada 0 pois queremos obter o res da alu e envialo para a register
 					ALUOp <= x"0"; -- soma os dados do registo
 					n_state <= Execute;
 				elsif opcode = "110" then --SW
 					RegDst <= '1';
 				   ALUSrc <= '0';
 					MemToReg <= '1';
-					ALUOp <= x"0";
+					ALUOp <= x"0"; -- soma os dados do registo
+					n_state <= Execute;
+				else if opcode = "100" then -- ADDI (realizar a operação registo5 = registo4 + 1)
+					RegDst <= '1'; -- selecionar a saida da mux para entrada 1 uma vez que para op de tipo 2 o WA esta entre 9..7
+					ALUSrc <= '1'; -- selecionar a saida da mux para entrada 1 para converter o Addr de 7 para 8 bits, para mais tarde ser somado ao registo x
+					ALUOp <= x"0"; -- soma os dados do registo
+					MemToReg <= '0'; -- define o mux para a entrada 0 pois queremos obter o res da alu e envialo para a register
 					n_state <= Execute;
 				end if;
 			
