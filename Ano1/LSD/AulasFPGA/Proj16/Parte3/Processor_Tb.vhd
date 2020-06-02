@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.all;
 entity Processor_Tb is
 end Processor_Tb;
 
-architecture Stimulos of Processor_Tb is
+architecture Stimulus of Processor_Tb is
 	signal s_clk: std_logic;
 	signal s_rst: std_logic;
 begin 
@@ -19,7 +19,7 @@ begin
 	clk: process
 	begin
 		s_clk <= '1';
-		wait for 10 ns;
+		wait for 10ns;
 		s_clk <= '0';
 		wait for 10ns;
 	end process;
@@ -27,9 +27,11 @@ begin
 	
 	stim: process
 	begin
-		s_rst <= '0';
+		s_rst <= '1';
 		wait for 40ns;
 		s_rst <= '0';
+		wait for 10000ns;
+
 	end process;
 	
-end Stimulos;
+end Stimulus;

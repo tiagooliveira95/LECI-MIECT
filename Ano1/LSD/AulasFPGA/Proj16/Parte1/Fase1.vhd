@@ -48,6 +48,10 @@ begin
 
    -- Counter
 	PC : entity work.ProgramCounter(Behavioral)
+		generic map(
+			COUNTER_BIT_SIZE => 4,
+			END_COUNT_AT => 7
+			)
 		port map(
 		   En => EnPC,
  			clk => clk,

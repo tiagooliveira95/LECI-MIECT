@@ -43,7 +43,12 @@ begin
 	
 	stim_proc:process
 	begin
-	
+	   s_rst <= '1';
+	   wait for 100 ns;
+		s_rst <= '0';
+		wait for 100ns;
+		
+		
 	   -- tipo 1
 		s_rst 		<= '0';
 		s_EnPC 		<= '1';
