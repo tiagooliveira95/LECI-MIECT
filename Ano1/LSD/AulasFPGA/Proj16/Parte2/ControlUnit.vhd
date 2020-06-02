@@ -39,11 +39,16 @@ begin
 			when Reset =>
 				rst <= '1';
 				n_state <= Fetch;
+			
 			when Fetch =>
+				rst <= '0';
 				RI <= '1';
 				EnPC <= '1';
 				n_state <= Decode;
+			
 			when Decode =>
+				rst <= '0';
+
 				if opcode = "000" then -- caso NOP
 					n_state <= Fetch;
 				elsif opcode = "001" then -- se for tipo 1
@@ -59,12 +64,10 @@ begin
 					ALUOp <= x"0"; -- soma os dados do registo
 					n_state <= Execute;
 				elsif opcode = "110" then --SW
-					RegDst <= '1';
 				   ALUSrc <= '0';
-					MemToReg <= '1';
 					ALUOp <= x"0"; -- soma os dados do registo
 					n_state <= Execute;
-				else if opcode = "100" then -- ADDI (realizar a operação registo5 = registo4 + 1)
+				elsif opcode = "100" then -- ADDI (realizar a operação registo5 = registo4 + 1)
 					RegDst <= '1'; -- selecionar a saida da mux para entrada 1 uma vez que para op de tipo 2 o WA esta entre 9..7
 					ALUSrc <= '1'; -- selecionar a saida da mux para entrada 1 para converter o Addr de 7 para 8 bits, para mais tarde ser somado ao registo x
 					ALUOp <= x"0"; -- soma os dados do registo
@@ -73,6 +76,7 @@ begin
 				end if;
 			
 			when Execute =>
+				rst <= '0';
 				if opcode = "001" OR opcode = "100" OR opcode = "111" then -- operações do tipo 1 do tipo ADDI e LW são para atualizar o registo
 					n_state <= RegUpdate;
 				else
@@ -80,17 +84,14 @@ begin
 				end if;
 			
 			when RegUpdate =>
+				rst <= '0';
 				RegWr  <= '1'; -- ativar write no bloco de registos
 				n_state <= Fetch;
-
-				
+			
 			when WriteMem =>
+				rst <= '0';
 				MemWr <= '1'; -- ativar write no DMemory
 				n_state <= Fetch;
 		end case;
-
 	end process;
-	
-
-
 end Behavioral;

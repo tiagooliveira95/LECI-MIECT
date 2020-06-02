@@ -136,5 +136,6 @@ begin
 			input => INTRUCTION_BUS(6 downto 0),
 			output => SIGN_EXTENDED_BUS
 		);
-		IntructionBus <= INTRUCTION_BUS;
+	
+	IntructionBus <= INTRUCTION_BUS;
 end Structural;

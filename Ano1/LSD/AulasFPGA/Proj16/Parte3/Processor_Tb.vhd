@@ -27,7 +27,7 @@ begin
 	
 	stim: process
 	begin
-		s_rst <= '1';
+		s_rst <= '0';
 		wait for 40ns;
 		s_rst <= '0';
 	end process;

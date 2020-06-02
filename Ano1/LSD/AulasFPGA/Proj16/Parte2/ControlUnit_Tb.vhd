@@ -1,11 +1,11 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
-entity of ControlUnit_Tb is
+entity ControlUnit_Tb is
 end ControlUnit_Tb;
 
 architecture Stimulus of ControlUnit_Tb is
-	signal s_clk,s_EnPC,s_RI,s_RegDst,s_RegWr,s_ALUSrc,s_MemToReg,s_rst: std_logic;
+	signal s_clk,s_EnPC,s_RI,s_RegDst,s_RegWr,s_ALUSrc,s_MemToReg,s_rst,s_MemWr: std_logic;
 	signal s_func,s_ALUOp: std_logic_vector(3 downto 0);
 	signal s_opcode: std_logic_vector(2 downto 0);
 
@@ -38,6 +38,8 @@ begin
 		
 		stim_proc: process
 		begin
+			
+			
 			
 		end process;
 
