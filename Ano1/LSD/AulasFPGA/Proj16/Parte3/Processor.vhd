@@ -3,8 +3,7 @@ use IEEE.STD_LOGIC_1164.all;
 
 entity Processor is
 	port(
-		clk: in std_logic;
-		rst: in std_logic
+		clk: in std_logic
 	);
 	
 end Processor;
@@ -19,13 +18,14 @@ architecture Structural of Processor is
 	signal s_MemWr: std_logic;
 	signal s_MemToReg: std_logic;
 	signal s_IntructionBus: std_logic_vector(15 downto 0); -- Bus que contem a instrução vinda da IMemory
+	signal s_rst: std_logic; -- sinal reset
 begin
+
 	-- Ligar o DataPath ao Control Unit
-	
 	DataPath: entity work.Fase1(Structural)
 		port map(
 			clk => clk,
-			rst => rst,
+			rst => s_rst,
 			EnPC => s_EnPC,
 			RI => s_RI,
 			RegDst => s_RegDst,
@@ -44,11 +44,13 @@ begin
 			func => s_IntructionBus(3 downto 0),
 			EnPC => s_EnPC,  
 			RI => s_RI,      
-			RegWr => s_RegWr,   
+			RegWr => s_RegWr,
+			RegDst => s_RegDst,			
 			ALUSrc => s_ALUSrc,  
 			ALUOp => s_ALUOp,     
 			MemWr => s_MemWr,   
-			MemToReg =>	s_MemToReg		
+			MemToReg =>	s_MemToReg,
+			rst => s_rst
 		);
 
 end Structural;

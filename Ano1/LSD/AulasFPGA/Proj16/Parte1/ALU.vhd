@@ -45,16 +45,16 @@ begin
 				res <= std_logic_vector(op1_unsigned - op2_unsigned);
 			-- AND
 			when "0010" =>
-				res <= op1 AND op1;
+				res <= op1 AND op2;
 			-- OR
 			when "0011" =>
-				res <= op1 OR op1;
+				res <= op1 OR op2;
 		   -- XOR
 			when "0100" =>
-				res <= op1 XOR op1;
+				res <= op1 XOR op2;
 			-- NOR
 			when "0101" =>
-				res <= op1 NOR op1;
+				res <= op1 NOR op2;
 			-- MUU
 			when "0110" =>
 				res <= op_multiplied_unsigned(N-1 downto 0);

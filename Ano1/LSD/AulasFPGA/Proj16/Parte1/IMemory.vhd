@@ -24,7 +24,7 @@ architecture Behavioral of IMemory is
 	--	Type 2																																-> OP.RS.RT.ADDR
 	--	LW $0, $1, 0,carregar no registo1 dados que se encontram no endereço [registo0+0] da memória de dados -> 111.000.001.0000000
 	--	LW $0, $2, 1,carregar no registo2 dados que se encontram no endereço [registo0+1] da memória de dados -> 111.000.010.0000001
-	--	LW $0, $3, 2,carregar no registo3 dados que se encontram no endereço [registo0+2] da memória de dados -> 111.000.111.0000010
+	--	LW $0, $3, 2,carregar no registo3 dados que se encontram no endereço [registo0+2] da memória de dados -> 111.000.011.0000010
 	
 	-- Type 1                                                                                                -> OP.RS.RT.RD.FUNC
 	--	XOR $1, $2, $4,realizar a operação registo4 = registo1 XOR registo2												-> 001.001.010.100.0100
@@ -38,7 +38,7 @@ architecture Behavioral of IMemory is
 	--	Type 2																																-> OP.RS.RT.ADDR
 	--	SW $0, $1, 0, escrever no endereço [registo0+0] na memória de dados o conteúdo do registo1            -> 110.000.001.0000000
 
-	constant c_memory: T_ROM := ("1110000010000000", "1110000100000001", "1110001110000010", "0010010101000100","1111001010000001","0011010110010000","1100000010000000",  others => x"0000");
+	constant c_memory: T_ROM := ("1110000010000000", "1110000100000001", "1110000110000010", "0010010101000100","1111001010000001","0011010110010000","1100000010000000",  others => x"0000");
 
 begin
 	process(clk, En)

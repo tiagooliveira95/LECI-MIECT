@@ -11,8 +11,7 @@ begin
 	
 	uut: entity work.Processor(Structural)
 		port map(
-			clk => s_clk,
-			rst => s_rst
+			clk => s_clk
 		);
 		
 	-- Clock 50 MHz
@@ -22,16 +21,6 @@ begin
 		wait for 10ns;
 		s_clk <= '0';
 		wait for 10ns;
-	end process;
-
-	
-	stim: process
-	begin
-		s_rst <= '1';
-		wait for 40ns;
-		s_rst <= '0';
-		wait for 10000ns;
-
 	end process;
 	
 end Stimulus;
