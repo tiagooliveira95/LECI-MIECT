@@ -18,14 +18,14 @@
 #
 # Quartus Prime
 # Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-# Date created = 23:15:32  August 28, 2020
+# Date created = 17:35:53  August 30, 2020
 #
 # -------------------------------------------------------------------------- #
 #
 # Notes:
 #
 # 1) The default values for assignments are stored in the file:
-#		guiao_a6_decoder_encoder_assignment_defaults.qdf
+#		Guiao7_assignment_defaults.qdf
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
@@ -36,24 +36,25 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY "Cyclone IV E"
-set_global_assignment -name DEVICE AUTO
-set_global_assignment -name TOP_LEVEL_ENTITY EncoderDemo
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CGXFC7C7F23C8
+set_global_assignment -name TOP_LEVEL_ENTITY MuxDemo3
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:15:32  AUGUST 28, 2020"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:35:53  AUGUST 30, 2020"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name BDF_FILE Mux2_1.bdf
+set_global_assignment -name BDF_FILE MuxDemo.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
-set_global_assignment -name BDF_FILE Dec2_4.bdf
-set_global_assignment -name BDF_FILE DecoderDemo.bdf
-set_global_assignment -name BDF_FILE Dec4_16.bdf
-set_global_assignment -name BDF_FILE DecoderDemo2.bdf
+set_global_assignment -name BDF_FILE Mux16_1.bdf
+set_global_assignment -name BDF_FILE MuxDemo2.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform1.vwf
-set_global_assignment -name BDF_FILE DecoderDemo3.bdf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform2.vwf
-set_global_assignment -name BDF_FILE PEnc8_3.bdf
-set_global_assignment -name BDF_FILE EncoderDemo.bdf
+set_global_assignment -name BDF_FILE MuxDemo3.bdf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform2.vwf
