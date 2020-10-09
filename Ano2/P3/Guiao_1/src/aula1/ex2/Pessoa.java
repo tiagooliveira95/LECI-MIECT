@@ -1,9 +1,9 @@
 package aula1.ex2;
 
-public class Pessoa implements Comparable<Pessoa> {
-    private String nome;
-    private int cc;
-    private Data dataNasc;
+public class Pessoa {
+    private final String nome;
+    private final int cc;
+    private final Data dataNasc;
 
     public Pessoa(String nome, int cc, Data dataNasc) {
         assert nome.length() > 0 : "O nome deve ser um tamanho superior a 0";
@@ -35,14 +35,16 @@ public class Pessoa implements Comparable<Pessoa> {
                 '}';
     }
 
-    @Override
-    public int compareTo(Pessoa o) {
-        if(cc < o.getCc()){
+
+    public int compareByCC(Pessoa o) {
+        if(cc > o.getCc()){
             return 1;
-        }else if(cc > o.getCc()){
-            return 0;
         } else {
-            return nome.compareTo(o.getNome());
+            return 0;
         }
+    }
+
+    public int compareByName(Pessoa o){
+        return nome.compareTo(o.getNome());
     }
 }
