@@ -37,11 +37,7 @@ public class Pessoa {
 
 
     public int compareByCC(Pessoa o) {
-        if(cc > o.getCc()){
-            return 1;
-        } else {
-            return 0;
-        }
+        return Integer.compare(cc, o.getCc());
     }
 
     public int compareByName(Pessoa o){

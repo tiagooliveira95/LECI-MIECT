@@ -41,6 +41,10 @@ public class Ex1 {
                 "LowerCase: %b\n" +
                 "Word Count: %d\n" +
                         "Fliped: %s%n",
-                numericValuesCount, isUpperCase,isLowerCase,wordLength,builder.toString());
+                numericValuesCount,
+                isUpperCase && numericValuesCount != userValue.length(),
+                isLowerCase && numericValuesCount != userValue.length(),
+                wordLength,
+                builder.toString());
     }
 }
