@@ -1,7 +1,8 @@
 # Mapa de registos:
-# $t0 – value
-# $t1 – bit
+# $t0 â€“ value
+# $t1 â€“ bit
 # $t2 - i
+
  		.data
 str1: 	.asciiz "Introduza um número: "
 str2: 	.asciiz "\nO valor em binário é: "
@@ -11,13 +12,13 @@ str2: 	.asciiz "\nO valor em binário é: "
  		.text
  		.globl main
 
-main: 	la $a0,str1				# (instrução virtual)
- 		li $v0,print_string 		# print_string(str1);
- 		syscall 					#
+main: 	la $a0,str1				# (instruÃ§Ã£o virtual)
+ 	li $v0,print_string 			# print_string(str1);
+ 	syscall 				#
  	
- 		li $v0,read_int			# value=read_int();
- 		syscall					#
- 		move $t0, $v0				#
+ 	li $v0,read_int				# value=read_int();
+ 	syscall					#
+ 	move $t0, $v0				#
  							
  							
  		li $v0, print_string		# print_string(str2);
@@ -62,5 +63,6 @@ endif:
  		
 endfor: 							
  		jr $ra 					# fim do programa 
+
  		
  		
