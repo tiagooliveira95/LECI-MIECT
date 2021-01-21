@@ -25,11 +25,11 @@ main:	addiu $sp, $sp, -4		# 	fazer espaco na pilha
 # Sub-rotina terminal: não devem ser usados registos $sx 
 # $t0 -> *s
 # $t1 -> len
-strlen:	li $t1, 0			# len = 0
-while:	lb $t0, 0($a0)		# while(*s++ != '\0')
-		addiu $a0, $a0,1 	#
-		beq $t0, '\0' endw #{
-		addi $t1,$t1,1		# len ++
-		j while 			# }
-endw: 	move $v0, $t1		# return len;
-		jr $ra			#
+strlen:	li 		$t1, 0			# len = 0
+while:	lb	 	$t0, 0($a0)		# while(*s++ != '\0')
+		addiu	$a0, $a0,1 		#
+		beq	 	$t0, '\0' endw 	#{
+		addi 		$t1,$t1,1			# len ++
+		j 		while 			# }
+endw: 	move 	$v0, $t1			# return len;
+		jr		 $ra				#
