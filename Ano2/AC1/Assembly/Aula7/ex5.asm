@@ -69,27 +69,22 @@ endfor:	la	 	$a0,str5			# print_string("Enter the value to be inserted: ");
 		la	 	$a0,str7			# print_string("\nOriginal array: ");
 		li 		$v0,print_string	#
 		syscall					#
-		
 		move 	$a0,$s5			# array
 		move	$a1,$s1			# array_size
 		jal 		print_array		# print_array(array, array_size);
-		
 		move 	$a0,$s5			# array
 		move	$a1,$s2			# insert_value
 		move 	$a2,$s3			# insert_pos
 		move	$a3,$s1			# insert_pos
 		jal		insert			#insert(array, insert_value, insert_pos,  insert_pos);
-		
 		la	 	$a0,str8			#print_string("\nModified array: ");  
 		li 		$v0,print_string	#
 		syscall					#
- 		
  		move 	$a0,$s5			# array
 		move	$a1,$s1			# array_size
 		addiu	$a1,$a1,1		# array_size + 1
 		jal 		print_array		# print_array(array, array_size + 1);
- 		
- 		lw		$ra,0($sp)	# salvaguardar $ra	
+ 		lw		$ra,0($sp)		# salvaguardar $ra	
  		lw		$s0,4($sp)		
 		lw		$s1,8($sp)
 		lw		$s2,12($sp)
@@ -140,3 +135,4 @@ for3:		bge $t1,$t0, endfor3
 			addiu $t1,$t1,4			#a++
 			j for3
 endfor3:		jr $ra
+
