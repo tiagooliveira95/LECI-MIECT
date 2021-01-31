@@ -7,13 +7,13 @@
 # $s1 -> k
 # $s2 -> n
 # $t0 -> *p
-fun2:		addiu	$sp,$sp,-16	# alucar espaço
+fun2:		addiu	$sp,$sp,-16	# alucar espaÃ§o
 		sw	$ra,0($sp)	# salvaguardar $ra
 		sw	$s0,4($sp)	# guardar dados $sx
 		sw	$s1,8($sp)	#
 		sw	$s2,12($sp)	#
 		li	$s2,0		# n = 0
-while:	lw	$t0,0($s0)	#t0 = *p
+while:		lw	$t0,0($s0)	#t0 = *p
 		beq	$t0,$s1,endw	# while(*p != k){
 		move	$a0,$t0		# funk( *p,
 		move	$a1,$s1		# k
