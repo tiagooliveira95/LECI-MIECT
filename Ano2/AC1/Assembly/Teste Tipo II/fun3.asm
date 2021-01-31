@@ -40,7 +40,7 @@ for:		bge	$t1,$t0,endfor		# for(; i < n; i++){
 		add.s	$f0,$f0,$f12		# sum +=  std[i].grade
 		addi	$t1,$t1,1		#i++
 		j	for
-endfor:	l.s	$f4,x				# f4 = 2.0
+endfor:		l.s	$f4,x		# f4 = 2.0
 		div.s	$f0,$f0,$f4		# return sum / 2.0
 		lw	$s0,0($sp)
 		addiu	$sp,$sp,4
