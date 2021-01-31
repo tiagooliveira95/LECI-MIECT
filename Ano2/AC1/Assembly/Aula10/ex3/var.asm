@@ -28,7 +28,7 @@ for:		bge	$s2,$s1,endfor	#for(;i < nval; i++){
 		sll $t0,$s2,3			# i * 8
 		addu $t0,$t0,$s0		# t0 = &array[i]
 		l.d $f24,0($t0)		# $f24 = array[i]
-		sub.d $f12,$24,$20
+		sub.d $f12,$f24,$f20
 		li $a0,2
 		jal xtoy
 		add.s $f22,$f22,$f0	 # soma += xtoy(array[i] - media, 2);
