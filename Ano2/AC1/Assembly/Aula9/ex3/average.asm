@@ -19,4 +19,3 @@ endfor:	mtc1	$a1,$f6
 		cvt.d.w	$f6,$f6
 		div.d	$f0,$f0,$f6	#return sum / (double)n;
 		jr	$ra
-			
