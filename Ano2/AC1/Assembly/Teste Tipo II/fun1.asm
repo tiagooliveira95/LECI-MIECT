@@ -13,7 +13,7 @@ x:	.double 2.0
 # $f6 -> *b
 # $f8 -> tmp
 # $f10 -> 0.0
-fun1:	move	$t0,$a0		# t0 = a
+fun1:		move	$t0,$a0		# t0 = a
 		move	$t1,$a1		# t1 = N
 		move	$t2,$a2		# t2 = b
 		li	$t3,0		# k = 0
@@ -30,8 +30,8 @@ for:		bge	$t4,$t5,endfor		#  for(; p < (a + N); p++) {
 		s.d	$f4,0($t2)		# *b++ = *p
 		addi	$t2,$t2,8		# b++
 		j endif		#} else {
-else:	addi	$t3,$t3,1		# k++ }
-endif:	addi	$t4,$t4,8			# p++
+else:		addi	$t3,$t3,1		# k++ }
+endif:		addi	$t4,$t4,8			# p++
 		j	for		#}
-endfor:	sub	$v0,$t1,$t3		# return (N - k); 
+endfor:		sub	$v0,$t1,$t3		# return (N - k); 
 		jr	$ra		# fim programa
