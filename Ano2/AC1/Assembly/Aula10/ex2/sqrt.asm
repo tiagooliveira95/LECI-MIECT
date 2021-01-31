@@ -25,4 +25,4 @@ do:		mov.d	$f4,$f0	# aux = xn;
 		blt	$t0,25,do		#  && (++i < 25));		
 		j	endif
 else:		mtc1	$0,$f0			#xn = 0.0;
-endif:	jr	$ra
+endif:		jr	$ra
