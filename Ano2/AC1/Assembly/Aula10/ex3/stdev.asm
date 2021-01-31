@@ -9,4 +9,3 @@ stdev:	addiu	$sp,$sp, -4
 		lw		$ra,0($sp)
 		addiu	$sp,$sp, 4
 		jr		$ra
-		
