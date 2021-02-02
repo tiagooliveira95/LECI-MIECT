@@ -6,9 +6,9 @@
     I/O:      Responsável pela comunicação com os periféricos
     
 ### 2. Quais são os 3 principais blocos funcionais que integram um CPU?
-    ALU:        Unidade aritmética
-    Registos:   Unidade responsavel por guardar valores de um programa
-    Unidade     Controlo: Unidade responsável por controlar o fluxo do CPU
+    ALU:              Unidade aritmética
+    Registos:         Unidade responsavel por guardar valores de um programa
+    Unidade Controlo: Unidade responsável por controlar o fluxo do CPU
 
 ### 3. Qual a função do registo Program Counter? 
     O PC(Program Counter) contem nele armazenado o endereço da instrução que o processador deve executar.
