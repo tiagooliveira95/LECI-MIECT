@@ -1,5 +1,5 @@
 ### 1. Quais são os 3 blocos fundamentais de um sistema computacional? 
-    Um sistema computacional é constituido principalmente por 3 blocos:
+    Um sistema computacional é constituído principalmente por 3 blocos:
      
     CPU:      Responsável por processar instruções armazenadas na memória
     Memória:  Armazena os dados de um programa e os seus resultados
@@ -7,7 +7,7 @@
     
 ### 2. Quais são os 3 principais blocos funcionais que integram um CPU?
     ALU:              Unidade aritmética
-    Registos:         Unidade responsavel por guardar valores de um programa
+    Registos:         Unidade responsável por guardar valores de um programa
     Unidade Controlo: Unidade responsável por controlar o fluxo do CPU
 
 ### 3. Qual a função do registo Program Counter? 
@@ -75,7 +75,7 @@
 
 ### 15. Como se organiza internamente um processador? Quais são os blocos fundamentais da secção de dados? Para que serve a unidade de controlo? 
      A secção de dados contem, 3 blocos fundamentais, a ALU, Registos e Multiplexers.
-     A unidade de controlo é responsavel por controlar o fluxo da informação dentro da secção de dados
+     A unidade de controlo é responsável por controlar o fluxo da informação dentro da secção de dados
  
 
 ### 16. Qual é o conceito fundamental por detrás do modelo de arquitetura "stored-program"?  
@@ -96,14 +96,14 @@
     
 ### 19. Quantas e quais são as classes de instruções que agrupam as diferentes instruções de uma dada arquitetura?
     
-    Processamento, Transferencia de informação e Controlo de fluxo
+    Processamento, Transferência de informação e Controlo de fluxo
 
 ### 20. O que carateriza e distingue as arquiteturas do tipo "register-memory" e "load-store"? De que tipo é a arquitetura MIPS?
     
-    A arquitetura register-memory possibilita que as operações sejam executadas apartir da memória e/ou registos.
+    A arquitetura register-memory possibilita que as operações sejam executadas a partir da memória e/ou registos.
     A arquitetura load-store divide as instruções em 2 categorias, load e store entre a memória e registos.
     
-    Em load-store, ambos os operandos tem de ser registos, o que difere da register-memory em que podemos ter um operando na memoria e outro num registo.
+    Em load-store, ambos os operandos tem de ser registos, o que difere da register-memory em que podemos ter um operando na memória e outro num registo.
     
     O MIPS usa a arquitetura load-store.
  
@@ -111,7 +111,7 @@
  
     1. Cálculo do endereço de memória que contém a instrução
     2. Leitura da instrução
-    3. Decodificação da instrução
+    3. Descodificação da instrução
     4. Cálculo do endereço dos operandos
     5. Leitura do operando (Operand Fetch)
     6. Execução da operação
@@ -153,7 +153,7 @@
         Cada instrução do MIPS esta codificada em 32 Bits.
         
     - O que diferencia o registo $0 dos restantes registos de uso geral?
-        O registo $0 tem um valor premanente defenido a 0x0 não podendo este ser alterado.
+        O registo $0 tem um valor permanente definido a 0x0 não podendo este ser alterado.
         
     - Qual o endereço do registo interno do MIPS a que corresponde a designação lógica $ra?
         O registo interno $ra esta associado ao registo número 31
@@ -182,8 +182,8 @@
         2 passo descodificar:
             00000 00000 00000 00000 00000 0000000
         
-        Como o opcode é 0x0 estamos perante uma operação R que é do tipo aritmético, o registo de destiono é o $0
-            uma vez que não é possivel alterar o registo $0 esta instrução não vai fazer nada.  
+        Como o opcode é 0x0 estamos perante uma operação R que é do tipo aritmético, o registo de destino é o $0
+            uma vez que não é possível alterar o registo $0 esta instrução não vai fazer nada.  
      
 
 ### 29. O símbolo ” >> “ da linguagem C significa deslocamento à direita e é traduzido por SRL ou SRA (no caso do MIPS). Em que casos é que o compilador gera um SRL e quando é que gera um SRA?
@@ -203,7 +203,7 @@
     c) sll $3,$9,7
     d) sra $18,$9,8
     
-    Intruçoes aritméticas logo usam o tipo R
+    Instruções aritméticas logo usam o tipo R
     
     a)  000000  01101   11000   00101   00000   100110  <=> 0x01B82826
     b)  000000  01110   01000   11001   00000   100010  <=> 0x01C8C822
@@ -221,7 +221,7 @@
        addi $t5,$t5,6       # y = -(x*3) + 5
        
        # Nota, é somado 6 pois na instrução NOR os bytes são invertidos
-       # como para inverter o sinal é necessario somar um, após a inversão de bits na ultima operação em vez de somar 5
+       # como para inverter o sinal é necessário somar um, após a inversão de bits na ultima operação em vez de somar 5
        # soma se 6, os 5 da operação + 1 da operação de alteração de sinal
 
 ### 33. Traduza para instruções assembly do MIPS o seguinte trecho de código:
@@ -266,7 +266,7 @@ a. $3=5 e $7=23
 b. $3=0xFE e $7=0x913D45FC
 ```
 
-    Uma vez que o $3 e menor que o $7 a instrução SLT vai defenir o registo $1 com o valor 0x1
+    Uma vez que o $3 e menor que o $7 a instrução SLT vai definir o registo $1 com o valor 0x1
 
 
 ### 38. Com que registo implícito comparam as instruções "bltz", "blez", "bgtz" e "bgez"?
@@ -312,4 +312,4 @@ f. ble $23,0x16,exit
 ### 40. Na tradução e C para assembly, quais as principais diferenças entre um ciclo "while(…){…}" e um ciclo "do{…}while(…);" ? 
 
     Na operação while(...){...} é verificada a condição antes de ser executado o código dentro de {...}
-    Na operação do{...} while(...) a condição é apenas verificada após o codigo dentro do do{} tiver sido executado
+    Na operação do{...} while(...) a condição é apenas verificada após o código dentro do do{} tiver sido executado
