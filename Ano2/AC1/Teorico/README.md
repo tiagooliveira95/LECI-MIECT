@@ -186,8 +186,7 @@
             uma vez que não é possivel alterar o registo $0 esta instrução não vai fazer nada.  
      
 
-### 29. O símbolo ” >> “ da linguagem C significa deslocamento à direita e é traduzido por SRL ou SRA (no caso do
-MIPS). Em que casos é que o compilador gera um SRL e quando é que gera um SRA?
+### 29. O símbolo ” >> “ da linguagem C significa deslocamento à direita e é traduzido por SRL ou SRA (no caso do MIPS). Em que casos é que o compilador gera um SRL e quando é que gera um SRA?
         
         O compilador vai usar SRL ou SRA dependendo do tipo de operando, no caso dos operandos serem unsigned o copilador vai usar SRL,
             se os operandos forem signed usara o SRA
@@ -221,7 +220,7 @@ MIPS). Em que casos é que o compilador gera um SRL e quando é que gera um SRA?
        nor  $t5,$t5,$0      # y = y NOR 0x0
        addi $t5,$t5,6       # y = -(x*3) + 5
        
-       # Nota, é sumado 6 pois na instrução NOR os bytes são invertidos
+       # Nota, é somado 6 pois na instrução NOR os bytes são invertidos
        # como para inverter o sinal é necessario somar um, após a inversão de bits na ultima operação em vez de somar 5
        # soma se 6, os 5 da operação + 1 da operação de alteração de sinal
 
