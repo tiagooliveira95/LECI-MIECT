@@ -195,3 +195,122 @@ MIPS). Em que casos é que o compilador gera um SRL e quando é que gera um SRA?
 ### 30. Qual a instrução nativa do MIPS em que é traduzida a instrução virtual move $4,$15 ?
     
     addu $4,$0,$15
+    
+    
+### 31. Determine o código máquina das seguintes instruções (verifique a tabela na última página):
+
+    a) xor $5,$13,$24
+    b) sub $25,$14,$8
+    c) sll $3,$9,7
+    d) sra $18,$9,8
+    
+    Intruçoes aritméticas logo usam o tipo R
+    
+    a)  000000  01101   11000   00101   00000   100110  <=> 0x01B82826
+    b)  000000  01110   01000   11001   00000   100010  <=> 0x01C8C822
+    c)  000000  01001   00000   00011   00111   000000  <=> 0x012019C0
+    d)  000000  01001   00000   10010   01000   000011  <=> 0x01209203
+        
+    
+### 32. Traduza para instruções Assembly do MIPS a seguinte expressão aritmética, supondo x e y são inteiros e residentes em $t2 e $t5, respetivamente (apenas pode usar instruções nativas e não deverá usar a instrução de multiplicação): 
+
+`y = -3 * x + 5;`
+
+       add  $t5,$t2,$t2     # y = x + x
+       add  $t5,$t5,$t2     # y = x + x + x
+       nor  $t5,$t5,$0      # y = y NOR 0x0
+       addi $t5,$t5,6       # y = -(x*3) + 5
+       
+       # Nota, é sumado 6 pois na instrução NOR os bytes são invertidos
+       # como para inverter o sinal é necessario somar um, após a inversão de bits na ultima operação em vez de somar 5
+       # soma se 6, os 5 da operação + 1 da operação de alteração de sinal
+
+### 33. Traduza para instruções assembly do MIPS o seguinte trecho de código:
+
+```
+int a, b, c; //a:$t0, b:$t1, c:$t2
+unsigned int x, y, z; //x:$a0, y:$a1, z:$a2
+z = x >> 2 + y;
+c = a >> 5 – 2 * b;
+```
+
+    srl     $a2,$a0,2       # z = x >> 2
+    addu    $a2,$a2,$a1     # z = x >> 2 + y
+    sra     $t2,$t0,3       # c = a >> 5 - 2
+    mul     $t2,$t2,$t1     # c = a >> 5 – 2 * b;
+   
+
+### 34. Considere que as variáveis g, h, i e j são conhecidas e podem ser representadas por uma variável de 32 bits num programa em C. Qual a correspondência em linguagem C às seguintes instruções: 
+
+    a.  add h, i, j     # h =  h = i + j
+    
+    b.  addi j, j, 1    # h++
+        add h, g, j     # h = g + j
+
+     
+### 35. Assumindo que g=1, h=2, i=3 e j= 4 qual o valor destas variáveis no final das sequências das alíneas da questão anterior? 
+    
+    a)  h = i + j = 3+4 = 7
+    
+    b)  j++ = 4 + 1 = 5
+        h = g + j = 1 + 5 = 6
+
+
+### 36. Qual a operação realizada pela instrução "slt" e quais os resultados possíveis?
+        
+        A instrução SLT define o registo destino a 0x1 se o operando 1 for menor que o operando 2, caso contrario o registo destino assume o valor 0x0
+
+### 37. Qual o valor armazenado no registo $1 na execução da instrução "slt $1, $3, $7", admitindo que:
+
+```
+a. $3=5 e $7=23
+b. $3=0xFE e $7=0x913D45FC
+```
+
+    Uma vez que o $3 e menor que o $7 a instrução SLT vai defenir o registo $1 com o valor 0x1
+
+
+### 38. Com que registo implícito comparam as instruções "bltz", "blez", "bgtz" e "bgez"?
+    
+    O registo a operar é dado na instrução, ex bltz Rsrc, label
+    
+    bltz:   executa o branch se o Rsrc for menor que 0
+    blez:   executa o branch se o Rsrc for menor ou igual a 0   
+    bgtz:   executa o branch se o Rsrc for maior que 0
+    bgez:   executa o branch se o Rsrc for maior ou igual que 0
+
+### 39. Decomponha em instruções nativas do MIPS as seguintes instruções virtuais:
+
+```
+a. blt $15,$3,exit
+b. ble $6,$9,exit
+c. bgt $5,0xA3,exit
+d. bge $10,0x57,exit
+e. blt $19,0x39,exit
+f. ble $23,0x16,exit 
+```
+
+    a)  slt     $1,$15,$3
+        bne     $1,$0,exit
+   
+    b)  slt     $1,$9,$6
+        beq     $1,$0,exit
+    
+    c)  addi    $1,$0,0xA3
+        slt     $1,$1,$5
+        bne     $1,$0,exit
+    
+    d)  slti    $1,$10,0x57
+        beq     $1,$0,exit
+    
+    e)  slti    $1,$19,0x39
+        bne     $1,$0,exit
+    
+    f)  addi    $1,$23,-1
+        slti    $1,$1,0x16
+        bne     $1,0,exit
+
+### 40. Na tradução e C para assembly, quais as principais diferenças entre um ciclo "while(…){…}" e um ciclo "do{…}while(…);" ? 
+
+    Na operação while(...){...} é verificada a condição antes de ser executado o código dentro de {...}
+    Na operação do{...} while(...) a condição é apenas verificada após o codigo dentro do do{} tiver sido executado
