@@ -502,6 +502,153 @@ do{
             addi    $t1,$t1,-1
             bgez    do
     
+### 49. Sabendo que o OpCode da instrução "lw" é 0x23, determine o código máquina, expresso em hexadecimal, da instrução "lw $3,0x24($5)". 
+
+    100011  00101    00011    0000000001000100 <=> 0x8CA30044
+ 
+### 50. Suponha que a memória externa foi inicializada, a partir do endereço 0x10010000, com os valores 0x01,0x02,0x03,0x04,0x05 e assim sucessivamente. Suponha ainda que $3=0x1001 e $5=0x10010000. Qual o valor armazenado no registo destino após a execução da instrução "lw $3,0x24($5)" admitindo uma organização de memória little endian? 
+
+    Endereço base:      0x10010000
+    Offset:             0x24
+    Endereço target:    0x10010024
+    
+    Admitindo que o endereço 0x10010000 tem o valor 0x01, o endereço 0x10010024 tera o valor 0x25 0x26 0x27 0x28
+   
+    Assim a instrução LW vai copiar a word 0x25 0x26 0x27 0x28 da memória para o registo $5.
+ 
+### 51. Considere as mesmas condições da questão anterior. Qual o valor armazenado no registo destino pelas instruções: 
+
+
+|lbu| $3,0xA3($5) |
+|:---:|:---:|
+|lb| $4,0xA3($5)|
+
+    Para $3:
+    
+    Endereço base:      0x10010000
+    Offset:             0xA3
+    Endereço target:    0x100100A3
+    
+    A word na posição 0x100100A3 é: 0xA4 0xA5 0xA6 0xA7
+    
+    Assim vamos carregar o ultimo byte em t3 como é uma operação unsigned o valor $3 ficara: 0x000000A7
+    
+    Para $4 a instrução é a mesma, só que com sinal, logo $4 ficara: 0xFFFFFFA7
+    
+
+ 
+### 52. Quantos bytes são reservados em memória por cada uma das diretivas: 
+
+
+|L1:| .asciiz "Aulas5&6T"|
+|:---:|:---|
+|L2:| .byte 5,8,23|
+|L3:| .word 5,8,23|
+|L4:| .space 5 |
+
+
+    L1: 10  Bits
+    L2: 3   Bytes
+    L3: 96  Bytes
+    L4: 5   Bytes
+
+ 
+### 53. Desenhe esquematicamente a memória e preencha-a com o resultado das diretivas anteriores admitindo que são interpretadas sequencialmente pelo Assembler
+
+|L1\:| 0x41 |
+|:---:|:---:|
+| | 0x75 |
+| | 0x6C |
+| | 0x61 |
+| | 0x73 |
+| | 0x35 |
+| | 0x26 |
+| | 0x36 |
+| | 0x54 |
+| | 0x00 |
+|L2:| 0x05 |
+| | 0x08 |
+| | 0x17 |
+| | 0x00 |
+| | 0x00 |
+|L3:| 0x05 |
+| | 0x00 |
+| | 0x00 |
+| | 0x00 |
+| | 0x08 |
+| | 0x00 |
+| | 0x00 |
+| | 0x00 |
+| | 0x17 |
+| | 0x00 |
+| | 0x00 |
+| | 0x00 |
+|L4:| 0x00 |
+| | 0x00 |
+| | 0x00 |
+| | 0x00 |
+| | 0x00 |
+
+ 
+### 54. Supondo que "L1:" corresponde ao endereço inicial do segmento de dados, e que esse endereço é 0x10010000, determine os endereços a que correspondem os labels "L2:", "L3:" e "L4:". 
+
+    L1: 0x10010000
+    L2: 0x1001000A
+    L3: 0x1001002A
+    L4: 0x1001008A
+ 
+### 55. Suponha que "b" é um array declarado como "int b[25];":
+
+1. Como é obtido o endereço inicial do array, i.e., o endereço a partir do qual está armazenado o seu
+primeiro elemento?
+
+        O endereço inicial do array é obtido atravez de &b
+
+2. Supondo uma memória "byte-addressable", como é obtido o endereço do elemento "b[6]"?
+
+        O b[6] é obtido atravez de &b + 4\*6 pois cada inteiro contem 32bits.
+        Uma vez que a memória é byte-addressable temos de multiplicar o indice por 4 (4bytes) e somarao endereço inicial (i * 4) + &b
+ 
+### 56. O que é codificado no campo offset do código máquina das instruções "beq/bne" ? 
+        
+        O offset é codificado no número de instruções, ou seja, se o branch tiver a uma 6 instruções de distancia, o offset é 6.
+        Senso que o MIPS depois ira multiplicar este valor por 4 e somar ao endereço base para obter o endereço da próxima instrução.
+ 
+### 57. A partir do código máquina de uma instrução "beq/bne", como é formado o endereço-alvo (Branch Target Address)?
+
+        O endereço alvo é formado a partir da soma do endereço base com a multiplicação do offset por 4. 
+ 
+### 58. Qual o formato de codificação de cada uma das seguintes instruções: "beq/bne", "j", "jr"?
+
+        As instruções J e JR usam o a codificação tipo J
+        [OPCODE (6)]    [  word address (26)    ]
+        
+        [OPCODE (6)]    =>  Código da execução
+        [Word Address]  =>  Endereço Target
+        
+
+### 59. A partir do código máquina de uma instrução "j", como é formado o endereço-alvo (Jump Target Address)?
+
+        O endereço target é formado ao concatenar os 4 bits mais significativos do *Program Counter* aos 26 bits menos significativos do Target Address 
+        com um shift 2 para a esquerda
+
+### 60. Dada a seguinte sequência de declarações:
+
+```
+int b[25];
+int a;
+int *p = b; 
+```
+
+1. Identifique qual ou quais das seguintes atribuições permitem aceder ao elemento de índice 5 do array "b":
+    
+
+| B | a = b[5] |  a =\*p + 5 | a = \*(p + 5)  | a = \*(p + 20) |
+|:---:|:---:|:---:|:---:|:---:|
+
+    As atribuições que premitem aceder ao elemento 5 são:
+        a = b[5] e 
+        a = *(p + 5)
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
 
