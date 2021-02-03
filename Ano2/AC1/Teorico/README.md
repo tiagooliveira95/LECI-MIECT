@@ -385,13 +385,123 @@ else
     
     A operação SW guarda uma word de 32 bits no endereço destino
     A operação SB guarda um byte no endereço destino
+    
+    No caso da operação SB primeiramente são lidos os 32bits para um registo temporário
+    
+| Endereço |  11 |  10 | 01|  00 |
+| :---:|---|---|---|---|
+|Registo|0x20|0x40|0x90|0xAE|
 
-### 46. O que distingue as instruções "lb" e "lbu"? 
+| Endereço |  11 |  10 | 01|  00 |
+| :---:|---|---|---|---|
+|Registo Fonte|0x00|0x00|0x00|0x10|
+
+     De seguida, vamos utilizar os 2 bits menos significativos do endereço para atualizar o registo temporário, exemplo, assumindo o endereço = 0x1001006
+     os 2 bits menos significativos são = 10
+     
+     Assim selecionamos o endereço 10, e escrevemos neste endereço o byte menos significativo do registo fonte
+
+
+| Endereço |  11 |  10 | 01|  00 |
+| :---:|---|---|---|---|
+|Registo|0x20|`0x10`|0x90|0xAE|
+
+| Endereço |  11 |  10 | 01|  00 |
+| :---:|---|---|---|---|
+|Registo Fonte|0x00|0x00|0x00|`0x10`|
+
+   
+
+### 46. O que distingue as instruções "lb" e "lbu"?
+
+    O LB vai preencher os bits mais significativos com 0x1, ou 0x0 dependendo se o bit mais significativo do byte for 0x1 ou 0x0
+    desta forma ao executar a operação mantemos o sinal original.
+    No caso da operação LBU ao transferir da mémoria para o registo vai colucar todos os bits mais significativos a 0x0
 
 ### 47. O que acontece quando uma instrução lw/sw acede a um endereço que não é múltiplo de 4?
 
+    Ocorre uma excepção, pois não é possível aceder a uma word não múltipla de 4
+
 ### 48. Traduza para assembly do MIPS os seguintes trechos de código de linguagem C (atribua registos internos para o armazenamento das variáveis i e k ) : 
 
+```
+a)
+
+int i, k;
+for(i=5, k=0; i < 20; i++, k+=5);
+
+b)
+
+int i=100, k=0;
+for( ; i >= 0; ) {
+    i--;
+    k -= 2;
+}
+
+c)
+
+unsigned int k=0;
+for( ; ; ) {
+    k += 10;
+}
+
+d)
+
+int k=0, i=100;
+do{
+    k += 5;
+} while(--i >= 0); 
+```
+
+    a) 
+    
+    # $t1 = i
+    # $t2 = k
+    
+    li  $t1,5                   # i = 5
+    li  $t2,0                   # k = 0
+    
+    for:    ble $t1,20,endfor
+            ...
+            add $t1,$1,1        # i++
+            add $t2,$t2,5       # k+=5
+    endfor: ...
+    
+    b)
+    
+    # $t1 = i
+    # $t2 = k
+    
+    li  $t1,100                 # i = 100
+    li  $t2,0                   # k = 0
+    
+    for:    bltz    $t1,endfor
+            addi    $t1,$t1,-1      # i--
+            addi    $t2,$t2,-2      # k -=2
+            j       for
+    endfor: ...
+    
+    
+    c)
+    
+    # $t1 = k
+    
+    for:    addiu  $t1,$t1,10
+            j      for
+    
+    d)
+    
+    # $t1 = i
+    # $t2 = k
+    
+    li  $t1,100                 # i = 100
+    li  $t2,0                   # k = 0
+    
+    do:     addi   $t2,$t2,5
+            
+            addi    $t1,$t1,-1
+            bgez    do
+    
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
 
