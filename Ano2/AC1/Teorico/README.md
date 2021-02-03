@@ -313,3 +313,108 @@ f. ble $23,0x16,exit
 
     Na operação while(...){...} é verificada a condição antes de ser executado o código dentro de {...}
     Na operação do{...} while(...) a condição é apenas verificada após o código dentro do do{} tiver sido executado
+    
+### 41. Traduza para assembly do MIPS os seguintes trechos de código de linguagem C (admita que a, b e c residem nos registos $4, $7 e $13, respetivamente):
+```
+a:
+
+if(a > b && b != 0)
+    c = b << 2;
+else
+    c = (a & b) ^ (a | b);
+
+b:
+
+if(a > 3 || b <= c)
+    c = c – (a + b);
+else
+    c = c + (a – 5); 
+```
+
+    a)
+
+    if:     blt $4,$7,else
+            beq $7,0,else
+            sll $13,$7,2
+            j   endif
+    else:
+            and $13,$4,$7
+            or  $14,$4,$7
+            xor $13,$13,$14
+    endif:  ...
+    
+    b)      
+            
+    if:     bgt     $4,3,then
+            ble     $7,$13,then
+            j       else
+    then:   add     $14,$4,$7       # $14 = a+b
+            sub     $13,$13,$14     
+            j       endif
+    else:   addi    $14,$4,-5       # $14 = a-5
+            add     $13,$13,$14
+    endif: ...
+       
+
+### 42. Qual o modo de endereçamento usado pelo MIPS para ter acesso a palavras residentes na memória externa? 
+    
+    O MIPS é byte-addressable 
+
+### 43. Na instrução "lw $3,0x24($5)" qual a função dos registos $3 e $5 e da constante 0x24?
+
+    O $5 contem o endereço, a constante 0x24 é o offset em instruções que deve ser sumado ao conteudo de $5
+    O registo $3 é o registo destino para onde sera transferida a informação guardada no endereço $5 + (0x24 << 2)
+
+### 44. Qual é o formato de codificação das instruções de acesso à memória no MIPS e qual o significado de cada um dos seus campos?
+
+    O MIPS usa o formato I para codificação das intruções de acesso à memória.
+    
+    Codificação:    inst   Rt, offset(base)
+    
+    ex: 
+    LW  $t1,0($t2)
+    
+    I: [OPCODE (6)] [Rs (5)]  [Rt (5)]  [         offset(15)         ]
+   
+    [OPCODE (6)]    =>  opcode da operação
+    [Rs (5)]        =>  registo base
+    [Rt (5)]        =>  registo destiono
+    [offset(15)]    =>  offset    
+
+### 45. Qual a diferença entre as instruções "sw" e "sb"?
+    
+    A operação SW guarda uma word de 32 bits no endereço destino
+    A operação SB guarda um byte no endereço destino
+
+### 46. O que distingue as instruções "lb" e "lbu"? 
+
+### 47. O que acontece quando uma instrução lw/sw acede a um endereço que não é múltiplo de 4?
+
+### 48. Traduza para assembly do MIPS os seguintes trechos de código de linguagem C (atribua registos internos para o armazenamento das variáveis i e k ) : 
+
+
+### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
+
+```
+a.
+    add $t0,$t1,$t2
+    lw $t1,0($t3)
+    beq $t3,$t0,LABEL
+
+b.
+    sub $t0,$t1,$t2
+    addi $t3,$t0, 0x20
+
+c.
+    lw $t0,0($t2)
+    sw $t3,0($t0)
+
+d.
+    lw $t3,0($t6)
+    xori $t0,$t4,0x20
+    sw $t3,($t0)
+```
+    a)
+    b)
+    c) Sem solução
+    d)
