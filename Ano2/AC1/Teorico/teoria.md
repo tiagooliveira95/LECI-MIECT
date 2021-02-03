@@ -43,7 +43,7 @@
      `1010 -> SRL -> 0101` <br>
      `1010 -> SRA -> 1101`
 
-### 11. Se `$5=0x81354AB3`, qual o resultado, expresso em hexadecimal, das instruções:
+### 11. Se $5=0x81354AB3, qual o resultado, expresso em hexadecimal, das instruções:
 `srl $3,$5,1`<br>
 `sra $4,$5,1`
 
@@ -93,3 +93,105 @@
 
 ### 18. Descreva pelas suas próprias palavras o conceito de ISA.
     O ISA é um conjunto de instruções suportadas pelo CPU.
+    
+### 19. Quantas e quais são as classes de instruções que agrupam as diferentes instruções de uma dada arquitetura?
+    
+    Processamento, Transferencia de informação e Controlo de fluxo
+
+### 20. O que carateriza e distingue as arquiteturas do tipo "register-memory" e "load-store"? De que tipo é a arquitetura MIPS?
+    
+    A arquitetura register-memory possibilita que as operações sejam executadas apartir da memória e/ou registos.
+    A arquitetura load-store divide as instruções em 2 categorias, load e store entre a memória e registos.
+    
+    Em load-store, ambos os operandos tem de ser registos, o que difere da register-memory em que podemos ter um operando na memoria e outro num registo.
+    
+    O MIPS usa a arquitetura load-store.
+ 
+### 21. O ciclo de execução de uma instrução é composto por uma sequência ordenada de operações. Quantas e quais são essas operações (passos de execução)? 
+ 
+    1. Cálculo do endereço de memória que contém a instrução
+    2. Leitura da instrução
+    3. Decodificação da instrução
+    4. Cálculo do endereço dos operandos
+    5. Leitura do operando (Operand Fetch)
+    6. Execução da operação
+    7. Armazenamento do resultado num endereço de memória
+    
+
+### 22. Como se designa o barramento que permite identificar, na memória, a origem/destino da informação transferida? 
+    
+    Address Bus
+
+### 23. Qual a finalidade do barramento normalmente designado por Data Bus?
+    
+    É o bus que contem a informação lida ou para ser escrita no segmento de dados, ou nos registos
+    
+
+### 24. Os processadores da arquitetura hipotética ZWYZ possuem 4 registos internos e todas as instruções são codificadas em 24 bits. Num dos formatos de codificação existem 5 campos: um OpCode com 5 bits, três campos para identificar registos internos em operações aritméticas e lógicas e um campo para codificar valores constantes imediatos em complemento para dois. Qual a gama de representação destas constantes? 
+
+    Opcode      ->  5   bits
+    RS,Rt e Rd  ->  2   bits
+    Imm         ->  13  bits
+
+### 25. A arquitetura hipotética ZPTZ tem um barramento de endereços de 32 bits e um barramento de dados de 16 bits. Se a memória desta arquitetura for bit_addressable:
+    
+    A: Qual a dimensão do espaço de endereçamento desta arquitetura?
+        - 32 bits
+    
+    B: Qual a dimensão máxima da memória suportada por esta arquitetura expressa em bytes?
+        - Bit addressable, cada endereço faz corresponder 1 bit logo o tamanho máximo é 2^32bits = 4 Gbits
+    
+
+### 26. Considere agora uma arquitetura em que o respetivo ISA especifica uma organização de memória do tipo word-addressable, em que a dimensão da word é 32 bits. Tendo o espaço de endereçamento do processador 24 bits, qual a dimensão máxima de memória que este sistema pode acomodar expresso em bytes? 
+
+    O processador pode endereçar 2^24 endereços cada um com 32bits, logo a memória máxima é 2^24 * 32 bits =  64MB
+
+
+### 27. Relativamente à arquitetura MIPS:
+
+    - Com quantos bits são codificadas as instruções no MIPS? 
+        Cada instrução do MIPS esta codificada em 32 Bits.
+        
+    - O que diferencia o registo $0 dos restantes registos de uso geral?
+        O registo $0 tem um valor premanente defenido a 0x0 não podendo este ser alterado.
+        
+    - Qual o endereço do registo interno do MIPS a que corresponde a designação lógica $ra?
+        O registo interno $ra esta associado ao registo número 31
+
+### 28. No MIPS, um dos formatos de codificação de instruções é designado por R:
+    
+    Quais os campos em que se divide este formato de codificação? 
+        [OPCODE (6)] [Rs (5)]  [Rt (5)]  [Rd (5)]  [Shamt (5)] [Funct (6)]
+     
+    Qual o significado de cada um desses campos?
+        
+        [OPCODE (6)]    ->  Código de operação
+        [Rs (5)]        ->  Registo operando 1
+        [Rt (5)]        ->  Registo operando 2
+        [Rd (5)]        ->  Registo destino
+        [Shamt (5)]     ->  Quantidade shift
+        [Funct (6)]     ->  Operação ALU
+    
+    Qual o valor do campo opCode nesse formato? 
+        Em operações do tipo R o OPCODE é sempre 0x0
+        
+    O que faz a instrução cujo código máquina é: 0x00000000?
+        
+        1 passo decompor:
+            00000000000000000000000000000000
+        2 passo descodificar:
+            00000 00000 00000 00000 00000 0000000
+        
+        Como o opcode é 0x0 estamos perante uma operação R que é do tipo aritmético, o registo de destiono é o $0
+            uma vez que não é possivel alterar o registo $0 esta instrução não vai fazer nada.  
+     
+
+### 29. O símbolo ” >> “ da linguagem C significa deslocamento à direita e é traduzido por SRL ou SRA (no caso do
+MIPS). Em que casos é que o compilador gera um SRL e quando é que gera um SRA?
+        
+        O compilador vai usar SRL ou SRA dependendo do tipo de operando, no caso dos operandos serem unsigned o copilador vai usar SRL,
+            se os operandos forem signed usara o SRA
+
+### 30. Qual a instrução nativa do MIPS em que é traduzida a instrução virtual move $4,$15 ?
+    
+    addu $4,$0,$15
