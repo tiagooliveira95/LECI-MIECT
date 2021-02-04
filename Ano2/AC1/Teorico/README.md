@@ -1108,8 +1108,6 @@ char *fun1(int n, char *a1, char *a2){
 
 ### 95. Considere os seguintes pares de valores em **$s0** e **$s1**:
 
-## POR FAZER
-
 ```
 a) $s0 = 0x70000000 $s1 = 0x0FFFFFFF
 b) $s0 = 0x40000000 $s1 = 0x40000000 
@@ -1117,21 +1115,47 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
 
 1. Qual o resultado produzido pela instrução add $t0, $s0, $s1? 
 
+        a) 0x70000000 + 0x0FFFFFFF = 0x7FFFFFFF
+        b) 0x40000000 + 0x40000000 = 0x80000000
+
 2. Para a alínea anterior os resultados são os esperados ou ocorreu overflow? 
-3. Qual o resultado produzido pela instrução sub $t0, $s0, $s1? 
+        
+        Houve overflow na operação b), a soma de 2 positivos deu 1 negativo.
+        
+3. Qual o resultado produzido pela instrução sub $t0, $s0, $s1?
+
+        a) 0x70000000 - 0x0FFFFFFF = 0x60000001
+        b) 0x40000000 - 0x40000000 = 0x00000000
+
 4. Para a alínea anterior os resultados são os esperados ou ocorreu overflow? 
+        
+        Não houve overflow em nenhuma das operações.
+        
 5. Qual o resultado produzido pelas instruções:
 ```
 add $t0, $s0,$s1
 add $t0, $t0,$s1 
 ```
+
+        a)  0x70000000 + 0x0FFFFFFF = 0x7FFFFFFF
+            0x7FFFFFFF + 0x0FFFFFFF = 0x8FFFFFFE 
+            
+        b)  0x40000000 + 0x40000000 = 0x80000000
+            0x80000000 + 0x40000000 = 0xC0000000
+        
+
 6. Para a alínea anterior os resultados são os esperados ou ocorreu overflow?
 
-## POR FAZER
+        Houve overflow na operação a) e b), a soma de 2 positivos deu 1 negativo.
 
 ### 96. Para a multiplicação de dois operandos de "m" e "n" bits, respetivamente, qual o número de bits necessário para o armazenamento do resultado? 
 
+## POR FAZER
+
 ### 97. Apresente a decomposição em instruções nativas das seguintes instruções virtuais:
+
+
+## POR FAZER
 
 | mul | $5,$6,$7 |
 |:---:|:---:|
@@ -1145,7 +1169,20 @@ add $t0, $t0,$s1
 
 `$6=0xFFFFFFFE e $7=0x00000005.`
 
+
+               |1111 1111 1111 1111 1111 1111 1111 1110
+            X  |0000 0000 0000 0000 0000 0000 0000 0101
+           --------------------------------------------
+               |1111 1111 1111 1111 1111 1111 1111 1110
+             11|1111 1111 1111 1111 1111 1111 1111 10
+            100|1111 1111 1111 1111 1111 1111 1111 0110 => 4FFFFFFF6 > 32bits houve overflow!
+             
+             No Registo $5 é guardado o valor: 0xFFFFFFF6 
+
+
 ### 99. Determine o resultado da execução das instruções virtuais **div $5,$6,$7** e **rem $5,$6,$7** quando **$6=0xFFFFFFF0** e **$7=0x00000003**
+
+## POR FAZER
 
 ### 100. Admita que pretendemos executar, em Assembly do MIPS, as operações:
 
@@ -1153,7 +1190,7 @@ add $t0, $t0,$s1
 
 1. Escreva a sequência de instruções em Assembly que permitem realizar estas duas operações. Use apenas instruções nativas 
 
-
+## POR FAZER
 
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
