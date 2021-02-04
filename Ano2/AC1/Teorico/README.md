@@ -361,7 +361,7 @@ else
 
 ### 42. Qual o modo de endereçamento usado pelo MIPS para ter acesso a palavras residentes na memória externa? 
     
-    O MIPS é byte-addressable 
+    Endereçamento indireto por registo com deslocamento. 
 
 ### 43. Na instrução "lw $3,0x24($5)" qual a função dos registos $3 e $5 e da constante 0x24?
 
@@ -515,9 +515,9 @@ do{
     Offset:             0x24
     Endereço target:    0x10010024
     
-    Admitindo que o endereço 0x10010000 tem o valor 0x01, o endereço 0x10010024 tera o valor 0x25 0x26 0x27 0x28
+    Admitindo que o endereço 0x10010000 tem o valor 0x01, o endereço 0x10010024 tera o valor 0x28 0x27 0x26 0x25
    
-    Assim a instrução LW vai copiar a word 0x25 0x26 0x27 0x28 da memória para o registo $5.
+    Assim a instrução LW vai copiar a word 0x28 0x27 0x26 0x25 da memória para o registo $5.
  
 ### 51. Considere as mesmas condições da questão anterior. Qual o valor armazenado no registo destino pelas instruções: 
 
@@ -999,6 +999,8 @@ comportamento pretendido**
 
 ### 87. Para a função com o protótipo seguinte indique, para cada um dos parâmetros de entrada e para o valor devolvido, qual o registo do MIPS usado para a passagem dos respetivos valores: 
 
+## POR FAZER
+
 `char fun(int a, unsigned char b, char *c, int *d);`
 
         
@@ -1021,6 +1023,7 @@ comportamento pretendido**
 
 ### 89. Traduza para assembly do MIPS a seguinte função “fun1()”, aplicando a convenção de passagem de parâmetros e salvaguarda de registos: 
 
+## POR FAZER
 
 ```
 char *fun2(char *, char);
@@ -1046,8 +1049,59 @@ char *fun1(int n, char *a1, char *a2){
 
 ### 91. Determine o valor em decimal representado por cada uma das quantidades seguintes, supondo que estão codificadas em complemento para 2 com 8 bits: 
 
-|0b00101011| 0xA5| 0b10101101| 0x6B| 0xFA| 0x80| 
+|0b00101011| 0xA5| 0b10101101| 0x6B| 0xFA| 0x80|
 |:---:|:---:|:---:|:---:|:---:|:---:|
+|43| -91 |-83| 107 | -6 |-128|
+
+
+### 92. Determine a representação das quantidades do exercício anterior em hexadecimal com 16 bits (também codificadas em complemento para 2).
+
+|0b00101011| 0xA5| 0b10101101| 0x6B| 0xFA| 0x80|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|0x0000002B| 0xFFFFFFA5| | 0xFFFFFFAD| 0xFFFFFFFA| 0xFFFFFF80|
+
+
+### 93. Como é realizada a deteção de overflow em operações de adição com quantidades sem sinal?
+
+## POR FAZER
+
+### 94. Como é realizada a deteção de overflow em operações de adição com quantidades com sinal (codificadas em complemento para 2)? 
+
+## POR FAZER
+
+### 95. Considere os seguintes pares de valores em **$s0** e **$s1**:
+
+```
+a) $s0 = 0x70000000 $s1 = 0x0FFFFFFF
+b) $s0 = 0x40000000 $s1 = 0x40000000 
+```
+
+1. Qual o resultado produzido pela instrução add $t0, $s0, $s1? 
+
+2. Para a alínea anterior os resultados são os esperados ou ocorreu overflow? 
+3. Qual o resultado produzido pela instrução sub $t0, $s0, $s1? 
+4. Para a alínea anterior os resultados são os esperados ou ocorreu overflow? 
+5. Qual o resultado produzido pelas instruções:
+```
+add $t0, $s0,$s1
+add $t0, $t0,$s1 
+```
+6. Para a alínea anterior os resultados são os esperados ou ocorreu overflow?
+
+### 96. Para a multiplicação de dois operandos de "m" e "n" bits, respetivamente, qual o número de bits necessário para o armazenamento do resultado? 
+
+
+### 97. Apresente a decomposição em instruções nativas das seguintes instruções virtuais: 
+
+### 98. Determine o resultado da instrução **mul $5,$6,$7**, quando 
+
+### 99. Determine o resultado da execução das instruções virtuais **div $5,$6,$7** e **rem $5,$6,$7** quando **$6=0xFFFFFFF0** e **$7=0x00000003**
+
+### 100. Admita que pretendemos executar, em Assembly do MIPS, as operações:
+
+`$t0 = $t2/$t3 e $t1 = $t2 % $t3.`
+
+1. Escreva a sequência de instruções em Assembly que permitem realizar estas duas operações. Use apenas instruções nativas 
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
 
