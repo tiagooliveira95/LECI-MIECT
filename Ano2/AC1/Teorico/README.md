@@ -856,7 +856,15 @@ comportamento pretendido**
 
 ### 71. Apresente a decomposição em instruções nativas das seguintes instruções virtuais:
 
-## POR FAZER
+|Instrução|Nativa|
+|:---|:---|
+|LI     $6,0x8B47BE0F|  `LUI $6, 0x8B47` <br> `ORI $6, 0xBE0F`|
+|XORI   $3,$4,0x12345678| `LUI $1,0x1234` <br> `XOR $3,$4, 0xBE0F5678`|
+|ADDI   $5,$2,0xF345AB17| `LUI $1,0xF345` <br> `ADD $5,$2, 0xAB17`|
+|BEQ    $7,100,L1| `ORI $1,100` <br> `BEQ $7,$1,L1` |
+|BLT    $3,0x123456,L2|  `LUI $1,0x0012` <br> `ORI $1,$1,0x3456`  <br> `SLT $1,$1,$3` <br> `BNE $t1,$0,L2` |
+
+
 
 ### 72. O que é uma sub-rotina? 
 
