@@ -649,6 +649,140 @@ int *p = b;
     As atribuições que premitem aceder ao elemento 5 são:
         a = b[5] e 
         a = *(p + 5)
+        
+        
+ ### 61. Assuma que as variáveis f, g, h, i e j correspondem aos registos $t0, $t1, $t2, $t3 e $t4 respetivamente. Considere que o endereço base dos arrays A e B está contido nos registos $s0 e $s1. Considere ainda as seguintes expressões:
+ 
+ |Expressão|
+ |:---:|
+ |f = g + h + B[2]|
+ |j = g - A[B[2]] |
+
+ 
+ 1. Qual a tradução para assembly de cada uma das instruções C indicadas? 
+ 
+        lw  $t0,8($s1)      # f = B[2]
+        add $t0,$t0,$t1     # f = B[2] + g
+        add $t0,$t0,$t2     # f = B[2] + g + h
+        
+        lw      $t4,8($s2)      # j = *B[2]
+        sll     $t4,$t4,2       # f = B[2] * 4
+        addu    $t4,$t4,$s0     # f = B[2] * 4 + A = &A[B[2]]
+        lw      $t4,0($t4)      # f = A[B[2]]
+        
+ 
+ 2. Quantas instruções assembly são necessárias para cada uma das instruções C indicadas? E quantos registos auxiliares são necessários? 
+ 
+        Para a expressão 1 foram utilizadas 3 instruções, e para a espressão 2 foram utilizadas 4
+        
+        Neste caso não foi necessário usar registos auxiliares.
+ 
+ 3. Considerando a tabela seguinte que representa o conteúdo byte-a-byte da memória, nos endereços correspondentes aos arrays **A** e **B**, indique o valor de cada elemento dos arrays assumindo uma organização *little endian.* 
+  
+<table>
+    <tr><th>Tabela 1</th><th>Tabela 2</th></tr>
+   <tr><td>
+        
+|Endereço|Valor| 
+|:---:|:---:|    
+|A+12 |    |     
+|A+11 |0x00|     
+|A+10 |0x00|     
+|A+9  |0x00|     
+|A+8  |0x01|     
+|A+7  |0x22|     
+|A+6  |0xED|     
+|A+5  |0x34|     
+|A+4  |0x00|     
+|A+3  |0x00|     
+|A+2  |0x00|     
+|A+1  |0x00|     
+|A+0  |0x12|
+        
+</td><td>
+
+|Endereço|Valor|
+|:---:|:---:|
+|B+12  |    |
+| B+11 |0x00|
+| B+10 |0x00|
+| B+9  |0x00|
+| B+8  |0x02|
+| B+7  |0x00|
+| B+6  |0x00|
+| B+5  |0x50|
+| B+4  |0x02|
+| B+3  |0xFF|
+| B+2  |0xFF|
+| B+1  |0xFF|
+| B+0  |0xFE| 
+
+</td></tr>
+
+</table>
+
+
+<table>
+    <tr><th>Exercício 1</th><th>Exercício 2</th></tr>
+   <tr><td>
+        
+|Endereço|Valor| 
+|:---:|:---:|    
+|A[0] |0x00000012|     
+|A[1] |0x22ED3400|     
+|A[2] |0x00000001|     
+        
+</td><td>
+
+|Endereço|Valor|
+|:---:|:---:|
+|B[0]  |0xFFFFFFFE|
+| B[1] |0x00005002|
+| B[2] |0x00000002|
+
+</td></tr>
+
+</table>
+
+
+4. Assumindo que g = -3 e h = 2, qual o valor final das variáveis f e j?
+
+        B2      =   0x00000002  <=> 2dec
+        A[B[2]] =   0x00000001  <=> 1dec 
+        
+        f <=> -3 + 2 + 2 = 1
+        j <=> 2 - 1 = 1
+        
+        
+
+
+
+### 62. Pretende-se escrever uma função para a troca do conteúdo de duas variáveis (troca(a, b);). Isto é, se, antes da chamada à função, a=2 e b=5, então, após a chamada à função, os valores de a e b devem ser: a=5 e b=2.
+
+**Uma solução incorreta para o problema é a seguinte:**
+
+```
+void troca(int x, int y){
+    int aux;
+    aux = x;
+    x = y;
+    y = aux;
+} 
+```
+
+**Identifique o erro presente no trecho de código e faça as necessárias correções para que a função tenha o
+comportamento pretendido**
+
+    Resolução:
+    
+    void troca(int *x, int *y){
+        int aux;
+        aux = *x;
+        *x = *y;
+        *y = aux;
+    } 
+
+
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
 
