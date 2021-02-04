@@ -861,7 +861,7 @@ comportamento pretendido**
 |Instrução|Nativa|
 |:---|:---|
 |LI     $6,0x8B47BE0F|  `LUI $6, 0x8B47` <br> `ORI $6, 0xBE0F`|
-|XORI   $3,$4,0x12345678| `LUI $1,0x1234` <br> `XOR $3,$4, 0xBE0F5678`|
+|XORI   $3,$4,0x12345678| `LUI $1,0x1234` <br> `ORI $1, 0x5678` <br> `XOR $3,$4, $t1`|
 |ADDI   $5,$2,0xF345AB17| `LUI $1,0xF345` <br> `ADD $5,$2, 0xAB17`|
 |BEQ    $7,100,L1| `ORI $1,100` <br> `BEQ $7,$1,L1` |
 |BLT    $3,0x123456,L2|  `LUI $1,0x0012` <br> `ORI $1,$1,0x3456`  <br> `SLT $1,$1,$3` <br> `BNE $t1,$0,L2` |
@@ -999,10 +999,7 @@ comportamento pretendido**
 
 ### 87. Para a função com o protótipo seguinte indique, para cada um dos parâmetros de entrada e para o valor devolvido, qual o registo do MIPS usado para a passagem dos respetivos valores: 
 
-## POR FAZER
-
 `char fun(int a, unsigned char b, char *c, int *d);`
-
         
         O resultado é devolvido em $v0
         int a   ->  $a0
@@ -1011,6 +1008,8 @@ comportamento pretendido**
         int *d  ->  $a3
 
 ### 88. Para uma codificação em complemento para 2, apresente a gama de representação que é possível obter com **3**, **4**, **5**, **8** e **16** bits (indique os valores-limite da representação em binário, hexadecimal e em decimal com sinal e módulo). 
+
+## POR FAZER
 
 |Decimal|Decimal com sinal|Binário|Hexadecimal|Módulo|
 |:---:|:---:|:---:|:---:|:---:|
@@ -1022,7 +1021,6 @@ comportamento pretendido**
 
 
 ### 89. Traduza para assembly do MIPS a seguinte função “fun1()”, aplicando a convenção de passagem de parâmetros e salvaguarda de registos: 
-
 
 ```
 char *fun2(char *, char);
@@ -1059,14 +1057,15 @@ char *fun1(int n, char *a1, char *a2){
                 move    $s4,$a1         # *p = a1
                 li      $s3,0           # j = 0
          do:    rem     $t0,$s3,2       # (j % 2)
-                bnez    $t0,endif       # if((j % 2) == 0) 
-                addi    $s1,$s1,1       # a1++        
-                lw      $a1,0($a2)      # a1 = *a2
+         if:    bnez    $t0,endif       # if((j % 2) == 0)    
+                lb      $a1,0($a2)      # a1 = *a2
                 addi    $s2,$s2,1       # *a2++
                 move    $a0,$s1
                 jal     fun2   
+                addiu   $s1,$s1,1       # a1++  
                 addi    $s3,$s3,1       # j++
-         endif: blt     $s3,$s0,do              
+         endif: blt     $s3,$s0,do
+                sb      '\0', 0($s1)
                 move    $v0,$s4         # return p                       
                 lw      $ra,0($sp)
                 lw      $s0,0($sp)
@@ -1095,16 +1094,16 @@ char *fun1(int n, char *a1, char *a2){
 
 |0b00101011| 0xA5| 0b10101101| 0x6B| 0xFA| 0x80|
 |:---:|:---:|:---:|:---:|:---:|:---:|
-|0x0000002B| 0xFFFFFFA5| | 0xFFFFFFAD| 0xFFFFFFFA| 0xFFFFFF80|
+|0x002B| 0xFFA5| | 0xFFAD| 0xFFFA| 0xFF80|
 
 
 ### 93. Como é realizada a deteção de overflow em operações de adição com quantidades sem sinal?
 
-## POR FAZER
+        O overflow ocorre se houver um bit de carry-out no fim da adição.
 
 ### 94. Como é realizada a deteção de overflow em operações de adição com quantidades com sinal (codificadas em complemento para 2)? 
 
-## POR FAZER
+        O overflow é detectado se o but mais significativo é diferente do carry-out.
 
 ### 95. Considere os seguintes pares de valores em **$s0** e **$s1**:
 
@@ -1158,13 +1157,14 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
 
 ## POR FAZER
 
-| mul | $5,$6,$7 |
-|:---:|:---:|
-| la  | $t0,label c/ label = 0x00400058 |
-| div | $2,$1,$2 |
-| rem | $5,$6,$7 |
-| ble | $8,0x16,target|
-| bgt | $4,0x3F,target |
+| Instrução |
+| mul  $5,$6,$7 |
+|:---:|
+| la   $t0,label c/ label = 0x00400058 |
+| div  $2,$1,$2 |
+| rem  $5,$6,$7 |
+| ble  $8,0x16,target|
+| bgt  $4,0x3F,target |
 
 ### 98. Determine o resultado da instrução **mul $5,$6,$7**, quando 
 
@@ -1183,6 +1183,9 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
 
 ### 99. Determine o resultado da execução das instruções virtuais **div $5,$6,$7** e **rem $5,$6,$7** quando **$6=0xFFFFFFF0** e **$7=0x00000003**
 
+        div:
+        FFFFFFF0 / 3
+        
 ## POR FAZER
 
 ### 100. Admita que pretendemos executar, em Assembly do MIPS, as operações:
@@ -1191,7 +1194,78 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
 
 1. Escreva a sequência de instruções em Assembly que permitem realizar estas duas operações. Use apenas instruções nativas 
 
-## POR FAZER
+        div     $t2,$t3     # faz a divisão e guarda o resto em HI e o quociente em LO
+        mflo    $t0         # transfere para $t0 o resto guardado em LO
+        mfli    $t1         # transfere para $t1 o qouciente guardado em HI       
+
+### 101. Descreva as regras que são usadas, na ALU do MIPS, para realizar uma divisão inteira entre duas quantidades com sinal. 
+
+        - Dividem-se dividendo por divisor em módulo
+        - O qouciente tem sinal negativo se os sinais de dividendo e divisor forem diferentes
+        - O resto tem mesmo sinal do dividendo
+        
+        Exemplos:
+        
+        -7 / 3 = -2         resto = -1
+         7 / -3 = -2        resto =  1
+        
+        Dividendo = Divisor * Qouciente + Resto
+        
+
+### 102. Considerando que **$t0=-7** e **$t1=2**, determine o resultado da instrução **div $t0,$t1** e o valor armazenado respetivamente nos registos **HI** e **LO**. 
+
+        -7 / 2 = -3     resto = -1
+        
+        HI: 0xFFFFFFFF
+        LO: 0xFFFFFFFD
+
+### 103. Repita o exercício anterior admitindo agora que **$t0=0xFFFFFFF9** e **$t1=0x00000002**.
+
+        0xFFFFFFF9 >> 1 = 0xFFFFFFFC
+        
+        1111111....1100  1001
+        
+        HI: 0x00000000
+        LO: 0xFFFFFFFC
+
+### 104. Considerando que **$5=-9** e **$10=2**, determine o valor que ficará armazenado no registo destino pela instrução virtual **rem $6, $5, $10**. 
+
+### 105. Para a implementação de uma arquitetura de multiplicação de 32 bits são necessários, entre outros, registos para o multiplicador e multiplicando, e ainda uma ALU. Determine a dimensão exata, em bits, de cada um destes três elementos funcionais. 
+
+### 106. As duas sub-rotinas seguintes permitem detetar overflow nas operações de adição com e sem sinal, no MIPS. Analise o código apresentado e determine o resultado produzido, pelas duas sub-rotinas, nas seguintes situações:
+
+```
+a) $a0=0x7FFFFFF1, $a1=0x0000000E;
+b) $a0=0x7FFFFFF1, $a1=0x0000000F;
+c) $a0=0xFFFFFFF1, $a1=0xFFFFFFFF;
+d) $a0=0x80000000, $a1=0x80000000;
+
+# Overflow detection, signed
+# int isovf_signed(int a, int b);
+
+isovf_signed:   ori         $v0,$0,0
+                xor         $1,$a0,$a1
+                slt         $1,$1,$0
+                bne         $1,$0,notovf_s
+                addu        $1,$a0,$a1
+                xor         $1,$1,$a0
+                slt         $1,$1,$0
+                beq         $1,$0,notovf_s
+                ori         $v0,$0,1
+notovf_s:       jr          $ra
+
+# Overflow detection, unsigned
+# int isovf_unsigned(unsigned int a, unsigned int b);
+
+isovf_unsig:    ori         $v0,$0,0
+                nor         $1,$a1,$0
+                sltu        $1,$1,$a0
+                beq         $1,$0,notovf_u
+                ori         $v0,$0,1
+                notovf_u:   jr $ra
+```
+
+
 
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
