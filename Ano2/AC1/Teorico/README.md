@@ -14,10 +14,11 @@
     O PC(Program Counter) contem nele armazenado o endereço da instrução que o processador deve executar.
   
 ### 4. Quais os passos mais importantes em que se decompõe a execução de uma instrução no CPU? 
-    Fetch:    Obtem a instrução a ser executada
-    Decode:   Descodifica a instrução
-    Execute:  Executa a instrução
-    Store:    Guarda o resultado
+    Fetch:          Obtem a instrução a ser executada.
+    Decode:         Descodifica a instrução.
+    Operand Fetch:  Obtem se os valores dos operandos.
+    Execute:        Executa a instrução.
+    Store:          Guarda o resultado.
   
 
 ### 5. Descreva de forma sucinta a função de um compilador. 
@@ -85,7 +86,7 @@
     As instruções são codificadas tendo em conta o seu formato, R, I ou J
     
     R: [OPCODE (6)] [Rs (5)]  [Rt (5)]  [Rd (5)]  [Shamt (5)] [Funct (6)]  
-    I: [OPCODE (6)] [Rs (5)]  [Rt (5)]  [         Immediate(15)         ]    
+    I: [OPCODE (6)] [Rs (5)]  [Rt (5)]  [         Immediate(16)         ]    
     J: [OPCODE (6)] [                 word address (26)                 ]
     
     
@@ -781,6 +782,155 @@ comportamento pretendido**
         *x = *y;
         *y = aux;
     } 
+
+
+
+### 63. Na instrução "jr $ra", como é obtido o endereço-alvo? 
+
+    O endereço alvo é obtido lendo o registo $ra
+
+
+### 64. Qual é o menor e o maior endereço para onde uma instrução "j", residente no endereço de memória 0x5A18F34C, pode saltar? 
+
+    A operação J é do tipo J, o operando de endereço tem um tamanho de 26bits o que equivale a uma gama de 2^26 instruções.
+    
+    0x5A18F34C <=> 0101-10100001100011110011010011-00
+     
+    Minimo = 0101-100000000000000000000000000-00 <=> 0xB0000000
+    Máximo = 0101-111111111111111111111111111-00 <=> 0xBFFFFFFC
+    
+
+### 65. Qual é o menor e o maior endereço para onde uma instrução "beq", residente no endereço de memória 0x5A18F34C, pode saltar?
+
+    A operação BEQ é do tipo I, o campo offset tem 16 bits logo podemos saltar para 2^16 instruções = [-32 768, 32 767]
+    
+    [OPCODE (6)] [Rs (5)]  [Rt (5)]  [offset(16)]
+    
+    0x5A18F34C <=> 01011010000110001111001101001100
+
+    Minimo = 0x5A18F34C - 0x00008000 <=> 0x5A18734C
+   
+    01011010000110001111001101001100
+    11111111111111111000000000000000 # 00000000000000001000000000000000
+    01011010000110000111001101001100   <=> 5A18734C
+                      
+    1511584588 - 32 767 = 1511551820 = 5A18734C
+
+    
+    Máximo = 0x5A18F34C + 0x00007FFF <=> 0x5A19734B
+    
+    01011010000110001111001101001100
+    00000000000000000111111111111111
+    01011010000110010111001101001011       
+    
+    1511584588 +  32767 = 1511617355 = 0x5A19734B
+    
+  
+
+### 66. Qual é o menor e o maior endereço para onde uma instrução "jr", residente no endereço de memória 0x5A18F34C pode saltar? 
+    
+    A instrução JR pode saltar para qualquer endereço desque este seja múltiplo de 4
+    
+
+
+### 67. Qual a gama de representação da constante nas instruções aritméticas imediatas?
+
+        O operando Imm tem um tamanho de 16bits logo pode representar 2^16 constantes diferentes
+
+
+### 68. Qual a gama de representação da constante nas instruções lógicas imediatas?
+
+        O operando Imm tem um tamanho de 16bits logo pode representar 2^16 constantes diferentes
+
+
+### 69. Por que razão não existe, no ISA do MIPS, uma instrução que permita manipular diretamente uma constante de 32 bits?
+
+    Cada instrução esta códificada em 32bits, e todas necessitam de um OPCODE de 6 bits, isto faz com que não haja espaço
+        para acomudar uma constante de 32bits
+
+
+### 70. Como é que, no assembly do MIPS, se podem manipular constantes de 32 bits?
+
+    Referenciando se a elas via registos, usando, por exemplo as instruções LUI e OR, para inserir valores nos bits mais significativos e menos significativos.
+
+
+### 71. Apresente a decomposição em instruções nativas das seguintes instruções virtuais:
+
+## POR FAZER
+
+### 72. O que é uma sub-rotina? 
+
+    Uma sob-rotina, é um trecho de código que pode ser chamado mais que uma vez, e após a sua execução volta para o endereço+4 do qual foi chamada.
+    
+### 73. Qual a instrução do MIPS usada para saltar para uma sub-rotina? 
+
+    JAL - jump and link, faz o jump e guarda em $ra o endereço para returnar a próxima instrução após conclusão da sub-rotina
+
+
+### 74. Por que razão não pode ser usada a instrução "j" para saltar para uma sub-rotina?
+
+    No fim de uma sub-rotina é chamado o `jr $ra`, se usarmos a instrução J o campo $ra não ficara com o endereço de retorno, 
+    no fim da sub-rotina o programa vai fechar em vez de voltar para o endereço + 4 que chamou a sub-rotina.
+    
+    Para evitar isto é usado a instrução JAL.
+
+ 
+### 75. Quais as operações que são sequencialmente realizadas na execução de uma instrução "jal"? 
+
+    A instrução JAL é usada quando pretendemos chamar uma sub-rotina.
+
+
+### 76. Qual o nome virtual e o número do registo associado à execução dessa instrução?
+
+    O nome virtual é $ra e o número do registo é 31
+
+
+### 77. No caso de uma sub-rotina ser simultaneamente chamada e chamadora (sub-rotina intermédia) que operações é obrigatório realizar nessa sub-rotina?
+
+    A sub-rotina deve salvaguardar o registo $ra, e deve salvar antes de usar qualquer um dos registos $s0..$s7
+    Deve tambem alucar o espaço na pilha que necessitar.
+    
+    No fim da sub-rotina, antes de chamar jr $ra, deve repor todos os campos alterados, o $ra e, caso tenha alterado, os registos $s0..$s7.
+
+
+### 78. Qual a instrução usada para retornar de uma sub-rotina? 
+
+    jr $ra
+
+
+### 79. Que operação fundamental é realizada na execução dessa instrução? 
+
+    A operação jr $ra volta para o endereço + 4 que chamou a sub-rotina.
+
+### 80. O que é uma stack e qual a finalidade do stack pointer?
+
+    O stack pointer é um endereço inicial onde a sub-rotina atual pode guardar campos.
+    O stack é utilizado para salvaguardar campos que as sub-rotinas necessitem.
+
+
+### 81. Como funcionam as operações de push e pop? 
+
+    A operação puch vai alocar espaço na stack.
+    A operação pop vai libertar o espaço anteriormente alocado da stack.
+
+
+### 82. Por que razão as stacks crescem normalmente no sentido dos endereços mais baixos? 
+
+    Permite uma gestão simplificada da fronteira entre os segmento de dados e stack.
+    Assim não temos de defeiir um limite para o nosso segmento de dados e o limite onde acaba a stack. 
+
+### 83. Quais as regras para a implementação em software de uma stack no MIPS?
+
+    1: O $sp contem o endereço da ultima posição ocupada pela stack
+    2: A stack deve crescer no sentido decrescente.
+    
+    Para introduzir algo na stack deve se subtrair ao $sp o número de bytes que vamos utilizar,
+        no fim devemos repor a stack somando esse mesmo número
+
+
+### 84. Qual o registo usado, no MIPS, como stack pointer? 
+    
+    O registo usado é o $sp
 
 
 
