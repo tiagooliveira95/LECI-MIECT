@@ -231,7 +231,7 @@
 int a, b, c; //a:$t0, b:$t1, c:$t2
 unsigned int x, y, z; //x:$a0, y:$a1, z:$a2
 z = x >> 2 + y;
-c = a >> 5 – 2 * b;
+c = (a >> 5 – 2) * b;
 ```
 
     srl     $a2,$a0,2       # z = x >> 2
@@ -244,7 +244,7 @@ c = a >> 5 – 2 * b;
 
     a.  add h, i, j     # h =  h = i + j
     
-    b.  addi j, j, 1    # h++
+    b.  addi j, j, 1    # j++
         add h, g, j     # h = g + j
 
      
@@ -271,6 +271,8 @@ b. $3=0xFE e $7=0x913D45FC
 
 
 ### 38. Com que registo implícito comparam as instruções "bltz", "blez", "bgtz" e "bgez"?
+    
+    As intruções usam o registo $at
     
     O registo a operar é dado na instrução, ex bltz Rsrc, label
     
@@ -941,6 +943,111 @@ comportamento pretendido**
     O registo usado é o $sp
 
 
+### 85. De acordo com a convenção de utilização de registos no MIPS: 
+
+1. Que registos são usados para passar parâmetros e para devolver resultados de uma sub-rotina?
+
+        Para passar parâmetros são usados os registos: $a0..$a3
+        Para devolver resultados são usados os registos: $v0..$v1
+
+2. Quais os registos que uma sub-rotina pode livremente usar e alterar sem necessidade de prévia salvaguarda? 
+
+        Pode alterar os registos:
+        $t0..$t9
+        $a0..$a3
+        $v0..$v1
+        
+        $f0..$f18
+        
+3. Quais os registos que uma sub-rotina não pode alterar? 
+        
+        Uma sub-rotina não pode alterar (sem salvaguardar):
+        
+        $s0..$s7
+        $f20-$f30
+        
+        
+        Não pode alterar:
+        $at
+        $zero
+        $k
+        
+4. Quais os registos que uma sub-rotina chamadora tem a garantia que a sub-rotina chamada não altera? 
+    
+        $s0..$s7
+        $f20-$f30
+
+5. Em que situação devem ser usados registos **$sn**? 
+        
+        Devem ser usados os registos $sn em todas as variáves que sejam necessárias após a chamada da sub-rotina.
+        
+6. Em que situação devem ser usados os restantes registos: **$tn**, **$an** e **$vn**?    
+        
+        $tn: registos de uso temporário.
+        $an: usado para passar argumentos.
+        $vn: usado para devolver valores.
+
+### 86. De acordo com a convenção de utilização de registos do MIPS:
+
+1. Que registos podem ter que ser copiados para a stack numa sub-rotina intermédia?
+
+        Registos $ra e registos $sn que sejam utilizados.
+    
+2. Que registos podem ter que ser copiados para a stack numa sub-rotina terminal? 
+
+        Nenhum, pois não existe necessidade de usar registos $sn e como não é chamado nenhuma outra sub-rotina não é necessário salvaguardar o $ra.
+
+### 87. Para a função com o protótipo seguinte indique, para cada um dos parâmetros de entrada e para o valor devolvido, qual o registo do MIPS usado para a passagem dos respetivos valores: 
+
+`char fun(int a, unsigned char b, char *c, int *d);`
+
+        
+        O resultado é devolvido em $v0
+        int a   ->  $a0
+        char b  ->  $a1
+        char *c ->  $a2
+        int *d  ->  $a3
+
+### 88. Para uma codificação em complemento para 2, apresente a gama de representação que é possível obter com **3**, **4**, **5**, **8** e **16** bits (indique os valores-limite da representação em binário, hexadecimal e em decimal com sinal e módulo). 
+
+|Decimal|Decimal com sinal|Binário|Hexadecimal|Módulo|
+|:---:|:---:|:---:|:---:|:---:|
+|3| [-4,3] | [] | [0xFC,0x3] | 2^3 |
+|4| [-8,7] | [] | [0xF8,0x7] | 2^4 |
+|5| [-16,15] | [] | [0xF0,0x0] | 2^5 |
+|8| [-255,254] | [] | [0xF01,0x0] | 2^8 |
+|16| [-65 538,65 537]| [] | [0xFFFEFFFE,0x10001] | 2^16 |
+
+
+### 89. Traduza para assembly do MIPS a seguinte função “fun1()”, aplicando a convenção de passagem de parâmetros e salvaguarda de registos: 
+
+
+```
+char *fun2(char *, char);
+char *fun1(int n, char *a1, char *a2){
+    int j = 0;
+    char *p = a1;
+
+    do{
+        if((j % 2) == 0)
+            fun2(a1++, *a2++);
+    } while(++j < n);
+    *a1='\0';
+    return p;
+    } 
+```
+
+
+### 90. Determine a representação em complemento para 2 com 16 bits das seguintes quantidades: 
+
+|5,| -3, |-128, |-32768,| 31,| -8, | 256,| -32 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+
+
+### 91. Determine o valor em decimal representado por cada uma das quantidades seguintes, supondo que estão codificadas em complemento para 2 com 8 bits: 
+
+|0b00101011| 0xA5| 0b10101101| 0x6B| 0xFA| 0x80| 
+|:---:|:---:|:---:|:---:|:---:|:---:|
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
 
