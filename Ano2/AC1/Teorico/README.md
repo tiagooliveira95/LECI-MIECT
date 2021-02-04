@@ -1132,10 +1132,11 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
         Não houve overflow em nenhuma das operações.
         
 5. Qual o resultado produzido pelas instruções:
-```
-add $t0, $s0,$s1
-add $t0, $t0,$s1 
-```
+
+    ```
+    add $t0, $s0,$s1
+    add $t0, $t0,$s1 
+    ```
 
         a)  0x70000000 + 0x0FFFFFFF = 0x7FFFFFFF
             0x7FFFFFFF + 0x0FFFFFFF = 0x8FFFFFFE 
