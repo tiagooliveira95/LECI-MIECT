@@ -521,6 +521,7 @@ do{
  
 ### 51. Considere as mesmas condições da questão anterior. Qual o valor armazenado no registo destino pelas instruções: 
 
+## REVER
 
 |lbu| $3,0xA3($5) |
 |:---:|:---:|
@@ -532,7 +533,7 @@ do{
     Offset:             0xA3
     Endereço target:    0x100100A3
     
-    A word na posição 0x100100A3 é: 0xA4 0xA5 0xA6 0xA7
+    O byte na posição 0x100100A3 é: 0xA4
     
     Assim vamos carregar o ultimo byte em t3 como é uma operação unsigned o valor $3 ficara: 0x000000A7
     
@@ -550,9 +551,9 @@ do{
 |L4:| .space 5 |
 
 
-    L1: 10  Bits
+    L1: 10  Bytes
     L2: 3   Bytes
-    L3: 96  Bytes
+    L3: 12  Bytes
     L4: 5   Bytes
 
  
@@ -597,8 +598,8 @@ do{
 
     L1: 0x10010000
     L2: 0x1001000A
-    L3: 0x1001002A
-    L4: 0x1001008A
+    L3: 0x10010010
+    L4: 0x1001001C
  
 ### 55. Suponha que "b" é um array declarado como "int b[25];":
 
@@ -1071,6 +1072,8 @@ char *fun1(int n, char *a1, char *a2){
 
 ### 95. Considere os seguintes pares de valores em **$s0** e **$s1**:
 
+## POR FAZER
+
 ```
 a) $s0 = 0x70000000 $s1 = 0x0FFFFFFF
 b) $s0 = 0x40000000 $s1 = 0x40000000 
@@ -1088,12 +1091,23 @@ add $t0, $t0,$s1
 ```
 6. Para a alínea anterior os resultados são os esperados ou ocorreu overflow?
 
+## POR FAZER
+
 ### 96. Para a multiplicação de dois operandos de "m" e "n" bits, respetivamente, qual o número de bits necessário para o armazenamento do resultado? 
 
+### 97. Apresente a decomposição em instruções nativas das seguintes instruções virtuais:
 
-### 97. Apresente a decomposição em instruções nativas das seguintes instruções virtuais: 
+| mul | $5,$6,$7 |
+|:---:|:---:|
+| la  | $t0,label c/ label = 0x00400058 |
+| div | $2,$1,$2 |
+| rem | $5,$6,$7 |
+| ble | $8,0x16,target|
+| bgt | $4,0x3F,target |
 
 ### 98. Determine o resultado da instrução **mul $5,$6,$7**, quando 
+
+`$6=0xFFFFFFFE e $7=0x00000005.`
 
 ### 99. Determine o resultado da execução das instruções virtuais **div $5,$6,$7** e **rem $5,$6,$7** quando **$6=0xFFFFFFF0** e **$7=0x00000003**
 
@@ -1102,6 +1116,9 @@ add $t0, $t0,$s1
 `$t0 = $t2/$t3 e $t1 = $t2 % $t3.`
 
 1. Escreva a sequência de instruções em Assembly que permitem realizar estas duas operações. Use apenas instruções nativas 
+
+
+
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
 
