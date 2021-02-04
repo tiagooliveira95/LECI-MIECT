@@ -521,7 +521,6 @@ do{
  
 ### 51. Considere as mesmas condições da questão anterior. Qual o valor armazenado no registo destino pelas instruções: 
 
-## REVER
 
 |lbu| $3,0xA3($5) |
 |:---:|:---:|
@@ -1024,10 +1023,10 @@ comportamento pretendido**
 
 ### 89. Traduza para assembly do MIPS a seguinte função “fun1()”, aplicando a convenção de passagem de parâmetros e salvaguarda de registos: 
 
-## POR FAZER
 
 ```
 char *fun2(char *, char);
+
 char *fun1(int n, char *a1, char *a2){
     int j = 0;
     char *p = a1;
@@ -1040,7 +1039,44 @@ char *fun1(int n, char *a1, char *a2){
     return p;
     } 
 ```
-
+            .data
+            .text
+            .globl  fun1
+       
+        # $s0 -> n
+        # $s1 -> a1
+        # $s2 -> a2
+        # $s3 -> j
+        # $s4 -> p
+        
+        fun1:   addiu   $sp,$sp,-24
+                sw      $ra,0($sp)
+                sw      $s0,0($sp)
+                sw      $s1,0($sp)
+                sw      $s2,0($sp)
+                sw      $s3,0($sp)
+                sw      $s4,0($sp)
+                move    $s4,$a1         # *p = a1
+                li      $s3,0           # j = 0
+         do:    rem     $t0,$s3,2       # (j % 2)
+                bnez    $t0,endif       # if((j % 2) == 0) 
+                addi    $s1,$s1,1       # a1++        
+                lw      $a1,0($a2)      # a1 = *a2
+                addi    $s2,$s2,1       # *a2++
+                move    $a0,$s1
+                jal     fun2   
+                addi    $s3,$s3,1       # j++
+         endif: blt     $s3,$s0,do              
+                move    $v0,$s4         # return p                       
+                lw      $ra,0($sp)
+                lw      $s0,0($sp)
+                lw      $s1,0($sp)
+                lw      $s2,0($sp)
+                lw      $s3,0($sp)
+                lw      $s4,0($sp)
+                addiu   $sp,$sp,24
+                jr      $ra
+        
 
 ### 90. Determine a representação em complemento para 2 com 16 bits das seguintes quantidades: 
 
