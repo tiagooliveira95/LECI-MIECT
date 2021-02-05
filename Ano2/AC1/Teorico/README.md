@@ -1250,6 +1250,7 @@ b) $a0=0x7FFFFFF1, $a1=0x0000000F;
 c) $a0=0xFFFFFFF1, $a1=0xFFFFFFFF;
 d) $a0=0x80000000, $a1=0x80000000;
 
+
 # Overflow detection, signed
 # int isovf_signed(int a, int b);
 
@@ -1279,6 +1280,16 @@ isovf_unsig:    ori         $v0,$0,0            # return 0
 ```
 
 
+    a)
+
+    7FFFFFF1 => 0111 1111 1111 1111 1111 1111 0001
+    0000000E => 0000 0000 0000 0000 0000 0000 1110
+
+    a ^ b = 0111 1111 1111 1111 1111 1111 1111
+    (a ^ b) > 0, $t1 = 1
+
+    isovf_signed return 0
+    
 
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
