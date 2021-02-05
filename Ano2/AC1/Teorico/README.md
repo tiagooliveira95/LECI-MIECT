@@ -1317,3 +1317,27 @@ d.
     b)
     c) Sem solução
     d)
+
+
+### 158 Admita o seguinte trecho de código, a executar sobre uma implementação pipelined da arquitetura MIPS com delayed branches, e unidade de forwarding de MEM e WB para o estágio EX.
+
+## por fazer incompleto
+
+1. Identifique os vários hazards neste código e determine se os mesmos podem ser resolvidos por forwarding.
+
+        Existe 2 hazards na 4 que depende da 3, e na 1 que depende da 5
+
+2. Identifique as situações em que é necessário executar stalling do pipeline e o respetivo número de stalls
+
+        2 stalls na beq, não é necessário na lw
+        
+
+3. Resolva o problema anterior supondo que a arquitetura suporta forwarding de MEM para ID. 
+   
+        
+
+
+
+
+
+
