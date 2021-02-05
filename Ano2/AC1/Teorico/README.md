@@ -1103,7 +1103,7 @@ char *fun1(int n, char *a1, char *a2){
 
 ### 94. Como é realizada a deteção de overflow em operações de adição com quantidades com sinal (codificadas em complemento para 2)? 
 
-        O overflow é detectado se o but mais significativo é diferente do carry-out.
+        O overflow é detectado se o bit mais significativo é diferente do carry-out.
 
 ### 95. Considere os seguintes pares de valores em **$s0** e **$s1**:
 
@@ -1158,8 +1158,8 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
 ## POR FAZER
 
 | Instrução |
+|:---|
 | mul  $5,$6,$7 |
-|:---:|
 | la   $t0,label c/ label = 0x00400058 |
 | div  $2,$1,$2 |
 | rem  $5,$6,$7 |
@@ -1221,6 +1221,8 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
 
 ### 103. Repita o exercício anterior admitindo agora que **$t0=0xFFFFFFF9** e **$t1=0x00000002**.
 
+## POR FAZER DUVIDA
+
         0xFFFFFFF9 >> 1 = 0xFFFFFFFC
         
         1111111....1100  1001
@@ -1230,8 +1232,16 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
 
 ### 104. Considerando que **$5=-9** e **$10=2**, determine o valor que ficará armazenado no registo destino pela instrução virtual **rem $6, $5, $10**. 
 
+        -9 / 2 = -4      resto = -1
+        
+        O valor guardado em HI vai ser transferido para $6 e este assumira o valor de 0xFFFFFFFF
+
 ### 105. Para a implementação de uma arquitetura de multiplicação de 32 bits são necessários, entre outros, registos para o multiplicador e multiplicando, e ainda uma ALU. Determine a dimensão exata, em bits, de cada um destes três elementos funcionais. 
 
+    ALU:                        32 Bits
+    Multiplicando:              32 Bits
+    Multiplicador/Resultado:    64bits (32/32)
+   
 ### 106. As duas sub-rotinas seguintes permitem detetar overflow nas operações de adição com e sem sinal, no MIPS. Analise o código apresentado e determine o resultado produzido, pelas duas sub-rotinas, nas seguintes situações:
 
 ```
@@ -1243,25 +1253,28 @@ d) $a0=0x80000000, $a1=0x80000000;
 # Overflow detection, signed
 # int isovf_signed(int a, int b);
 
-isovf_signed:   ori         $v0,$0,0
-                xor         $1,$a0,$a1
-                slt         $1,$1,$0
-                bne         $1,$0,notovf_s
-                addu        $1,$a0,$a1
-                xor         $1,$1,$a0
-                slt         $1,$1,$0
-                beq         $1,$0,notovf_s
-                ori         $v0,$0,1
-notovf_s:       jr          $ra
+isovf_signed:   ori         $v0,$0,0            # return 0
+                xor         $1,$a0,$a1          # $1 = a ^ b    
+ 
+                slt         $1,$1,$0            # $t1 = $1 < 0
+                bne         $1,$0,notovf_s      # if($1 < 0){
+                addu        $1,$a0,$a1          # $t1 = a + b   
+                xor         $1,$1,$a0           # $t1 = 1 ^ a
+                
+                slt         $1,$1,$0            # $t1 = $1 < 0               
+                beq         $1,$0,notovf_s      }if($t1 >= 0 ){
+                ori         $v0,$0,1            # return 1
+
+notovf_s:       jr          $ra                 # }
 
 # Overflow detection, unsigned
 # int isovf_unsigned(unsigned int a, unsigned int b);
 
-isovf_unsig:    ori         $v0,$0,0
-                nor         $1,$a1,$0
-                sltu        $1,$1,$a0
-                beq         $1,$0,notovf_u
-                ori         $v0,$0,1
+isovf_unsig:    ori         $v0,$0,0            # return 0
+                nor         $1,$a1,$0           # $1 = a NOR 0
+                sltu        $1,$1,$a0           # $1 = $1 < a
+                beq         $1,$0,notovf_u      # if($t1 < a)
+                ori         $v0,$0,1            # return 1        
                 notovf_u:   jr $ra
 ```
 
