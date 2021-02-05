@@ -804,6 +804,8 @@ comportamento pretendido**
 
 ### 65. Qual é o menor e o maior endereço para onde uma instrução "beq", residente no endereço de memória 0x5A18F34C, pode saltar?
 
+## Rever
+
     A operação BEQ é do tipo I, o campo offset tem 16 bits logo podemos saltar para 2^16 instruções = [-32 768, 32 767]
     
     [OPCODE (6)] [Rs (5)]  [Rt (5)]  [offset(16)]
@@ -817,6 +819,7 @@ comportamento pretendido**
     01011010000110000111001101001100   <=> 5A18734C
                       
     1511584588 - 32 767 = 1511551820 = 5A18734C
+    377 896 147 - 32767 = 1 511 453 520
 
     
     Máximo = 0x5A18F34C + 0x00007FFF <=> 0x5A19734B
@@ -1291,6 +1294,17 @@ isovf_unsig:    ori         $v0,$0,0            # return 0
     isovf_signed return 0
     
 
+### 143 Considere a instrução beq $5 $6,L2 armazenada no endereço 0x0040002C. Admita que $5=0x1001009C e $6=0x100100B0. Identifique os registos representados na figura seguinte e obtenha o código máquina, em hexadecimal, da instrução indicada.
+
+## por fazer incompleto
+        
+        offset de 0x14
+        
+        0x14/4 = 5
+        
+        0001 0000 1010 0110 0000 0000 0101 => 0x10A60005
+
+    
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
 
