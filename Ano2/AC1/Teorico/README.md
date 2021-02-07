@@ -1385,7 +1385,7 @@ b) 0x80580000.
         
         Exp = 0 caso especial
         
-        Mantissa = 0.10110000000000000000000 * 2^-127
+        Mantissa = 0.10110000000000000000000 * 2^-126
 
 
 
@@ -1396,7 +1396,85 @@ b) 0x80580000.
     $f2 = 0xC0C00000 
     ```
 
+1.Calcule o resultado das instruções seguintes, apresentando o seu resultado em hexadecimal: 
 
+```
+a) abs.s $f4,$f2 # $f4 = abs($f2)
+b) neg.s $f6,$f0 # $f6 = neg($f0)
+c) sub.s $f8, $f0,$f2 # $f8 = $f0 – $f2
+d) sub.s $f10,$f2,$f0 # $f10 = $f2 - $f0
+e) add.s $f12,$f0,$f2 # $f12 = $f0 + $f2
+f) mul.s $f14,$f0,$f2 # $f14 = $f0 * $f2
+g) div.s $f16,$f0,$f2 # $f16 = $f0 / $f2
+h) div.s $f18,$f2,$f0 # $f18 = $f2 / $f0
+i) cvt.d.s $f20,$f2 # Convert single to double
+j) cvt.w.s $f22,$f0 # Convert single to integer 
+```
+
+        0x416A0000 => 0.10000010.11010100000000000000000
+        0xC0C00000 => 1.10000001.10000000000000000000000
+        
+        
+        a) 
+        abs(0x416A0000) => 0.10000010.11010100000000000000000 => 0x416A0000
+        abs(0xC0C00000) => 0.10000001.10000000000000000000000 => 0x40C00000
+        
+        b)
+        neg(0x416A0000) => 1.10000010.11010100000000000000000 => 0xC16A0000
+        neg(0xC0C00000) => 0.10000001.10000000000000000000000 => 0x40C00000
+        
+        c)
+        sub(0x416A0000 - 0xC0C00000)
+        
+        0.10000010.11010100000000000000000
+        1.10000001.10000000000000000000000
+        
+        Mantissa1 = 1.11010100000000000000000 x 2^3
+        Mantissa2 = 1.10000000000000000000000 x 2^2
+        
+        2 Passo: Igualar expoente ao maior
+
+        Mantissa1 = 1.11010100000000000000000 x 2^3
+        Mantissa2 = 0.11000000000000000000000 x 2^3
+        -------------------------------------------
+                      1.11010100000000000000000
+                    + 0.11000000000000000000000 
+                    ----------------------------
+                     10.10010100000000000000000  x 2^3
+                     
+        3 Passo: normalizar
+        
+        1.010010100000000000000000 x 2^4
+        
+        IEEE754 = 010000011010010100000000000000000 <=> 0x41A50000
+        
+        d)  
+        0xC0C00000 - 0x416A0000
+        
+        Mantissa1 = 1.10000000000000000000000 x 2^2
+        Mantissa2 = 1.11010100000000000000000 x 2^3
+        
+        2 Passo: Igualar expoente ao maior
+        
+        Mantissa1 = 0.11000000000000000000000 x 2^3
+        Mantissa2 = 1.11010100000000000000000 x 2^3
+        
+        0.11000000000000000000000
+        1.00111111111111111111111
+        +                       1
+        --------------------------
+        1.11000000000000000000000
+        
+
+            1.11000000000000000000000
+         +  1.11010100000000000000000
+         ----------------------------
+           10.10010100000000000000000 * 2^3
+          
+          1.010010100000000000000000 * 2^4
+            
+         1.10000011.01001010000000000000000 <=> 0xC1A50000
+                    
 ### 143 Considere a instrução beq $5 $6,L2 armazenada no endereço 0x0040002C. Admita que $5=0x1001009C e $6=0x100100B0. Identifique os registos representados na figura seguinte e obtenha o código máquina, em hexadecimal, da instrução indicada.
 
 ## por fazer incompleto
@@ -1407,6 +1485,7 @@ b) 0x80580000.
         
         0001 0000 1010 0110 0000 0000 0101 => 0x10A60005
 
+        
     
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
