@@ -1544,8 +1544,116 @@ j) cvt.w.s $f22,$f0 # Convert single to integer
     1110 => 0xE
     
     
-     
-     
+
+### 114. Considere a sequência de duas instruções Assembly:
+
+
+```
+lui $t0,0xC0A8
+mtc1 $t0,$f8 
+```
+
+1.Qual o valor que ficará armazenado no registo $f8, expresso em base dez e vírgula fixa, admitindo uma interpretação em IEEE 754 precisão simples?
+
+        $f8 = 0xC0A80000 <=> 1.10000001.01010000000000000000000
+        
+        1.01010000000000000000000 x 2^2 <=>
+        101.010000000000000000000 x 2^0 = -5,25
+        
+
+
+### 115. Considerando que $f2=0x3A600000 e $f4=0xBA600000, determine o resultado armazenado em $f0 pela instrução sub.s $f0,$f2,$f4
+
+        $f2 = 0x3A600000 <=> 0.01110100.11000000000000000000000
+        $f4 = 0xBA600000 <=> 1.01110100.11000000000000000000000
+        
+        $f2 = 11000000000000000000000 x 2^-11
+        $f4 = 11000000000000000000000 x 2^-11
+        
+        $f4 - $f2 = 0x00000000
+
+
+### 116. Repita o exercício anterior admitindo agora as seguintes condições: 
+
+1. $f4=0x3F100000 e $f6=0x408C0000 e a instrução add.s $f8,$f4,$f6.
+
+        $f4 = 0x3F100000 <=> 0 01111110.00100000000000000000000
+        
+        1.00100000000000000000000 x 2^-1
+        
+        <=> 0.00100100000000000000000000 x 2^2
+
+        
+        $f6 = 0x408C0000 <=> 0.10000001.00011000000000000000000
+       
+        1.00011000000000000000000 x 2^2
+        
+          1.00011000000000000000000
+        + 0.00100100000000000000000
+        ---------------------------
+          1.00111100000000000000000 x 2^2
+          
+          
+          0.10000001.00111100000000000000000 <=> 0x409E0000
+        
+
+2. $f2=0x3F900000 e $f4=0xBEA00000 e a instrução mul.s $f0,$f2,$f4
+
+        $f2 = 0x3F900000 <=> 0.01111111.00100000000000000000000
+        
+        $f2 = 1.00100000000000000000000 x 2^0
+        
+        $f4 = 0xBEA00000 <=> 1.01111101.01000000000000000000000
+        
+        1.01000000000000000000000 x 2^-2 
+        
+            1.00100000000000000000000
+        x   1.01000000000000000000000
+        ------------------------------
+           10010000000000000000000000
+          00000000000000000000000000x
+       + 10010000000000000000000000xx
+        -------------------------------   
+         10110100000000000000000000 x 2^-2           
+           
+         1.01111101.10110100000000000000000 <=> 0xBEDA0000
+
+3. $f2=0x258c0000 e $f4=0x41600000 e a instrução div.s $f0,$f2,$f4
+
+## POR FAZER
+
+
+### 117 Numa norma hipotética KPT de codificação em vírgula flutuante, a mantissa normalizada após a realização de uma operação aritmética tem o valor 1.1111 1111 1111 1110 1000 0000. Qual será o valor final da mantissa (com 16 bits na parte fracionária) após arredondamento para o ímpar mais próximo? 
+
+## POR FAZER
+
+        1.1111 1111 1111 1110 1000 0000
+                              |||_ Stiky bit
+                              ||__ Round bit             
+                              |___ Guard bit
+                            
+                              
+### 118. Assuma que x é uma variável do tipo float residente em $f8 e que o label endWhile corresponde ao endereço da primeira instrução imediatamente após um ciclo while(). Se a avaliação da condição para executar o loop for while (x > 1.5){..} escreva, em Assembly do MIPS, a sequencia de instruções necessárias para determinar esta condição. 
+        
+        x: .float 1.5
+        ...
+        l.s $f6,x
+        c.le.s $f8,$f6
+        bc1t endwhile
+
+### 119. Determine, de acordo com o formato IEEE 754 precisão simples, a representação normalizada, e arredondada para o par mais próximo, do número 100,11011000000000000010110. 
+
+
+        100,11011000000000000010110 x 2^0 <=>
+        
+        1,00110110000000000000101xx x 2^2
+                      
+
+
+
+
+
+
 ### 143 Considere a instrução beq $5 $6,L2 armazenada no endereço 0x0040002C. Admita que $5=0x1001009C e $6=0x100100B0. Identifique os registos representados na figura seguinte e obtenha o código máquina, em hexadecimal, da instrução indicada.
 
 ## por fazer incompleto
