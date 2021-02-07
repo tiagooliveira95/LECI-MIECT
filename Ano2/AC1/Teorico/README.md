@@ -1247,6 +1247,9 @@ b) $s0 = 0x40000000 $s1 = 0x40000000
    
 ### 106. As duas sub-rotinas seguintes permitem detetar overflow nas operações de adição com e sem sinal, no MIPS. Analise o código apresentado e determine o resultado produzido, pelas duas sub-rotinas, nas seguintes situações:
 
+## POR FAZER INCOMPLETO
+
+
 ```
 a) $a0=0x7FFFFFF1, $a1=0x0000000E;
 b) $a0=0x7FFFFFF1, $a1=0x0000000F;
@@ -1293,6 +1296,106 @@ isovf_unsig:    ori         $v0,$0,0            # return 0
 
     isovf_signed return 0
     
+    
+
+
+### 107 As duas sub-rotinas anteriores podem ser também escritas alternativamente com o código abaixo. A abordagem á ligeiramente diferente. No caso de operações sem sinal, o overflow pode ser detetado para as operações de soma e subtração. Analise o código apresentado e determine o resultado produzido, pelas duas sub-rotinas, nas condições indicadas nas alíneas da questão anterior:
+
+
+## POR FAZER
+
+
+### 108. Ainda no código das sub-rotinas das questões anteriores, qual a razão para não haver salvaguarda de qualquer registo na stack?
+
+        São sub-rotinas terminais, e nenhuma usa os registos $sn
+
+### 109. Na conversão de uma quantidade codificada em formato IEEE 754, precisão simples, para decimal, qual o número máximo de casas decimais com que o resultado deve ser apresentado?
+        
+        
+        Um resultado pode ser representado com um máximo de 6 casas decimais.
+        
+
+### 110. Responda à questão anterior admitindo que o valor original se encontra agora representado com precisão dupla no formato IEEE 754.
+
+        Um resultado pode ser representado com um máximo de 15 casas decimais
+
+### 111. Determine a representação em formato IEEE 754, precisão simples, da quantidade real 19,1875. Determine a representação da mesma quantidade em precisão dupla. 
+
+        19.1875
+        
+        19 => 10011
+        0.187510 => ????
+        
+        0.1875
+        x    2
+        ------
+        0,3750
+         x    2
+        -------
+        0,7500
+        x    2
+        -------
+        1,5000
+        x    2
+        -------
+        1.00
+        ----------------------------------
+        19 => 10011
+        0.1875 => 0011
+        
+        19.187510 => 10011.0011 * 2^0 <=>
+                     
+        Mantissa: 1.00110011 * 2^4
+        Exp: 4
+          
+        Exp(Excesso127) = 4 + 127 = 131 <=> 10000011
+        
+        Single:
+        
+        IEEE754(Single) de 19.187510 = 0.10000011.00110011000000000000000
+        -----------------------------------
+        Double:
+       
+        Expoente = 1023 + 4 = 001100110
+        
+        IEEE754(Double) = 0.001100110.0011001100000000000000000000000000000000000
+        
+ ### 112. Determine, em decimal (vírgula fixa), o valor das quantidades representadas em formato IEEE 754, precisão simples. Na alínea b) apresente apenas o valor em notação científica usando base 2. 
+ 
+ ```
+a) 0xC19A8000.
+b) 0x80580000.
+ ```
+ 
+        0xC19A8000 <=> 11000001100110101000000000000000
+        
+        IEEE754 1.10000011.00110101000000000000000
+        
+        Exp = 10000011 => 131 - 127 = 4
+        Mantissa = 1.00110101000000000000000 * 2^4
+        
+        <=> 10011.0101000000000000000 * 2^0
+        
+        -19.3125
+        
+        
+        0x80580000 => 10000000010110000000000000000000
+        
+        IEEE754 1.00000000.10110000000000000000000
+        
+        Exp = 0 caso especial
+        
+        Mantissa = 0.10110000000000000000000 * 2^-127
+
+
+
+### 113. Considere que o conteúdo dos dois seguintes registos da FPU representam a codificação de duas quantidades reais no formato IEEE754 precisão simples: 
+
+    ```
+    $f0 = 0x416A0000
+    $f2 = 0xC0C00000 
+    ```
+
 
 ### 143 Considere a instrução beq $5 $6,L2 armazenada no endereço 0x0040002C. Admita que $5=0x1001009C e $6=0x100100B0. Identifique os registos representados na figura seguinte e obtenha o código máquina, em hexadecimal, da instrução indicada.
 
