@@ -1913,19 +1913,19 @@ slt $t1, $t0, $t2
 
 |CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PCWtriteCond|  | x    | 0 |   |   |   |   |   |    |
-|PCWrite|       | 1    | 0 |   |   |   |   |   |    |
-|MemWrite|      | 0    | 0 |   |   |   |   |   |    |
-|MemRead|       | 1    | 0 |   |   |   |   |   |    |
-|MemToReg|      | x    | x |   |   |   |   |   |    |
-|IRWrite|       | 1    | 0 |   |   |   |   |   |    |
-|ALUSelA|       | 0    | 0 |   |   |   |   |   |    |
-|ALUSelB|       | 01   |11 |   |   |   |   |   |    |
-|ALUOp|         | 00   |00 |   |   |   |   |   |    |
-|IorD|          | 0    |x  |   |   |   |   |   |    |
-|PCSource|      | 00   |xx |   |   |   |   |   |    |
-|REGWrite|      | 0    |0  |   |   |   |   |   |    |
-|RegDst|        | x    |x  |   |   |   |   |   |    |
+|PCWtriteCond| 0 | x   | 0 | 0  | 0  | x   | 0  |  0  |
+|PCWrite|      0 | 1   | 0 | 0  | 0  | 1   | 0  |  0  |
+|MemWrite|     1 | 0   | 0 | 0  | 0  | 0   | 0  |  0  |
+|MemRead|      0 | 1   | 0 | 0  | 0  | 1   | 0  |  0  |
+|MemToReg|     x | x   | x | x  | 0  | x   | x  |  x  |
+|IRWrite|      0 | 1   | 0 | 0  | 1  | 1   | 0  |  0  |
+|ALUSelA|      x | 0   | 0 | 1  | x  | 0   | 0  |  1  |
+|ALUSelB|      xx| 01  |11 | 00 | xx | 01  |11  |  00 |
+|ALUOp|        xx| 00  |00 | 10 | xx | 00  |00  |  10 |
+|IorD|         1 | 0   |x  | x  | x  | 0   |x   |  x  |
+|PCSource|    xx | 00  |xx | xx | xx | 00  |xx  |  xx |
+|REGWrite|     0 | 0   |0  | 0  | 1  | 0   |0   |  0  |
+|RegDst|       x | x   |x  | x  | 1  | x   |x   |  x  |
 
 
 ### 134. Para as mesmas sequências de instruções apresentadas nos dois exercícios anteriores, preencha, na
