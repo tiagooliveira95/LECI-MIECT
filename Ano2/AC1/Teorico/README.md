@@ -1838,19 +1838,19 @@ beq $t0, $t1, next
 
 |CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PCWtriteCond   |  |   |  |   |   |   |   |   |
-|PCWrite|       |   |  |   |   |   |   |   |
-|MemWrite|      |   |  |   |   |   |   |   |
-|MemRead|       |   |  |   |   |   |   |   |
-|MemToReg|      |   |  |   |   |   |   |   |
-|ITWrite|       |   |  |   |   |   |   |   |
-|ALUSelA|       |   |  |   |   |   |   |   |
-|ALUSelB|       |   |  |   |   |   |   |   |
-|ALUOp|         |   |  |   |   |   |   |   |
-|IorD|          |   |  |   |   |   |   |   |
-|PCSource|      |   |  |   |   |   |   |   |
-|REGWrite|      |   |  |   |   |   |   |   |
-|RegDst|        |   |  |   |   |   |   |   |
+|PCWtriteCond|  | 0  | x | 0 | 0 | 0 | x | 0  |
+|PCWrite|       | 0  | 1 | 0 | 0 | 0 | 1 | 0  |
+|MemWrite|      | 0  | 0 | 0 | 0 | 1 | 0 | 0  |
+|MemRead|       | 0  | 1 | 0 | 0 | 0 | 1 | 0  |
+|MemToReg|      | 0  | x | x | x | x | x | x  |
+|IRWrite|       | 0  | 1 | 0 | 0 | 0 | 1 | 0  |
+|ALUSelA|       | x  | 0 | 0 | 1 | x | 0 | 0  |
+|ALUSelB|       | x  | 01|11 | 10| xx| 01|11  |
+|ALUOp|         | xx | 00|00 |00 | xx|00 |00  |
+|IorD|          | 0  | 0 |x  |x  | 1 | 0 |x   |
+|PCSource|      | xx | 00|xx |xx | xx| 00|xx  |
+|REGWrite|      | 1  | 0 |0  |0  | 0 | 0 |0   |
+|RegDst|        | 1  | x |x  |x  | x | x |x   |
 
 
 
@@ -1865,7 +1865,7 @@ beq $t0, $t1, next
 |MemWrite|      |   |  |   |   |   |   |   |
 |MemRead|       |   |  |   |   |   |   |   |
 |MemToReg|      |   |  |   |   |   |   |   |
-|ITWrite|       |   |  |   |   |   |   |   |
+|IRWrite|       |   |  |   |   |   |   |   |
 |ALUSelA|       |   |  |   |   |   |   |   |
 |ALUSelB|       |   |  |   |   |   |   |   |
 |ALUOp|         |   |  |   |   |   |   |   |
@@ -1905,7 +1905,7 @@ slt $t1, $t0, $t2
 |MemWrite|      |   |  |   |   |   |   |   |
 |MemRead|       |   |  |   |   |   |   |   |
 |MemToReg|      |   |  |   |   |   |   |   |
-|ITWrite|       |   |  |   |   |   |   |   |
+|IRWrite|       |   |  |   |   |   |   |   |
 |ALUSelA|       |   |  |   |   |   |   |   |
 |ALUSelB|       |   |  |   |   |   |   |   |
 |ALUOp|         |   |  |   |   |   |   |   |
@@ -1928,7 +1928,7 @@ que na memória [(0x10010000)=0x00000020] e [(0x10010004)=0x00000038]*
 |MemWrite|      |   |  |   |   |   |   |   |
 |MemRead|       |   |  |   |   |   |   |   |
 |MemToReg|      |   |  |   |   |   |   |   |
-|ITWrite|       |   |  |   |   |   |   |   |
+|IRWrite|       |   |  |   |   |   |   |   |
 |ALUSelA|       |   |  |   |   |   |   |   |
 |ALUSelB|       |   |  |   |   |   |   |   |
 |ALUOp|         |   |  |   |   |   |   |   |
