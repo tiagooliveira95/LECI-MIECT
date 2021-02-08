@@ -1972,6 +1972,40 @@ que na memória [(0x10010000)=0x00000020] e [(0x10010004)=0x00000038]*
 
 
 
+
+
+
+### 136. Calcule o número de ciclos de relógio que o programa seguinte demora a executar, desde o Instruction fetch da 1ª instrução até à conclusão da última instrução:
+
+```
+main:                        # p0 = 0;
+        lw      $1,0($0)     # p1 = *p0 = 0x10;
+        add     $4,$0,$0     # v = 0;
+        lw      $2,4($0)     # p2=*(p0+1)=0x20;
+loop:                        # do {
+        lw      $3,0($1)     # aux1 = *p1;
+        add     $4,$4,$3     # v = v + *p1;
+        sw      $4,36($1)    # *(p1 + 9) = v;
+        addiu   $1,$1,4      # p1++;
+        sltu    $5,$1,$2     #
+        bne     $5,$0,loop   # } while(p1 < p2);
+        sw      $4,8($0)     # *(p0 + 2) = v;
+        lw      $1,12($0)    # aux2 = *(p0 + 3); 
+ ```
+ 
+1. Num datapath single-cycle 
+        
+        3 + 6 + (6 * 4) + 2 = 35 ciclos
+    
+2. Num datapath multi-cycle
+
+       LW: 5 ciclos
+       ADD: 4 ciclos
+       SLT: 4 ciclos
+       BNE: 3 ciclos
+       SW: 4 ciclos
+       
+       5+4+5 + 5+4+4+4+4+3 + (5+4+5+4+4+3)*4 + 4+5 = 14 + 24 + 24*4 + 9 = 143 ciclos
          
 ### 143 Considere a instrução beq $5 $6,L2 armazenada no endereço 0x0040002C. Admita que $5=0x1001009C e $6=0x100100B0. Identifique os registos representados na figura seguinte e obtenha o código máquina, em hexadecimal, da instrução indicada.
 
