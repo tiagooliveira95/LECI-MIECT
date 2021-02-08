@@ -1625,12 +1625,13 @@ mtc1 $t0,$f8
 
 ### 117 Numa norma hipotética KPT de codificação em vírgula flutuante, a mantissa normalizada após a realização de uma operação aritmética tem o valor 1.1111 1111 1111 1110 1000 0000. Qual será o valor final da mantissa (com 16 bits na parte fracionária) após arredondamento para o ímpar mais próximo? 
 
-## POR FAZER
 
         1.1111 1111 1111 1110 1000 0000
-                              |||_ Stiky bit
+                              |||_ Sticky bit
                               ||__ Round bit             
                               |___ Guard bit
+                              
+        Arredondar: 1.1111 1111 1111 1111
                             
                               
 ### 118. Assuma que x é uma variável do tipo float residente em $f8 e que o label endWhile corresponde ao endereço da primeira instrução imediatamente após um ciclo while(). Se a avaliação da condição para executar o loop for while (x > 1.5){..} escreva, em Assembly do MIPS, a sequencia de instruções necessárias para determinar esta condição. 
@@ -1862,25 +1863,12 @@ a)
 or $t0, $0, $t1
 addi $t0, $t1, 0x20
 j label
-
-b)
-lw $s0, 0($t1)
-lw $s1, 4($t1)
-add $t2, $s1, $s2
-
-c)
-sw $t0, 0($t1)
-sub $t0, $t3, $t2
-slt $t1, $t0, $t2
-
 ```
-
-a)
 
 |CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|**PCWtriteCond** | 0 | x  | 0 | 0 | 0 | x  | 0|   0  |
-|**PCWrite**|       0 | 1  | 0 | 0 | 0 | 1  | 0|   1  |
+|**PCWtriteCond**| 0 | x  | 0 | 0 | 0 | x  | 0|   0  |
+|**PCWrite**|      0 | 1  | 0 | 0 | 0 | 1  | 0|   1  |
 |**MemWrite**|     0 | 0  | 0 | 0 | 0 | 0  | 0 |   0  |
 |**MemRead**|      0 | 1  | 0 | 0 | 0 | 1  | 0 |   0  |
 |**MemToReg**|     0 | x  | x | x | 0 | x  | x |   x  |
@@ -1893,41 +1881,51 @@ a)
 |**REGWrite**|    1  | 0  |0  | 0 | 1 | 0  |0  |  x   |
 |**RegDst**|      1  | x  |x  | x | 0 | x  |x  |  x   |
 
+```
 b)
+lw $s0, 0($t1)
+lw $s1, 4($t1)
+add $t2, $s1, $s2
+```
 
 |CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PCWtriteCond|    |  |   |   |   |   |   |
-|PCWrite|         |  |   |   |   |   |   |
-|MemWrite|        |  |   |   |   |   |   |
-|MemRead|         |  |   |   |   |   |   |
-|MemToReg|        |  |   |   |   |   |   |
-|IRWrite|         |  |   |   |   |   |   |
-|ALUSelA|         |  |   |   |   |   |   |
-|ALUSelB|         |  |   |   |   |   |   |
-|ALUOp|           |  |   |   |   |   |   |
-|IorD|            |  |   |   |   |   |   |
-|PCSource|        |  |   |   |   |   |   |
-|REGWrite|        |  |   |   |   |   |   |
-|RegDst|          |  |   |   |   |   |   |
+|PCWtriteCond|  0  | x   | 0  | 0  | 0  | 0  | x  | 0  |
+|PCWrite|       0  | 1   | 0  | 0  | 0  | 0  | 1  | 0  |
+|MemWrite|      0  | 0   | 0  | 0  | 0  | 0  | 0  | 0  |
+|MemRead|       0  | 1   | 0  | 0  | 1  | 0  | 1  | 0  |
+|MemToReg|      1  | x   | x  | x  | x  | 1  | x  | x  |
+|IRWrite|       0  | 1   | 0  | 0  | 0  | 0  | 1  | 0  |
+|ALUSelA|       x  | 0   | 0  | 1  | x  | x  | 0  | 0  |
+|ALUSelB|       xx | 01  |11  | 10 | xx | xx | 01 |11  |
+|ALUOp|         xx | 00  |00  | 00 | xx | xx | 00 |00  |
+|IorD|          x  | 0   |x   | x  | 1  | x  | 0  |x   |
+|PCSource|      xx | 00  |xx  | xx | xx | xx | 00 |xx  |
+|REGWrite|       1 | 0   |0   | 0  | 0  |  1 | 0  |0   |
+|RegDst|         0 | x   |x   | x  | x  |  0 | x  |x   |
 
+```
 c)
+sw $t0, 0($t1)
+sub $t0, $t3, $t2
+slt $t1, $t0, $t2
+```
 
 |CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PCWtriteCond   |   |  |   |   |   |   |   |
-|PCWrite|       |   |  |   |   |   |   |   |
-|MemWrite|      |   |  |   |   |   |   |   |
-|MemRead|       |   |  |   |   |   |   |   |
-|MemToReg|      |   |  |   |   |   |   |   |
-|IRWrite|       |   |  |   |   |   |   |   |
-|ALUSelA|       |   |  |   |   |   |   |   |
-|ALUSelB|       |   |  |   |   |   |   |   |
-|ALUOp|         |   |  |   |   |   |   |   |
-|IorD|          |   |  |   |   |   |   |   |
-|PCSource|      |   |  |   |   |   |   |   |
-|REGWrite|      |   |  |   |   |   |   |   |
-|RegDst|        |   |  |   |   |   |   |   |
+|PCWtriteCond|  | x    | 0 |   |   |   |   |   |    |
+|PCWrite|       | 1    | 0 |   |   |   |   |   |    |
+|MemWrite|      | 0    | 0 |   |   |   |   |   |    |
+|MemRead|       | 1    | 0 |   |   |   |   |   |    |
+|MemToReg|      | x    | x |   |   |   |   |   |    |
+|IRWrite|       | 1    | 0 |   |   |   |   |   |    |
+|ALUSelA|       | 0    | 0 |   |   |   |   |   |    |
+|ALUSelB|       | 01   |11 |   |   |   |   |   |    |
+|ALUOp|         | 00   |00 |   |   |   |   |   |    |
+|IorD|          | 0    |x  |   |   |   |   |   |    |
+|PCSource|      | 00   |xx |   |   |   |   |   |    |
+|REGWrite|      | 0    |0  |   |   |   |   |   |    |
+|RegDst|        | x    |x  |   |   |   |   |   |    |
 
 
 ### 134. Para as mesmas sequências de instruções apresentadas nos dois exercícios anteriores, preencha, na
