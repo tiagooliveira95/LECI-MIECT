@@ -1749,14 +1749,70 @@ Setup time do Program Counter: 1ns*
 
 
 
-
+### 127. Admita que na versão single cycle do CPU MIPS dado nas aulas, pretendíamos acrescentar o suporte das instruções jal address e jr $reg. Esquematize as alterações que teria de introduzir no datapath para permitir a execução destas instruções (use o esquema da próxima página). 
  
+## POR FAZER
+
+
+### 128. Admita que na versão single cycle do CPU MIPS, pretendíamos executar a instrução slt $3,$5,$9. Descreva por palavras suas como é esta instrução realizada ao nível da ALU, e qual o conteúdo final no registo $3, admitindo que $5=0xFF120008 e $9=0x00C00FFF.
+
+|Instrução|Opcode|ALUOp[1..0]|Branch|RegDst|ALUSrc|MemtoReg|RegWrite|MemRead|MemWRite|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|slt |001010| 11 |  0  |  0  |  1  |  0   |  1   |  0   |  0   |
+
+    A ALU vai subtrair o valor em $5 com o valor em $9 se o MSB for 0 (positivo) escreve 0 no resgisto de distion, caso contrário escreve 1.
+    
+    0xFF120008 => 1111 1111 0001 0010 0000 0000 0000 1000
+    0x00C00FFF => 0000 0000 1100 0000 1111 1111 1111 1111
+    
+     11111111000100100000000000001000
+    +11111111001111110000000000000001
+    ---------------------------------                              
+    111111110010100010000000000001001
+    
+    $3 = 00000001
+         
+### 129. Suponha que os tempos de atraso introduzidos pelos vários elementos funcionais de um datapath single-cycle são os seguintes:
+
+
+|||
+|:---|:---|
+|Acesso à memória para leitura (tRM): 12ns           |Acesso à memória para preparar escrita (tWM): 4ns|
+|Acesso ao register file para leitura (tRRF): 5ns   | Acesso ao register file para preparar escrita (tWRF): 2ns|
+|Operação da ALU (tALU): 7ns                         |Operação de um somador (tADD): 2ns|
+|Multiplexers e restantes elementos funcionais: 0ns | Unidade de controlo (tCNTL): 2ns|
+|Tempo de setup do PC (tstPC): 1ns||
+
+1) Determine o tempo mínimo para execução das instruções tipo R, LW, SW, BEQ e J. 
+
+        R: tEXEC = tRM + max( tRRF, tCNTL ) + tALU + tWRF <=>
+           tEXEC = 12 + max( 5, 2 ) + 7 + 2 = 26ns       
+        
+        LW: tEXEC = tRM + max( tRRF, tCNTL, tSE ) + tALU + tRM + tWRF <=>
+            tEXEC = 12 + max( 5, 2, 0 ) + 7 + 12 + 2 = 38ns
+        
+        SW: tEXEC = tRM + max( tRRF, tCNTL, tSE ) + tALU + tWM
+            tEXEC = 12 + max( 5, 2, 0 ) + 7 + 4 = 28ns
+        
+        BEQ: tEXEC = tRM + max( max( tRRF , tCNTL ) + tALU, tSE + tSL2 + tADD )+ tstPC
+             tEXEC = 12 + max( max( 5 , 2 ) + 7, 0 + 0 + 2 ) + 1 = 25ns
+        
+        J: tEXEC = tRM + max(tCNTL, tSL2) + tstPC
+           tEXEC = 12 + max(2, 0) + 1 = 15ns
+
+
+2) Calcule a máxima frequência do relógio que garanta uma correta execução de todas as instruções.
+
+        Instrução maior é LW com 38ns = 26MHz
 
 
 
 
+### 130. Suponha agora que dispunha de uma tecnologia que que o período de relógio podia ser adaptado instrução a instrução, em função da instrução em curso. Determine qual o ganho de eficiência que poderia obter com esta tecnologia face a uma tecnologia em que a frequência do relógio é a que obteve na questão anterior (admita os mesmos atrasos de propagação). Para isso, assuma que o programa de benchmarking tem a seguinte distribuição de ocorrência de instruções: 
 
 
+
+         
 ### 143 Considere a instrução beq $5 $6,L2 armazenada no endereço 0x0040002C. Admita que $5=0x1001009C e $6=0x100100B0. Identifique os registos representados na figura seguinte e obtenha o código máquina, em hexadecimal, da instrução indicada.
 
 ## por fazer incompleto
