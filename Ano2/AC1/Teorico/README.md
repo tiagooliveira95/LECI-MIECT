@@ -2006,7 +2006,40 @@ loop:                        # do {
        SW: 4 ciclos
        
        5+4+5 + 5+4+4+4+4+3 + (5+4+5+4+4+3)*4 + 4+5 = 14 + 24 + 24*4 + 9 = 143 ciclos
+
+###  137. Repita o exercício anterior assumindo que o valor armazenado no endereço de memória 0x00000004 é 0x2C. 
+
+        Notas:
+        - Ciclo while corre 7 vezes
+        
+        Single-Cycle: 3 + 6 + (6 * 7) + 2 = 53 ciclos
+        Multi-Cycle: 5+4+5 + 5+4+4+4+4+3 + (5+4+5+4+4+3)*7 + 4+5 = 14 + 24 + 24*4 + 9 = 215 ciclos
+
+### 138. Descreva, sucintamente, as principais diferenças, ao nível estrutural, entre os datapath single-cycle e multi-cycle. 
+
+        O single-cycle executa uma instrução a cada ciclo clock, enquanto em multi-cycle uma instrução tem um número váriado de ciclos clock
+        podendo esta demorar vários ciclos.
+        
+
+### 139. Indique, para o caso de um datapath multi-cycle, quais as operações realizadas pela ALU no decurso dos dois primeiros ciclos de relógio de qualquer instrução. 
+
+    1 clock: 
+        - Faz o instruction fetch
          
+    2 clock:
+        - Atualiza o PC
+        - Calcula o endereço branch
+         
+
+
+140. Considere o diagrama temporal seguinte relativo à execução de uma sequência de três instruções, das quais apenas a segunda está completamente representada. Obtenha o código assembly desta sequência de três instruções. 
+
+         
+            
+
+
+
+
 ### 143 Considere a instrução beq $5 $6,L2 armazenada no endereço 0x0040002C. Admita que $5=0x1001009C e $6=0x100100B0. Identifique os registos representados na figura seguinte e obtenha o código máquina, em hexadecimal, da instrução indicada.
 
 ## por fazer incompleto
