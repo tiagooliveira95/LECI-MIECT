@@ -1646,8 +1646,111 @@ mtc1 $t0,$f8
 
         100,11011000000000000010110 x 2^0 <=>
         
-        1,00110110000000000000101xx x 2^2
+        Arredondado: 1,00110110000000000000110xx x 2^2
                       
+        
+
+
+### 120. Numa implementação single cycle da arquitetura MIPS, a frequência máxima de operação é de 2GHz (para os atrasos de propagação a seguir indicados). Determine o atraso máximo que pode ocorrer nas operações da ALU. Considere que, para o File Register e para as memórias, os tempos de escrita indicados são os tempos de preparação da operação antes de uma transição ativa do sinal de relógio. 
+
+*Memórias externas: leitura – 175ps, escrita – 120ps; 
+File register: leitura – 45ps, Escrita – 15ps;
+Unidade de Controlo: 10ps; 
+Somadores: 40ps; 
+Outros: 0ns; 
+Setup time do Program Counter: 5ps*
+
+        
+        
+        tEXEC = tRM + max( tRRF, tCNTL, tSE ) + tALU + tRM + tWRF
+ 
+        tEXEC = 175ps + max( 45ps, 10, 0ns ) + tALU + 175 + 15ps
+        
+        tALU = 90ps
+
+
+
+### 121. Determine, numa implementação single-cycle da arquitetura MIPS, a frequência máxima de operação imposta pela instrução “sw”, assumindo os atrasos a seguir indicados: 
+
+
+*Memórias externas: leitura – 12ns, escrita – 4ns; 
+File register: leitura – 4ns, Escrita – 1ns;
+Unidade de Controlo: 1ns; 
+ALU (qualquer operação): 5ns; 
+Somadores: 2ns; 
+Outros: 0ns.
+Setup time do Program Counter: 1ns*
+
+
+        tEXEC = tRM + max( tRRF, tCNTL, tSE ) + tALU + tWM
+        
+        tEXEC = 12ps + max(4ns,1ns,0ns) + 5ns + 4ns = 25ps
+
+
+### 122. Determine, numa implementação single-cycle da arquitetura MIPS, a frequência máxima de operação imposta pela instrução "beq", assumindo os atrasos a seguir indicados, é: 
+
+*Memórias externas: leitura – 11ns, escrita – 3ns;
+File register: leitura – 3ns, Escrita – 1ns;
+Unidade de Controlo: 1ns;
+ALU (qualquer operação): 5ns;
+Somadores: 2ns; 
+Outros: 0ns.
+Setup time do Program Counter: 1ns*
+
+
+    tEXEC = tRM + max( max( tRRF , tCNTL ) + tALU, tSE + tSL2 + tADD ) + tstPC
+
+    tEXEC = 11ns + max( max(3ns , 1ns) + 5ns, 0ns + 0ns + 2ns ) + 1ns
+    tEXEC = 11 + 8 + 1 = 20ns
+
+### 123. Determine, numa implementação single cycle da arquitetura MIPS, o período mínimo do sinal de relógio imposto pelas instruções tipo R, assumindo os atrasos a seguir indicados, é:
+
+*Memórias externas: leitura – 12ns, escrita – 4ns;
+File register: leitura – 3ns, Escrita – 1ns;
+Unidade de Controlo: 1ns; 
+ALU (qualquer operação): 6ns; 
+Somadores: 2ns; Outros: 0ns.
+Setup time do Program Counter: 1ns*
+
+        tEXEC = tRM + max( tRRF, tCNTL ) + tALU + tWRF
+        
+        tEXEC = 12ns + max( 3ns, 1ns ) + 6ns + 1
+        tEXEC = 12 + 3 + 6 + 1 = 22ns
+        
+        
+### 124. Identifique os principais aspetos que caracterizem uma arquitetura single cycle, quer do ponto de vista do modelo da arquitetura, como das características da sua unidade de controlo. 
+
+        Em single cycle:
+        
+        1. A unidade de controlo é uma maquina combinátoria.
+        2. Cada instrução demora 1 ciclo de clock
+        3. A memoria esta organizada em Von Neumann, existe apenas 1 memoria para instruções e data
+        
+        
+### 125. Numa implementação single cycle da arquitetura MIPS, no decurso da execução de uma qualquer instrução, a que corresponde o valor presente na saída do registo PC?
+
+        O valor PC corresponde ao endereço da instrução que esta neste momento a ser executada
+
+
+### 126. Preencha a tabela seguinte, para as instruções indicadas, com os valores presentes à saída da unidade de controlo principal da arquitetura single cycle dada nas aulas.
+
+
+
+|Instrução|Opcode|ALUOp[1..0]|Branch|RegDst|ALUSrc|MemtoReg|RegWrite|MemRead|MemWRite|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|lw          |100011| 00 |  0  |  0  |  1  |  1   |  1   |  1   |  0   |
+|sw          |101011| 00 |  0  |  x  |  1  |  x   |  0   |  0   |  1   |
+|addi        |001000| 00 |  0  |  0  |  1  |  0   |  1   |  0   |  0   |
+|slti        |001010| 11 |  0  |  0  |  1  |  0   |  1   |  0   |  0   |
+|beq         |000100| 01 |  1  |  x  |  0  |  x   |  0   |  0   |  0   |
+|R - Format  |000000| 10 |  0  |  1  |  0  |  0   |  1   |  0   |  0   |
+
+
+
+
+
+
+ 
 
 
 
