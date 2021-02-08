@@ -2034,26 +2034,133 @@ loop:                        # do {
 
 ### 140. Considere o diagrama temporal seguinte relativo à execução de uma sequência de três instruções, das quais apenas a segunda está completamente representada. Obtenha o código assembly desta sequência de três instruções. 
 
-         
         100011.01110.00101.0000000000100011 LW
         000100.01100.01101.1111111111111100 BEQ
-        101010.01101.11011.1100000000101010 SLT
+        101010.01101.11011.11000.00000.101010 SLT
+        
+        lw  $14,35($5)
+        beq $11,$12,0xFFFFFFC
+        slt $24,$13,$27
+        
+        
+### 142. Considere o datapath multi-cycle e a unidade de controlo fornecidos na figura acima. Admita que os valores indicados no datapath fornecido correspondem à “fotografia” tirada no decurso da execução de uma instrução armazenada no endereço 0x8040000C. Tendo em conta todos os sinais, identifique, em assembly, a instrução que está em execução e a respetiva fase.
 
-
+        0x295FFFE <=> ....001010010101111111111111111110
+        
+        0x295FFFE << 2 = 0xA97FFF8
+        
+        j 0xA97FFF8
 
 
 ### 143 Considere a instrução beq $5 $6,L2 armazenada no endereço 0x0040002C. Admita que $5=0x1001009C e $6=0x100100B0. Identifique os registos representados na figura seguinte e obtenha o código máquina, em hexadecimal, da instrução indicada.
 
-## por fazer incompleto
+        Linha 1 é o registo $6
+        Linha 2 é o PC
+        Linha 4 ALUOut
         
-        offset de 0x14
+        offset: 0x00400044 - 0x00400030 =  0x14
         
         0x14/4 = 5
         
         0001 0000 1010 0110 0000 0000 0101 => 0x10A60005
 
+ 
+ 
+ ### 144. Considere o datapath e a unidade de controlo fornecidos na figura acima (com ligeiras alterações relativamente à versão das aulas teórico-práticas). Analise cuidadosamente as alterações introduzidas e identifique quais são as novas instruções que este datapath permite executar quando comparado com a versão fornecida nas aulas TP. 
+ 
+        Instruções jr,jal,sb,bne
+ 
+### 145. Descreva, justificando, as principais características da unidade de controlo numa implementação pipelined da arquitetura MIPS, incluindo a sua natureza (combinatória ou síncrona) os sinais que constituem as variáveis independentes de entrada e as suas saídas. 
+
+        Na implementação pipelined, a unidade de controlo é combinatória, os sinais avançam no pipelina a dace ciclo do clock, tal como os dados.
         
-    
+        
+### 146. Indique o que determina a máxima frequência de relógio de uma implementação pipelined da arquitetura MIPS com base nos principais elementos operativos que a constituem.         
+ 
+        O que determina a frequencia máxima é definida pela componente mais lenta.
+        
+        
+        
+### 147. Calcule, numa implementação pipelined da arquitetura MIPS em que a operação de Write Back é executada a meio do ciclo de relógio, a frequência máxima de operação, assumindo que os elementos operativos apresentam os seguintes atrasos de propagação:
+
+*Memórias externas: Leitura: 10 ns, Escrita: – 8ns; 
+File register: Leitura – 2ns, Escrita – 2ns;
+Unidade de Controlo: 2ns; 
+ALU (qualquer operação): 6ns; 
+Somadores: 4ns; 
+Outros: 0ns.*
+
+        A operação que demora mais tempo é a de leitura da memória externa, logo 1/10 = 100MHz
+
+
+*Memórias externas: Leitura: 5 ns, Escrita: – 7ns; 
+File register: Leitura – 1ns, Escrita – 1ns;
+Unidade de Controlo: 1ns; 
+ALU (qualquer operação): 8ns; 
+Somadores: 1ns; 
+Outros: 0ns.*
+
+        A operação que demora mais tempo é a ALU, logo 1/8 = 125MHz
+
+*Memórias externas: Leitura: 8 ns, Escrita: – 10ns; 
+File register: Leitura – 2ns, Escrita – 4ns;
+Unidade de Controlo: 2ns; 
+ALU (qualquer operação): 6ns; 
+Somadores: 2ns; 
+Outros: 0ns.*
+
+        A operação que demora mais tempo é a de escrita na memória, logo 1/10 = 100MHz
+
+
+
+### 148. Identifique os principais tipos de hazard que podem existir numa implementação pipelined de um processador. 
+
+        Hazard de dados
+        Hazard de controlo
+        Hazard de Estrutural
+
+
+### 149. Numa arquitetura pipelined, como se designa a técnica que permite utilizar como operando de uma instrução um resultado produzido por outra instrução que se encontra numa etapa mais avançada do mesmo.
+
+        Forwarding
+        
+        
+### 150. Explique por palavras suas em que circunstâncias pode ocorrer um hazard de dados numa implementação pipelined de um processador.
+
+        Um hazard ocorre quando uma instrução mais atrás no pipeline precisa de um resultado que uma instrução mais a frente do pipeline ainda não acabou de executar.
+        
+        
+### 151. A existência de hazards de controlo pode ser resolvida por diferentes técnicas dependendo da arquitetura em causa. Identifique a técnica usada para o efeito numa arquitetura MIPS com datapath pipelined, como se designa essa técnica e em que consiste. 
+
+        Podemos fazer um stall, que consiste em atrazar a execução de uma dada instrução, ou podemos fazer fowarding que consiste em enviar informação de uma
+        instrução mais à frente para uma instrução mais atras no pipeline
+        
+### 152. Em certas circunstâncias relacionadas com hazards de dados, não é possível resolver o problema sem recorrer a uma paragem parcial do pipeline, através do atraso de um ou mais ciclos de relógio no início da execução de uma instrução. Indique como se designa essa técnica e em que consiste ao nível do controlo do pipeline.
+
+        Consiste em fazer um stall a instrução e aos seus dados e gerar uma bolha nas fazes seguintes (NOP)
+
+### 153. Determine o número de ciclos de relógio que o trecho de código seguinte demora a executar num pipeline de 5 fases, desde o instante em que é feito o Instruction Fetch da 1ª instrução, até à conclusão da última. 
+
+```
+add     $1,$2,$3
+lw      $2,0($4)
+sub     $3,$4,$3
+addi    $4,$4,4
+and     $5,$1,$5    #"and" em ID, "add" já terminou
+sw      $2,0($1)    #"sw" em ID, "add" e "lw" já terminaram
+```
+
+        5 + (6-1) = 10 ciclos
+
+
+### 154. Num datapath single-cycle o código da pergunta anterior demoraria 6 ciclos de relógio a executar. Por
+que razão é a execução no datapath pipelined mais rápida? 
+
+        A execução é mais rapida porque a frequencia a que o pipeline pode operar é superior a frequecia que o single-cycle pode operar.
+
+### 155. Quantos ciclos de relógio demora a execução do mesmo código num datapath multi-cycle? 
+
+        4+5+4+4+4+4 = 25 ciclos
 
 ### 156. Admita uma implementação pipelined da arquitetura MIPS com unidade de forwarding para EX e ID. Identifique, para as seguintes sequências de instruções, de onde e para onde deve ser executado o forwarding para que não seja necessário realizar qualquer stall ao pipeline:
 
@@ -2069,6 +2176,7 @@ b.
 
 c.
     lw $t0,0($t2)
+    sll $t2,$t2,2 
     sw $t3,0($t0)
 
 d.
@@ -2076,10 +2184,17 @@ d.
     xori $t0,$t4,0x20
     sw $t3,($t0)
 ```
-    a)
-    b)
-    c) Sem solução
-    d)
+    a) 1 forwading de BEQ em EX para ID da add
+    b) 1 forwading da operação sub para addi
+    c) 1 forwading da instrução LW para SW
+    d) 1 forwading da instrução XORI para SW
+
+
+### 157. Descreva, por palavras suas, a função da unidade de forwarding de uma implementação pipelined da
+arquitetura MIPS. 
+
+
+     A unidade forwarding analiza se existe necessidade de fazer forwarding vendo os dados RS e RT em EX e MEM
 
 
 ### 158 Admita o seguinte trecho de código, a executar sobre uma implementação pipelined da arquitetura MIPS com delayed branches, e unidade de forwarding de MEM e WB para o estágio EX.
@@ -2096,8 +2211,40 @@ d.
         
 
 3. Resolva o problema anterior supondo que a arquitetura suporta forwarding de MEM para ID. 
-   
+    
+        Trocando a ordem de ORI e SUB
         
+        
+       
+### 159. Para o trecho de código seguinte identifique todas as situações de hazard de dados e de controlo que ocorrem na execução num pipeline de 5 fases, com branches resolvidos em ID. 
+
+```
+main:   lw      $1,0($0)
+        add     $4,$0,$0
+        lw      $2,4($0)
+loop:   lw      $3,0($1)
+        add     $4,$4,$3
+        sw      $4,36($1)
+        addiu   $1,$1,4
+        sltu    $5,$1,$2
+        bne     $5,$0,loop
+        sw      $4,8($0)
+        lw      $1,12($0) 
+```
+
+        Ocorrem hazzards nas linhas 5,6,8,9
+
+### 160. Apresente o modo de resolução das situações de hazard de dados do código da questão 159, admitindo que o pipeline não implementa forwarding
+
+## REVER
+        2 stalls para a linha 5
+        1 stall na linha 8
+        1 stall na linha 9
+
+### 161. Calcule o número de ciclos de relógio que o programa anterior demora a executar num pipeline de 5 fases, sem forwarding, com branches resolvidos em ID e delayed branch, desde o IF da 1ª instrução até à conclusão da última instrução. 
+
+
+
 
 
 
