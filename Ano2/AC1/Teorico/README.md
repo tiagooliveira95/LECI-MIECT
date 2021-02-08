@@ -2032,10 +2032,12 @@ loop:                        # do {
          
 
 
-140. Considere o diagrama temporal seguinte relativo à execução de uma sequência de três instruções, das quais apenas a segunda está completamente representada. Obtenha o código assembly desta sequência de três instruções. 
+### 140. Considere o diagrama temporal seguinte relativo à execução de uma sequência de três instruções, das quais apenas a segunda está completamente representada. Obtenha o código assembly desta sequência de três instruções. 
 
          
-            
+        100011.01110.00101.0000000000100011 LW
+        000100.01100.01101.1111111111111100 BEQ
+        101010.01101.11011.1100000000101010 SLT
 
 
 
