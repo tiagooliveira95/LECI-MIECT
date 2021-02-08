@@ -1838,45 +1838,24 @@ beq $t0, $t1, next
 
 |CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PCWtriteCond|  | 0  | x | 0 | 0 | 0 | x | 0  |
-|PCWrite|       | 0  | 1 | 0 | 0 | 0 | 1 | 0  |
-|MemWrite|      | 0  | 0 | 0 | 0 | 1 | 0 | 0  |
-|MemRead|       | 0  | 1 | 0 | 0 | 0 | 1 | 0  |
-|MemToReg|      | 0  | x | x | x | x | x | x  |
-|IRWrite|       | 0  | 1 | 0 | 0 | 0 | 1 | 0  |
-|ALUSelA|       | x  | 0 | 0 | 1 | x | 0 | 0  |
-|ALUSelB|       | x  | 01|11 | 10| xx| 01|11  |
-|ALUOp|         | xx | 00|00 |00 | xx|00 |00  |
-|IorD|          | 0  | 0 |x  |x  | 1 | 0 |x   |
-|PCSource|      | xx | 00|xx |xx | xx| 00|xx  |
-|REGWrite|      | 1  | 0 |0  |0  | 0 | 0 |0   |
-|RegDst|        | 1  | x |x  |x  | x | x |x   |
+|PCWtriteCond| 0  | x | 0 | 0 | 0 | x | 0  | 1  |
+|PCWrite|      0  | 1 | 0 | 0 | 0 | 1 | 0  | x  |
+|MemWrite|     0  | 0 | 0 | 0 | 1 | 0 | 0  | 0  |
+|MemRead|      0  | 1 | 0 | 0 | 0 | 1 | 0  | 0  |
+|MemToReg|     0  | x | x | x | x | x | x  | x  |
+|IRWrite|      0  | 1 | 0 | 0 | 0 | 1 | 0  | 0  |
+|ALUSelA|      x  | 0 | 0 | 1 | x | 0 | 0  | x  |
+|ALUSelB|      x  | 01|11 | 10| xx| 01|11  | xx |
+|ALUOp|        xx | 00|00 |00 | xx|00 |00  | xx |
+|IorD|         0  | 0 |x  |x  | 1 | 0 |x   | x  |
+|PCSource|     xx | 00|xx |xx | xx| 00|xx  | 01 |
+|REGWrite|     1  | 0 |0  |0  | 0 | 0 |0   |  0 |
+|RegDst|       1  | x |x  |x  | x | x |x   | x  |
 
 
 
 
 ### 133. Repita o exercício anterior para as seguintes sequências de instrução:
-
-
-|CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PCWtriteCond   |  |   |  |   |   |   |   |   |
-|PCWrite|       |   |  |   |   |   |   |   |
-|MemWrite|      |   |  |   |   |   |   |   |
-|MemRead|       |   |  |   |   |   |   |   |
-|MemToReg|      |   |  |   |   |   |   |   |
-|IRWrite|       |   |  |   |   |   |   |   |
-|ALUSelA|       |   |  |   |   |   |   |   |
-|ALUSelB|       |   |  |   |   |   |   |   |
-|ALUOp|         |   |  |   |   |   |   |   |
-|IorD|          |   |  |   |   |   |   |   |
-|PCSource|      |   |  |   |   |   |   |   |
-|REGWrite|      |   |  |   |   |   |   |   |
-|RegDst|        |   |  |   |   |   |   |   |
-
-
-### 134. Para as mesmas sequências de instruções apresentadas nos dois exercícios anteriores, preencha, na
-forma de um diagrama temporal, a tabela seguinte. 
 
 ```
 a)
@@ -1896,7 +1875,63 @@ slt $t1, $t0, $t2
 
 ```
 
+1. a)
 
+|CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|PCWtriteCond | 0 | x  | 0 | 0 | 0 | x  | 0 |
+|PCWrite|       0 | 1  | 0 | 0 | 0 | 1  | 0 |
+|MemWrite|     0 | 0  | 0 | 0 | 0 | 0  | 0 |
+|MemRead|      0 | 1  | 0 | 0 | 0 | 1  | 0 |
+|MemToReg|     0 | x  | x | x | 0 | x  | x |
+|IRWrite|      0 | 1  | 0 | 0 | 0 | 1  | 0 |
+|ALUSelA|      x | 0  | 0 | 1 | x | 0  | 0 |
+|ALUSelB|     xx | 01 |11 | 10| xx| 01 |11 |
+|ALUOp|       xx | 00 |00 | 00| xx| 00 |00 |
+|IorD|        x  | 0  |x  | x | x | 0  |x  |
+|PCSource|    xx | 00 |xx | xx| xx| 00 |xx |
+|REGWrite|    1  | 0  |0  | 0 | 1 | 0  |0  |
+|RegDst|      1  | x  |x  | x | 0 | x  |x  |
+
+2. b)
+
+|CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|PCWtriteCond|    |  |   |   |   |   |   |
+|PCWrite|         |  |   |   |   |   |   |
+|MemWrite|        |  |   |   |   |   |   |
+|MemRead|         |  |   |   |   |   |   |
+|MemToReg|        |  |   |   |   |   |   |
+|IRWrite|         |  |   |   |   |   |   |
+|ALUSelA|         |  |   |   |   |   |   |
+|ALUSelB|         |  |   |   |   |   |   |
+|ALUOp|           |  |   |   |   |   |   |
+|IorD|            |  |   |   |   |   |   |
+|PCSource|        |  |   |   |   |   |   |
+|REGWrite|        |  |   |   |   |   |   |
+|RegDst|          |  |   |   |   |   |   |
+
+3. c)
+
+|CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|PCWtriteCond   |   |  |   |   |   |   |   |
+|PCWrite|       |   |  |   |   |   |   |   |
+|MemWrite|      |   |  |   |   |   |   |   |
+|MemRead|       |   |  |   |   |   |   |   |
+|MemToReg|      |   |  |   |   |   |   |   |
+|IRWrite|       |   |  |   |   |   |   |   |
+|ALUSelA|       |   |  |   |   |   |   |   |
+|ALUSelB|       |   |  |   |   |   |   |   |
+|ALUOp|         |   |  |   |   |   |   |   |
+|IorD|          |   |  |   |   |   |   |   |
+|PCSource|      |   |  |   |   |   |   |   |
+|REGWrite|      |   |  |   |   |   |   |   |
+|RegDst|        |   |  |   |   |   |   |   |
+
+
+### 134. Para as mesmas sequências de instruções apresentadas nos dois exercícios anteriores, preencha, na
+forma de um diagrama temporal, a tabela seguinte. 
 
 |CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
