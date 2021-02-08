@@ -1810,6 +1810,133 @@ Setup time do Program Counter: 1ns*
 
 ### 130. Suponha agora que dispunha de uma tecnologia que que o período de relógio podia ser adaptado instrução a instrução, em função da instrução em curso. Determine qual o ganho de eficiência que poderia obter com esta tecnologia face a uma tecnologia em que a frequência do relógio é a que obteve na questão anterior (admita os mesmos atrasos de propagação). Para isso, assuma que o programa de benchmarking tem a seguinte distribuição de ocorrência de instruções: 
 
+*15% de lw, 15% de sw, 40% de tipo R, 20% de branches e 10% de jumps*
+
+##POR FAZER
+
+
+
+### 131. Ainda para os tempos utilizados nas duas questões anteriores, determine qual a máxima frequência de trabalho no caso de o datapath ser do tipo multi-cycle. 
+
+    Para a frequencia máxima de um multi-cycle temos de considerar o maior atraso que corresponde ao acesso de memória com 12ns,
+    logo a frequencia máxima do multi-cycle é 83MHz
+
+
+
+
+
+### 132. Considere o datapath multi-cycle presente na figura anterior e a respetiva unidade de controlo. Preencha a tabela abaixo considerando que a coluna da esquerda corresponde ao último ciclo de execução de uma instrução, e que a sequencia em causa é a seguinte: 
+
+
+
+```
+add $t0, $t2, $t1
+sw $t0, 0($t3)
+beq $t0, $t1, next
+```
+
+
+|CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|PCWtriteCond   |  |   |  |   |   |   |   |   |
+|PCWrite|       |   |  |   |   |   |   |   |
+|MemWrite|      |   |  |   |   |   |   |   |
+|MemRead|       |   |  |   |   |   |   |   |
+|MemToReg|      |   |  |   |   |   |   |   |
+|ITWrite|       |   |  |   |   |   |   |   |
+|ALUSelA|       |   |  |   |   |   |   |   |
+|ALUSelB|       |   |  |   |   |   |   |   |
+|ALUOp|         |   |  |   |   |   |   |   |
+|IorD|          |   |  |   |   |   |   |   |
+|PCSource|      |   |  |   |   |   |   |   |
+|REGWrite|      |   |  |   |   |   |   |   |
+|RegDst|        |   |  |   |   |   |   |   |
+
+
+
+
+### 133. Repita o exercício anterior para as seguintes sequências de instrução:
+
+
+|CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|PCWtriteCond   |  |   |  |   |   |   |   |   |
+|PCWrite|       |   |  |   |   |   |   |   |
+|MemWrite|      |   |  |   |   |   |   |   |
+|MemRead|       |   |  |   |   |   |   |   |
+|MemToReg|      |   |  |   |   |   |   |   |
+|ITWrite|       |   |  |   |   |   |   |   |
+|ALUSelA|       |   |  |   |   |   |   |   |
+|ALUSelB|       |   |  |   |   |   |   |   |
+|ALUOp|         |   |  |   |   |   |   |   |
+|IorD|          |   |  |   |   |   |   |   |
+|PCSource|      |   |  |   |   |   |   |   |
+|REGWrite|      |   |  |   |   |   |   |   |
+|RegDst|        |   |  |   |   |   |   |   |
+
+
+### 134. Para as mesmas sequências de instruções apresentadas nos dois exercícios anteriores, preencha, na
+forma de um diagrama temporal, a tabela seguinte. 
+
+```
+a)
+or $t0, $0, $t1
+addi $t0, $t1, 0x20
+j label
+
+b)
+lw $s0, 0($t1)
+lw $s1, 4($t1)
+add $t2, $s1, $s2
+
+c)
+sw $t0, 0($t1)
+sub $t0, $t3, $t2
+slt $t1, $t0, $t2
+
+```
+
+
+
+|CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|PCWtriteCond   |  |   |  |   |   |   |   |   |
+|PCWrite|       |   |  |   |   |   |   |   |
+|MemWrite|      |   |  |   |   |   |   |   |
+|MemRead|       |   |  |   |   |   |   |   |
+|MemToReg|      |   |  |   |   |   |   |   |
+|ITWrite|       |   |  |   |   |   |   |   |
+|ALUSelA|       |   |  |   |   |   |   |   |
+|ALUSelB|       |   |  |   |   |   |   |   |
+|ALUOp|         |   |  |   |   |   |   |   |
+|IorD|          |   |  |   |   |   |   |   |
+|PCSource|      |   |  |   |   |   |   |   |
+|REGWrite|      |   |  |   |   |   |   |   |
+|RegDst|        |   |  |   |   |   |   |   |
+
+
+### 135. Ainda para as mesmas sequências de instruções apresentadas nos três exercícios anteriores, preencha a tabela abaixo com os valores presentes à saída da ALU e dos elementos de estado indicados. Consulte a tabela da última página se necessário. Admita que, no início de cada sequência, o conteúdo dos registos relevantes é o seguinte: 
+
+*[$t0=0x000013FC],[$t1=0x10010000],[$t2=0x90FFFF64],[$t3=0x00000028] e
+que na memória [(0x10010000)=0x00000020] e [(0x10010004)=0x00000038]*
+
+
+|CLOCK| ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ | ⎍ |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|PCWtriteCond   |  |   |  |   |   |   |   |   |
+|PCWrite|       |   |  |   |   |   |   |   |
+|MemWrite|      |   |  |   |   |   |   |   |
+|MemRead|       |   |  |   |   |   |   |   |
+|MemToReg|      |   |  |   |   |   |   |   |
+|ITWrite|       |   |  |   |   |   |   |   |
+|ALUSelA|       |   |  |   |   |   |   |   |
+|ALUSelB|       |   |  |   |   |   |   |   |
+|ALUOp|         |   |  |   |   |   |   |   |
+|IorD|          |   |  |   |   |   |   |   |
+|PCSource|      |   |  |   |   |   |   |   |
+|REGWrite|      |   |  |   |   |   |   |   |
+|RegDst|        |   |  |   |   |   |   |   |
+
 
 
          
