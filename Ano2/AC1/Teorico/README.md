@@ -89,8 +89,7 @@
     I: [OPCODE (6)] [Rs (5)]  [Rt (5)]  [         Immediate(16)         ]    
     J: [OPCODE (6)] [                 word address (26)                 ]
     
-    
-
+   
 
 ### 18. Descreva pelas suas próprias palavras o conceito de ISA.
     O ISA é um conjunto de instruções suportadas pelo CPU.
@@ -798,8 +797,8 @@ comportamento pretendido**
     
     0x5A18F34C <=> 0101-10100001100011110011010011-00
      
-    Minimo = 0101-100000000000000000000000000-00 <=> 0xB0000000
-    Máximo = 0101-111111111111111111111111111-00 <=> 0xBFFFFFFC
+    Minimo = 0101-000000000000000000000000000-00 <=> 0x50000000
+    Máximo = 0101-111111111111111111111111111-00 <=> 0x5FFFFFFC
     
 
 ### 65. Qual é o menor e o maior endereço para onde uma instrução "beq", residente no endereço de memória 0x5A18F34C, pode saltar?
