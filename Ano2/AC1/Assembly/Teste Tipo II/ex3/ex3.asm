@@ -4,6 +4,7 @@ std:	.asciiz "Rei Eusebio"
 	.word 12345
 	.float 17.2
 	.byte 'F'
+	.align 2
 	.asciiz "Rainha Amalia"
 	.space 36
 	.word 23450 

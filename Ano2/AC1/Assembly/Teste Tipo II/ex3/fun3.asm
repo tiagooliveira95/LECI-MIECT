@@ -21,7 +21,7 @@ x:	.float 2.0
 #	num	4	4	52
 #	grade	4	4	56
 #	type	1	1	60
-#	student	60	4
+#	student	64	4
 
 fun3:		addiu	$sp,$sp,-4
 		sw	$s0,0($sp)
@@ -29,7 +29,7 @@ fun3:		addiu	$sp,$sp,-4
 		move	$t0,$a1
 		li	$t1,0			# i = 0
 for:		bge	$t1,$t0,endfor		# for(; i < n; i++){
-		mul	$t2,$t1,60		# i * 60
+		mul	$t2,$t1,64		# i * 60
 		addu	$t2,$t2,$s0
 		move	$a0,$t2
 		li	$v0,print_string
