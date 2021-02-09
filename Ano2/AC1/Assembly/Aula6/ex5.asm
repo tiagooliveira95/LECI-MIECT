@@ -38,7 +38,17 @@ while:	sll $t8, $t0, 2			# i * 4
 		lw $t8, 0($t8)			# &argv[i][0]
 		addu $t8, $t8, $t1		# &argv[i][k]						
 		lb $t8, 0($t8)			# argv[i][k]	
-		beq $t8, '\0' endwhile	#while(argv[i][k] != '\0'){
+		beq $t8, '\0' endwhile	#while(argv[i][k] != '\0'){ beq
+		
+		blt $15,$3,endwhile
+		ble $6,$9,endwhile
+		bgt $5,0xA3,endwhile
+		bge $10,0x57,endwhile
+		blt $19,0x39,endwhile
+ 		ble $23,0x16,endwhile
+ 		
+ 		
+ 		move $4,$15
 		
 		slti $t9,$t8,'a'			#  if(argv[i][k] >= 'a' && argv[i][k] <= 'z') lowercase++; else upercase++;){
 		beqz $t9,else0		#
