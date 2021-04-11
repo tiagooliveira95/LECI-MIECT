@@ -50,3 +50,32 @@ Circuito série
     - A medição da voltagem em diferentes pontos do circuito são sempre iguais.
 
  
+ # Potência
+ 
+ A potência em Watt designa-se por trabalho, W, por unidade de tempo, que é a taxa à qual a energia é fornecida por um elemento de circuito activo, ou a taxa em que a energia é dissipada por um elemento passivo.
+ 
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;1W&space;=&space;1Joule/s" title="\bg_white 1W = 1Joule/s" /> 
+ 
+ 
+A potência pode ser calculada a partir da seguinte formula
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;V*I" title="\bg_white V*I" />
+
+
+Num circuito existem elementos que fornecem e absorvem potência, a lei da conservação de energia garante que o total da potência fornecida deve ser igual a totalidade da potencia absorvida:
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;\sum_{i}P_{i}^{forecida}=\sum_{j}P_{j}^{absorvida}" title="\bg_white \sum_{i}P_{i}^{forecida}=\sum_{j}P_{j}^{absorvida}" />
+
+### Potência absorvida ou fonecida
+
+ 
+Adotando a Convenção de Sinal de Elemento Passivo (CSEP) que diz que a corrente entra no polo positivo, ao determinar o calor da tensão *V* e da corrente *I* é fácil determinar se o elemento fornece ou absorve potência.
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;P&space;=&space;V*I&space;>&space;0&space;\Rightarrow&space;\text{absorvida}" title="\bg_white P = V*I > 0 \Rightarrow \text{absorvida}" /> 
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;P&space;=&space;V*I&space;>&space;0&space;\Rightarrow&space;\text{fornecida}" title="\bg_white P = V*I > 0 \Rightarrow \text{fornecida}" />
+
+
+
+
+
+
