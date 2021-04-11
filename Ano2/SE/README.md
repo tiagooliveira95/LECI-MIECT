@@ -35,4 +35,18 @@ Resistência eléctrica
 Conductância
     
     A condutância ao contrário da resistência, é a facilidade que o material oferece a passagem da corrente, e é designada por mho ou Siemen (S)
+    
+    
+# Série e Paralelo
 
+Circuito série
+
+    - Num caminho série a corrente tem um único caminho.
+    - A medição da voltagem em diferentes pontos do circuito são diferentes.
+    
+ Circuito paralelo
+ 
+    - Existem múltiplos caminhos de corrente.
+    - A medição da voltagem em diferentes pontos do circuito são sempre iguais.
+
+ 
