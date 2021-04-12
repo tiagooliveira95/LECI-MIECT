@@ -111,5 +111,35 @@ A potência dissipada ou absorvida é dada por:
 
 <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;p&space;=&space;v*i&space;=&space;v\frac{v}{R}&space;\Rightarrow&space;p&space;=&space;\frac{v^2}{R}" title="\bg_white p = v*i = v\frac{v}{R} \Rightarrow p = \frac{v^2}{R}" />
 
+### Qual é o valor da resistência do filamento de uma lampada de 220v que consume 100W e a corrente no circuito ?
+
+    p = v^2/R <=> R v^2 / p
+    
+    R = 220^2 / 100 = 484 Ohms
+     
+    i = p/v = 100/220 = 455 mA
+    
+# Leis de Kirchhoff
+
+### O que é um Nó? 
+    
+    Um No é um ponto de ligação de dois ou mais elementos.
+
+### O que é um Nó essencial?
+
+    Um ponto de ligação de três ou mais elementos.
+ 
+### O que é um Ramo?
+    
+    Um Caminuo no circuito que liga dois nós
+    
+### O que é um Caminho fechado ou loop?
+
+    Qualquer caminho através do circuito que começa e termina no mesmo nó.
+    
+
+    
+    
+
 
 
