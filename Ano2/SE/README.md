@@ -75,7 +75,41 @@ Adotando a Convenção de Sinal de Elemento Passivo (CSEP) que diz que a corrent
 <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;P&space;=&space;V*I&space;>&space;0&space;\Rightarrow&space;\text{fornecida}" title="\bg_white P = V*I > 0 \Rightarrow \text{fornecida}" />
 
 
+# Lei de Ohm
 
+
+Todo o condutor linear tem uma razão constante entre a tensão *v* e a corrente *i* que o atravessa.
+
+A constante de proporcionalidade é a resisência *R*
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;\frac{v}{i}&space;=&space;R" title="\bg_black \frac{v}{i} = R" />
+
+A expressão dada pela Lei de Ohm é válida para uma resistência que respeite a CSEP
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;v&space;=&space;R*i" title="\bg_white v = R*i" />
+
+Caso não respeite a CSEP a formula seria
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;v&space;=&space;-R*i" title="\bg_white v = -R*i" />
+
+### Conductância
+
+A lei de Ohm também se aplica a conductância, e é medida em *mho* ou *Siemen* (S)
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;\frac{i}{v}&space;=&space;\frac{1}{R}&space;=&space;G" title="\bg_white \frac{i}{v} = \frac{1}{R} = G" />
+
+
+### Potencia dissipada numa resistência
+
+A potência dissipada ou absorvida é dada por:
+
+*Substituido a tensão*
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;p&space;=&space;v*i&space;=&space;(R*i)*i&space;\Rightarrow&space;&space;p&space;=&space;R*i^2" title="\bg_white p = v*i = (R*i)*i \Rightarrow p = R*i^2" />
+
+*Substituindo a potência*
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;p&space;=&space;v*i&space;=&space;v\frac{v}{R}&space;\Rightarrow&space;p&space;=&space;\frac{v^2}{R}" title="\bg_white p = v*i = v\frac{v}{R} \Rightarrow p = \frac{v^2}{R}" />
 
 
 
