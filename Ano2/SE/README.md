@@ -140,6 +140,41 @@ A potência dissipada ou absorvida é dada por:
 
     
     
+# Combinação de resistência
+
+## Em Série
+
+Num circuito podemos substituir uma serie de resistências por uma equivalente
+
+![p1](https://user-images.githubusercontent.com/16312619/114574896-90d44500-9c71-11eb-9ea2-fc4fc5b6608a.PNG)
 
 
+### Como se calcula a resistência equivalente?  
 
+    A resistência equivalente é dada pela soma de todas as resistências no circuito
+
+## Em Paralelo
+
+![p2](https://user-images.githubusercontent.com/16312619/114575325-f7596300-9c71-11eb-8e79-41587c075bd1.PNG)
+
+
+### Como se calcula a resistência equivalente?  
+
+    Quando N=2 a resistência equivalente é dada pelo produto das resistências sobre a soma das resistencias, quando N > 2 a resistência equivalente é obtida pela soma do inverso de todas as resistências
+
+## Série vs Paralelo
+
+![p3](https://user-images.githubusercontent.com/16312619/114575836-7babe600-9c72-11eb-84b4-936724d84689.PNG)
+
+    As resistências R1 e R2 estão em série, as R3 e R4 estão em paralelo.
+    
+    R1, R2 e R3 não estão em série pois existe uma derivação entre R2 e R3, assim a corrente que passa em R2 pode não ser igual a que passa em R3, logo não podemos garantir que o as resistências estão em série.
+
+
+## Divisor de tensão
+
+![p4](https://user-images.githubusercontent.com/16312619/114577302-cb3ee180-9c73-11eb-8e3d-def7372a5aa9.PNG)
+
+A tensão numa determinada resistência R é dada pela expressão
+
+<img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;Vj&space;=&space;\frac{Rj}{R1&plus;R2&plus;...&plus;Rn}*Vs" title="\bg_white Vj = \frac{Rj}{R1+R2+...+Rn}*Vs" />
