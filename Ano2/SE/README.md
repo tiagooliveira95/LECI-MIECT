@@ -178,3 +178,9 @@ Num circuito podemos substituir uma serie de resistências por uma equivalente
 A tensão numa determinada resistência R é dada pela expressão
 
 <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\bg_white&space;Vj&space;=&space;\frac{Rj}{R1&plus;R2&plus;...&plus;Rn}*Vs" title="\bg_white Vj = \frac{Rj}{R1+R2+...+Rn}*Vs" />
+
+# Análise de Malhas
+
+### O que é uma malha?
+
+    Uma malha define-se por um caminho fechado ou loops que não contenham outros loops dentro deles
