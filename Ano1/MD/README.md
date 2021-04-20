@@ -154,15 +154,16 @@ Para interpretas as fórmulas, começamos por associar a cada variável um calor
 
 - interpretando as variáveis p -> 0 e q -> 0
 
-|--|--|--|--|
+
 p|q|(p ∨ q)|(p ∨ q) ⇒ q
+|--|--|--|--|
 0|0|0|1
 
 
 - interpretando as variáveis p -> 1 e q -> 0
 
-|--|--|--|--|
 p|q|(p ∨ q)|(p ∨ q) ⇒ q
+|--|--|--|--|
 1|0|1|0
 
 # 4. Tautologias
