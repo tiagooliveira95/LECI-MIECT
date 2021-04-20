@@ -167,3 +167,22 @@ p|q|(p ∨ q)|(p ∨ q) ⇒ q
 1|0|1|0
 
 # 4. Tautologias
+
+- Uma fórmula diz-se tautologia (ou fórmula válida) quando tem valor lógico 1 para cada interpretação
+- Uma fórmula diz-se conssistente quando tem valor lógico 1 para alguma interpretação
+
+## Exemplo
+
+### Verificar se (p ∧ q) ⇒ q
+
+Esta formula tem 2 variaveis logo a tabela de verdade vai ter 4 linhas
+    
+p|q|(p ∧ q)|(p ∧ q) ⇒ q
+|--|--|--|--|
+0|0|0|1
+0|1|0|1
+1|0|0|1
+1|1|1|1
+
+
+
