@@ -119,14 +119,14 @@ Para interpretas as fórmulas, começamos por associar a cada variável um calor
 1|0
 
 φ |γ|φ ∨ φ
-|---|---|---|
+|---|---|:---:|
 0 | 0 |0
 0 | 1 |1
 1 | 0 |1
 1 | 1 |1
 
 φ |γ|φ ∧ φ
-|---|---|---|
+|---|---|:---:|
 0 | 0 |0
 0 | 1 |0
 1 | 0 |0
@@ -134,7 +134,7 @@ Para interpretas as fórmulas, começamos por associar a cada variável um calor
 
 
 φ |γ|φ ⇒ φ
-|---|---|---|
+|---|---|:---:|
 0 | 0 |1
 0 | 1 |1
 1 | 0 |0
@@ -142,7 +142,7 @@ Para interpretas as fórmulas, começamos por associar a cada variável um calor
 
 
 φ |γ|φ ⇔ φ
-|---|---|---|
+|---|---|:---:|
 0 | 0 |1
 0 | 1 |0
 1 | 0 |0
@@ -156,14 +156,14 @@ Para interpretas as fórmulas, começamos por associar a cada variável um calor
 
 
 p|q|(p ∨ q)|(p ∨ q) ⇒ q
-|--|--|--|--|
+|--|--|:--:|:--:|
 0|0|0|1
 
 
 - interpretando as variáveis p -> 1 e q -> 0
 
 p|q|(p ∨ q)|(p ∨ q) ⇒ q
-|--|--|--|--|
+|--|--|:--:|:--:|
 1|0|1|0
 
 # 4. Tautologias
@@ -178,7 +178,7 @@ p|q|(p ∨ q)|(p ∨ q) ⇒ q
 Esta formula tem 2 variaveis logo a tabela de verdade vai ter 4 linhas
     
 p|q|(p ∧ q)|(p ∧ q) ⇒ q
-|--|--|--|--|
+|--|--|:--:|:--:|
 0|0|0|1
 0|1|0|1
 1|0|0|1
