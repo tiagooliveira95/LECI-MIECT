@@ -11,6 +11,6 @@ int main(void){
     do{
         c = getChar();
         if(c != '\n')
-            putChar(c);
+            putChar(c+1);
     }while(c != '\n');
 }
