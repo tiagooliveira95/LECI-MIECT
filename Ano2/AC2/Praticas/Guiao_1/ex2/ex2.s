@@ -13,6 +13,7 @@ do:
     move $a0, $v0       #        $a0 = c;
 
     beq $v0,'\n', while
+    addiu $a0,$a0,1
     li $v0, putChar
     syscall
 
