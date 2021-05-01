@@ -20,18 +20,22 @@ do:         li      $a0, '\r'
             syscall                 # putChar('\r')
 
             move    $a0, $s1
-            li      $a1, 10
-            ori     $a1, $a1, 3
-            sll     $a1, $a1, 16    # printInt(cnt, 10 | 3 << 16);
+            li      $a1, 3
+            sll     $a1, $a1, 16
+            ori     $a1, $a1, 10    # printInt(cnt, 10 | 3 << 16);
+            li      $v0, printInt
+            syscall
 
             li      $a0, '\t'
             li      $v0, putChar
             syscall                 # putChar('\r')
 
             move    $a0, $s1
-            li      $a1, 2
-            ori     $a1, $a1, 8
-            sll     $a1, $a1, 16    # printInt(cnt, 2 | 8 << 16);
+            li      $a1, 8
+            sll     $a1, $a1, 16
+            ori     $a1, $a1, 2   # printInt(cnt, 2 | 8 << 16);
+            li      $v0, printInt
+            syscall
 
             li      $a0, 5
             jal     wait            # wait(5);
@@ -44,7 +48,7 @@ do:         li      $a0, '\r'
             li      $s0, 0
 endIf0:     bne     $s2, '-', endIf1
             li      $s0, 1
-endIf1:     bne     $s0, 0, endIf       #   if( s == 0 ) {
+endIf1:     bne     $s0, 0, elseIf1     #   if( s == 0 ) {
             addi    $s1, $s1, 1         #       cnt = cnt + 1
             andi    $s1, $s1, 0xFF      #       cnt = cnt & 0xFF
             j       endIf               #   } else {
@@ -70,7 +74,7 @@ wait:       li      $t0, 0              # i = 0
             move    $t1, $a0            # t1 = ts
             li      $t2, 515000         # t2 = 515000
             mul     $t2, $t2, $t1       # t2 = 515000 * ts
-while:      ble     $t0, $t2, endW      # for( i=0; i < 515000 * ts;)
+while:      bge     $t0, $t2, endW      # for( i=0; i < 515000 * ts;;)
             addi    $t0, $t0, 1         # i++
             j       while               # }
 endW:       jr      $ra
