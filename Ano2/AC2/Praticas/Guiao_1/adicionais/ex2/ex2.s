@@ -32,3 +32,10 @@ main:   addiu   $sp, $sp, -4
         li $v0, printStr
         la $a0, s1
         syscall                         #  printStr("Resultados:\n");
+
+
+
+
+        lw      $ra, 0($sp)
+        addiu   $sp, $sp, 4
+        jr      $ra
