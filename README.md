@@ -1,2 +1,3 @@
-# Projectos-ECT
-Projectos realizados durante o Mestrado Integrado em Engenharia de Computadores e Telemática
+# MIECT
+
+Projects and assignments made in the Computer Engineering & Telematics Masters Degree 
