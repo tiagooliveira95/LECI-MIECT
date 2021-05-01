@@ -12,7 +12,10 @@ str3:   .space 41                       # char str3[2 * STR_MAX_SIZE + 1]
         .text
         .globl main
 
-main:   li $v0, printStr
+main:   addiu   $sp, $sp, -4
+        sw      $ra, 0($sp)
+
+        li $v0, printStr
         la $a0, s0
         syscall                         # printStr("Introduza 2 strings: ");
 
