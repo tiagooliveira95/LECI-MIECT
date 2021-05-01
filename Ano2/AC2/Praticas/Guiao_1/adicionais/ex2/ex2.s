@@ -33,6 +33,19 @@ main:   addiu   $sp, $sp, -4
         la      $a0, s1
         syscall                         #  printStr("Resultados:\n");
 
+        la      $a0, str1               # prinInt( strlen(
+        jal     strlen                  #   str1
+        move    $a0, $v0                # ) ,
+        li      $a1, 10                 #   10
+        li      $v0, printInt           # );
+        syscall                         #
+
+        la      $a0, str2               # prinInt( strlen(
+        jal     strlen                  #   str2
+        move    $a0, $v0                # ) ,
+        li      $a1, 10                 #   10
+        li      $v0, printInt           # );
+        syscall                         #
 
 
 
