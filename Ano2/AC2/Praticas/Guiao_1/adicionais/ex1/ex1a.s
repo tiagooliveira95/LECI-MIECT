@@ -33,7 +33,7 @@ do:         li      $a0, '\r'
             move    $a0, $s1
             li      $a1, 8
             sll     $a1, $a1, 16
-            ori     $a1, $a1, 2   # printInt(cnt, 2 | 8 << 16);
+            ori     $a1, $a1, 2     # printInt(cnt, 2 | 8 << 16);
             li      $v0, printInt
             syscall
 
