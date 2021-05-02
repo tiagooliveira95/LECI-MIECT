@@ -162,11 +162,11 @@ endFor3:
 # $t1 = *s2
 strcmp: lb      $t0,0($a0)
         lb      $t1,0($a1)
-        bne     $t0,$t1,endfor4       # for( ;(*s1 == *s2)  &&
-        beq     $t0,'\0',endfor4      #   *s1 != '\0'); s1++, s2++) {
-        addiu   $a0,$a0,1             #       s1++;
-        addiu   $a1,$a1,1             #       s2++;
-        j       for4                  # }
+        bne     $t0,$t1,endfor4         # for( ;(*s1 == *s2)  &&
+        beq     $t0,0,endfor4           #   *s1 != '\0'); s1++, s2++) {
+        addiu   $a0,$a0,1               #       s1++;
+        addiu   $a1,$a1,1               #       s2++;
+        j       for4                    # }
 endfor4:
-        sub     $v0, $t0, $t1         # return (*s1 - *s2);
+        sub     $v0, $t0, $t1           # return (*s1 - *s2);
         jr      $ra
