@@ -47,6 +47,20 @@ main:   addiu   $sp, $sp, -4
         li      $v0, printInt           # );
         syscall                         #
 
+        la      $a0,str3
+        la      $a1,str1
+        jal     strcpy
+
+
+        li      $v0, printStr           # printStr(
+        la      $a0,str3                #   strcat(str3 ,
+        la      $a1,str2                #       str2
+        jal     strcat                  #   )
+        move    $a0,$v0                 #
+        la      $a0, s0                 # );
+        syscall                         #
+
+
 
 
         lw      $ra, 0($sp)
