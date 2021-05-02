@@ -74,7 +74,7 @@ endif:                                      # }
         lw      $s0,4($sp)
         lw      $s1,8($sp)
         lw      $s2,12($sp)
-        lw      $s2,16($sp)
+        lw      $s3,16($sp)
         addiu   $sp,$sp,20
         li      $v0,0                       # return 0
         jr      $ra
