@@ -68,10 +68,69 @@ endFor: move    $v0,$t0                 # return len
         jr      $ra
 
 #Mapa de registos
-strcpy:
+# *dst -> $s0
+# *src -> $s1
+# *p -> $s2
+strcpy: addi    $sp,$sp,-16
+        sw      $ra,0($sp)
+        sw      $s0,4($sp)
+        sw      $s1,8($sp)
+        sw      $s2,12($sp)
+
+        move    $s0,$a0
+        move    $s1,$a1
+        move    $s2,$s0             # char *p = dst;
+
+for:    lb      $t0,0($s1)          # t0 = *src
+        sb      $s0,$t0             # t0 = *dst = *src
+        beq     $s0,0,endFor2       # for( ; ( *dst = *src ) != '\0'; dst++, src++ );
+        addi    $s0,$s0,1           # dst++
+        addi    $s1,$s1,1           # src++
+        j       for
+endFor2:
+        move    $v0,$s2             # return p
+
+        lw      $ra,0($sp)
+        lw      $s0,4($sp)
+        lw      $s1,8($sp)
+        lw      $s2,12($sp)
+        addi    $sp,$sp,16
+
+        jr      $ra
+
 
 #Mapa de registos
-strcat:
+# *dst -> $s0
+# *src -> $s1
+# *p -> $s2
+strcat: addi    $sp,$sp,-16
+        sw      $ra,0($sp)
+        sw      $s0,4($sp)
+        sw      $s1,8($sp)
+        sw      $s2,12($sp)
+
+        move    $s0,$a0
+        move    $s1,$a1
+        move    $s2,$s0             # char *p = dst;
+
+for2:   lb      $t0,0($s0)          # for( ; *dst != '\0'; dst++ )
+        beq     $t0,0,endFor3       #
+        addi    $s0,$s0,1           # dst++
+        j       for
+endFor3:
+        move    $a0,$s0             # strcpy( dst,
+        move    $a1,$s1             #   src
+        jal     strcpy              # );
+
+        move    $v0,$s2             # return p
+
+        lw      $ra,0($sp)
+        lw      $s0,4($sp)
+        lw      $s1,8($sp)
+        lw      $s2,12($sp)
+        addi    $sp,$sp,16
+
+        jr      $ra
 
 #Mapa de registos
 strcmp:
