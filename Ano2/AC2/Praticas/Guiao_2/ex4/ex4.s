@@ -35,9 +35,9 @@ while:  li      $a0,100                     # while(1) {
         li      $v0, putChar
         syscall                             #   putChar('\r');
         li      $v0,printInt
-        move    $a0,$s0                     #   a0 = cnt1
+        move    $a0,$s2                     #   a0 = cnt10
         li      $a1,0x5000A                 #   a1 = 10 | 5 << 16
-        syscall                             #   printInt(cnt1, 10 | 5 << 16);
+        syscall                             #   printInt(cnt10, 10 | 5 << 16);
 
         li      $a0, '\t'
         li      $v0, putChar
@@ -51,9 +51,9 @@ while:  li      $a0,100                     # while(1) {
         li      $v0, putChar
         syscall                             #  putChar('\t');
         li      $v0,printInt
-        move    $a0,$s2                     #  a0 = cnt10
+        move    $a0,$s0                     #   a0 = cnt1
         li      $a1,0x5000A                 #   a1 = 10 | 5 << 16
-        syscall                             #  printInt(cnt10, 10 | 5 << 16);
+        syscall                             #   printInt(cnt1, 10 | 5 << 16);
 
         j   while                           # }
 
