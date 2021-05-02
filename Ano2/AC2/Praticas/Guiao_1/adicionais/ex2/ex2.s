@@ -1,4 +1,4 @@
-        .equ SRT_MAX_SIZE, 20
+        .equ STR_MAX_SIZE, 20
         .equ printStr, 8
         .equ readStr, 9
         .equ printInt, 6
@@ -102,12 +102,12 @@ strcpy: addi    $sp,$sp,-16
         move    $s1,$a1
         move    $s2,$s0             # char *p = dst;
 
-for:    lb      $t0,0($s1)          # t0 = *src
-        sb      $s0,$t0             # t0 = *dst = *src
+for2:   lb      $t0,0($s1)          # t0 = *src
+        sb      $s0,0($t0)          # *dst = *src
         beq     $s0,0,endFor2       # for( ; ( *dst = *src ) != '\0'; dst++, src++ );
         addi    $s0,$s0,1           # dst++
         addi    $s1,$s1,1           # src++
-        j       for
+        j       for2
 endFor2:
         move    $v0,$s2             # return p
 
@@ -134,10 +134,10 @@ strcat: addi    $sp,$sp,-16
         move    $s1,$a1
         move    $s2,$s0             # char *p = dst;
 
-for2:   lb      $t0,0($s0)          # for( ; *dst != '\0'; dst++ )
+for3:   lb      $t0,0($s0)          # for( ; *dst != '\0'; dst++ )
         beq     $t0,0,endFor3       #
         addi    $s0,$s0,1           # dst++
-        j       for
+        j       for3
 endFor3:
         move    $a0,$s0             # strcpy( dst,
         move    $a1,$s1             #   src
@@ -161,7 +161,7 @@ endFor3:
 # $t0 = *s1
 # $t1 = *s2
 strcmp: lb      $t0,0($a0)
-        lb      $t1,0($a1)
+for4:   lb      $t1,0($a1)
         bne     $t0,$t1,endfor4         # for( ;(*s1 == *s2)  &&
         beq     $t0,0,endfor4           #   *s1 != '\0'); s1++, s2++) {
         addiu   $a0,$a0,1               #       s1++;
