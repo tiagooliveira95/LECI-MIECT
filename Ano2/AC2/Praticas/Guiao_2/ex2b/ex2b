@@ -1,0 +1,5 @@
+O valor máximo é determinado pelo valor máximo que podemos expressar usando 32bits, eg um Int
+
+2^32bit = 4,294,967,296ms
+
+(4,294,967,296ms / 2) -1 = 2,147,483,647ms ~ 24,8 Dias
