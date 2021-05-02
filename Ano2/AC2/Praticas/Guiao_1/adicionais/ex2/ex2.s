@@ -60,8 +60,15 @@ main:   addiu   $sp, $sp, -4
         la      $a0, s0                 # );
         syscall                         #
 
+        li      $v0, printInt10         # printInt10(
+        la      $a0,str1                #   strcmp(str1 ,
+        la      $a1,str2                #       str2
+        jal     strcmp                  #   )
+        move    $a0,$v0                 #
+        la      $a0, s0                 # );
+        syscall                         #
 
-
+        li      $v0, 0                  # return 0
 
         lw      $ra, 0($sp)
         addiu   $sp, $sp, 4
