@@ -3,9 +3,10 @@
         .equ readStr, 9
         .equ printInt, 6
         .equ printInt10, 7
+        .equ putChar,3
         .data
-s0:     .asciiz "Introduza 2 strings: "
-s1:     .asciiz "Resultados:\n"
+s0:     .asciiz "Introduza 2 strings:\n"
+s1:     .asciiz "\nResultados:\n"
 str1:   .space 21                       # char str1[STR_MAX_SIZE + 1]
 str2:   .space 21                       # char str2[STR_MAX_SIZE + 1]
 str3:   .space 41                       # char str3[2 * STR_MAX_SIZE + 1]
@@ -24,6 +25,10 @@ main:   addiu   $sp, $sp, -4
         li      $a1, STR_MAX_SIZE
         syscall                         # readStr( str1, STR_MAX_SIZE );
 
+        li      $v0, putChar            # added for formating purposes
+        li      $a0, '\n'
+        syscall                         # putChar("\n");
+
         li      $v0, readStr
         la      $a0, str2
         li      $a1, STR_MAX_SIZE
@@ -40,6 +45,10 @@ main:   addiu   $sp, $sp, -4
         li      $v0, printInt           # );
         syscall                         #
 
+        li      $v0, putChar            # added for formating purposes
+        li      $a0, '\n'
+        syscall                         # putChar("\n");
+
         la      $a0, str2               # prinInt( strlen(
         jal     strlen                  #   str2
         move    $a0, $v0                # ) ,
@@ -47,26 +56,32 @@ main:   addiu   $sp, $sp, -4
         li      $v0, printInt           # );
         syscall                         #
 
+        li      $v0, putChar            # added for formating purposes
+        li      $a0, '\n'
+        syscall                         # putChar("\n");
+
         la      $a0,str3
         la      $a1,str1
         jal     strcpy
-
-
-        li      $v0, printStr           # printStr(
+                                        # printStr(
         la      $a0,str3                #   strcat(str3 ,
         la      $a1,str2                #       str2
         jal     strcat                  #   )
         move    $a0,$v0                 #
-        la      $a0, s0                 # );
-        syscall                         #
+        li      $v0, printStr           #
+        syscall                         # );
 
-        li      $v0, printInt10         # printInt10(
+        li      $v0, putChar            # added for formating purposes
+        li      $a0, '\n'
+        syscall                         # putChar("\n");
+
+                                        # printInt10(
         la      $a0,str1                #   strcmp(str1 ,
         la      $a1,str2                #       str2
         jal     strcmp                  #   )
         move    $a0,$v0                 #
-        la      $a0, s0                 # );
-        syscall                         #
+        li      $v0, printInt10         #
+        syscall                         # );
 
         li      $v0, 0                  # return 0
 
@@ -103,8 +118,8 @@ strcpy: addi    $sp,$sp,-16
         move    $s2,$s0             # char *p = dst;
 
 for2:   lb      $t0,0($s1)          # t0 = *src
-        sb      $s0,0($t0)          # *dst = *src
-        beq     $s0,0,endFor2       # for( ; ( *dst = *src ) != '\0'; dst++, src++ );
+        sb      $t0,0($s0)          # t0 = *dst = *src
+        beq     $t0,0,endFor2       # for( ; ( *dst = *src ) != '\0'; dst++, src++ );
         addi    $s0,$s0,1           # dst++
         addi    $s1,$s1,1           # src++
         j       for2
