@@ -22,7 +22,7 @@ main:   li      $s1, 0                      # counter = 0
         sw      $t1, TRISB($s0)             # WRITE (Write TRISB register
             
 while:                                      # while(1) {        
-        li      $a0,750
+        li      $a0,666
         jal     delay                       #   delay(500)
         move    $t0,$s1                     #   t0 = counter
         andi    $t0,$t0,8                   #   t0 = counter && 8
@@ -36,7 +36,6 @@ while:                                      # while(1) {
         sw      $t0,LATE($s0)               #   WRITE
         j       while                       # }
 
-         
 # Delay sub-rotine
 delay:  ble     $a0,0, endFor               # for(; ms > 0; ms--) {
         li      $v0, resetCoreTimer         #
