@@ -10,22 +10,33 @@
 # cnt1 = s0
 # cnt5 = s1
 # cnt10 = s2
-main:   addiu   $sp,$sp,-16
+# timeElapsed = s3
+main:   addiu   $sp,$sp,-20
         sw      $ra,0($sp)
         sw      $s0,4($sp)
         sw      $s1,8($sp)
         sw      $s2,12($sp)
+        sw      $s3,16($sp)
         li      $s0, 0                      # cnt1 = 0;
         li      $s1, 0                      # cnt5 = 0;
         li      $s2, 0                      # cnt10 = 0;
+        li      $s3, 0                      # timeElapsed = 0
 while:                                      # while(1) {
-        li      $a1,1
-        jal     timeDone                    # timeDone(xx,true) // resets core timer ignores return value
+        seq     $a1,$s3,1000
+        jal     timeDone                    # timeDone(xx,timeElapsed == 1000) // resets core timer if 1s elapsed
 
-delay:  li      $a0,100                     # do {
+        seq     $t0,$s3,1000
+        bne     $t0,1,endif                 # if(timeElapsed == 1000) {
+        li      $a0, '\n'
+        li      $v0, putChar                #   putChar('\n');
+        syscall                             # }
+        li      $s3, 0                      # timeElapsed = 0
+endif:
+        addi    $s3,100                     # timeElapsed += 100ms
+delay:  move    $a0,$s3                     # do {
         li      $a1,0
         jal     timeDone
-        beq     $v0,0,delay                 # } while(!timeDone(100,false))
+        beq     $v0,0,delay                 # } while(!timeDone(timeElapsed,false))
 
         addi    $s2,$s2,1                   #   cnt10++
 
@@ -67,7 +78,8 @@ delay:  li      $a0,100                     # do {
         lw      $s0,4($sp)
         lw      $s1,8($sp)
         lw      $s2,12($sp)
-        addiu   $sp,$sp,16
+        lw      $s3,16($sp)
+        addiu   $sp,$sp,20
         li      $v0,0                       # return 0
         jr      $ra
 
