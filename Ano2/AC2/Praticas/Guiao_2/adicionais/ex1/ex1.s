@@ -17,18 +17,18 @@ main:       addi    $sp,$sp,-4
 
             li      $v0,printString
             la      $a0,str1
-            syscall
+            syscall                     # printStr("*** Windows problem fixer *** \n")
             li      $v0,printString
-            la      $a0,str2
+            la      $a0,str2            # printStr("Trying to fix problems...\n")
             syscall
 
-while:      li      $a0,5000
+while:      li      $a0,5000            # do {
             jal     timeDone
-            beq     $v0,0,while
+            beq     $v0,0,while         # } while(!timeDone(5000))
 
             li      $v0,printString
             la      $a0,str3
-            syscall
+            syscall                     # printStr("We were unable to fix your problem\n")
 
             lw      $ra,0($sp)
             addi    $sp,$sp,4
