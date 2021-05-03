@@ -22,16 +22,16 @@ main:   addiu   $sp,$sp,-20
         li      $s2, 0                      # cnt10 = 0;
         li      $s3, 0                      # timeElapsed = 0
 while:                                      # while(1) {
-        seq     $a1,$s3,1000
+        seq     $a1,$s3,1000                # a1 = timeElapsed == 1000;
         jal     timeDone                    # timeDone(xx,timeElapsed == 1000) // resets core timer if 1s elapsed
-
-        seq     $t0,$s3,1000
+        seq     $t0,$s3,1000                # t0 = timeElapsed == 1000;
         bne     $t0,1,endif                 # if(timeElapsed == 1000) {
-        li      $a0, '\n'
-        li      $v0, putChar                #   putChar('\n');
-        syscall                             # }
-        li      $s3, 0                      # timeElapsed = 0
-endif:
+        li      $a0, '\n'                   #
+        li      $v0, putChar                #
+        syscall                             #   putChar('\n');
+        li      $s3, 0                      #   timeElapsed = 0
+endif:                                      # }
+
         addi    $s3,100                     # timeElapsed += 100ms
 delay:  move    $a0,$s3                     # do {
         li      $a1,0
