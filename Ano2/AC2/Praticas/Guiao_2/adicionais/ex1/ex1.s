@@ -1,14 +1,40 @@
     .equ resetCoreTimer, 12
     .equ readCoreTimer, 11
-    .equ putChar, 3
-    .equ printInt, 6
+    .equ printString, 8
     .data
+str1:    .asciz "*** Windows problem fixer *** \n"
+str2:    .asciz "Trying to fix problems...\n"
+str3:    .asciz "We were unable to fix your problem\n"
     .text
     .globl main
 
+# Windows problem fixer source code
+# Top secret
+# Don't share
 
+main:       addi    $sp,$sp,-4
+            sw      $ra,0($sp)
 
-main:
+            li      $v0,printString
+            la      $a0,str1
+            syscall
+            li      $v0,printString
+            la      $a0,str2
+            syscall
+
+while:      li      $a0,5000
+            jal     timeDone
+            beq     $v0,0,while
+
+            li      $v0,printString
+            la      $a0,str3
+            syscall
+
+            lw      $ra,0($sp)
+            addi    $sp,$sp,4
+            li      $v0,0
+            jr      $ra
+
 
 
 
@@ -19,8 +45,8 @@ main:
 # ms - t3
 timeDone:   li      $t0,0                   # curCount = 0
             li      $t1,0                   # retValue = 0
-            li      $t3,$a0                 # ms
-            li      $t2,$a1                 # reset
+            move    $t3,$a0                 # ms
+            move    $t2,$a1                 # reset
 
             ble     $t2,0,else
             li      $v0,resetCoreTimer      # resetCoreTimer();
@@ -33,6 +59,6 @@ else:       li      $v0,readCoreTimer       #
             ble     $t0,$t4,endIf           # if (curCount > (ms * 20000)) {
             div     $t1,$t0,20000           #   retValue = curCount / 20000;
                                             # }
-endIf:      move    $v0,t1
+endIf:      move    $v0,$t1
             jr      $ra
 
