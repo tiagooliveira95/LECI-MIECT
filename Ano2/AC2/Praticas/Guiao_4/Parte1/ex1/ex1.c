@@ -1,4 +1,4 @@
-#include "/opt/pic32mx/include/detpic32.h"
+#include <detpic32.h>
 
 void delay(int);
 
