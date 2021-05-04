@@ -10,7 +10,7 @@ int main(void){
     while(1){
         delay(200);
         LATE = (LATE & 0xFFF0) | counter++;
-        if(counter == 0xF) counter = 0;
+        if(counter == 16) counter = 0;
     }
     return 0;
 }
