@@ -12,7 +12,7 @@ int main(void) {
     while (1) {
         cnt &= 0xff;
         send2displays(cnt++);
-        delay(10);
+        delay(200);
     }
     return 0;
 }
