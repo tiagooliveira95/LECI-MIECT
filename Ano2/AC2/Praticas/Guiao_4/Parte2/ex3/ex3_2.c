@@ -17,7 +17,7 @@ int main(void) {
         cnt &= 0xff;
         send2displays(cnt);
         delay(50);
-        if (i % 4) cnt++;
+        if (i % 4 == 0) cnt++;
     }
     return 0;
 }
