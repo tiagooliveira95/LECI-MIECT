@@ -25,7 +25,7 @@ int main(void) {
     int segment;
     TRISB = (TRISB & 0x80FF) | 0xF;     // sets RB8-RB14 as output and RB0-RB as input
     TRISD = TRISD & 0xFF9F;             // sets RB5-RB8 as output
-    LATD = (LATD & 0xFF9F) | 0x40;      // sets RD6 and RD5 to 0 then sets RD6 to 1
+    LATD = (LATD & 0xFF9F) | 0x20;      // sets RD6 and RD5 to 0 then sets RD5 to 1
 
     while (1) {
         int dipValue = PORTB & 0xF;
