@@ -2,10 +2,13 @@
 
 void delay(int ms);
 void send2displays(unsigned char value);
-unsigned char toBcd(unsigned char value);
 
+unsigned char toBcd(unsigned char value) {
+    return ((value/10) << 4) + (value % 10);
+}
 
-int main(void) {
+int main(void)
+{
     TRISB = TRISB & 0x80FF;
     TRISD = TRISD & 0xFF9F;
 
@@ -21,19 +24,19 @@ int main(void) {
 
     int cnt = 19;
     int value, i;
-    while(1) {
+
+    while(1)
+    {
         AD1CON1bits.ASAM = 1;
         while( IFS1bits.AD1IF == 0);
         value = ADC1BUF0;
         int freq = 1 + (value/255);
 
-        int period = (1.0/freq) * 1000;
-
-        if (i++ % (period/20) == 0){
+        if (i++ % ((freq*1000)/20)){
             cnt--;
         }
-
         cnt = cnt & 0x13;
+
         send2displays(toBcd(cnt));
 
         delay(20);
@@ -42,7 +45,8 @@ int main(void) {
     return 0;
 }
 
-void send2displays(unsigned char value) {
+void send2displays(unsigned char value)
+{
     const char display7codes[] = {0x3F, //0
                                   0x06, //1
                                   0x5B, //2
@@ -79,12 +83,8 @@ void send2displays(unsigned char value) {
     displayFlag = !displayFlag;
 }
 
-
-unsigned char toBcd(unsigned char value) {
-    return ((value/10) << 4) + (value % 10);
-}
-
-void delay(int ms) {
+void delay(int ms)
+{
     for(; ms > 0; ms--)
     {
         resetCoreTimer();
