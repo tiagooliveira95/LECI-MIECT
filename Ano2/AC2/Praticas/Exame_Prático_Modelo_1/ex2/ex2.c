@@ -21,7 +21,7 @@ int main(void){
 
         }else{
             do{
-                display(254);
+                display(0xFF);
                 delay(10);
             }while(++i < 100);
         }
@@ -38,7 +38,6 @@ void display(char value){
 
     if(flag == 1){
         LATD = (LATD & 0x9F) | 0x40;
-        int temp = value >> 4;
         LATB = (LATB & 0x80FF) | segmentCodes[value >> 4] << 8;
     } else {
         LATD = (LATD & 0x9F) | 0x20;
