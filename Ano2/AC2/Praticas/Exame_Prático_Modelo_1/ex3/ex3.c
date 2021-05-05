@@ -33,8 +33,10 @@ int main(void) {
             cnt--;
         }
 
-        cnt = cnt & 0x13;
         send2displays(toBcd(cnt));
+
+        if(cnt == 0)
+            cnt = 19;
 
         delay(20);
         IFS1bits.AD1IF = 0;
