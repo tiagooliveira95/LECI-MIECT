@@ -1,4 +1,4 @@
-#include<detpic32.h>
+#include <detpic32.h>
 
 void delay(int);
 void send2displays(unsigned char);
