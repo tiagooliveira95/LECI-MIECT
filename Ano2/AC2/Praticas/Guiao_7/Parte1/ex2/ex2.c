@@ -12,7 +12,7 @@ void configIO() {
     T3CONbits.TCKPS = 7; // define o Prescaler ara dividir o clock por 256
     // fOut_PRESC = 20Mhz / 256 = 78125Hz
     // PR3 = (78125Hz / 2 Hz) + 1 = 39061.5
-    PR3 = 39063; // Fout = 20MHz / (32 * (39063 + 1)) = 1.999 Hz
+    PR3 = 39062; // Fout = 20MHz / (39062 + 1) = 78125/39063 ~ 1.999 Hz
     TMR3 = 0; // Reset timer T3 count register
     T3CONbits.TON = 1; // Enable timer T3 (must be the last command)
 
