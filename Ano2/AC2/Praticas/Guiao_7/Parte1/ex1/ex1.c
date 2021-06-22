@@ -6,7 +6,6 @@ void main(){
     TMR3 = 0; // Reset timer T3 count register
     T3CONbits.TON = 1; // Enable timer T3 (must be the last command of the
 
-
     // Configure Timer T3 (2 Hz with interrupts disabled)
     while(1)
     {
