@@ -1,9 +1,10 @@
 #include <detpic32.h>
 
 void configureAll();
+
 void setPWM(unsigned int dutyCycle);
 
-        void _int_(12) isr_T3(void) {
+void _int_(12) isr_T3(void) {
     IFS0bits.T3IF = 0;
 }
 
@@ -12,7 +13,7 @@ void main(void) {
     // input, A/D module, timers T1 and T3, interrupts)
     // Reset AD1IF, T1IF and T3IF flags
     EnableInterrupts(); // Global Interrupt Enable
-    while(1);
+    while (1);
 }
 
 void setPWM(unsigned int dutyCycle) {
@@ -20,7 +21,7 @@ void setPWM(unsigned int dutyCycle) {
     OC1RS = (dutyCycle * (PR3 + 1)) / 100; // Evaluate OC1RS as a function of "dutyCycle"
 }
 
-void configureAll(){
+void configureAll() {
     T3CONbits.TCKPS = 2; // 1:4 prescaler (i.e. fout_presc = 5 MHz)
     // PR3 = (5Mhz / 100Hz)-1 = 49999
     PR3 = 49999; // Fout = 20MHz / (4 * (49999 + 1)) = 100 Hz
