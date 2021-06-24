@@ -572,27 +572,45 @@ O CPU vai ler o registo status de cada um dos periférios para determinar qual d
 
 ### 39. Descreva a sequência de operações para que possa ocorrer uma transferência por DMA, em modo bloco, quando o controlador de DMA pretende dar início a uma transferência
 ```
-
+1 passo: CPU pede informação ao periférico.
+2 passo: CPU programa o DMA para efetuar a transferência.
+3 passo: O DMA vai pedir o endereço que quer ler ao periférico e é lida para o DMA.
+4 passo: o valor armazenado no DMA é transferido para a memória.
+5 passo: No final, o DMA ira ativar o sinal de interrupção para indicar que o processo foi concluido, e que
+a informação foi escrita na memória
 ```
 ### 40. Qual a operação que, tipicamente, um controlador de DMA executa quando conclui um processo de transferência de informação enquanto bus master.
 ```
-
+Invoca uma interrupção para informar o CPU que o processo foi concluído.
 ```
 ### 41. Descreva, sucintamente, qual a finalidade do sinal busgrant num sistema que suporte transferência de dados por DMA, quem gera esse sinal e em que circunstâncias
 ```
-
+O DMA pede ao CPU para ser bus master ativando o BusReq, e tera de esperar pelo sinal do CPU (BusGrant), caso o CPU não esteja a utilizar o bus master, é dada autorização ao DMA para ser o bus master, quando o DMA acaba a operação o DMA retira o pedido ao CPU e liberta os 3 barramentos.
 ```
 ### 42. Descreva, sucintamente, qual a sequência de eventos que ocorrem muma transferência por DMA, em modo cyclestealing, quando o controlador de DMA pretende dar início a uma transferência elementar.
 ```
+No modo cyclestealing o DMA assume o controlo dos barramentos durante 1 ciclo de relógio, e liberta o logo de seguida.
+Neste modo o DMA transfere parcialmente 1 palavra (fetch ou deposit).
 
+O CPU só liberta os barramentos nos ciclos em que não acede à memória (por exemplo no estágio MEM de uma instrução aritmética na arquitetura MIPS, pipelined)
+
+Este tipo de transferencia é mais lento, mas não causa impacto no CPU pois aproveita ciclos que não são, de qualquer modo, usados pelo CPU.
 ```
 ### 43. Descreva, sucintamente, qual a diferença entres os modos de operação “bloco” e “burst” de um controlador de DMA.
 ```
+Bloco - O DMA assume o controlo dos barramentos até todos os dados terem sido transferidos
+
+Burst - O DMA transfere até atingir o número de palavras pré-programado ou até o periférico não ter mais informação pronta para ser transferida. 
+
+Se não foi transferida a totalidade da informação:
+- O periférico pode desativar o sinal Dreq o que leva o DMA a desativar o sinal BusReq e a libertar os barramentos.
+- Logo que o periférico ative de novo o sinal Dreq o DMA volta a ativar o sinal BusReq e, logo que seja bus master, continua no ponto onde interrompeu.
 ```
 ### 44. Considere um controlador de DMA não dedicado, a funcionar em modo bloco, em que um bus cycle é realizado em 1 ciclo de relógio. Calcule o tempo necessário para efetuar a transferência de um bloco de dados para as seguintes condições:
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 500MHz, bloco de 512 words de 32 bits
 ```
+
 ```
 b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
 ```
@@ -646,9 +664,14 @@ c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de
 ```
 d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 1Kwords de 16 bits
 
+```
+```
+
 ### 49. Determine a taxa de transferência de pico (expressa em Bytes/s) de um DMA não dedicado de 32 bits (i.e. com barramento de dados de 32 bits), a funcionar a 100 MHz em modo "cycle-stealing". Suponha ainda que são necessários 2 ciclos de relógio (equivalente a 2 *TBC) para efetuar uma operação de leitura ou escrita. desse DMA. O tempo mínimo entre operações elementares deverá ser de 1TBC
+
 ```
 ```
+
 ### 50. Resolva o problema anterior, mas considerando agora as seguintes condições:
 
 a. controlador de 32 bits, frequência do DMA de 120 MHz, 1TBC = 2 ciclos de relógio, tempo mínimo entre operações elementares de 2 TBC
@@ -663,3 +686,14 @@ c. controlador de 16 bits, frequência do DMA de 120 MHz, 1TBC = 2 ciclos de rel
 d. controlador de 16 bits, frequência do DMA de 200 MHz, 1TBC = 1 ciclos de relógio, tempo mínimo entre operações elementares de 1 TBC
 ```
 ```
+
+
+### 51. Suponha um DMA não dedicado de 32 bits (i.e. com barramento de dados de 32 bits), a funcionar a 100 MHz. Suponha ainda que são necessários 2 ciclos de relógio para efetuar uma operação de leitura ou escrita (i.e. 1 "bus cycle" é constituído por 2 ciclos de relógio).
+
+a. determine a taxa de transferência desse DMA (expressa em Bytes/s), supondo um funcionamento em modo bloco.
+
+b. determine a taxa de transferência de pico desse DMA (expressa em Bytes/s), supondo um funcionamento em modo "cycle-stealing" e um tempo mínimo entre operações elementares de 1 ciclo de relógio ("fetch", 1T mínimo, "deposit", 1T mínimo).
+
+c. Repita as alíneas anteriores supondo um DMA dedicado com as características referidas anteriormente.
+
+# TIMERS
