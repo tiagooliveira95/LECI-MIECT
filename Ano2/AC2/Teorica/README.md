@@ -449,9 +449,16 @@ No fim da RSI, este cache tambem tem de ser reposto, o que requer mais instruç�
 
 a. como é estabelecida a prioridade de resposta a interrupções simultâneas
 ```
+Os periféricos ficam ligados em cadeia, cada um tem um Interrupt Acknowledge IN e um Interrupt Acknowledge OUT, o OUT está ligado ao IN do próximo periférico,
+este apenas fica ativo de o periférioco em questão não tiver gerado nenhum Interrupt.
+
+O primeiro a receber um Interrupt Acknowledge que tenha feito requerido a interrupção vai responder com o seu vetor, 
+sendo esta a interrupção que vai ser executada. (ou seja, a de maior prioridade)
+
 ```
 b. como se designa o sinal por hardware que permite estabelecer e assegurar o funcionamento do sistema em “daisy chain”
 ```
+Interrupt Acknowledge
 ```
 
 
@@ -461,10 +468,18 @@ b. como se designa o sinal por hardware que permite estabelecer e assegurar o fu
 
 ### 37. Como designaria a organização de um sistema de atendimento a interrupções em que a identificação, pelo CPU, do periférico gerador da interrupção é feita por hardware, num ciclo de interrupt acknowledge durante o qual o periférico gerador da interrupção coloca o seu vetor no barramento de dados.
 ```
+Os periféricos ficam ligados em cadeia, cada um tem um Interrupt Acknowledge IN e um Interrupt Acknowledge OUT, o OUT está ligado ao IN do próximo periférico,
+este apenas fica ativo de o periférioco em questão não tiver gerado nenhum Interrupt.
+
+Caso o periférico fique com o Interrupt Acknowledge IN ativo, e se ao mesmo tempo tiver requisitado um Interrupt, 
+este vai enviar o seu vetor para o barramento de dados.
 ```
 
 ###  38. Descreva, sucintamente, o funcionamento de um sistema de interrupções baseado em "identificação da fonte por software" 
+
 ```
+O CPU vai ler o registo status de cada um dos periférios para determinar qual dos periféricos requisitou a interrupção.
+
 ```
 
 
