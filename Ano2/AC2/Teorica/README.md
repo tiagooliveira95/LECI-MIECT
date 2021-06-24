@@ -511,6 +511,19 @@ Cada interrupção pode tem um overhead de 30 instruções o que corresponde a 6
 ### 34. Considere agora um sistema baseado num CPU a funcionar a uma frequência de 80 MHz com uma taxa de execução de 40 MIPS (40x10^6 instruções por segundo, i.e. CPI = 2) que processa, por interrupção, eventos externos periódicos. Se o overhead total do atendimento à interrupção for de 40 ciclos de relógio, e a rotina de serviço à interrupção tiver 20 instruções, determine a máxima frequência a que esses eventos podem ocorrer para que todas as interrupções possam ser atendidas.
 
 ```
+Freq = 80 MHz
+Instruções: 40 M
+CPI = 2
+Overhead = 40 ciclos
+Freq Target = ?
+Rotina = 20 instruções
+
+Cada instrução demora em média 2 ciclos, logo o overhead é de 20 instruções, assim na interrupção vamos correr 40+20 = 60 instruções
+
+São executadas 40 M instruções por segundo, logo 40x10^6 / 60 = 666,666
+
+Em 1 segundo podemos ter no máximo 666,666 interrupções o que equivale a 666.6 kHz
+
 ```
 
 ### 35. Descreva sucintamente, para o caso de um sistema de interrupções vetorizadas com prioridade estabelecida por “daisy chain”:
