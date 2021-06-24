@@ -268,3 +268,50 @@ g. regresse ao ponto b
 ```assembly
 j loop
 ```
+
+
+# NOÇÕES BÁSICAS SOBRE PERIFÉRICOS
+
+
+### 20. A descrição da funcionalidade de um dado dispositivo periférico, o seu conjunto de registos de dados, de controlo e de status é genericamente designada, no contexto de arquitetura de computadores, por uma designação específica. Qual essa designação? 
+
+```
+É designada por I/O Module
+```
+
+
+### 21. Quando, no acesso que o CPU faz a um módulo de E/S, é usada a técnica de entrada/saída de dados por software (programada), quais as tarefas que são realizadas pelo CPU?
+
+```
+POLLING: 
+O CPU toma a iniciativa, aguarda se necessário, inicia e controla a transferência de informação.
+
+Interrupts:
+O periféico sinaliza ao CPU que está pronto para trocar informação (leitura ou escrita)
+O CPU inicia e controla a trasnferência.
+```
+
+### 22. O método de transferência de informação entre um CPU e um módulo de E/S (I/O), em que o programa executado no CPU é responsável por iniciar, monitorizar e controlar a transferência de informação, designa-se por: (4)
+
+```
+Esta técnica de acesso é designada por Polling.
+```
+
+### 23. Quando nos referimos a um “Módulo de I/O”, estamos a referir-nos especificamente a que parte do periférico de que este módulo faz parte?
+
+```
+A parte que interage entre o CPU e o periférico.
+```
+
+### 24. Na implementação da parte de dados de um porto de entrada de um módulo de I/O:
+
+a. que tipo de dispositivos lógicos devem ser usados na ligação ao barramento de dados?
+
+```
+```
+
+b. por que razão é fundamental usar esses dispositivos?
+
+```
+```
+
