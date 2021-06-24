@@ -423,24 +423,57 @@ A RSI poderá tambem utilizar zonas de memória diferentes das do programa inter
 No fim da RSI, este cache tambem tem de ser reposto, o que requer mais instruções.
 ```
 
-### 30. Considere um sistema baseado num CPU a funcionar a uma frequência de 10 MHz com uma taxa de execução de 5 MIPS (5x106 instruções por segundo, CPI = 2) que processa por interrupção eventos externos periódicos. Se o overhead total do atendimento a à interrupção for de 20 ciclos de relógio, e a rotina de serviço à interrupção tiver 40 instruções, determine a máxima frequência a que esses eventos podem ocorrer para que todas as interrupções possam ser atendidas.
+### 30. Considere um sistema baseado num CPU a funcionar a uma frequência de 10 MHz com uma taxa de execução de 5 MIPS (5x10^6 instruções por segundo, CPI = 2) que processa por interrupção eventos externos periódicos. Se o overhead total do atendimento a à interrupção for de 20 ciclos de relógio, e a rotina de serviço à interrupção tiver 40 instruções, determine a máxima frequência a que esses eventos podem ocorrer para que todas as interrupções possam ser atendidas.
+
+```
+Instruções: 5 M
+Freq = 10 MHz
+CPI = 2
+Overhead =  20 ciclos
+Rotina = 40 instruções
+
+Cada instrução demora em média 2 ciclos, logo o overhead é de 10 instruções, assim na interrupção vamos correr 50 instruções
+
+São executadas 5 M instruções por segundo, logo 5x10^6 / 50 = 100k
+
+Em 1 segundo podemos ter no máximo 100k interrupções o que equivale a 100 kHz
+
+```
+
+### 31. Considere um sistema baseado num CPU a funcionar a uma frequência de 40 MHz com uma taxa de execução de 16 MIPS (16x10^6 instruções por segundo, CPI = 2.5). Pretende-se processar por interrupção eventos externos periódicos que ocorrem a uma frequência de 200 kHz. Para cumprir este requisito e sabendo que o overhead total do atendimento a uma interrupção é 75 ciclos de relógio, calcule o número máximo de instruções máquina que a rotina de serviço à interrupção pode ter.
+
+```
+Freq = 40 MHz
+Instruções: 16 M
+CPI = 2.5
+Overhead =  75 ciclos
+Freq Target = 200 kHz
+Rotina = ?
+
+O overhead é composto por 75/2.5 = 30 instruções.
+
+A frequencia target é 200kHz o que equivale a executar 200 k interrupções por segundo.
+
+200k interrupções por segundo resulta em 6,000,000 instruções de overhead
+
+
+O CPU executa 16 M instruções, logo 16 * 10^6 - 6,000,000 = 10 * 10^6 instruções
+
+Ficamos com espaço para 10,000,000 instruções, logo 10,000,000 / 200,000 = 50
+
+50 é o número de instruções que cada interrupção pode fazer para uma frequencia target de 200 kHz (16M / (50+30) = 200k)
+
+```
+### 32. Recalcule a solução para o problema anterior admitindo agora que o CPU a funciona a uma frequência de 100 MHz com uma taxa de execução de 33.3 MIPS (33.3x10^6 instruções por segundo, CPI = 3.0) e que se pretende processar por interrupção eventos externos periódicos que ocorrem a uma frequência de 500 kHz. Admita ainda que o overhead total do atendimento à interrupção é 80 ciclos de relógio.
+
+```
+```
+### 33. Considere um sistema baseado num CPU a funcionar a uma frequência de 10 MHz com uma taxa de execução de 5 MIPS (5x10^6 instruções por segundo, CPI = 2) que processa por interrupção eventos externos periódicos. A rotina de serviço à interrupção tem 70 instruções e verificou-se experimentalmente que a máxima frequência a que os eventos externos podem ocorrer é 50 kHz. Nestas condições determine, em ciclos de relógio, qual o valor máximo que pode que pode ser usado pelo overhead total do atendimento.
+
 ```
 ```
 
-### 31. Considere um sistema baseado num CPU a funcionar a uma frequência de 40 MHz com uma taxa de execução de 16 MIPS (16x106 instruções por segundo, CPI = 2.5). Pretende-se processar por interrupção eventos externos periódicos que ocorrem a uma frequência de 200 kHz. Para cumprir este requisito e sabendo que o overhead total do atendimento a uma interrupção é 75 ciclos de relógio, calcule o número máximo de instruções máquina que a rotina de serviço à interrupção pode ter.
-
-```
-```
-### 32. Recalcule a solução para o problema anterior admitindo agora que o CPU a funciona a uma frequência de 100 MHz com uma taxa de execução de 33.3 MIPS (33.3x106 instruções por segundo, CPI = 3.0) e que se pretende processar por interrupção eventos externos periódicos que ocorrem a uma frequência de 500 kHz. Admita ainda que o overhead total do atendimento à interrupção é 80 ciclos de relógio.
-
-```
-```
-### 33. Considere um sistema baseado num CPU a funcionar a uma frequência de 10 MHz com uma taxa de execução de 5 MIPS (5x106 instruções por segundo, CPI = 2) que processa por interrupção eventos externos periódicos. A rotina de serviço à interrupção tem 70 instruções e verificou-se experimentalmente que a máxima frequência a que os eventos externos podem ocorrer é 50 kHz. Nestas condições determine, em ciclos de relógio, qual o valor máximo que pode que pode ser usado pelo overhead total do atendimento.
-
-```
-```
-
-### 34. Considere agora um sistema baseado num CPU a funcionar a uma frequência de 80 MHz com uma taxa de execução de 40 MIPS (40x106 instruções por segundo, i.e. CPI = 2) que processa, por interrupção, eventos externos periódicos. Se o overhead total do atendimento à interrupção for de 40 ciclos de relógio, e a rotina de serviço à interrupção tiver 20 instruções, determine a máxima frequência a que esses eventos podem ocorrer para que todas as interrupções possam ser atendidas.
+### 34. Considere agora um sistema baseado num CPU a funcionar a uma frequência de 80 MHz com uma taxa de execução de 40 MIPS (40x10^6 instruções por segundo, i.e. CPI = 2) que processa, por interrupção, eventos externos periódicos. Se o overhead total do atendimento à interrupção for de 40 ciclos de relógio, e a rotina de serviço à interrupção tiver 20 instruções, determine a máxima frequência a que esses eventos podem ocorrer para que todas as interrupções possam ser atendidas.
 
 ```
 ```
@@ -464,6 +497,11 @@ Interrupt Acknowledge
 
 ###  36. Descreva, sucintamente, as fases temporais de atendimento a uma interrupção num sistema de interrupções vetorizadas.
 ```
+Tempo de latência de resposta à interrupção.
+Tempo para executar as instruções de leitura de uma word do módulo I/O do periférico, da escrita dessa word no endereçamento da memória
+e da atualização dos endereçoes origem e destino
+Para cada intenção, o tempo necessário para verificar se todos os dados foram já transferidos, o que evolve a leitura de um ou mais registos do módulo de
+I/O do periférico e a verificação de status necessários.
 ```
 
 ### 37. Como designaria a organização de um sistema de atendimento a interrupções em que a identificação, pelo CPU, do periférico gerador da interrupção é feita por hardware, num ciclo de interrupt acknowledge durante o qual o periférico gerador da interrupção coloca o seu vetor no barramento de dados.
@@ -479,7 +517,6 @@ este vai enviar o seu vetor para o barramento de dados.
 
 ```
 O CPU vai ler o registo status de cada um dos periférios para determinar qual dos periféricos requisitou a interrupção.
-
 ```
 
 
@@ -487,15 +524,19 @@ O CPU vai ler o registo status de cada um dos periférios para determinar qual d
 
 ### 39. Descreva a sequência de operações para que possa ocorrer uma transferência por DMA, em modo bloco, quando o controlador de DMA pretende dar início a uma transferência
 ```
+
 ```
 ### 40. Qual a operação que, tipicamente, um controlador de DMA executa quando conclui um processo de transferência de informação enquanto bus master.
 ```
+
 ```
 ### 41. Descreva, sucintamente, qual a finalidade do sinal busgrant num sistema que suporte transferência de dados por DMA, quem gera esse sinal e em que circunstâncias
 ```
+
 ```
 ### 42. Descreva, sucintamente, qual a sequência de eventos que ocorrem muma transferência por DMA, em modo cyclestealing, quando o controlador de DMA pretende dar início a uma transferência elementar.
 ```
+
 ```
 ### 43. Descreva, sucintamente, qual a diferença entres os modos de operação “bloco” e “burst” de um controlador de DMA.
 ```
