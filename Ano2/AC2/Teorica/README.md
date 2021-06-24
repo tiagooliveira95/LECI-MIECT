@@ -469,7 +469,7 @@ Ficamos com espaço para 10,000,000 instruções, logo 10,000,000 / 200,000 = 50
 ```
 Freq = 100 MHz
 Instruções: 33.3 M
-CPI = 2.5
+CPI = 3
 Overhead =  80 ciclos
 Freq Target = 500 kHz
 Rotina = ?
@@ -491,6 +491,20 @@ Ficamos com espaço para 19,966,667 instruções, logo 19,966,667 / 500,000 = 39
 ### 33. Considere um sistema baseado num CPU a funcionar a uma frequência de 10 MHz com uma taxa de execução de 5 MIPS (5x10^6 instruções por segundo, CPI = 2) que processa por interrupção eventos externos periódicos. A rotina de serviço à interrupção tem 70 instruções e verificou-se experimentalmente que a máxima frequência a que os eventos externos podem ocorrer é 50 kHz. Nestas condições determine, em ciclos de relógio, qual o valor máximo que pode que pode ser usado pelo overhead total do atendimento.
 
 ```
+Freq = 10 MHz
+Instruções: 5 M
+CPI = 2
+Overhead = ? ciclos
+Freq Target = 50 kHz
+Rotina = 70 instruções
+
+Podem occorrer 50k interrupções, cada interrupção, sem overhead tem 70 instruções logo 50k * 70 = 3,500,000 instruções
+
+5,000,000 - 3,500,000 = 1,500,000 instruções
+
+1,500,000 é o numero de instruções que "sobram" 1,500,000 / 50k = 30.
+
+Cada interrupção pode tem um overhead de 30 instruções o que corresponde a 60 ciclos de relógio.
 
 ```
 
