@@ -152,3 +152,50 @@ c. se sim, qual o sinal que permite realizar essa leitura?
 ``` 
 Para fazer a leitura devemos ativar o RD_LAT, este vai ativar a tristate que vai conectar o registo LAT ao Data Line
 ```
+
+### 14. Num porto de I/O do PIC32 (esquema abaixo), se eu não souber qual a configuração do mesmo (saída ou entrada), 
+
+a. será possível saber essa informação programaticamente?
+
+```
+Sim, lendo o registo TRISx
+```
+b. se sim, qual o sinal de controlo que permite essa operação?
+```
+É possivel ativando o sinal RD_TRIS o que vai ligar o TRIS ao Data Line
+``` 
+
+### 15. Considere que está a decorrer uma operação sobre um porto de I/O de um PIC32 (ver esquema abaixo – considere o instante assinalado no diagrama temporal). 
+
+a. o porto encontra-se configurado como entrada ou saída?
+```
+O  porto esta configurado como saída, pois o TRIS tem valor 0 (zero).
+``` 
+b. identifique e descreva qual a operação que está em curso. 
+```
+É uma operação de escrita, e coloca o porto a 0 (zero).
+``` 
+
+### 16. Repita o exercício anterior para o esquema apresentado abaixo
+
+
+a. o porto encontra-se configurado como entrada ou saída?
+```
+O  porto esta configurado como entrada, pois o TRIS tem valor 1 (um).
+``` 
+b. identifique e descreva qual a operação que está em curso. 
+```
+É uma operação de leitura, o valor enviado para o porto foi o valor 1 (um).
+``` 
+
+### 17. Na implementação da parte de dados de um porto de saída, que tipo de dispositivo lógico deve ser usado para armazenar o valor transferido através do barramento de dados durante um ciclo de escrita:
+
+```
+Um Flip Flop do tipo D
+``` 
+
+### 18. Na implementação de um porto de I/O do PIC32, o registo PORT está associado a um conjunto de dois flip-flops D em série (shift register de dois andares). Qual o objetivo dessa implementação? 
+
+```
+O input externo não esta sincronizado com o clock interno, assim é usado um conjunto de flip-flops que sincroniza o input com o clock interno.
+```
