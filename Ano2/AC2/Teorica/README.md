@@ -260,11 +260,11 @@ e. efetue, no byte mais significativo, o valor resultante da operação anterior
     
 ```
 f. execute um ciclo de espera de 90ms
-```
+```assembly
 li      $a0, 90
 jal     delay
 ```
 g. regresse ao ponto b 
-```
+```assembly
 j loop
 ```
