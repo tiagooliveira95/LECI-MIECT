@@ -141,7 +141,7 @@ Contem o estado dos pinos.
 
 a. continua a ser possível escrever no registo de saída?
 ``` 
-Sim, mesmo estando o TRIS ativo, ou seja, o tristate em alta impedancia, não impede que nós escrevamos no LAT
+Sim, mesmo estando o TRIS activo, ou seja, o tristate em alta impedancia, não impede que nós escrevamos no LAT
 ```
 b. continua a ser possível ler o valor que se encontra armazenado no registo LAT?
 ``` 
@@ -355,6 +355,33 @@ b. uma operação de leitura a partir de um dispositivo mapeado no espaço de en
 a. descreva sucintamente os dois modos de funcionamento do sistema de interrupções
 
 ```
+POR HARDWARE:
+
+O CPU tem um número de linhas de interrupção, e consegue detetar automaticamente, via hardware, o periférico que originou a interrupção.
+Cada uma destas linhas tem uma prioridade fixa, no caso de haver 2 ou mais linhas de interrupção ativas simultaneamente, o CPU atende
+em 1º lugar a de mais alta prioridade.
+
+No caso de interrupções vetorizadas:
+
+O CPU tem 1 entrada de interrupção, cada periférico possui um identificador único, designado por vetor.
+Durente o processo de atendimento, na fase de identificação da fonte, o periférico gerados da interrupção identifica-se
+através do seu vetor.
+O vetor sera então utilizado pelo CPU que vai procurar numa tabela que contém o endereço de cada uma das RSI,
+ou intruções de salto incondicional para as RSI.
+
+POR SOFTWARE:
+
+Apenas uma entrada de Interrupt request, todas os perifericos tem os seus interrupt requests ligados a uma porta OR que liga à unica
+Ireq do CPU.
+
+Via software, é evocada uma rotina de atendimento a interrupção que lê o registo Status de cada um dos periféricos até encontrar um que tenha 
+gerado um pedido de interrupção.
+
+A ordem em que os periféricos estão ligados determina a prioridade.
+
+No fim, é feito o reset ao Interrupt Request do dado periférico, se o mesmo se mantiver activo, é porque existe outro periférico com o Interrupt activo, neste
+caso o programa repete-se para dar resposta a esse periférico.
+
 ```
 b. do caso do sistema de interrupções feita por hardware, como descreveria sucintamente o seu funcionamento
 
