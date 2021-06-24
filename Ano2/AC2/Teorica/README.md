@@ -610,17 +610,39 @@ Se não foi transferida a totalidade da informação:
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 500MHz, bloco de 512 words de 32 bits
 ```
+500 MHz / 512 = 976,562.5 ciclos por word
+
+F = 1 / 500 * 10^6 = 2ns
+
+976,562.5 * 2 = 1,953,125 ns ~ 1.9531ms
 
 ```
 b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
 ```
+O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez)
+
+Uma vez que para transferir uma word são necessarios 2 ciclos de clock, cada word é totalmente transferida a uma frequencia de: 1 GHz / 2 = 500 MHz
+
+O que faz com que a resposta seja igual ao exercicio anterior, ou seja ~1.9531ms
 ```
 c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 16 bits
 ```
+1 GHz / 512 = 1,953,125 ciclos por word
+
+F = 1 / 1 * 10^9 = 1ns
+
+1,953,125 * 1 = 1,953,125 ns ~ 1.9531ms
 ```
-d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits
+
+d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2K words de 16 bits
 ```
+500 MHz / 2000 = 250,000 ciclos por word
+
+F = 1 / 500 * 10^6 = 2ns
+
+250,000 * 2 = 500,000 ns ~ 0.5ms
 ```
+
 ### 45. Volte a resolver o problema anterior considerando agora que um bus cycle é realizado em 2 ciclos de relógio e para as seguintes condições:
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 1GHz, bloco de 1K words de 32 bits
