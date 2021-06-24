@@ -291,7 +291,7 @@ O periféico sinaliza ao CPU que está pronto para trocar informação (leitura 
 O CPU inicia e controla a trasnferência.
 ```
 
-### 22. O método de transferência de informação entre um CPU e um módulo de E/S (I/O), em que o programa executado no CPU é responsável por iniciar, monitorizar e controlar a transferência de informação, designa-se por: (4)
+### 22. O método de transferência de informação entre um CPU e um módulo de E/S (I/O), em que o programa executado no CPU é responsável por iniciar, monitorizar e controlar a transferência de informação, designa-se por:
 
 ```
 Esta técnica de acesso é designada por Polling.
@@ -315,3 +315,220 @@ b. por que razão é fundamental usar esses dispositivos?
 ```
 ```
 
+
+### 25. Os diagramas temporais que se seguem, nas várias figuras, representam operação de transferência de informação (leitura ou escrita) de/para dispositivos que podem estar mapeados em espaços de endereçamento de I/O ou de memória. Identifique, para cada diagrama qual o tido de operação e espaço de endereçamento utilizado: 
+
+1.
+```
+```
+2.
+```
+```
+3.
+```
+```
+4.
+```
+```
+5.
+```
+```
+6.
+```
+```
+
+### 26. Nos diagramas temporais, incompletos, das duas figuras abaixo, complete a representação gráfica dos mesmos para:
+
+a. uma operação de escrita num dispositivo mapeado no espaço de endereçamento de memória
+```
+```
+b. uma operação de leitura a partir de um dispositivo mapeado no espaço de endereçamento de I/O
+```
+```
+
+
+# INTERRUPÇÕES
+
+
+### 27. No que respeita ao sistema de interrupções do PIC32 é (usado na placa DETPIC32):
+
+a. descreva sucintamente os dois modos de funcionamento do sistema de interrupções
+
+```
+```
+b. do caso do sistema de interrupções feita por hardware, como descreveria sucintamente o seu funcionamento
+
+```
+1. Obter o endereço da RSI (Rotina de Serviço a Interrupção).
+2. Salvaguiardar o contexto atual do CPU (valor corrente do PC e flags de estado associadas ao sistema).
+3. Desativação das interrupções.
+4. Carregamento do PC do endereço da RSI (PC <- Endereço da RSI (salto para a 1º instrução da RSI) )
+5. Execução da RSI até encontrar a instrução de retorno.
+6. Execução da instrução de retorno da RSI ('eret' no mips)
+    - Reposição do contexto salvaguardado (PC e flags)
+    - reativação das interrupções, e regreço ao programa interrompido, com a execução da instrução que teria sido executada se não tivesse acontecido a interrupção.
+```
+c. ainda no caso da alínea anterior, o que determina a ordem pela qual as interrupções são servidas nos casos em que ocorram em simultânea a partir de mais do que uma fonte
+
+```
+O que determina é a prioridade de cada interrupção.
+```
+
+### 28. Numa RSI, qual o objetivo do conjunto de instruções designado por:
+a. "prólogo"?
+```
+Responsável por salvaguardar o contexto do programa
+```
+b. "epílogo"?
+```
+Responsável por repor o contexto do programa.
+```
+
+### 29. Descreva, por palavras suas, o que se entende por overhead da transferência de informação por interrupção e as razões que justificam esse overhead.
+```
+Quando ocorre uma interrupção occorem vários overheads devido à:
+- Necessidade de salvaguardar o contexto do programa interrompido
+- Antes de abandonar a RSI tem de se repor o contexto
+
+Estas 2 operações requerem, no MIPS do PIC32 cerca de 50 instruções.
+
+A RSI poderá tambem utilizar zonas de memória diferentes das do programa interrompido, o que obriga à atualização das memórias cache com o consequente impacto no número de ciclo de relógico gastos.
+No fim da RSI, este cache tambem tem de ser reposto, o que requer mais instruções.
+```
+
+### 30. Considere um sistema baseado num CPU a funcionar a uma frequência de 10 MHz com uma taxa de execução de 5 MIPS (5x106 instruções por segundo, CPI = 2) que processa por interrupção eventos externos periódicos. Se o overhead total do atendimento a à interrupção for de 20 ciclos de relógio, e a rotina de serviço à interrupção tiver 40 instruções, determine a máxima frequência a que esses eventos podem ocorrer para que todas as interrupções possam ser atendidas.
+```
+```
+
+### 31. Considere um sistema baseado num CPU a funcionar a uma frequência de 40 MHz com uma taxa de execução de 16 MIPS (16x106 instruções por segundo, CPI = 2.5). Pretende-se processar por interrupção eventos externos periódicos que ocorrem a uma frequência de 200 kHz. Para cumprir este requisito e sabendo que o overhead total do atendimento a uma interrupção é 75 ciclos de relógio, calcule o número máximo de instruções máquina que a rotina de serviço à interrupção pode ter.
+
+```
+```
+### 32. Recalcule a solução para o problema anterior admitindo agora que o CPU a funciona a uma frequência de 100 MHz com uma taxa de execução de 33.3 MIPS (33.3x106 instruções por segundo, CPI = 3.0) e que se pretende processar por interrupção eventos externos periódicos que ocorrem a uma frequência de 500 kHz. Admita ainda que o overhead total do atendimento à interrupção é 80 ciclos de relógio.
+
+```
+```
+### 33. Considere um sistema baseado num CPU a funcionar a uma frequência de 10 MHz com uma taxa de execução de 5 MIPS (5x106 instruções por segundo, CPI = 2) que processa por interrupção eventos externos periódicos. A rotina de serviço à interrupção tem 70 instruções e verificou-se experimentalmente que a máxima frequência a que os eventos externos podem ocorrer é 50 kHz. Nestas condições determine, em ciclos de relógio, qual o valor máximo que pode que pode ser usado pelo overhead total do atendimento.
+
+```
+```
+
+### 34. Considere agora um sistema baseado num CPU a funcionar a uma frequência de 80 MHz com uma taxa de execução de 40 MIPS (40x106 instruções por segundo, i.e. CPI = 2) que processa, por interrupção, eventos externos periódicos. Se o overhead total do atendimento à interrupção for de 40 ciclos de relógio, e a rotina de serviço à interrupção tiver 20 instruções, determine a máxima frequência a que esses eventos podem ocorrer para que todas as interrupções possam ser atendidas.
+
+```
+```
+
+### 35. Descreva sucintamente, para o caso de um sistema de interrupções vetorizadas com prioridade estabelecida por “daisy chain”:
+
+a. como é estabelecida a prioridade de resposta a interrupções simultâneas
+```
+```
+b. como se designa o sinal por hardware que permite estabelecer e assegurar o funcionamento do sistema em “daisy chain”
+```
+```
+
+
+###  36. Descreva, sucintamente, as fases temporais de atendimento a uma interrupção num sistema de interrupções vetorizadas.
+```
+```
+
+### 37. Como designaria a organização de um sistema de atendimento a interrupções em que a identificação, pelo CPU, do periférico gerador da interrupção é feita por hardware, num ciclo de interrupt acknowledge durante o qual o periférico gerador da interrupção coloca o seu vetor no barramento de dados.
+```
+```
+
+###  38. Descreva, sucintamente, o funcionamento de um sistema de interrupções baseado em "identificação da fonte por software" 
+```
+```
+
+
+# DMA
+
+### 39. Descreva a sequência de operações para que possa ocorrer uma transferência por DMA, em modo bloco, quando o controlador de DMA pretende dar início a uma transferência
+```
+```
+### 40. Qual a operação que, tipicamente, um controlador de DMA executa quando conclui um processo de transferência de informação enquanto bus master.
+```
+```
+### 41. Descreva, sucintamente, qual a finalidade do sinal busgrant num sistema que suporte transferência de dados por DMA, quem gera esse sinal e em que circunstâncias
+```
+```
+### 42. Descreva, sucintamente, qual a sequência de eventos que ocorrem muma transferência por DMA, em modo cyclestealing, quando o controlador de DMA pretende dar início a uma transferência elementar.
+```
+```
+### 43. Descreva, sucintamente, qual a diferença entres os modos de operação “bloco” e “burst” de um controlador de DMA.
+```
+```
+### 44. Considere um controlador de DMA não dedicado, a funcionar em modo bloco, em que um bus cycle é realizado em 1 ciclo de relógio. Calcule o tempo necessário para efetuar a transferência de um bloco de dados para as seguintes condições:
+
+a. controlador de 32 bits, frequência de funcionamento do DMA de 500MHz, bloco de 512 words de 32 bits
+```
+```
+b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
+```
+```
+c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 16 bits
+```
+```
+d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits
+```
+```
+### 45. Volte a resolver o problema anterior considerando agora que um bus cycle é realizado em 2 ciclos de relógio e para as seguintes condições:
+
+a. controlador de 32 bits, frequência de funcionamento do DMA de 1GHz, bloco de 1K words de 32 bits
+```
+```
+b. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2K words de 32 bits
+```
+```
+c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 256 words de 32 bits
+```
+```
+d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits 
+```
+```
+
+### 46. Resolva as duas primeiras alíneas do problema anterior considerando agora que o controlador é dedicado.
+```
+```
+
+### 47. Considere agora um controlador de DMA não dedicado, a funcionar em modo cycle-stealing, em que um bus cycle é realizado em 2 ciclos de relógio e o tempo mínimo entre operações elementares é 1 ciclo de relógio. Calcule o tempo mínimo necessário para efetuar a transferência de um bloco de dados para as seguintes condições:
+
+a. controlador de 32 bits, frequência de funcionamento do DMA de 250 MHz, bloco de 512 words de 32 bits
+```
+```
+b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
+```
+```
+c. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits
+```
+```
+### 48. Determine o número de bus cycles necessários para efetuar uma transferência por um controlador de DMA dedicado a funcionar em modo bloco, dadas as seguintes condições:
+
+a. controlador de 32 bits, frequência de funcionamento do DMA de 500 MHz, bloco de 512 words de 32 bits
+```
+```
+b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 4K words de 32 bits
+```
+```
+c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
+```
+```
+d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 1Kwords de 16 bits
+
+### 49. Determine a taxa de transferência de pico (expressa em Bytes/s) de um DMA não dedicado de 32 bits (i.e. com barramento de dados de 32 bits), a funcionar a 100 MHz em modo "cycle-stealing". Suponha ainda que são necessários 2 ciclos de relógio (equivalente a 2 *TBC) para efetuar uma operação de leitura ou escrita. desse DMA. O tempo mínimo entre operações elementares deverá ser de 1TBC
+```
+```
+### 50. Resolva o problema anterior, mas considerando agora as seguintes condições:
+
+a. controlador de 32 bits, frequência do DMA de 120 MHz, 1TBC = 2 ciclos de relógio, tempo mínimo entre operações elementares de 2 TBC
+```
+```
+b. controlador de 32 bits, frequência do DMA de 80 MHz, 1TBC = 2 ciclos de relógio, tempo mínimo entre operações elementares de 3 TBC
+```
+```
+c. controlador de 16 bits, frequência do DMA de 120 MHz, 1TBC = 2 ciclos de relógio, tempo mínimo entre operações elementares de 2 TBC
+```
+```
+d. controlador de 16 bits, frequência do DMA de 200 MHz, 1TBC = 1 ciclos de relógio, tempo mínimo entre operações elementares de 1 TBC
+```
+```
