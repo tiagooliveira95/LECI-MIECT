@@ -197,5 +197,6 @@ Um Flip Flop do tipo D
 ### 18. Na implementação de um porto de I/O do PIC32, o registo PORT está associado a um conjunto de dois flip-flops D em série (shift register de dois andares). Qual o objetivo dessa implementação? 
 
 ```
-O input externo não esta sincronizado com o clock interno, assim é usado um conjunto de flip-flops que sincroniza o input com o clock interno.
+O input externo não esta sincronizado com o clock interno (na prespectiva do cpu é assíncrono).
+Assim para evitar problemas de meta-estabilidade, são usados um conjunto de flip-flops que sincroniza o input com o clock interno.
 ```
