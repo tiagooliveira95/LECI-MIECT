@@ -200,3 +200,71 @@ Um Flip Flop do tipo D
 O input externo não esta sincronizado com o clock interno (na prespectiva do cpu é assíncrono).
 Assim para evitar problemas de meta-estabilidade, são usados um conjunto de flip-flops que sincroniza o input com o clock interno.
 ```
+
+### 19. Pretende usar-se o porto RB do microcontrolador PIC32MX795F512H para realizar a seguinte função (em ciclo infinito): 
+
+O byte menos significativo ligado a este porto é lido com uma periodicidade de 100ms. Com um atraso de 10ms, o valor lido no byte menos significativo é colocado, em complemento para 1, no byte mais significativo desse mesmo porto. Escreva, em assembly do MIPS, um programa que execute esta tarefa.
+
+a. configure o porto RB para executar corretamente a tarefa descrita
+```assembly
+
+    .equ SFR_BASE_HI, 0xBF88        # 16 MSbits of SFR area
+    .equ TRISB, 0x6040
+ 
+ main:   lui     $t0, SFR_BASE_HI        #
+         lw      $t1, TRISB($t0)         # READ  (Mem_addr = 0xBF880000 + 0x6040)
+         ori     $t1, $t1, 0x8001        # MODIFY (RB[15] = 0 & RB[0] = 1 (1 means INPUT 0 means OUTPUT))
+         sw      $t1, TRISB($t0)         # WRITE (Write TRISB register
+```
+b. efetue a leitura do porto indicado
+```assembly
+
+    .equ SFR_BASE_HI, 0xBF88        # 16 MSbits of SFR area
+    .equ PORTB, 0x6050
+
+main:   lui     $t0, SFR_BASE_HI        #
+loop:
+        lw      $t1, PORTB($t0)         # READ, t1 = RB
+```
+c. execute um ciclo de espera de 10ms
+```assembly
+
+li      $a0, 10
+jal     delay
+
+delay:  ble     $a0,0, endFor               # for(; ms > 0; ms--) {
+        li      $v0, resetCoreTimer         #
+        syscall                             #   resetCoreTimer();
+while2: li      $v0, readCoreTimer          #   while(readCoreTimer()
+        syscall                             #
+        blt     $v0, 20000, while2          #           < 20000);
+        addi    $a0,$a0,-1
+        j       delay                       # }
+endFor: jr      $ra
+
+```
+d. efetue a transformação da informação lida para preparar o processo de escrita naquele porto
+```assembly
+        # t1 = RB       
+        andi    $t1, $t1, 1             # t1 = RB & 1 = RB0
+```
+e. efetue, no byte mais significativo, o valor resultante da operação anterior
+```assembly
+# t1 = RB0
+
+    sll     $t1,$t1,15
+    
+    lw      $t2,LATB($t0)           # READ (Mem_addr = 0xBF880000 + 0x6060)
+    or      $t2,$t2,$t1             # R15 = RB0
+    sw      $t2,LATB($t0)           # WRITE (Mem_addr = 0xBF880000 + 0x6060)
+    
+```
+f. execute um ciclo de espera de 90ms
+```
+li      $a0, 90
+jal     delay
+```
+g. regresse ao ponto b 
+```
+j loop
+```
