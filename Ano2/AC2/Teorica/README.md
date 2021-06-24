@@ -1,4 +1,4 @@
-## Introdução
+# Introdução
 
 ### 1. Num sistema computacional, como definiria com as suas próprias palavras o conceito de espaço de endereçamento?
 
@@ -22,3 +22,133 @@ Numa memória bit-addressable cada endereço corresponde a um byte de memória.
 ```
 Numa memória word-addressable cada endereço corresponde a uma word de tamanho x.
 ``` 
+
+### 4. Identifique e descreva pelas suas palavras qual o papel, na arquitetura de um sistema computacional:
+
+1. do Data Bus
+```
+O bus por onde passa a informação a ser enviada  out recebida pelo cpu e pelos seus periféricos.
+```
+2. do Address Bus
+```
+O bus que contem o endereço requisitado
+```
+3. do Control Bus
+```
+Responsável por indicar se a operação é uma escrita ou leitura.
+```
+
+### 5. Na arquitetura de um sistema computacional, como designa o barramento que permite identificar o registo, na memória ou num periférico, do qual ou para o qual vai ocorrer uma transferência de informação. 
+
+```
+O Address Bus tem a responsabilidade de identificar o registo na memória ou periférico.
+```
+
+
+### 6. Na arquitetura de um sistema computacional, como designa o barramento que permite especificar o tipo de operação efetuada sobre a memória ou sobre um periférico. 
+
+```
+O Control Bus tem a função de especificar o tipo de operação a ser afetuada no periférico ou na memória, esta pode ser de escrita ou de leitura.
+```
+
+# MICROCONTOLADORES (EMBEDED SYSTEMS) 
+
+### 7. Um compilador-cruzado (cross-compiler) é o nome dado a um tipo específico de programa. Como descreveria, nas suas próprias palavras o que caracteriza este tipo de programa?
+
+```
+Um cross-compiler é o nome que se dá a um compilador que compila código para uma arquitetura diferente da que o compilador esta a correr.
+```
+
+### 8. Identifique qual a função de um bootloader num sistema baseado em microcontrolador?
+
+```
+O bootloader é o primeiro programa a ser executado, e é responsável por verificar se existe uma comunicação com o PC e disponibiliza funções básicas como a transferência e execução de um programa.
+```
+
+### 9. Quando falamos em microcontroladores, por oposição a um sistema computacional de uso geral, o que podemos afirmar:
+
+a. quanto aos principais aspetos da sua arquitetura interna
+
+```
+
+```
+
+b. quanto à sua frequência de trabalho
+
+```
+A frequencia de trabalho é inferior.
+```
+
+c. quanto à disponibilização de periféricos
+
+```
+```
+
+d. quanto ao custo
+
+```
+Um microcontrolador tem um custo inferior a um sistema computacional de uso geral.
+```
+
+e. quanto à energia consumida
+
+```
+Um microcontrolador consume menos que um sisteme computacional.
+```
+
+f. quanto aos seus campos de aplicação
+
+```
+O microcontrolador executa uma função específica que lhe foi programada.
+```
+
+###  10. Como descreveria as principais caraterísticas de um sistema embebido?
+
+```
+É um sistema de baixo custo e executa de forma eficiente a função para a qual foi programado. 
+```
+
+### 11. Um microcontrolador PIC32 usa uma arquitetura pipelined semelhante à estudada nas aulas de AC1. Descreva qual o modelo base da arquitetura usada e o tipo ou tipos de memória usadas pelo sistema. 
+
+```
+O PIC32 tem um processador MIPS Harvard com um pipeline de 5 estágios, tem interface JTAG para efeitos de programação e Trace para debugging, e 32 registos de 32 bits.
+
+Tem ainda,
+512 KB usados para memória de instruções, com words de 128-bits
+128Kb de SRAM usada para memória de dados volátil.
+Diversos perifericos como o ADC,Uarts,SPI's Timers, RTC, USB OTG, CAN, Ethernet...
+
+```
+
+# MÓDULOS DE I/O
+
+### 12. Na arquitetura de um microcontrolador PIC32 qual a finalidade e funcionalidade dos seguintes registos:
+
+a. TRIS
+``` 
+O bits definem o comportamento dos pinos, ou seja, se devem ser tratados como input ou output
+``` 
+b. LAT
+``` 
+Usado para definir o estado dos pinos.
+``` 
+c. PORT
+``` 
+Contem o estado dos pinos.
+``` 
+
+### 13. Num porto de I/O do PIC32 (esquema abaixo), quando o porto se encontra configurado como porto de entrada, 
+
+a. continua a ser possível escrever no registo de saída?
+``` 
+Sim, mesmo estando o TRIS ativo, ou seja, o tristate em alta impedancia, não impede que nós escrevamos no LAT
+```
+b. continua a ser possível ler o valor que se encontra armazenado no registo LAT?
+``` 
+Sim, pois o tristate TRIS não tem influencia no registo LAT
+```
+c. se sim, qual o sinal que permite realizar essa leitura?
+
+``` 
+Para fazer a leitura devemos ativar o RD_LAT, este vai ativar a tristate que vai conectar o registo LAT ao Data Line
+```
