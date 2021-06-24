@@ -467,10 +467,31 @@ Ficamos com espaço para 10,000,000 instruções, logo 10,000,000 / 200,000 = 50
 ### 32. Recalcule a solução para o problema anterior admitindo agora que o CPU a funciona a uma frequência de 100 MHz com uma taxa de execução de 33.3 MIPS (33.3x10^6 instruções por segundo, CPI = 3.0) e que se pretende processar por interrupção eventos externos periódicos que ocorrem a uma frequência de 500 kHz. Admita ainda que o overhead total do atendimento à interrupção é 80 ciclos de relógio.
 
 ```
+Freq = 100 MHz
+Instruções: 33.3 M
+CPI = 2.5
+Overhead =  80 ciclos
+Freq Target = 500 kHz
+Rotina = ?
+
+O overhead é composto por 80/3 = 26.666 instruções.
+
+A frequencia target é 500kHz o que equivale a executar 500 k interrupções por segundo.
+
+500k interrupções por segundo resulta em 13,333,333 instruções de overhead
+
+
+O CPU executa 33.3 M instruções, logo 33.3 * 10^6 - 13,333,333 = 19,966,667 instruções
+
+Ficamos com espaço para 19,966,667 instruções, logo 19,966,667 / 500,000 = 39.9 ~ 40
+
+40 é o número de instruções que cada interrupção pode fazer para uma frequencia target de 500 kHz (33.3M / (40+26.666) = 499.5 kHz)
+
 ```
 ### 33. Considere um sistema baseado num CPU a funcionar a uma frequência de 10 MHz com uma taxa de execução de 5 MIPS (5x10^6 instruções por segundo, CPI = 2) que processa por interrupção eventos externos periódicos. A rotina de serviço à interrupção tem 70 instruções e verificou-se experimentalmente que a máxima frequência a que os eventos externos podem ocorrer é 50 kHz. Nestas condições determine, em ciclos de relógio, qual o valor máximo que pode que pode ser usado pelo overhead total do atendimento.
 
 ```
+
 ```
 
 ### 34. Considere agora um sistema baseado num CPU a funcionar a uma frequência de 80 MHz com uma taxa de execução de 40 MIPS (40x10^6 instruções por segundo, i.e. CPI = 2) que processa, por interrupção, eventos externos periódicos. Se o overhead total do atendimento à interrupção for de 40 ciclos de relógio, e a rotina de serviço à interrupção tiver 20 instruções, determine a máxima frequência a que esses eventos podem ocorrer para que todas as interrupções possam ser atendidas.
