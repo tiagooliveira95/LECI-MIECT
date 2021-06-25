@@ -768,6 +768,12 @@ Um DMA didicado de 16bits necessita de 1 ciclo para transferir 16bits
 ### 49. Determine a taxa de transferência de pico (expressa em Bytes/s) de um DMA não dedicado de 32 bits (i.e. com barramento de dados de 32 bits), a funcionar a 100 MHz em modo "cycle-stealing". Suponha ainda que são necessários 2 ciclos de relógio (equivalente a 2 *TBC) para efetuar uma operação de leitura ou escrita. desse DMA. O tempo mínimo entre operações elementares deverá ser de 1TBC
 
 ```
+O DMA executa 1 vez por cada 2 ciclos de clock, logo 100 MHz / 2 = 50 Mhz é a frequencia a que o DMA fica ativo.
+
+O DMA necessita de 2 ciclos de relógio para fazer uma transferencia, 50 / 2 = 25 MHz é a frequencia de transferencia por word
+
+32 bits * 25 MHz / 8 =  100,000,000 bytes/s ~ 97,6 MB/s
+
 ```
 
 ### 50. Resolva o problema anterior, mas considerando agora as seguintes condições:
@@ -789,9 +795,221 @@ d. controlador de 16 bits, frequência do DMA de 200 MHz, 1TBC = 1 ciclos de rel
 ### 51. Suponha um DMA não dedicado de 32 bits (i.e. com barramento de dados de 32 bits), a funcionar a 100 MHz. Suponha ainda que são necessários 2 ciclos de relógio para efetuar uma operação de leitura ou escrita (i.e. 1 "bus cycle" é constituído por 2 ciclos de relógio).
 
 a. determine a taxa de transferência desse DMA (expressa em Bytes/s), supondo um funcionamento em modo bloco.
+```
+```
 
 b. determine a taxa de transferência de pico desse DMA (expressa em Bytes/s), supondo um funcionamento em modo "cycle-stealing" e um tempo mínimo entre operações elementares de 1 ciclo de relógio ("fetch", 1T mínimo, "deposit", 1T mínimo).
+```
+```
 
 c. Repita as alíneas anteriores supondo um DMA dedicado com as características referidas anteriormente.
+```
+```
 
 # TIMERS
+
+### 52. Considere um timer em que a relação entre as frequências de entrada e de saída é uma constante k configurável. Se colocar dois desses timers em cascata (i.e., ligados em série) com constantes de divisão k1 e k2, determine a expressão algébrica que estabelece a relação entre a frequência à entrada do primeiro (fin) e a frequência à saída do segundo (fout). 
+
+```
+fout = fin / k1*k2
+```
+
+### 53. Descreva, por palavras suas o que se entende por Duty Cycle de um sinal digital periódico. Dê alguns exemplos em que a manipulação dinâmica deste valor pode ser usado em aplicações práticas.
+
+```
+
+``` 
+
+### 54. Considere um timer em que a relação entre as frequências de entrada e de saída é dada por(k+1) em que k é uma constante configurável. Determine o período do sinal de saída para os valores seguintes:
+a. frequência de entrada do timer for 20MHz e k = 1999
+b. frequência de entrada do timer for 40MHz e k = 1249
+c. frequência de entrada do timer for 80MHz e k = 32767
+d. frequência de entrada do timer for 2MHz e k = 1023
+
+### 55. Alguns dos timers que estudou e utilizou têm, como último andar do temporizador, um divisor por dois. Descreva, sucintamente, qual a razão e finalidade desse divisor por dois.
+
+### 56. Considere um timer e uma unidade OC como o da figura abaixo (semelhante aos dos PIC32). Admita que a frequência do relógio TCLK é de 20MHz, que o fator de divisão do prescaler é 4, que o valor armazenado em PR é 2499 e que o valor em OCK é 834. Determine o período do sinal de saída e o respetivo duty cycle. 
+
+### 57. Pretende-se gerar um sinal com uma frequência de 85 Hz. Usando o Timer T2 e supondo PBCLK = 50 MHz:
+a. calcule o valor mínimo da constante de divisão a aplicar ao prescaler e indique qual o valor efetivo dessa constante
+b. calcule o valor da constante PR2
+
+### 58. Repita o exercício anterior, supondo que se está a usar o Timer T1
+
+### 59. Pretende-se gerar um sinal com uma frequência de 100 Hz e 25% de "duty-cycle". Usando o módulo "output compare" OC5 e como base de tempo o Timer T3 e supondo ainda PBCLK = 40 MHz:
+
+a. determine o valor efetivo da constante de prescaler que maximiza a resolução do sinal PWM
+b. determine o valor das constantes PR3 e OC5RS
+c. determine a resolução do sinal de PWM obtido
+
+### 60. Considere ainda um timer como o da figura acima (semelhante aos dos PIC32) com a sua saída ligada uma unidade OC. Admita que a frequência do relógio TCLK é de 20MHz e que o fator de divisão do prescaler é 8. Determine quais os valores que deverá colocar nos registos em PR e OCK para obter na saída O1 um sinal periódico com uma mfrequência de 200Hz e um duty cycle de 25%: 
+
+### 61. Considere um timer do tipo A do PIC32 (semelhante ao da figura) e um PBCLK = 20MHz. Determine o fator divisão do prescaler e o valor a colocar em PR1 para que o período de fout seja de 15ms, com a melhor precisão possível: 
+
+
+### 62. Considere um timer com reset síncrono em que a relação entre as frequências de entrada e de saída é dada por (k+1), sendo k uma constante configurável. Determine o valor de k para as seguintes condições:
+a. frequência de entrada do timer for 20MHz e período do sinal à saída de 5ms
+b. frequência de entrada do timer for 25MHz e período do sinal à saída de 1ms
+c. frequência de entrada do timer for 40MHz e período do sinal à saída de 250ms
+
+### 63. Calcule qual o tempo máximo entre resets ao um sistema de watchdog timer que gera um sinal de reset ao processador sempre que a contagem atinge o valor máximo. Admita as seguintes condições:
+a. frequência de entrada de 100 kHz, contador crescente de 16 bits
+b. frequência de entrada de 20 kHz, contador crescente de 10 bits
+c. frequência de entrada de 50MHz, contador crescente de 24 bits
+
+### 64. Um determinado microcontrolador disponibiliza um watchdog timer com uma frequência de entrada de 100 kHz. O programa em execução faz, por software, um reset ao watchdog timer com uma periodicidade que pode variar entre [10ms … 170ms]. Determine o número mínimo de bits do contador do watchdog timer por forma a que este nunca gere um reset ao processador.
+
+### 65. Repita o problema anterior admitindo agora que a frequência de entrada do watchdog timer é de 250 kHz e que o programa em execução faz, por software, um reset ao watchdog timer com uma periodicidade que pode variar entre [125ms … 480ms]
+
+### 66. O programa em execução num microcontrolador faz, por software, um reset ao watchdog timer com uma periodicidade que pode variar entre [50ms … 150ms]. O watchdog desse microcontrolador usa um gerador de relógio próprio e um contador binário de 16 bits que, ao chegar ao fim de contagem, gera um reset por hardware ao microcontrolador. Dadas estas condições, e por forma a que o sistema de supervisão funcione adequadamente, determine qua a máxima frequência de relógio aplicada na entrada do watchdog. 
+
+# NOÇÕES BÁSICAS DE BARRAMENTOS / DESCODIFICAÇÃO DE ENDEREÇOS
+
+### 67. Para um barramento de endereço como o indicado abaixo, que seleciona blocos de memória com 1Kbyte, suponha que no descodificador apenas se consideram os bits A15, A13 e A11, com os valores 1, 0 e 0, respetivamente.
+a. apresente a expressão lógica que implementa este descodificador:
+i. em lógica positiva
+ii. em lógica negativa
+b. indique os endereços inicial e final da gama-base descodificada e de todas as réplicas 
+
+
+### 68. Considere o exemplo de um espaço de endereçamento indicado na figura abaixo, em que os blocos de memória têm uma dimensão de 4Kbyte. Admita agora não vamos descodificar os bits A14 e A12 do bloco dos 4 bits mais significativos, resultando na expressão CS\ = A15 + A13\
+a. determine as gamas do espaço de endereçamento de 16 bits ocupadas pela memória.
+b. determine os endereços possíveis para aceder à 15ª posição da memória. 
+
+
+### 69. Escreva as equações lógicas dos 4 descodificadores necessários para a geração dos sinais de seleção para cada um dos dispositivos identificados na figura ao lado. 
+
+
+### 70. Para o exemplo da figura abaixo, determine a gama de endereços em que cada uma das linhas CS_x está ativa, com a constante de comparação 0x00102 e admitindo que o valor de S é composto por 3 bits e N=32bits. 
+
+
+### 71. Para um barramento de endereço de 20 bits, semelhante ao indicado na figura, pretende-se gerar os sinais de seleção para 4 memórias de 8 kByte, a mapear em gamas de endereços consecutivas, de modo a formar um conjunto de 32 kByte. O endereço inicial deve ser configurável. Para um espaço de endereçamento de 20 bits: 
+a. indique o número de bits dos campos K, S e R, supondo descodificação total
+b. esboce o circuito digital que implementa este descodificador
+c. indique os endereços inicial e final para a primeira, segunda e última gamas de endereços possíveis de serem descodificadas
+d. para a última gama de endereços, indique os endereços inicial e final atribuídos a cada uma das 4 memórias de 8kbyte
+e. suponha que o endereço 0x3AC45 é um endereço válido para aceder ao conjunto de 32k. Indique os endereços inicial e final da gama que inclui este endereço. Indique os endereços inicial e final da memória de 8KByte à qual está atribuído este endereço 
+
+
+### 72. Pretende-se gerar os sinais de seleção para os seguintes 4 dispositivos: 1 porto de saída de 1 byte, 1 memória RAM de 1 kByte (byte-addressable), 1 memória ROM de 2 kByte (byte-addressable), 1 periférico com 5 registos de 1 byte cada um. O espaço de endereçamento a considerar é de 20 bits.
+a. desenhe o gerador de linhas de seleção para estes 4 dispositivos, baseando-se no modelo discutido nos slides anteriores e usando a mesma sub-gama para o periférico e para o porto de saída de 1 byte.
+b. especifique a dimensão de todos os barramentos e quais os bits que são usados
+c. desenhe o mapa de memória com o endereço inicial e final do espaço efetivamente ocupado por cada um dos 4 dispositivos, considerando para o conjunto um endereço-base por si determinado
+
+### 73. O periférico com 5 registos, do exercício anterior, tem um barramento de endereços com três bits. Suponha que esses bits estão ligados aos bits A0, A1 e A2 do barramento de endereços do CPU.
+a. usando o descodificador desenhado no exercício anterior, indique os 16 primeiros endereços em que é possível aceder ao registo 0 (selecionado com A0, A1 e A2 a 0)
+b. repita o exercício anterior supondo que os 3 bits do barramento de endereços do periférico estão ligados aos bits A2, A3 e A4 do barramento de endereços.
+
+### 74. Admita que, num espaço de endereçamento de 16 bits, um descodificador é implementado através da expressão lógica "CE\ = A15 + A14 + A12\". Determine qual/quais a(s) gama(s) de endereço(s) que este módulo descodifica:
+
+### 75. Suponha que pretende implementar um circuito gerador de sinais de seleção programável (semelhante ao que estudou nas aulas teóricas) que gere 64 linhas de seleção, cada uma delas ativa em 16k endereços consecutivos, num espaço de endereçamento de 32 bits.
+a. Determine qual a dimensão em bits (N) e respetiva gama, que deve ser ligado ao primeiro bloco da figura
+b. Determine agora qual a dimensão em bits (N) e respetiva gama, que deve ser ligado ao primeiro bloco da figura, se pretendêssemos agora que cada uma das 64 linhas de seleção ativa 1K endereços consecutivos
+
+### 76. Um programa que pretende transferir dados de 32 bits de um periférico para a memória é implementado num ciclo com 10 instruções. Admitindo que o CPU funciona a 200 MHz e que o programa em causa apresenta um CPI de 2.5, determine, em MByte/s, a taxa de transferência máxima que se consegue obter, supondo um barramento de dados de 32 bits.
+
+### 77. Suponha que dispõe de 16 circuitos de memória de 1Mx4bits. Usando todos estes circuitos, determine qual o tamanho do módulo de memória, com uma dimensão de palavra de 1 byte, que é possível construir:
+
+### 78. Para construir um módulo de memória SRAM de 512k x 8 bits, admitindo que dispõe de circuitos de 64k x 8 bits quantos circuitos seriam necessários?
+
+### 79. Admita um sistema com um barramento de endereço com 16 bits. Supondo que uma memória com 1K registos é selecionada a partir de um descodificador que utiliza os bits [A13..A10]:
+a. determine quantas réplicas da memória resultam desta descodificação
+b. identifique, justificando, se os espaços de endereçamento são contíguos ou não contíguos
+
+### 80. O sinal de seleção "Sel\" (ativo baixo) de uma memória de 2k endereços mapeada na gama de endereços 0x00800...0x00FFF, num espaço de endereçamento de 20 bits, pode ser obtido através de uma expressão ógica do tipo
+a. obtenha a expressão do sinal "Sel\" (ativo baixo) um porto mapeado na gama de endereços 0x00400...0x007FF, num espaço de endereçamento de 20 bits
+b. obtenha a expressão do sinal "Sel\" (ativo baixo) para as mesmas condições da alínea anterior, mas agora admitindo que o espaço de endereçamento é de 16 bits
+c. obtenha a expressão do sinal "Sel\" (ativo baixo) de uma memória de 16k endereços mapeado na gama de endereços 0x8C000...0x8FFFF, num espaço de endereçamento de 20 bits
+d. Obtenha a expressão do sinal "Sel" (ativo alto) de um porto mapeado na gama de endereços 0x0000...0x03FF de um processador com um espaço de endereçamento de 16 bits
+e. Obtenha a expressão do sinal "Sel" (ativo alto) de uma memória de 4k endereços mapeado na gama de endereços 0x9000...0x9FFF, num espaço de endereçamento de 16 bits
+
+### 81. Determine qual a(s) gama(s) de endereço(s) descodificada(s), num espaço de endereçamento de 16 bits, por um descodificador implementado através das seguintes expressões lógicas
+a. "CE\ = A15 + A14 + A12\"
+b. "CE\ = A15 + A13\ + A12\"
+c.  =  + 	 +  . Admita neste caso que o espaço de endereçamento é de 24 bits
+d.  =  +  + . Admita neste caso que o espaço de endereçamento é de 32 bits
+
+
+# ORGANIZAÇÃO DE BARRAMENTOS DE DADOS
+
+### 82. Em barramentos paralelo multi-master existem várias técnicas para determinar a prioridade com que o barramento é atribuído a uma dada unidade. Descreva sucintamente cada uma das seguintes:
+a. prioridades fixas
+b. critério Last-Come/First-Served
+c. critério First-Come/First-Served
+d. round-robin
+
+### 83. Numa transferência em que o CPU pode prolongar o ciclo de leitura/escrita por um ou mais ciclos de relógio, em função de um sinal de protocolo gerado pelo dispositivo externo podemos afirmar que estamos perante que tipo de transferência? Justifique.
+
+### 84. Identifique que elementos caracterizam um barramento paralelo de tipo síncrono e que tipos de transferência de dados são suportados pelo mesmo.
+
+### 85. Identifique que elementos caracterizam uma transferência assíncrona (handshaken) e quais as vantagens deste tipo de transferência para certas arquiteturas envolvendo pelo menos um master e um conjunto de dispositivos slave.
+
+### 86. Considere um barramento paralelo multiplexado de 16 bits (de informação). Sobre esse barramento pretende-se implementar um protocolo de comunicação, de tipo microciclo. Determine o número mínimo de ciclos necessários para completar uma transação sabendo que:
+a. o espaço de endereçamento é de 32 bits os dados estão organizados em palavas de 32 bits
+b. o espaço de endereçamento é de 16 bits os dados estão organizados em palavas de 32 bit
+c. o espaço de endereçamento é de 32 bits os dados estão organizados em palavas de 16 bits 
+d. o espaço de endereçamento é de 48 bits os dados estão organizados em palavas de 16 bits
+
+### 87. Em barramentos multi-master, o que entende por situações de "starvation"
+
+### 88. Um programa para transferir dados de 32 bits de um periférico para a memória é implementado num ciclo com 10 instruções. Admitindo que o CPU funciona a 200 MHz e que o programa em causa apresenta um CPI de 2.5, determine a taxa de transferência máxima, em Bytes/s, que é possível obter.
+
+### 89. Considerando o diagrama temporal da figura ao lado podemos afirmar que estamos perante um ciclo de:
+a. identifique a natureza da operação
+b. identifique qual o tipo de transferência que está ali representada
+c. Identifique qual a configurações da operação de transferência de dados
+
+### 90. Considere um CPU que suporta transferências de tipo síncrono e de tipo semi-síncrono. Para a operação de leitura representada no diagrama ao lado determine o número de wait-states necessários para concluir com sucesso essa operação considerando os seguintes pressupostos (Nota: assuma que o tempo mínimo durante o qual os dados têm e estar válidos tem de ser superior a um ciclo de relógio):
+
+a. Frequência do CPU= 500 MHz; tempo de acesso à memória de 12 ns (tempo que decorre desde que a memória é selecionada até que a informação fica disponível no data bus); atraso introduzido pelo descodificador de endereços da memória de 2.5 ns
+
+b. Frequência do CPU= 200 MHz; tempo de acesso à memória de 35 ns; atraso introduzido pelo descodificador de endereços da memória de 7 ns
+
+### 91. Descreva, pelas suas próprias palavras as seguintes o que caracetriza as seguintes configurações de operações de transferência de dados:
+a. merged
+b. microciclo
+c. read-modify-write
+d. read_after-write
+e. block
+
+### 92. As figuras abaixo correspondem ao diagrama temporal de duas operações realizada num barramento paralelo:
+a. como caracterizaria, quanto à natureza da operação uma operação cada uma delas
+b. face à observação dos diagramas, considera que estamos perante uma operação síncrona, semi-síncrona ou assíncrona
+c. que tipo de multiplexagem é possível observar no barramento INFO?
+d. como designaria a configuração da operação realizada? 
+
+### 93. Identifique uma ou mais técnicas através das quais um árbitro de um barramento multi-master pode evitar situações de "starvation" nos acessos ao barramento.
+
+### 94. Considere um barramento multi-master baseado em prioridades fixas. Neste caso, um árbitro distribuído irá atribuir o barramento a qual dos masters ligados ao barramento? BARRAMENTOS DE COMUNICAÇÃO SÉRIE
+
+### 95. Classifique as vantagens dos barramentos série (ao nível físico) quando comparados com barramentos paralelo:
+a. ao nível da implementação
+b. ao nível da cablagem de suporte (em barramentos com fios)
+c. ao nível do custo
+d. ao nível da distância de transmissão
+e. ao nível do débito de transmissão
+
+### 96. O que caracteriza topologicamente um barramento de comunicação série para podermos afirmar que este é um barramento:
+a. síncrono
+b. assíncrono
+
+### 97. Nos barramentos série com comunicação síncrona, quais os métodos mais comuns para assegurar que os relógios de dois ou mais nós ligados ao barramento se mantêm sincronizados?
+
+### 98. Nos barramentos série com comunicação síncrona, o que entende por codificação Manchester?
+
+### 99. Qual a diferença entre um protocolo de comunicação série full-duplex e um protocolo de comunicação série halfduplex?
+
+### 100. Dos protocolos de comunicação série que estudou nas aulas teóricas dê exemplos de:
+a. protocolos full-duplex
+b. protocolos half-duplex
+
+### 101. Dos protocolos de comunicação série que estudou nas aulas teóricas existem casos em que a transmissão é orientada ao bit e casos em que a transmissão é orientada ao byte. Explique sucintamente a diferença e dê exemplos de protocolos que usam cada um dos dois.
+
+# PROTOCOLO SPI
+
+### 102. Como caracterizaria o barramento SPI no que respeita:
+a. ao tipo de ligação entre dispositivos
+b. ao tipo de sincronização entre dispositivos
+c. à natureza da transferência de dados (bi-direcional, unidirecional) 
+
+
