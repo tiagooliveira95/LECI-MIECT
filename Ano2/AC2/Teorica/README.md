@@ -1131,54 +1131,133 @@ d.  =  +  + . Admita neste caso que o espaço de endereçamento é de 32
 # ORGANIZAÇÃO DE BARRAMENTOS DE DADOS
 
 ### 82. Em barramentos paralelo multi-master existem várias técnicas para determinar a prioridade com que o barramento é atribuído a uma dada unidade. Descreva sucintamente cada uma das seguintes:
+
 a. prioridades fixas
+```
+```
 b. critério Last-Come/First-Served
+```
+```
 c. critério First-Come/First-Served
+```
+```
 d. round-robin
+```
+```
 
 ### 83. Numa transferência em que o CPU pode prolongar o ciclo de leitura/escrita por um ou mais ciclos de relógio, em função de um sinal de protocolo gerado pelo dispositivo externo podemos afirmar que estamos perante que tipo de transferência? Justifique.
 
+```
+Uma transferência semi-sincrona, funciona por defeito de forma síncrona, mas torna-se "handshaken" quando houver um pedido explícito, por parte do slave,
+para alteração da temporização das ações.
+
+Um dispositivo lento pode ativar um sinal para atrasas a conclusão da operação, no caso deste sinal não ser ativado a transferência é síncrona. 
+Só os dispositivos lentos necessitam de ativar este sinal!
+
+Este método tem várias vantagens pois permite a coexistência de dispositivos rápidos e lentos no mesmo sistema.
+```
+
 ### 84. Identifique que elementos caracterizam um barramento paralelo de tipo síncrono e que tipos de transferência de dados são suportados pelo mesmo.
+```
+Um barramento paralelo sincrono é composto por n "linhas" em que seguem a informação e de um clock, o barramento paralelo tem a vantagem
+de poder ser possivel a transferencia de vários bits ao mesmo tempo.
+```
 
 ### 85. Identifique que elementos caracterizam uma transferência assíncrona (handshaken) e quais as vantagens deste tipo de transferência para certas arquiteturas envolvendo pelo menos um master e um conjunto de dispositivos slave.
+```
+Para uma comunicação handshake é necessário o sinal VALID e o sinal ACCEPT (ACK), quando a informação enviada pelo master fica estavel, este
+coloca o sinal VALID ativo, quando o slave recebe este sinal processa-o, e no final ativa o sinal ACCEPT para informar o master que processou o pedido.
+O master quando recerber o sinal ACCEPT ira desativar o sinal VALID e liberta o barramento.
+
+Também existem sinais de controlo que identificam se a operação vai ser de escrita ou de leitura.
+
+Este metudo de trasnferencia é util para comunicação com dispositivos muito lentos e com tempos de resposta variáveis, ao contrário, a trasnferência síncrona apesar de ser mais simples é mais rígido para certas aplicações, pois a unidade mais lenta determina a frequencia máxima
+```
 
 ### 86. Considere um barramento paralelo multiplexado de 16 bits (de informação). Sobre esse barramento pretende-se implementar um protocolo de comunicação, de tipo microciclo. Determine o número mínimo de ciclos necessários para completar uma transação sabendo que:
+
 a. o espaço de endereçamento é de 32 bits os dados estão organizados em palavas de 32 bits
+```
+```
 b. o espaço de endereçamento é de 16 bits os dados estão organizados em palavas de 32 bit
+```
+```
 c. o espaço de endereçamento é de 32 bits os dados estão organizados em palavas de 16 bits 
+```
+```
 d. o espaço de endereçamento é de 48 bits os dados estão organizados em palavas de 16 bits
+```
+```
 
 ### 87. Em barramentos multi-master, o que entende por situações de "starvation"
+```
+```
 
 ### 88. Um programa para transferir dados de 32 bits de um periférico para a memória é implementado num ciclo com 10 instruções. Admitindo que o CPU funciona a 200 MHz e que o programa em causa apresenta um CPI de 2.5, determine a taxa de transferência máxima, em Bytes/s, que é possível obter.
+```
+```
 
 ### 89. Considerando o diagrama temporal da figura ao lado podemos afirmar que estamos perante um ciclo de:
+
 a. identifique a natureza da operação
+```
+```
 b. identifique qual o tipo de transferência que está ali representada
+```
+```
 c. Identifique qual a configurações da operação de transferência de dados
+```
+```
 
 ### 90. Considere um CPU que suporta transferências de tipo síncrono e de tipo semi-síncrono. Para a operação de leitura representada no diagrama ao lado determine o número de wait-states necessários para concluir com sucesso essa operação considerando os seguintes pressupostos (Nota: assuma que o tempo mínimo durante o qual os dados têm e estar válidos tem de ser superior a um ciclo de relógio):
 
 a. Frequência do CPU= 500 MHz; tempo de acesso à memória de 12 ns (tempo que decorre desde que a memória é selecionada até que a informação fica disponível no data bus); atraso introduzido pelo descodificador de endereços da memória de 2.5 ns
+```
+```
 
 b. Frequência do CPU= 200 MHz; tempo de acesso à memória de 35 ns; atraso introduzido pelo descodificador de endereços da memória de 7 ns
+```
+```
 
 ### 91. Descreva, pelas suas próprias palavras as seguintes o que caracetriza as seguintes configurações de operações de transferência de dados:
 a. merged
+```
+```
 b. microciclo
+```
+```
 c. read-modify-write
+```
+```
 d. read_after-write
+```
+```
 e. block
+```
+```
 
 ### 92. As figuras abaixo correspondem ao diagrama temporal de duas operações realizada num barramento paralelo:
+
 a. como caracterizaria, quanto à natureza da operação uma operação cada uma delas
+```
+```
 b. face à observação dos diagramas, considera que estamos perante uma operação síncrona, semi-síncrona ou assíncrona
+```
+```
 c. que tipo de multiplexagem é possível observar no barramento INFO?
+```
+```
 d. como designaria a configuração da operação realizada? 
+```
+```
 
 ### 93. Identifique uma ou mais técnicas através das quais um árbitro de um barramento multi-master pode evitar situações de "starvation" nos acessos ao barramento.
+```
+```
 
-### 94. Considere um barramento multi-master baseado em prioridades fixas. Neste caso, um árbitro distribuído irá atribuir o barramento a qual dos masters ligados ao barramento? BARRAMENTOS DE COMUNICAÇÃO SÉRIE
+### 94. Considere um barramento multi-master baseado em prioridades fixas. Neste caso, um árbitro distribuído irá atribuir o barramento a qual dos masters ligados ao barramento? 
+
+# BARRAMENTOS DE COMUNICAÇÃO SÉRIE
 
 ### 95. Classifique as vantagens dos barramentos série (ao nível físico) quando comparados com barramentos paralelo:
 a. ao nível da implementação
