@@ -1178,15 +1178,22 @@ Este metudo de trasnferencia é util para comunicação com dispositivos muito l
 
 a. o espaço de endereçamento é de 32 bits os dados estão organizados em palavas de 32 bits
 ```
+São necessários 2 ciclos de clock para enviar o endereço e mais 2 ciclos de clock para enviar 1 palavra
+
+Logo, por cada palavra, são necessários 4 ciclos de clock
 ```
 b. o espaço de endereçamento é de 16 bits os dados estão organizados em palavas de 32 bit
 ```
+É necessário 1 ciclo de clock para enviar o endereço e 2 para enviar uma word, logo são necessários 3 ciclos relógio.
 ```
 c. o espaço de endereçamento é de 32 bits os dados estão organizados em palavas de 16 bits 
 ```
+É necessário 2 ciclos de clock para enviar o endereço e 1 para enviar uma word, logo são necessários 3 ciclos relógio.
+
 ```
 d. o espaço de endereçamento é de 48 bits os dados estão organizados em palavas de 16 bits
 ```
+É necessário 3 ciclos de clock para enviar o endereço e 1 para enviar uma word, logo são necessários 4 ciclos relógio.
 ```
 
 ### 87. Em barramentos multi-master, o que entende por situações de "starvation"
@@ -1195,28 +1202,64 @@ d. o espaço de endereçamento é de 48 bits os dados estão organizados em pala
 
 ### 88. Um programa para transferir dados de 32 bits de um periférico para a memória é implementado num ciclo com 10 instruções. Admitindo que o CPU funciona a 200 MHz e que o programa em causa apresenta um CPI de 2.5, determine a taxa de transferência máxima, em Bytes/s, que é possível obter.
 ```
+
+200 / 2.5 = 80 MHz é a frequencia de cada instrução.
+
+Cada transferencia de 32 bits requer 10 instruções, 80 / 10 = 8 M transferências por segundo
+
+(8 M * 32) / 8 = 32 MB
+
 ```
 
 ### 89. Considerando o diagrama temporal da figura ao lado podemos afirmar que estamos perante um ciclo de:
 
 a. identifique a natureza da operação
 ```
+Leitura
 ```
 b. identifique qual o tipo de transferência que está ali representada
 ```
+Transferência de dados
 ```
 c. Identifique qual a configurações da operação de transferência de dados
 ```
+Microciclo
 ```
 
 ### 90. Considere um CPU que suporta transferências de tipo síncrono e de tipo semi-síncrono. Para a operação de leitura representada no diagrama ao lado determine o número de wait-states necessários para concluir com sucesso essa operação considerando os seguintes pressupostos (Nota: assuma que o tempo mínimo durante o qual os dados têm e estar válidos tem de ser superior a um ciclo de relógio):
 
 a. Frequência do CPU= 500 MHz; tempo de acesso à memória de 12 ns (tempo que decorre desde que a memória é selecionada até que a informação fica disponível no data bus); atraso introduzido pelo descodificador de endereços da memória de 2.5 ns
 ```
+500MHz <=> 2ns
+
+Tempo de acesso à memória é de 12ns, e o atraso do address decoder é 2.5ns.
+
+12.5ns + 2.5ns = 15ns
+
+O tempo da operação são 4 ciclos o que equivale a 2*4 = 8ns
+
+15ns - 8ns = 7ns
+
+7 / 2 = 3.5 ~ 4
+
+São necessários 4 wait-states
 ```
 
 b. Frequência do CPU= 200 MHz; tempo de acesso à memória de 35 ns; atraso introduzido pelo descodificador de endereços da memória de 7 ns
 ```
+500MHz <=> 5ns
+
+Tempo de acesso à memória é de 35ns, e o atraso do address decoder é 7ns.
+
+35ns + 7ns = 42ns
+
+O tempo da operação são 4 ciclos o que equivale a 2*4 = 8ns
+
+42ns - 8ns = 34ns
+
+34 / 2 = 17
+
+São necessários 17 wait-states
 ```
 
 ### 91. Descreva, pelas suas próprias palavras as seguintes o que caracetriza as seguintes configurações de operações de transferência de dados:
@@ -1256,15 +1299,19 @@ e. block
 
 a. como caracterizaria, quanto à natureza da operação uma operação cada uma delas
 ```
+A primeira é uma escrita, a segunda uma leitura.
 ```
 b. face à observação dos diagramas, considera que estamos perante uma operação síncrona, semi-síncrona ou assíncrona
 ```
+É uma operação microciclo sincrona
 ```
 c. que tipo de multiplexagem é possível observar no barramento INFO?
 ```
+O envio do address e valid no mesmo barramento
 ```
 d. como designaria a configuração da operação realizada? 
 ```
+Microciclo
 ```
 
 ### 93. Identifique uma ou mais técnicas através das quais um árbitro de um barramento multi-master pode evitar situações de "starvation" nos acessos ao barramento.
