@@ -1026,7 +1026,15 @@ O contador deve ter no minímo log2(480000) ~ 19 bits
 ```
 
 ### 66. O programa em execução num microcontrolador faz, por software, um reset ao watchdog timer com uma periodicidade que pode variar entre [50ms … 150ms]. O watchdog desse microcontrolador usa um gerador de relógio próprio e um contador binário de 16 bits que, ao chegar ao fim de contagem, gera um reset por hardware ao microcontrolador. Dadas estas condições, e por forma a que o sistema de supervisão funcione adequadamente, determine qua a máxima frequência de relógio aplicada na entrada do watchdog. 
+
 ``` 
+
+16 bits => 65536
+
+150ms / 65536 = 0.00228
+
+F = 1 / 0.00228 = 436.9 Hz
+
 ```
 
 # NOÇÕES BÁSICAS DE BARRAMENTOS / DESCODIFICAÇÃO DE ENDEREÇOS
