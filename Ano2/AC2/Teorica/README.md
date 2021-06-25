@@ -710,13 +710,41 @@ F = 1 / 166.6 * 10^6 = 6ns
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 250 MHz, bloco de 512 words de 32 bits
 ```
+O tempo entre poperações é de 1 ciclo, o que significa que o DMA corre intermitentemente, ou seja, 250 MHz / 2 = 125MHz é a frequencia a que o DMA corre.
+
+Cada word necessita de 2 ciclos relógio: 125 / 2 = 62.5 MHz é a frequencia de escrita de uma word pelo DMA.
+
+F = 1 / 62.55 * 10^6 ~ 16ns
+
+512 * 16 = 8,192ns
 ```
 b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
 ```
+O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 2 ciclos de relogio.
+
+O DMA fica é ativado a frequencia de: 1 GHz / 2 = 500 MHz
+
+Cada word de 16 bit necessita de 2 ciclos clock: 500 MHz / 2 = 250 Mhz é a frequencia a que o DMA completa uma operação de 16 bits
+
+Para transferir os 16bits são necessarios 2 execuções do DMA: 250 MHz / 2 = 125 MHz é a frequencia a que o DMA completa uma operação de 32 bits
+
+F = 1 / 125 * 10^6 = 8ns
+
+512 * 8 = 4,096ns
+
+
 ```
 c. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits
 ```
+O tempo entre poperações é de 1 ciclo, o que significa que o DMA corre intermitentemente, ou seja, 500 MHz / 2 = 250 MHz é a frequencia a que o DMA corre.
+
+Cada word necessita de 2 ciclos relógio: 250 / 2 = 125 MHz é a frequencia de escrita de uma word pelo DMA.
+
+F = 1 / 125 * 10^6 = 8ns
+
+2000 * 8 = 16,000ns
 ```
+
 ### 48. Determine o número de bus cycles necessários para efetuar uma transferência por um controlador de DMA dedicado a funcionar em modo bloco, dadas as seguintes condições:
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 500 MHz, bloco de 512 words de 32 bits
