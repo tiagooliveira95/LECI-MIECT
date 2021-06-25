@@ -817,22 +817,54 @@ fout = fin / k1*k2
 ### 53. Descreva, por palavras suas o que se entende por Duty Cycle de um sinal digital periódico. Dê alguns exemplos em que a manipulação dinâmica deste valor pode ser usado em aplicações práticas.
 
 ```
-
 ``` 
 
 ### 54. Considere um timer em que a relação entre as frequências de entrada e de saída é dada por(k+1) em que k é uma constante configurável. Determine o período do sinal de saída para os valores seguintes:
+
 a. frequência de entrada do timer for 20MHz e k = 1999
+```
+Constante = k + 1 = 2000
+
+fout = 20 MHz / 2000 = 10 kHz
+
+```
 b. frequência de entrada do timer for 40MHz e k = 1249
+```
+Constante = k + 1 = 1250
+
+fout = 40 MHz / 1250 = 32 kHz
+```
 c. frequência de entrada do timer for 80MHz e k = 32767
+```
+Constante = k + 1 = 32768
+
+fout = 80 MHz / 32768 = 2.441 kHz
+```
 d. frequência de entrada do timer for 2MHz e k = 1023
+```
+Constante = k + 1 = 1024
+
+fout = 2 MHz / 1024 = 1.953 kHz
+```
 
 ### 55. Alguns dos timers que estudou e utilizou têm, como último andar do temporizador, um divisor por dois. Descreva, sucintamente, qual a razão e finalidade desse divisor por dois.
 
+```
+``` 
+
 ### 56. Considere um timer e uma unidade OC como o da figura abaixo (semelhante aos dos PIC32). Admita que a frequência do relógio TCLK é de 20MHz, que o fator de divisão do prescaler é 4, que o valor armazenado em PR é 2499 e que o valor em OCK é 834. Determine o período do sinal de saída e o respetivo duty cycle. 
 
+```
+``` 
+
 ### 57. Pretende-se gerar um sinal com uma frequência de 85 Hz. Usando o Timer T2 e supondo PBCLK = 50 MHz:
+
 a. calcule o valor mínimo da constante de divisão a aplicar ao prescaler e indique qual o valor efetivo dessa constante
+```
+``` 
 b. calcule o valor da constante PR2
+```
+``` 
 
 ### 58. Repita o exercício anterior, supondo que se está a usar o Timer T1
 
