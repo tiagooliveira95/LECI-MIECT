@@ -518,11 +518,11 @@ Overhead = 40 ciclos
 Freq Target = ?
 Rotina = 20 instruções
 
-Cada instrução demora em média 2 ciclos, logo o overhead é de 20 instruções, assim na interrupção vamos correr 40+20 = 60 instruções
+Cada instrução demora em média 2 ciclos, logo o overhead é de 20 instruções, assim na interrupção vamos correr 20+20 = 40 instruções
 
-São executadas 40 M instruções por segundo, logo 40x10^6 / 60 = 666,666
+São executadas 40 M instruções por segundo, logo 40x10^6 / 40 = 1 MHz
 
-Em 1 segundo podemos ter no máximo 666,666 interrupções o que equivale a 666.6 kHz
+Em 1 segundo podemos ter no máximo 1,000,000 interrupções o que equivale a 1 MHz
 
 ```
 
@@ -1040,16 +1040,29 @@ F = 1 / 0.00228 = 436.9 Hz
 # NOÇÕES BÁSICAS DE BARRAMENTOS / DESCODIFICAÇÃO DE ENDEREÇOS
 
 ### 67. Para um barramento de endereço como o indicado abaixo, que seleciona blocos de memória com 1Kbyte, suponha que no descodificador apenas se consideram os bits A15, A13 e A11, com os valores 1, 0 e 0, respetivamente.
-a. apresente a expressão lógica que implementa este descodificador:
-i. em lógica positiva
-ii. em lógica negativa
-b. indique os endereços inicial e final da gama-base descodificada e de todas as réplicas 
 
+a. apresente a expressão lógica que implementa este descodificador:
+
+i. em lógica positiva
+```
+```
+
+ii. em lógica negativa
+```
+```
+
+b. indique os endereços inicial e final da gama-base descodificada e de todas as réplicas 
+```
+```
 
 ### 68. Considere o exemplo de um espaço de endereçamento indicado na figura abaixo, em que os blocos de memória têm uma dimensão de 4Kbyte. Admita agora não vamos descodificar os bits A14 e A12 do bloco dos 4 bits mais significativos, resultando na expressão CS\ = A15 + A13\
-a. determine as gamas do espaço de endereçamento de 16 bits ocupadas pela memória.
-b. determine os endereços possíveis para aceder à 15ª posição da memória. 
 
+a. determine as gamas do espaço de endereçamento de 16 bits ocupadas pela memória.
+```
+```
+b. determine os endereços possíveis para aceder à 15ª posição da memória. 
+```
+```
 
 ### 69. Escreva as equações lógicas dos 4 descodificadores necessários para a geração dos sinais de seleção para cada um dos dispositivos identificados na figura ao lado. 
 
