@@ -749,16 +749,20 @@ F = 1 / 125 * 10^6 = 8ns
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 500 MHz, bloco de 512 words de 32 bits
 ```
+Um DMA didicado de 32bits necessita de 1 ciclo para transferir 32bits
 ```
 b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 4K words de 32 bits
 ```
+Um DMA didicado de 16bits necessita de 2 ciclos para transferir 32bits
 ```
 c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
 ```
+Um DMA didicado de 16bits necessita de 2 ciclos para transferir 32bits
 ```
 d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 1Kwords de 16 bits
 
 ```
+Um DMA didicado de 16bits necessita de 1 ciclo para transferir 16bits
 ```
 
 ### 49. Determine a taxa de transferência de pico (expressa em Bytes/s) de um DMA não dedicado de 32 bits (i.e. com barramento de dados de 32 bits), a funcionar a 100 MHz em modo "cycle-stealing". Suponha ainda que são necessários 2 ciclos de relógio (equivalente a 2 *TBC) para efetuar uma operação de leitura ou escrita. desse DMA. O tempo mínimo entre operações elementares deverá ser de 1TBC
