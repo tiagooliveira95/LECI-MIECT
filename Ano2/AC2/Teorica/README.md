@@ -933,7 +933,28 @@ DutyCycle = 1250000 / 50000 = 25%
 
 ### 60. Considere ainda um timer como o da figura acima (semelhante aos dos PIC32) com a sua saída ligada uma unidade OC. Admita que a frequência do relógio TCLK é de 20MHz e que o fator de divisão do prescaler é 8. Determine quais os valores que deverá colocar nos registos em PR e OCK para obter na saída O1 um sinal periódico com uma mfrequência de 200Hz e um duty cycle de 25%: 
 
+```
+Prescaler_out = 20 MHz / 8 = 2.5 MHz
+
+PR = (2.5 MHz / 200) - 1 = 12499
+
+OCxRS = 12500 * 25 / 100 = 3125
+
+``` 
+
 ### 61. Considere um timer do tipo A do PIC32 (semelhante ao da figura) e um PBCLK = 20MHz. Determine o fator divisão do prescaler e o valor a colocar em PR1 para que o período de fout seja de 15ms, com a melhor precisão possível: 
+
+```
+
+F = 1 / 35*10^-3 = 66.66 Hz
+
+Prescaler = 20 MHz / 65536 * 66.66 = 4.5 
+
+K = 8
+
+PR1 = (2.5 Mhz / 66.66) - 1 = 37499 
+
+```
 
 
 ### 62. Considere um timer com reset síncrono em que a relação entre as frequências de entrada e de saída é dada por (k+1), sendo k uma constante configurável. Determine o valor de k para as seguintes condições:
