@@ -1222,12 +1222,28 @@ b. Frequência do CPU= 200 MHz; tempo de acesso à memória de 35 ns; atraso int
 ### 91. Descreva, pelas suas próprias palavras as seguintes o que caracetriza as seguintes configurações de operações de transferência de dados:
 a. merged
 ```
+Existe uma coexistencia temporal entre o Address e o Data, o que significa enquanto o Data for válido o Address também é.
+O tempo em que Data é valido é geralmente inferior ao tempo em que Address é valido.
 ```
 b. microciclo
 ```
+A transferência de dados e de endereços são autonomas, ou seja não ocorem ao mesmo tempo, têm tambem sinais de controlo separados.
+
+O ADDR_STB fica ativo quando o Address fica ativo
+O DATA_STB fica ativo quando a Data fica ativo
+
+Podemos ter apenas um barramento para envio de endereço e data uma vez que estes são enviados em alturas diferentes, os sinais I
+
+Neste cenário temos 2 sinais:
+
+O INFO_STB indica que os dados estão válidos
+O INFO_TYP indica que o que esta no endereço é Data.
+
+Se o INFO_STB tiver ativo e o INFO_TYP tiver inativo indica que o que esta no barramento é o endereço.
 ```
 c. read-modify-write
 ```
+
 ```
 d. read_after-write
 ```
