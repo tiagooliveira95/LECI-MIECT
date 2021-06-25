@@ -1286,13 +1286,22 @@ Se o INFO_STB tiver ativo e o INFO_TYP tiver inativo indica que o que esta no ba
 ```
 c. read-modify-write
 ```
+Possibilita a modificação parcial de bits
+Acesso duplo com um só endereço
+Primeiro a leitura depois a escrita.
 
 ```
 d. read_after-write
 ```
+Acesso duplo com um só endereçamento.
+Primeiro escrita depois leitura para verificação
 ```
 e. block
 ```
+Acesso múltiplo incremental, iniciado por um enderelamento.
+Escreve um bloco de informação.
+
+Um endereço é gerado e de seguinda é enviada a informação, o slave incrementa o endereço automaticamente sempre que existe um pulso no write.
 ```
 
 ### 92. As figuras abaixo correspondem ao diagrama temporal de duas operações realizada num barramento paralelo:
@@ -1324,10 +1333,21 @@ Microciclo
 
 ### 95. Classifique as vantagens dos barramentos série (ao nível físico) quando comparados com barramentos paralelo:
 a. ao nível da implementação
+``` 
+
+```
 b. ao nível da cablagem de suporte (em barramentos com fios)
+``` 
+```
 c. ao nível do custo
+``` 
+```
 d. ao nível da distância de transmissão
+``` 
+```
 e. ao nível do débito de transmissão
+``` 
+```
 
 ### 96. O que caracteriza topologicamente um barramento de comunicação série para podermos afirmar que este é um barramento:
 a. síncrono
