@@ -610,11 +610,9 @@ Se não foi transferida a totalidade da informação:
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 500MHz, bloco de 512 words de 32 bits
 ```
-500 MHz / 512 = 976,562.5 ciclos por word
-
 F = 1 / 500 * 10^6 = 2ns
 
-976,562.5 * 2 = 1,953,125 ns ~ 1.9531ms
+512 * 2 = 1,024 ns
 
 ```
 b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
@@ -623,43 +621,90 @@ O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (
 
 Uma vez que para transferir uma word são necessarios 2 ciclos de clock, cada word é totalmente transferida a uma frequencia de: 1 GHz / 2 = 500 MHz
 
-O que faz com que a resposta seja igual ao exercicio anterior, ou seja ~1.9531ms
+O que faz com que a resposta seja igual ao exercicio anterior, ou seja 1,024ns
 ```
 c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 16 bits
 ```
-1 GHz / 512 = 1,953,125 ciclos por word
-
 F = 1 / 1 * 10^9 = 1ns
 
-1,953,125 * 1 = 1,953,125 ns ~ 1.9531ms
+512 * 1 = 512 ns
 ```
 
 d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2K words de 16 bits
 ```
-500 MHz / 2000 = 250,000 ciclos por word
-
 F = 1 / 500 * 10^6 = 2ns
 
-250,000 * 2 = 500,000 ns ~ 0.5ms
+2,000 * 2 = 4,000 ns
 ```
 
 ### 45. Volte a resolver o problema anterior considerando agora que um bus cycle é realizado em 2 ciclos de relógio e para as seguintes condições:
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 1GHz, bloco de 1K words de 32 bits
 ```
+A cada 2 cyclos é transferida 1 word, uma vez que o bus cycle é 2 ciclos.
+
+1 GHz / 2 = 500 Mhz
+
+F = 1 / 500 * 10^6 = 2ns
+
+500 * 2 = 1,000 ns
 ```
 b. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2K words de 32 bits
 ```
+O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 2 ciclos de relogio.
+
+Logo cada word de 32bits necessita 4 ciclos de relógio
+
+500 MHz / 4 = 125 MHz
+
+F = 1 / 125 * 10^6 = 8ns
+
+2000 * 8 = 16,000ns
+
+* ciclos de clock após a simplificação do exercício! não corresponde a realidade
 ```
 c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 256 words de 32 bits
 ```
+O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 2 ciclos de relógio.
+
+Logo cada word de 32bits necessita 4 ciclos de relógio
+
+1 GHz / 4 = 250 MHz
+
+F = 1 / 250 * 10^6 = 4ns
+
+256 * 4 = 1,024ns
+
 ```
 d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits 
 ```
+500 Mhz / 2 = 250 MHz
+
+F = 1 / 250 * 10^6 = 4ns
+
+2,000 * 4 = 8,000ns
 ```
 
 ### 46. Resolva as duas primeiras alíneas do problema anterior considerando agora que o controlador é dedicado.
+c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 256 words de 32 bits
+
 ```
+O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 1 ciclos de relógio.
+
+Logo cada word de 32bits necessita 3 ciclos de relógio
+
+1 GHz / 3 = 333.3 MHz
+
+F = 1 / 333.3 * 10^6 = ~3ns
+
+256 * 3 = 768ns
+
+```
+d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits 
+```
+F = 1 / 500 * 10^6 = 2ns
+
+2,000 * 2 = 4,000ns
 ```
 
 ### 47. Considere agora um controlador de DMA não dedicado, a funcionar em modo cycle-stealing, em que um bus cycle é realizado em 2 ciclos de relógio e o tempo mínimo entre operações elementares é 1 ciclo de relógio. Calcule o tempo mínimo necessário para efetuar a transferência de um bloco de dados para as seguintes condições:
