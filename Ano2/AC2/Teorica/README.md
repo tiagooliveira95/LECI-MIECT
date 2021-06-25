@@ -894,15 +894,42 @@ b. calcule o valor da constante PR2
 
 ### 58. Repita o exercício anterior, supondo que se está a usar o Timer T1
 
+a. calcule o valor mínimo da constante de divisão a aplicar ao prescaler e indique qual o valor efetivo dessa constante
 ```
+Kmin = 20 MHz / 65536 * 85 Hz = 2.7
 
+O K minimo é 8
+``` 
+b. calcule o valor da constante PR2
 ```
+(2.5 MHz / 85 Hz) - 1 = 29410.7 ~ 29411
+``` 
 
 ### 59. Pretende-se gerar um sinal com uma frequência de 100 Hz e 25% de "duty-cycle". Usando o módulo "output compare" OC5 e como base de tempo o Timer T3 e supondo ainda PBCLK = 40 MHz:
 
 a. determine o valor efetivo da constante de prescaler que maximiza a resolução do sinal PWM
+``` 
+Kmin = 40 MHz / 65536 * 100 Hz = 6.1
+
+O K minimo é 8
+``` 
 b. determine o valor das constantes PR3 e OC5RS
+``` 
+PR3 = (5 MHz / 100 Hz) - 1 = 49999
+
+OC5RS = 50000 * 25 / 100 = 12500 
+``` 
 c. determine a resolução do sinal de PWM obtido
+
+``` 
+OCK = (PR + 1) * DutyCycle / 100
+
+12500 = 50000 * DutyCycle / 100
+
+1250000 = 50000 * DutyCycle
+
+DutyCycle = 1250000 / 50000 = 25%
+``` 
 
 ### 60. Considere ainda um timer como o da figura acima (semelhante aos dos PIC32) com a sua saída ligada uma unidade OC. Admita que a frequência do relógio TCLK é de 20MHz e que o fator de divisão do prescaler é 8. Determine quais os valores que deverá colocar nos registos em PR e OCK para obter na saída O1 um sinal periódico com uma mfrequência de 200Hz e um duty cycle de 25%: 
 
