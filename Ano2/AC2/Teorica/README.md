@@ -958,20 +958,76 @@ PR1 = (2.5 Mhz / 66.66) - 1 = 37499
 
 
 ### 62. Considere um timer com reset síncrono em que a relação entre as frequências de entrada e de saída é dada por (k+1), sendo k uma constante configurável. Determine o valor de k para as seguintes condições:
+
 a. frequência de entrada do timer for 20MHz e período do sinal à saída de 5ms
+``` 
+F = 1 / 5 * 10^-3 = 200 Hz
+
+Kmin = (20MHz / 65536 * 200Hz) + 1 = 2.5 ~ Kmin = 4
+```
 b. frequência de entrada do timer for 25MHz e período do sinal à saída de 1ms
+``` 
+F = 1 / 1 * 10^-3 = 1 kHz
+
+Kmin = (25 MHz / 65536 * 1 kHz) + 1 = 1.38 ~ Kmin = 2
+```
 c. frequência de entrada do timer for 40MHz e período do sinal à saída de 250ms
+``` 
+F = 1 / 250 * 10^-3 = 4 Hz
+
+Kmin = (25 MHz / 65536 * 4 Hz) + 1 = 96.36 ~ Kmin = 256
+```
 
 ### 63. Calcule qual o tempo máximo entre resets ao um sistema de watchdog timer que gera um sinal de reset ao processador sempre que a contagem atinge o valor máximo. Admita as seguintes condições:
-a. frequência de entrada de 100 kHz, contador crescente de 16 bits
-b. frequência de entrada de 20 kHz, contador crescente de 10 bits
-c. frequência de entrada de 50MHz, contador crescente de 24 bits
 
-### 64. Um determinado microcontrolador disponibiliza um watchdog timer com uma frequência de entrada de 100 kHz. O programa em execução faz, por software, um reset ao watchdog timer com uma periodicidade que pode variar entre [10ms … 170ms]. Determine o número mínimo de bits do contador do watchdog timer por forma a que este nunca gere um reset ao processador.
+a. frequência de entrada de 100 kHz, contador crescente de 16 bits
+``` 
+1 / 100 kHz  = 10us
+
+2^16 = 65536
+
+65536 * 10us = 655360us = 655.36ms
+
+```
+b. frequência de entrada de 20 kHz, contador crescente de 10 bits
+``` 
+1 / 20 kHz  = 50us
+
+2^10 = 1024
+
+1024 * 50us = 51200us = 51.2ms
+```
+c. frequência de entrada de 50MHz, contador crescente de 24 bits
+``` 
+1 / 50 MHz  = 20ns
+
+2^24 = 16777216
+
+16777216 * 20ns = 335.544ms
+```
+
+### 64. Um determinado microcontrolador disponibiliza um watchdog timer com uma frequência de entrada de 100 kHz. O programa em execução faz, por software, um reset ao watchdog timer com uma periodicidade que pode variar entre [10ms … 170ms]. Determine o número mínimo de bits do contador do watchdog timer por forma a que este nunca gere um reset ao processador
+``` 
+1 / 10 kHz  = 0.1ms
+
+170 / 0.1 = 1700
+
+O contador deve ter no minímo log2(1700) ~ 11 bits
+
+```
 
 ### 65. Repita o problema anterior admitindo agora que a frequência de entrada do watchdog timer é de 250 kHz e que o programa em execução faz, por software, um reset ao watchdog timer com uma periodicidade que pode variar entre [125ms … 480ms]
+``` 
+1 / 250 kHz  = 0.001ms
+
+480 / 0.001 = 480000
+
+O contador deve ter no minímo log2(480000) ~ 19 bits
+```
 
 ### 66. O programa em execução num microcontrolador faz, por software, um reset ao watchdog timer com uma periodicidade que pode variar entre [50ms … 150ms]. O watchdog desse microcontrolador usa um gerador de relógio próprio e um contador binário de 16 bits que, ao chegar ao fim de contagem, gera um reset por hardware ao microcontrolador. Dadas estas condições, e por forma a que o sistema de supervisão funcione adequadamente, determine qua a máxima frequência de relógio aplicada na entrada do watchdog. 
+``` 
+```
 
 # NOÇÕES BÁSICAS DE BARRAMENTOS / DESCODIFICAÇÃO DE ENDEREÇOS
 
