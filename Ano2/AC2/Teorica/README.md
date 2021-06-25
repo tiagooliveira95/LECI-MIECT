@@ -817,6 +817,10 @@ fout = fin / k1*k2
 ### 53. Descreva, por palavras suas o que se entende por Duty Cycle de um sinal digital periódico. Dê alguns exemplos em que a manipulação dinâmica deste valor pode ser usado em aplicações práticas.
 
 ```
+O Duty Cycle é a razão entre o tempo que o sinal do timer esta ativo e o período, podemos fazer uso do Duty Cycle para, por exemplo, controlar a 
+luminosidade de um led, ou controlar a velocidade de um motor.
+
+Este processo é tipicamente designado por PWM.
 ``` 
 
 ### 54. Considere um timer em que a relação entre as frequências de entrada e de saída é dada por(k+1) em que k é uma constante configurável. Determine o período do sinal de saída para os valores seguintes:
@@ -850,11 +854,29 @@ fout = 2 MHz / 1024 = 1.953 kHz
 ### 55. Alguns dos timers que estudou e utilizou têm, como último andar do temporizador, um divisor por dois. Descreva, sucintamente, qual a razão e finalidade desse divisor por dois.
 
 ```
+
 ``` 
 
 ### 56. Considere um timer e uma unidade OC como o da figura abaixo (semelhante aos dos PIC32). Admita que a frequência do relógio TCLK é de 20MHz, que o fator de divisão do prescaler é 4, que o valor armazenado em PR é 2499 e que o valor em OCK é 834. Determine o período do sinal de saída e o respetivo duty cycle. 
 
 ```
+Prescaler: 4
+PR: 2499
+TCLK: 20 MHz
+OCK: 834
+
+Fpresc = 20 MHz / 4 = 5 MHz
+
+Fout = 20 Mhz / Prescaler * 2500 <=> 20 MHz / 4 * 2500 = 2 kHz
+
+OCK = (PR + 1) * DutyCycle / 100
+
+834 = 2500 * DutyCycle / 100
+
+83400 = 2500 * DutyCycle
+
+DutyCycle = 83400 / 2500 = 33.36%
+
 ``` 
 
 ### 57. Pretende-se gerar um sinal com uma frequência de 85 Hz. Usando o Timer T2 e supondo PBCLK = 50 MHz:
