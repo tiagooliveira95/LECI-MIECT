@@ -660,8 +660,6 @@ Logo cada word de 32bits necessita 4 ciclos de relógio
 F = 1 / 125 * 10^6 = 8ns
 
 2000 * 8 = 16,000ns
-
-* ciclos de clock após a simplificação do exercício! não corresponde a realidade
 ```
 c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 256 words de 32 bits
 ```
@@ -686,6 +684,7 @@ F = 1 / 250 * 10^6 = 4ns
 ```
 
 ### 46. Resolva as duas primeiras alíneas do problema anterior considerando agora que o controlador é dedicado.
+
 c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 256 words de 32 bits
 
 ```
