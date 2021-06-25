@@ -685,25 +685,25 @@ F = 1 / 250 * 10^6 = 4ns
 
 ### 46. Resolva as duas primeiras alíneas do problema anterior considerando agora que o controlador é dedicado.
 
-c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 256 words de 32 bits
-
+a. controlador de 32 bits, frequência de funcionamento do DMA de 1GHz, bloco de 1K words de 32 bits
 ```
-O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 1 ciclos de relógio.
+A cada 1 cyclo é transferida 1 word, uma vez que por ser dedicado o bus cycle é de 1 ciclo.
+
+F = 1 / 1 * 10^9 = 1ns
+
+500 * 1 = 500 ns
+```
+b. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2K words de 32 bits
+```
+O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 1 ciclo de relogio.
 
 Logo cada word de 32bits necessita 3 ciclos de relógio
 
-1 GHz / 3 = 333.3 MHz
+500 MHz / 3 = 166.6 MHz
 
-F = 1 / 333.3 * 10^6 = ~3ns
+F = 1 / 166.6 * 10^6 = 6ns
 
-256 * 3 = 768ns
-
-```
-d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits 
-```
-F = 1 / 500 * 10^6 = 2ns
-
-2,000 * 2 = 4,000ns
+2000 * 6 = 12,000ns
 ```
 
 ### 47. Considere agora um controlador de DMA não dedicado, a funcionar em modo cycle-stealing, em que um bus cycle é realizado em 2 ciclos de relógio e o tempo mínimo entre operações elementares é 1 ciclo de relógio. Calcule o tempo mínimo necessário para efetuar a transferência de um bloco de dados para as seguintes condições:
