@@ -610,9 +610,13 @@ Se não foi transferida a totalidade da informação:
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 500MHz, bloco de 512 words de 32 bits
 ```
-F = 1 / 500 * 10^6 = 2ns
+Cada bus-cycle demora 1 ciclo de clock, e são necessarios 2 bus-cycles para fazer fetch e deposit
 
-512 * 2 = 1,024 ns
+500 / 2 = 250MHz é frequencia do deposit
+
+F = 1 / 250 * 10^6 = 4ns
+
+512 * 4 = 2,048 ns
 
 ```
 b. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 32 bits
@@ -621,66 +625,72 @@ O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (
 
 Uma vez que para transferir uma word são necessarios 2 ciclos de clock, cada word é totalmente transferida a uma frequencia de: 1 GHz / 2 = 500 MHz
 
-O que faz com que a resposta seja igual ao exercicio anterior, ou seja 1,024ns
+O que faz com que a resposta seja igual ao exercicio anterior, ou seja 2,048 ns
 ```
 c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 512 words de 16 bits
 ```
-F = 1 / 1 * 10^9 = 1ns
 
-512 * 1 = 512 ns
+1 GHz / 2 = 500 MHz é frequencia do deposit
+
+F = 1 / 500 * 10^6 = 2ns
+
+512 * 2 = 1,024 ns
 ```
 
 d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2K words de 16 bits
 ```
-F = 1 / 500 * 10^6 = 2ns
 
-2,000 * 2 = 4,000 ns
+500 / 2 = 250MHz é frequencia do deposit
+
+F = 1 / 250 * 10^6 = 4ns
+
+2,000 * 4 = 8,000 ns
 ```
 
 ### 45. Volte a resolver o problema anterior considerando agora que um bus cycle é realizado em 2 ciclos de relógio e para as seguintes condições:
 
 a. controlador de 32 bits, frequência de funcionamento do DMA de 1GHz, bloco de 1K words de 32 bits
 ```
-A cada 2 cyclos é transferida 1 word, uma vez que o bus cycle é 2 ciclos.
+A cada 4 ciclos é transferida 1 word, uma vez que o bus cycle é 2 ciclos (fetch - deposit).
 
-1 GHz / 2 = 500 Mhz
-
-F = 1 / 500 * 10^6 = 2ns
-
-500 * 2 = 1,000 ns
-```
-b. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2K words de 32 bits
-```
-O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 2 ciclos de relogio.
-
-Logo cada word de 32bits necessita 4 ciclos de relógio
-
-500 MHz / 4 = 125 MHz
-
-F = 1 / 125 * 10^6 = 8ns
-
-2000 * 8 = 16,000ns
-```
-c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 256 words de 32 bits
-```
-O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 2 ciclos de relógio.
-
-Logo cada word de 32bits necessita 4 ciclos de relógio
-
-1 GHz / 4 = 250 MHz
+1 GHz / 4 = 250 Mhz
 
 F = 1 / 250 * 10^6 = 4ns
 
-256 * 4 = 1,024ns
+1000 * 4 = 4,000 ns
+```
+b. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2K words de 32 bits
+```
+O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 4 ciclos de relogio.
+
+Logo cada word de 32bits necessita 8 ciclos de relógio
+
+500 MHz / 8 = 62.5 MHz
+
+F = 1 / 62.5 * 10^6 = 16ns
+
+2000 * 16 = 32,000ns
+```
+c. controlador de 16 bits, frequência de funcionamento do DMA de 1GHz, bloco de 256 words de 32 bits
+```
+O DMA vai ter de ler 2 vezes o mesmo endereço para ler os 32bits de cada word (16bits de cada vez) e cada word de 16bits necessita de 4 ciclos de relógio.
+
+Logo cada word de 32bits necessita 8 ciclos de relógio
+
+1 GHz / 8 = 125 MHz
+
+F = 1 / 125 * 10^6 = 8ns
+
+256 * 8 = 2,048ns
 
 ```
 d. controlador de 16 bits, frequência de funcionamento do DMA de 500MHz, bloco de 2Kwords de 16 bits 
 ```
-500 Mhz / 2 = 250 MHz
+500 Mhz / 4 = 125 MHz
 
-F = 1 / 250 * 10^6 = 4ns
+F = 1 / 125 * 10^6 = 8ns
 
-2,000 * 4 = 8,000ns
+2,000 * 8 = 16,000ns
 ```
 
 ### 46. Resolva as duas primeiras alíneas do problema anterior considerando agora que o controlador é dedicado.
@@ -1045,6 +1055,7 @@ a. apresente a expressão lógica que implementa este descodificador:
 
 i. em lógica positiva
 ```
+
 ```
 
 ii. em lógica negativa
