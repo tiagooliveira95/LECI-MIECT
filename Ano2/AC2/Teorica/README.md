@@ -1553,7 +1553,23 @@ O master é responsável por gerar o sinal relógio, a sincronização é feita 
 
 ### 113. Descreva sucintamente, no protocolo I2C, o processo de arbitragem no acesso ao barramento quando dois ou mais masters tentam aceder simultaneamente ao mesmo.
 ```
+A arbitragem é feita pelo bit domiante / bit recessivo e processa-se bit a bit.
+Por cada novo bit enviado, quando a linha SCL está a '1' cada master lê a linha SDA e verifica se o seu valor coincide com o que enviou.
+
+O processo de arbitragem é perdido quando o master lê da linha o nível lógico 0 tendo enviado o nível lógico 1.
+
+O master que perde o processo de arbitragem retira-se, libertando a linha SDA comutando se de imediato para o modo slave.
+
+Irá tentar de novo quando o barramento passar ao estado "idle" (espera pela condição stop)
 ```
+
+
+| DATA_1 | DATA_2 | SDA | Comentário|
+|:--:|:--:|:--:|:--:|
+|0|0|0|Arbitragem continua|
+|0|1|0|Master 2 perde|
+|1|0|0|Master 1 perde|
+|1|1|1|Arbitragem continua|
 
 ### 114. No protocolo I2C, os bits que circulam no barramento têm uma característica que os distingue dos bits normalmente gerados à saída de um circuito digital convencional. Como designa, no I2C, cada um dos dois estados lógicos, e qual a sua utilidade para o funcionamento do barramento.
 ```
@@ -1571,3 +1587,80 @@ nesta situação o master vai esperar que o slave remova o sinal WAIT, quando is
 
 Este método é util caso o master esteja a comunicar com slaves mais lentos
 ```
+
+
+# RS232
+
+### 116. Como classificaria a interface RS-232 relativamente:
+
+a. topologia da ligação (ponto a ponto, multi-drop, multi-master, …) e número de ligações físicas do barramento
+```
+```
+b. direccionalidade das comunicações (half duplex, full-duplex, …)
+```
+```
+c. natureza da sincronização (síncrona com relógio explícito, síncrona com relógio implícito, assíncrona, …)
+```
+```
+d. formatação da informação (byte oriented, bit oriented, …)
+```
+```
+
+### 117. Na interface RS-232, caso o desvio de frequência entre o emissor e o recetor seja elevado a informação recebida pode conter erros nos dados recebidos. Indique quais os tipos de erro que podem ocorrer, e descreva os mecanismos que permitem detetar tais erros.
+```
+```
+
+### 118. Na interface RS-232 uma das fontes de erro, do lado do recetor, do instante de amostragem dos vários bits é o "erro de fase". Indique qual a metodologia que é usada para diminuir o impacto dessa fonte de erro e explique sucintamente porque é que esse método contribui para diminuir esse erro.
+```
+```
+
+### 119. Admita que a configuração numa comunicação RS-232 (figura abaixo) é 38400 bps, 7 bits sem paridade, 1 stop bit e fator de sobre amostragem de 64. Calcule o valor de frequência ideal no recetor e os intervalos admissíveis dessa frequência para os casos limite (+-25% do tempo de bit e +-75% do tempo de bit). Para isso calcule sucessivamente o seguinte:
+a. intervalo de validação em períodos do sinal de relógio (TLCLK) para os dois casos limite
+```
+```
+b. número de períodos de relógio para amostrar a trama
+```
+```
+c. variação máxima de frequência (em percentagem) para os dois casos limite
+```
+```
+d. qual o intervalo de frequência que é possível usar para que não haja erros nos casos limite 
+```
+```
+
+### 120. Repita o exercício anterior admitindo agora que o baud-rate é 57600 bps, a trama é composta por 8 bits com paridade par e 2 stop bits, sendo o fator de sobre amostragem de 16.
+```
+```
+
+### 121. Determine a máxima taxa de transmissão de dados líquida (net bit rate) numa ligação RS-232, expressa em bps, admitindo as seguintes configurações:
+a. baudrate de 19200 bps, 7 bits de dados, 1 bit de paridade e 1 stop bit
+```
+```
+b. baudrate de 115200 bps, 8 bits de dados, sem bit de paridade e 2 stop bits
+```
+```
+c. baudrate de 9600 bps, 8 bits de dados, 1 bit de paridade e 2 stop bits
+```
+```
+d. baudrate de 1200 bps, 7 bits de dados, sem bit de paridade e 1 stop bit
+```
+```
+
+### 122. Considere uma UART configurada para transmitir com os seguintes parâmetros: 100.000 bps, 8 data bits, paridade ímpar e 1 stop bit. Desenhe na figura abaixo a trama completa gerada no envio do valor 0x5A. Indique de forma inequívoca os bits de start, de stop e de paridade.
+```
+```
+
+### 123. Um dispositivo com interface RS-232, configurado para transmitir com 7 bits de dados, paridade par e 2 stop bits, produz as duas tramas representadas nos diagramas seguintes que são recebidas por outro dispositivo RS-232 incorretamente configurado para 8 bits de dados, sem paridade e 1 stop bit mas com o mesmo baud rate. Nestas circunstâncias, determine se no recetor vais ser detetado algum erro e porquê. Caso não seja detetado nenhum erro, determine, em hexadecimal, qual o valor recebido.
+```
+```
+
+### 124. Um dispositivo com interface RS232, configurado para transmitir 8 bits de dados, paridade ímpar e 1 stop bits, produz a trama acima (2ª) que é recebida por outro dispositivo RS232 incorretamente configurado para 7 bits de dados, sem paridade e 1 stop bit, mas com o mesmo baudrate. Nestas circunstâncias, determine se no recetor vais ser detetado algum error e porquê. Caso não seja detetado nenhum erro, determine, em hexadecimal, qual o valor recebido.
+```
+```
+
+### 125. Um dispositivo com interface RS232, configurado para transmitir com 7 bits de dados, paridade par e 2 stop bits, produz a trama seguinte que é recebida por outro dispositivo RS232 configurado com os mesmos parâmetros. No entanto, devido a imprecisão do relógio, o baudrate efetivo do recetor é 7% inferior ao valor do baudrate do transmissor. Nestas circunstâncias, determine se no recetor vais ser detetado algum error e porquê. Caso não seja detetado nenhum erro, determine, em hexadecimal, qual o valor recebido. 
+```
+```
+
+# DEVICE DRIVERS
+
