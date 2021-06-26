@@ -1505,8 +1505,7 @@ e. quantos NACKs são gerados? Por quem?
 ```
 f. qual o valor (expresso em hexadecimal) que foi fornecido pela ADC ao µC, sabendo que este começa sempre pelo MSBit?
 ```
-00000010 = 0x2
-10011011 = 0x9B
+1010011011 = 0x29B
 ```
 g. quantas situações de clock stretch são gerados nesta transação? Por quem?
 ```
@@ -1518,13 +1517,11 @@ Foram feitas 2 transações
 
 Cada transação é composta por 9 ciclos, 8 para cada bit + 1 de ACK ou NACK
 
-9 ciclos * 2 transações + 2 transações * 2 streachs = 22 ciclos
-
-As 2 transações demorariam 22 ciclos
+9 ciclos * 3 transações + 2 streachs + 1 stop bit = 30 ciclos
 
 F = 1/ 1MHz = 1us
 
-22*1 = 22us
+30*1 = 30us
 ```
 
 ### 109. Descreva sucintamente, no protocolo I2C, como é realizado o endereçamento/seleção do dispositivo a quem é destinada a mensagem ou de quem se pretende obter informação.
