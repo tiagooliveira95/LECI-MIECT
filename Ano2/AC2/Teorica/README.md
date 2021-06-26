@@ -1645,27 +1645,15 @@ Amostragem: 64
 
 Tbit = 64 Tlclk
 
-Primeiro caso: +- 16 Tlckl (+- 0.25*64)
-Segundo caso: +- 48 Tlckl (+- 0.75*64)
+Primeiro caso:  +- ((0.25/2 * 64)-1) = 7T
+Segundo caso: +- ((0.75/2 * 64)-1)= 23T
 
-Como há um erro intrínseco máximo de 1Tlclk devideo ao erro de fase, então o desvio máximo aceitável, resultante da diferença de frequência dos relógios é:
-
-Primeiro caso: +- 15 Tlckl (16-1)
-Segundo caso: +- 47 Tlckl (48-1)
-
-1 start bit + 7 bits sem paridade + 1*0.5 stop bits = 8.5
-
-
-Tlclk = 1 / 64*38400 = 406 Hz (valor ideal)
-
-
-Tlclk = 1+-0.25 / 64*38400 = +508 Hz,-305 Hz
-
-Tlclk = 1+-0.75 / 64*38400 = +437Hz, -376Hz
 ```
 b. número de períodos de relógio para amostrar a trama
 ```
-1 start bit + 7 bits sem paridade + 1 stop bits = 9
+1 start bit + 7 bits sem paridade + 1*0.5 stop bits = 8.5
+
+8.5 * 64 = 544
 
 ```
 c. variação máxima de frequência (em percentagem) para os dois casos limite
@@ -1676,15 +1664,15 @@ c. variação máxima de frequência (em percentagem) para os dois casos limite
 
 Assim a máxima descrepância que poderá ser tolerada entre os relógios do transmissor e do recetor é:
 
-pior: +-15/544 = +-2.7%
-ideal: +-47/544 = +-8.6%
+pior: +-7/544 = +-1.28%
+ideal: +-23/544 = +-4.3%
 
 ```
 d. qual o intervalo de frequência que é possível usar para que não haja erros nos casos limite 
 ```
-Tlclk = 1+-0.027 / 64*38400 = +417Hz, -395Hz
+Tlclk = 1+-0.0128 / 64*38400 = +412Hz, -401Hz
 
-Tlclk = 1+-0.086 / 64*38400 = +441Hz, -371Hz
+Tlclk = 1+-0.043 / 64*38400 = +424Hz, -389Hz
 ```
 
 ### 120. Repita o exercício anterior admitindo agora que o baud-rate é 57600 bps, a trama é composta por 8 bits com paridade par e 2 stop bits, sendo o fator de sobre amostragem de 16.
