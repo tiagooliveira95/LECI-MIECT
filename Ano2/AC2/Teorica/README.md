@@ -1331,7 +1331,7 @@ Microciclo
 
 ### 93. Identifique uma ou mais técnicas através das quais um árbitro de um barramento multi-master pode evitar situações de "starvation" nos acessos ao barramento.
 ```
-Implementar uma solução Fair, como round-robin FIFO ou FCFS, ou usar vários barramentos com diferentes tipos de desempenho (bridges)
+Implementar uma solução Fair, como round-robin, FIFO ou FCFS, ou usar vários barramentos com diferentes tipos de desempenho (bridges)
 ```
 
 ### 94. Considere um barramento multi-master baseado em prioridades fixas. Neste caso, um árbitro distribuído irá atribuir o barramento a qual dos masters ligados ao barramento? 
@@ -1715,15 +1715,19 @@ Tlclk = 1+-0.0284 / 64*38400 = +408Hz, -405Hz
 ### 121. Determine a máxima taxa de transmissão de dados líquida (net bit rate) numa ligação RS-232, expressa em bps, admitindo as seguintes configurações:
 a. baudrate de 19200 bps, 7 bits de dados, 1 bit de paridade e 1 stop bit
 ```
+(7 * 19200) / 9 = 67200bps
 ```
 b. baudrate de 115200 bps, 8 bits de dados, sem bit de paridade e 2 stop bits
 ```
+(8 * 115200) / 10 = 92160bps
 ```
 c. baudrate de 9600 bps, 8 bits de dados, 1 bit de paridade e 2 stop bits
 ```
+(8 * 9600) / 11 = 6981bps
 ```
 d. baudrate de 1200 bps, 7 bits de dados, sem bit de paridade e 1 stop bit
 ```
+(7 * 1200) / 8 = 1050bps
 ```
 
 ### 122. Considere uma UART configurada para transmitir com os seguintes parâmetros: 100.000 bps, 8 data bits, paridade ímpar e 1 stop bit. Desenhe na figura abaixo a trama completa gerada no envio do valor 0x5A. Indique de forma inequívoca os bits de start, de stop e de paridade.
