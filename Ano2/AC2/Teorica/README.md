@@ -1253,7 +1253,7 @@ São necessários 5 wait-states
 
 b. Frequência do CPU= 200 MHz; tempo de acesso à memória de 35 ns; atraso introduzido pelo descodificador de endereços da memória de 7 ns
 ```
-500MHz <=> 5ns
+500MHz <=> 2ns
 
 Tempo de acesso à memória é de 35ns, e o atraso do address decoder é 7ns.
 
