@@ -1620,25 +1620,71 @@ bit oriented (5 a 9 bits)
 ### 117. Na interface RS-232, caso o desvio de frequência entre o emissor e o recetor seja elevado a informação recebida pode conter erros nos dados recebidos. Indique quais os tipos de erro que podem ocorrer, e descreva os mecanismos que permitem detetar tais erros.
 ```
 Dar uso de um parity bit que identifica caso se houve algum erro durante a transmição.
+
+Uma das causas de um erro pode ser o desvio dos clocks ao longo do tempo.
 ```
 
 ### 118. Na interface RS-232 uma das fontes de erro, do lado do recetor, do instante de amostragem dos vários bits é o "erro de fase". Indique qual a metodologia que é usada para diminuir o impacto dessa fonte de erro e explique sucintamente porque é que esse método contribui para diminuir esse erro.
 ```
+Usando um clock N vezes superior ao relógio transmisor e sincronizar a receção a partir desse relógio.
+
+Este método é útil pois reduz o erro de fase para um valor irrelevante.
+
+Por exemplo, se N = 16, o erro de fase máximo desse relógiuo relativamente ao aparecimento do start é T/16, em que T é o período do relógio transmissor.
+
 ```
 
 ### 119. Admita que a configuração numa comunicação RS-232 (figura abaixo) é 38400 bps, 7 bits sem paridade, 1 stop bit e fator de sobre amostragem de 64. Calcule o valor de frequência ideal no recetor e os intervalos admissíveis dessa frequência para os casos limite (+-25% do tempo de bit e +-75% do tempo de bit). Para isso calcule sucessivamente o seguinte:
 
 a. intervalo de validação em períodos do sinal de relógio (TLCLK) para os dois casos limite
 ```
+Speed: 38400
+7bits sem paridade
+1 stop bit
+Amostragem: 64
+
+Tbit = 64 Tlclk
+
+Primeiro caso: +- 16 Tlckl (+- 0.25*64)
+Segundo caso: +- 48 Tlckl (+- 0.75*64)
+
+Como há um erro intrínseco máximo de 1Tlclk devideo ao erro de fase, então o desvio máximo aceitável, resultante da diferença de frequência dos relógios é:
+
+Primeiro caso: +- 15 Tlckl (16-1)
+Segundo caso: +- 47 Tlckl (48-1)
+
+1 start bit + 7 bits sem paridade + 1*0.5 stop bits = 8.5
+
+
+Tlclk = 1 / 64*38400 = 406 Hz (valor ideal)
+
+
+Tlclk = 1+-0.25 / 64*38400 = +508 Hz,-305 Hz
+
+Tlclk = 1+-0.75 / 64*38400 = +437Hz, -376Hz
 ```
 b. número de períodos de relógio para amostrar a trama
 ```
+1 start bit + 7 bits sem paridade + 1 stop bits = 9
+
 ```
 c. variação máxima de frequência (em percentagem) para os dois casos limite
 ```
+1 start bit + 7 bits sem paridade + 1*0.5 stop bits = 8.5
+
+8.5*64 = 544
+
+Assim a máxima descrepância que poderá ser tolerada entre os relógios do transmissor e do recetor é:
+
+pior: +-15/544 = +-2.7%
+ideal: +-47/544 = +-8.6%
+
 ```
 d. qual o intervalo de frequência que é possível usar para que não haja erros nos casos limite 
 ```
+Tlclk = 1+-0.027 / 64*38400 = +417Hz, -395Hz
+
+Tlclk = 1+-0.086 / 64*38400 = +441Hz, -371Hz
 ```
 
 ### 120. Repita o exercício anterior admitindo agora que o baud-rate é 57600 bps, a trama é composta por 8 bits com paridade par e 2 stop bits, sendo o fator de sobre amostragem de 16.
