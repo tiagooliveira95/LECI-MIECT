@@ -1592,19 +1592,34 @@ Este método é util caso o master esteja a comunicar com slaves mais lentos
 
 a. topologia da ligação (ponto a ponto, multi-drop, multi-master, …) e número de ligações físicas do barramento
 ```
+Ponto a ponto
+
+Têm 3 ligações o Tx e Rx para informação e o GND para servir de ponto de referencia.
+
+Pode tambem ter linhas adicionais:
+RTS: Request to send
+CTS: Clear to send
+DTR: Data terminal ready
+DSR: Data set ready
+
+A norma original definia um total de 12 sinais, sendo 9 apenas para handshaking.
 ```
 b. direccionalidade das comunicações (half duplex, full-duplex, …)
 ```
+O RS232 é full-duplex, ou seja a um equipamento pode estar a enviar a a receber informação simultaneamente
 ```
 c. natureza da sincronização (síncrona com relógio explícito, síncrona com relógio implícito, assíncrona, …)
 ```
+assíncrona com relógio implícito
 ```
 d. formatação da informação (byte oriented, bit oriented, …)
 ```
+bit oriented (5 a 9 bits)
 ```
 
 ### 117. Na interface RS-232, caso o desvio de frequência entre o emissor e o recetor seja elevado a informação recebida pode conter erros nos dados recebidos. Indique quais os tipos de erro que podem ocorrer, e descreva os mecanismos que permitem detetar tais erros.
 ```
+Dar uso de um parity bit que identifica caso se houve algum erro durante a transmição.
 ```
 
 ### 118. Na interface RS-232 uma das fontes de erro, do lado do recetor, do instante de amostragem dos vários bits é o "erro de fase". Indique qual a metodologia que é usada para diminuir o impacto dessa fonte de erro e explique sucintamente porque é que esse método contribui para diminuir esse erro.
@@ -1612,6 +1627,7 @@ d. formatação da informação (byte oriented, bit oriented, …)
 ```
 
 ### 119. Admita que a configuração numa comunicação RS-232 (figura abaixo) é 38400 bps, 7 bits sem paridade, 1 stop bit e fator de sobre amostragem de 64. Calcule o valor de frequência ideal no recetor e os intervalos admissíveis dessa frequência para os casos limite (+-25% do tempo de bit e +-75% do tempo de bit). Para isso calcule sucessivamente o seguinte:
+
 a. intervalo de validação em períodos do sinal de relógio (TLCLK) para os dois casos limite
 ```
 ```
