@@ -1676,7 +1676,40 @@ Tlclk = 1+-0.043 / 64*38400 = +424Hz, -389Hz
 ```
 
 ### 120. Repita o exercício anterior admitindo agora que o baud-rate é 57600 bps, a trama é composta por 8 bits com paridade par e 2 stop bits, sendo o fator de sobre amostragem de 16.
+
+a. intervalo de validação em períodos do sinal de relógio (TLCLK) para os dois casos limite
 ```
+Speed: 57600
+8bits + 1 de paridade
+2 stop bit
+Amostragem: 16
+
+Tbit = 16 Tlclk
+
+Primeiro caso:  +- ((0.25/2 * 16)-1) = 1T
+Segundo caso: +- ((0.75/2 * 16)-1)= 5T
+
+```
+b. número de períodos de relógio para amostrar a trama
+```
+1 start bit + 8 bits + 1 de paridade + 2*0.5 stop bits = 11
+
+11 * 16 = 176
+
+```
+c. variação máxima de frequência (em percentagem) para os dois casos limite
+```
+Assim a máxima descrepância que poderá ser tolerada entre os relógios do transmissor e do recetor é:
+
+pior: +-1/176 = +-5.68%
+ideal: +-5/176 = +-2.84%
+
+```
+d. qual o intervalo de frequência que é possível usar para que não haja erros nos casos limite 
+```
+Tlclk = 1+-0.0568 / 64*38400 = +409Hz, -404Hz
+
+Tlclk = 1+-0.0284 / 64*38400 = +408Hz, -405Hz
 ```
 
 ### 121. Determine a máxima taxa de transmissão de dados líquida (net bit rate) numa ligação RS-232, expressa em bps, admitindo as seguintes configurações:
