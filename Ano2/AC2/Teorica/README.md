@@ -1134,15 +1134,19 @@ d.  =  +  + . Admita neste caso que o espaço de endereçamento é de 32
 
 a. prioridades fixas
 ```
+Em pedidos simultâneos o barramento é sempre atribuído ao master com prioridade mais alta. 
 ```
 b. critério Last-Come/First-Served
 ```
+As prioridades mudam ao longo do tempo, o ultimo a pedir é o primeiro a ser servido
 ```
 c. critério First-Come/First-Served
 ```
+As prioridades mudam ao longo do tempo, o primeiro a pedir é o primeiro a ser servido
 ```
 d. round-robin
 ```
+O acesso ao barramento é atribuido rotativamente, o master quando termina a trasnferência passa o controlo ao master seguinte.
 ```
 
 ### 83. Numa transferência em que o CPU pode prolongar o ciclo de leitura/escrita por um ou mais ciclos de relógio, em função de um sinal de protocolo gerado pelo dispositivo externo podemos afirmar que estamos perante que tipo de transferência? Justifique.
@@ -1198,6 +1202,8 @@ d. o espaço de endereçamento é de 48 bits os dados estão organizados em pala
 
 ### 87. Em barramentos multi-master, o que entende por situações de "starvation"
 ```
+Starvation pode occorrer quando masters com mais prioridade estão simultaneamente a fazer pedidos deixando outro master, com menos prioridade 
+eternamente à espera.
 ```
 
 ### 88. Um programa para transferir dados de 32 bits de um periférico para a memória é implementado num ciclo com 10 instruções. Admitindo que o CPU funciona a 200 MHz e que o programa em causa apresenta um CPI de 2.5, determine a taxa de transferência máxima, em Bytes/s, que é possível obter.
@@ -1325,16 +1331,20 @@ Microciclo
 
 ### 93. Identifique uma ou mais técnicas através das quais um árbitro de um barramento multi-master pode evitar situações de "starvation" nos acessos ao barramento.
 ```
+Implementar uma solução Fair, como round-robin FIFO ou FCFS, ou usar vários barramentos com diferentes tipos de desempenho (bridges)
 ```
 
 ### 94. Considere um barramento multi-master baseado em prioridades fixas. Neste caso, um árbitro distribuído irá atribuir o barramento a qual dos masters ligados ao barramento? 
+```
+Irá atribuir o barramento ao master com prioridade mais alta.
+```
+
 
 # BARRAMENTOS DE COMUNICAÇÃO SÉRIE
 
 ### 95. Classifique as vantagens dos barramentos série (ao nível físico) quando comparados com barramentos paralelo:
 a. ao nível da implementação
 ``` 
-
 ```
 b. ao nível da cablagem de suporte (em barramentos com fios)
 ``` 
@@ -1351,19 +1361,35 @@ e. ao nível do débito de transmissão
 
 ### 96. O que caracteriza topologicamente um barramento de comunicação série para podermos afirmar que este é um barramento:
 a. síncrono
+``` 
+```
 b. assíncrono
+``` 
+```
 
 ### 97. Nos barramentos série com comunicação síncrona, quais os métodos mais comuns para assegurar que os relógios de dois ou mais nós ligados ao barramento se mantêm sincronizados?
+``` 
+```
 
 ### 98. Nos barramentos série com comunicação síncrona, o que entende por codificação Manchester?
+``` 
+```
 
 ### 99. Qual a diferença entre um protocolo de comunicação série full-duplex e um protocolo de comunicação série halfduplex?
+``` 
+```
 
 ### 100. Dos protocolos de comunicação série que estudou nas aulas teóricas dê exemplos de:
 a. protocolos full-duplex
+``` 
+```
 b. protocolos half-duplex
+``` 
+```
 
 ### 101. Dos protocolos de comunicação série que estudou nas aulas teóricas existem casos em que a transmissão é orientada ao bit e casos em que a transmissão é orientada ao byte. Explique sucintamente a diferença e dê exemplos de protocolos que usam cada um dos dois.
+``` 
+```
 
 # PROTOCOLO SPI
 
