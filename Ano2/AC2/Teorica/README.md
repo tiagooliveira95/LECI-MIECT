@@ -1345,57 +1345,179 @@ Irá atribuir o barramento ao master com prioridade mais alta.
 ### 95. Classifique as vantagens dos barramentos série (ao nível físico) quando comparados com barramentos paralelo:
 a. ao nível da implementação
 ``` 
+A implementação é mais simples.
 ```
 b. ao nível da cablagem de suporte (em barramentos com fios)
 ``` 
+Existem menos fios, 1 fio consegue transmitir a informação toda em modo série
 ```
 c. ao nível do custo
 ``` 
+Mais economico uma vez que é mais simples
 ```
 d. ao nível da distância de transmissão
 ``` 
+Usando um par diferencial é possivel a transmissão em longas destancias
 ```
 e. ao nível do débito de transmissão
 ``` 
+O débito é elevado
 ```
 
 ### 96. O que caracteriza topologicamente um barramento de comunicação série para podermos afirmar que este é um barramento:
 a. síncrono
 ``` 
+O sinal de relógio é transmitido de forma explícita atravez de um sinal adicional, ou 2 clocks que estejam sincronizados.
+Se o sinal não for transmitido, devemos ter um mecanismo que misture o clock na linha de dados.
 ```
 b. assíncrono
 ``` 
+Não é usado um clock na trasmissão, bem há recuperação do relógio.
+Neste modo é necessário acrescentar bits para sinalizar o inicio e o fim da trasnmioção.
 ```
 
 ### 97. Nos barramentos série com comunicação síncrona, quais os métodos mais comuns para assegurar que os relógios de dois ou mais nós ligados ao barramento se mantêm sincronizados?
 ``` 
+Enviar um sinal extra com o clock, ou codificar o clock misturado com a linha de dados.
 ```
 
 ### 98. Nos barramentos série com comunicação síncrona, o que entende por codificação Manchester?
 ``` 
+É um métudo de codificar o clock na linha de dados fazendo um XOR da data e do clock
+
+É enviada uma sequencia de bits, e o receptor analizando o tempo em que o data esta a 1 consegue determinar o periodo do clock do trasnmissor,
+tendo conhecimento deste tempo o receptor vai detectar uma transição a uma frequiencia de cerca de ~80% do periodo
 ```
 
 ### 99. Qual a diferença entre um protocolo de comunicação série full-duplex e um protocolo de comunicação série halfduplex?
 ``` 
+Numa aplicação half-duplex é usada apenas uma linha de dados que pode ser usada para transmição entre master e slave durante um tempo determinado
+e vice versa.
+
+Numa aplicação full-duplex existem 2 linhas de dados uma para transmição e outra para recepção, que possibilita a trasnmição simultanea
 ```
 
 ### 100. Dos protocolos de comunicação série que estudou nas aulas teóricas dê exemplos de:
+
 a. protocolos full-duplex
 ``` 
+UART
 ```
 b. protocolos half-duplex
 ``` 
+I2C
 ```
 
 ### 101. Dos protocolos de comunicação série que estudou nas aulas teóricas existem casos em que a transmissão é orientada ao bit e casos em que a transmissão é orientada ao byte. Explique sucintamente a diferença e dê exemplos de protocolos que usam cada um dos dois.
+
 ``` 
+no modo síncrono são enviados bits
+
+no modo assíncrono são enviados bytes
+
 ```
 
 # PROTOCOLO SPI
 
 ### 102. Como caracterizaria o barramento SPI no que respeita:
+
 a. ao tipo de ligação entre dispositivos
+```
+ligação sincrona do tipo Master-slave full-duplex
+```
 b. ao tipo de sincronização entre dispositivos
+```
+A sincronização é feita atravez de um clock fornecido pelo master
+```
 c. à natureza da transferência de dados (bi-direcional, unidirecional) 
+```
+bi-direcional
+```
+
+###  103. Suponha um sistema de medida, baseado no protocolo SPI, que recolhe periodicamente informação proveniente de vários sensores, cada um deles com uma resolução igual (i.e. nº de bits de dados). Determine o tempo mínimo de que o master necessita para adquirir os valores de todos os sensores (cada um implementado num slave distinto), sabendo que:
+
+a. o número de sensores é 20, a frequência de relógio é de 100KHz e a resolução dos sensores é de 16 bits
+```
+```
+b. o número de sensores é 8, a frequência de relógio é de 20KHz e a resolução dos sensores é de 8 bits
+```
+```
+c. o número de sensores é 10, a frequência de relógio é de 100KHz e a resolução dos sensores é de 8 bits
+```
+```
+d. o número de sensores é 30, a frequência de relógio é de 50KHz e a resolução dos sensores é de 8 bits
+```
+```
+
+###  104. Como caracterizaria um sistema SPI entre as seguintes opções: multi-master assíncrono; multi-master síncrono; ponto a ponto assíncrono: ponto a ponto síncrono.
+```
+```
+
+### 105. Diria que o protocolo SPI é adequado para ligação entre dispositivos a longas distâncias? Justifique adequadamente a sua resposta.
+```
+```
+
+### 106. Numa arquitetura em que um master SPI de 8bits se encontra ligado a um conjunto de três slaves organizados em daisy chain como descreveria a interligação dos principais sinais entre o master e os slaves e qual a dimensão das palavras trocadas entre o master e o conjunto de slaves.
+```
+```
+
+###  107. Descreva sucintamente qual a sequência de operações que são realizadas ao nível do master por forma a assegurar que os seus parâmetros são adequados a realizar validamente troca de informação com um slave a que se encontre ligado. 
+```
+```
 
 
+# I2C
+
+### 108. Considere o diagrama temporal representado abaixo. Admita que representa a comunicação I2C entre um master (µC) e um slave (ADC de 10 bits).
+a. qual o endereço do elemento slave (ADC)?
+```
+```
+b. estamos perante uma operação de escrita ou de leitura?
+```
+```
+c. quantos ACKs são gerados pelo slave?
+```
+```
+d. quantos ACKs são gerados pelo master?
+```
+```
+e. quantos NACKs são gerados? Por quem?
+```
+```
+f. qual o valor (expresso em hexadecimal) que foi fornecido pela ADC ao µC, sabendo que este começa sempre pelo MSBit?
+```
+```
+g. quantas situações de clock stretch são gerados nesta transação? Por quem?
+```
+```
+h. supondo que a frequência do relógio é de 1MHz e que o stretch corresponde a dois ciclos de relógio, qual a duração total da transação? 
+```
+```
+
+### 109. Descreva sucintamente, no protocolo I2C, como é realizado o endereçamento/seleção do dispositivo a quem é destinada a mensagem ou de quem se pretende obter informação.
+```
+```
+
+### 110. Quantas linhas (físicas) compõem um barramento I2C? Qual a sua designação e finalidade? 
+```
+```
+
+### 111. No protocolo I2C em que condições se considera que o barramento de comunicação está livre?
+```
+```
+
+### 112. Descreva sucintamente, no protocolo I2C, quem é responsável pela geração do sinal de relógio e como é possível assegurar a sincronização do mesmo entre master e slave
+```
+```
+
+### 113. Descreva sucintamente, no protocolo I2C, o processo de arbitragem no acesso ao barramento quando dois ou mais masters tentam aceder simultaneamente ao mesmo.
+```
+```
+
+### 114. No protocolo I2C, os bits que circulam no barramento têm uma característica que os distingue dos bits normalmente gerados à saída de um circuito digital convencional. Como designa, no I2C, cada um dos dois estados lógicos, e qual a sua utilidade para o funcionamento do barramento.
+```
+```
+
+### 115. O esquema e o diagrama temporal mostrados abaixo exemplificam a interligação entre um master e um slave e a forma como o slave pode alterar o período do sinal de relógio gerado pelo master. Descreva os princípios de funcionamento envolvidos neste processo justificando por que razão esta solução funciona. Apresente uma razão pela qual esta método pode ser particularmente interessante numa dada arquitetura. 
+```
+```
