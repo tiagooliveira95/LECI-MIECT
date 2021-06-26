@@ -1482,43 +1482,73 @@ No final o master e o slave trocaram o conteúdo dos seus shift-registers
 ### 108. Considere o diagrama temporal representado abaixo. Admita que representa a comunicação I2C entre um master (µC) e um slave (ADC de 10 bits).
 a. qual o endereço do elemento slave (ADC)?
 ```
+Endereço: 0110101 
+Bit qualificação: 1
+
+O endereço do slave é: 0x35
 ```
 b. estamos perante uma operação de escrita ou de leitura?
 ```
+O bit de qualificação é 1, logo estamos perante uma leitura.
 ```
 c. quantos ACKs são gerados pelo slave?
 ```
+1 ACKs
 ```
 d. quantos ACKs são gerados pelo master?
 ```
+1 ACKs
 ```
 e. quantos NACKs são gerados? Por quem?
 ```
+1 NACK
 ```
 f. qual o valor (expresso em hexadecimal) que foi fornecido pela ADC ao µC, sabendo que este começa sempre pelo MSBit?
 ```
+00000010 = 0x2
+10011011 = 0x9B
 ```
 g. quantas situações de clock stretch são gerados nesta transação? Por quem?
 ```
+1
 ```
 h. supondo que a frequência do relógio é de 1MHz e que o stretch corresponde a dois ciclos de relógio, qual a duração total da transação? 
 ```
+Foram feitas 2 transações
+
+Cada transação é composta por 9 ciclos, 8 para cada bit + 1 de ACK ou NACK
+
+9 ciclos * 2 transações + 2 transações * 2 streachs = 22 ciclos
+
+As 2 transações demorariam 22 ciclos
+
+F = 1/ 1MHz = 1us
+
+22*1 = 22us
 ```
 
 ### 109. Descreva sucintamente, no protocolo I2C, como é realizado o endereçamento/seleção do dispositivo a quem é destinada a mensagem ou de quem se pretende obter informação.
 ```
+
+Em I2C os endereços podem ter 7bits (em modo normal) ou 10 bits.
+
+No inicio o master envia um sinal START e de seguida o endereço do slave e o bit de qualificação (R/W)
 ```
 
 ### 110. Quantas linhas (físicas) compõem um barramento I2C? Qual a sua designação e finalidade? 
 ```
+Compem 2 linhas de comunicação, serial data line (SDA) e serial clock line (SCL)
 ```
 
 ### 111. No protocolo I2C em que condições se considera que o barramento de comunicação está livre?
 ```
+O barramento passa a estar livre quando ocorre uma transição do SDA de 0 para 1 quando SCL = 1, e deixa de estar livre
+quando SDA passa para 0 com SCL a 1
 ```
 
 ### 112. Descreva sucintamente, no protocolo I2C, quem é responsável pela geração do sinal de relógio e como é possível assegurar a sincronização do mesmo entre master e slave
 ```
+O master é responsável por gerar o sinal relógio, a sincronização é feita atravez de um transistor e de uma resistencia pull-up
 ```
 
 ### 113. Descreva sucintamente, no protocolo I2C, o processo de arbitragem no acesso ao barramento quando dois ou mais masters tentam aceder simultaneamente ao mesmo.
@@ -1527,8 +1557,17 @@ h. supondo que a frequência do relógio é de 1MHz e que o stretch corresponde 
 
 ### 114. No protocolo I2C, os bits que circulam no barramento têm uma característica que os distingue dos bits normalmente gerados à saída de um circuito digital convencional. Como designa, no I2C, cada um dos dois estados lógicos, e qual a sua utilidade para o funcionamento do barramento.
 ```
+Existem os bit START e STOP, o Start occorre quando SCL é 1 e SDA passa para 0, e o STOP é quando SCL esta a 1 e SDA passa para 1.
+
+O tempo entre o STOP e o START é o tempo em que o barramento se encontra livre
 ```
 
 ### 115. O esquema e o diagrama temporal mostrados abaixo exemplificam a interligação entre um master e um slave e a forma como o slave pode alterar o período do sinal de relógio gerado pelo master. Descreva os princípios de funcionamento envolvidos neste processo justificando por que razão esta solução funciona. Apresente uma razão pela qual esta método pode ser particularmente interessante numa dada arquitetura. 
 ```
+O slave pode forçar o SCL a 0 para indicar ao master que necessita de mais tempo para processar uma dada operação.
+
+Se o SCL_MASTER estiver a 1 e o SCL estiver a 0, o master fica logo a saber que o slave esta a puxar o sinal para 0,
+nesta situação o master vai esperar que o slave remova o sinal WAIT, quando isto acontece o Master reinicia a contagem
+
+Este método é util caso o master esteja a comunicar com slaves mais lentos
 ```
