@@ -1240,15 +1240,15 @@ a. Frequência do CPU= 500 MHz; tempo de acesso à memória de 12 ns (tempo que 
 
 Tempo de acesso à memória é de 12ns, e o atraso do address decoder é 2.5ns.
 
-12.5ns + 2.5ns = 15ns
+12ns + 2.5ns = 14.5ns
 
 O tempo da operação são 4 ciclos o que equivale a 2*4 = 8ns
 
-15ns - 8ns = 7ns
+14.5ns - 8ns + 2ns = 8.5ns
 
-7 / 2 = 3.5 ~ 4
+8.5 / 2 = 4.25 ~ 5
 
-São necessários 4 wait-states
+São necessários 5 wait-states
 ```
 
 b. Frequência do CPU= 200 MHz; tempo de acesso à memória de 35 ns; atraso introduzido pelo descodificador de endereços da memória de 7 ns
