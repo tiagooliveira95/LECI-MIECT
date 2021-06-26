@@ -1455,14 +1455,25 @@ d. o número de sensores é 30, a frequência de relógio é de 50KHz e a resolu
 
 ### 105. Diria que o protocolo SPI é adequado para ligação entre dispositivos a longas distâncias? Justifique adequadamente a sua resposta.
 ```
+Não pois não é possivel garantir a integridade do sinal
 ```
 
 ### 106. Numa arquitetura em que um master SPI de 8bits se encontra ligado a um conjunto de três slaves organizados em daisy chain como descreveria a interligação dos principais sinais entre o master e os slaves e qual a dimensão das palavras trocadas entre o master e o conjunto de slaves.
 ```
+O master pode trocar palavras de 24 bits (8*3), o MOSI do master esta ligado ao primeiro slave, e o primeiro slave tem o MISO ligado ao MOSI do slave 2 e assim sucessivamente.
+Em daisy chain todos os slaves estão ativos.
 ```
 
 ###  107. Descreva sucintamente qual a sequência de operações que são realizadas ao nível do master por forma a assegurar que os seus parâmetros são adequados a realizar validamente troca de informação com um slave a que se encontre ligado. 
 ```
+O master deve configurar o clock para uma frequência igual ou inferior à suportada pelo slave.
+Ativar a linha SS\ do slave com o qual vai comunicar
+Em cada ciclo de relógio o master coloca na linha MOSI um bit de informação que é lido pelo slave na transição de relógio oposta seguinte, e 
+o slave coloca na linha MISO um bit de informação que é lifo pelo master na transição oposta seguinte.
+
+No fim, o master desativa a linha SS\ e o clock que fica estavável por exemplo, a nivel lógico 1.
+
+No final o master e o slave trocaram o conteúdo dos seus shift-registers
 ```
 
 
