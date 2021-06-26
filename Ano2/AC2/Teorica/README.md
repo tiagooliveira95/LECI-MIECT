@@ -893,13 +893,13 @@ DutyCycle = 83400 / 2500 = 33.36%
 
 a. calcule o valor mínimo da constante de divisão a aplicar ao prescaler e indique qual o valor efetivo dessa constante
 ```
-Kmin = 20 MHz / 65536 * 85 Hz = 2.7
+Kmin = 50 MHz / 65536 * 85 Hz = 8.9
 
-O K minimo é 4
+O K minimo é 16
 ``` 
 b. calcule o valor da constante PR2
 ```
-(5 MHz / 85 Hz) - 1 = 58822.5 ~ 58823
+(5 MHz / 85 Hz) - 1 = 3124
 ``` 
 
 ### 58. Repita o exercício anterior, supondo que se está a usar o Timer T1
