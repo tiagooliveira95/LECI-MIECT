@@ -1748,3 +1748,287 @@ d. baudrate de 1200 bps, 7 bits de dados, sem bit de paridade e 1 stop bit
 
 # DEVICE DRIVERS
 
+### 126. Se tivesse que identificar as principais características/objetivos de um device driver como o descreveria na perspetiva:
+a. do Sistema Operativo ou das aplicações
+``` 
+Um programa que cria uma camada de abstração que permite o acesso do dispositivo de forma independente da sua implementação.
+```
+b. do lado da interface com o dispositivo periférico
+``` 
+
+O periférico  podem pedir acesso ao sistema sem necessitar de ter em conta as operações de baixo nivel
+```
+
+### 127. Quando se interliga um periférico com um sistema de processamento, quem é responsável por fornecer o software do device driver? Porquê?
+``` 
+O fornecedor, pois ele é que tem o conhecimento de como o periférico funciona internamente.
+```
+
+### 128. Nas aulas práticas implementou um device driver para um dispositivo UART (RS-232C). Esse device driver usava, para a transmissão e para a receção, dois buffers circulares.
+a. O que entende por buffer circular?
+``` 
+Um buffer circular é um registo FIFO composto por "slots" que ao chegar ao fim da a volta, ou seja, se o buffer circular for de 4 e tentaros escrever em 5
+o buffer vai dar a volta e escreve na posição 1
+```
+b. Quais são as principais variáveis necessárias para gerir um buffer circular?
+``` 
+head: indice do primeiro valor (eg: próximo sair)
+count: número de "slots" ocupados
+tail: próximo espaço livre
+```
+c. Destas variáveis há uma cuja gestão é gerida pela aplicação e pelo device driver. Qual é essa variável e que cuidados há a ter com ela quando é atualizada do lado da aplicação?
+``` 
+A aplicação manipula a váriavel head, o head aponta para a posição do buffer circular de onde é lido o próximo slot
+
+A tail e geridos pelo device driver
+
+A count é partilhada com o device driver e o hardware
+```
+
+### 129. Descreva por palavras suas o que se entende por secção crítica num trecho de código? 
+``` 
+Uma secção critica é uma secção de código que não pode ser interrumpida por interrupts, pois caso aconteca, o interrupts pode corromper a informação
+do trecho de código critico.
+```
+
+# CAN
+
+### 130. Como classificaria o protocolo CAN relativamente:
+a. à topologia da ligação (ponto a ponto, muiti-drop, multi-master, …) e número de ligações físicas do barramento
+``` 
+```
+b. direccionalidade das comunicações (half duplex, full-duplex, …)
+``` 
+```
+c. natureza da sincronização (síncrona com relógio explícito, síncrona com relógio implícito, assíncrona, …)
+``` 
+```
+d. formatação da informação (byte oriented, bit oriented, …)
+``` 
+```
+
+### 131. No barramento CAN a codificação das tramas de dados utiliza a técnica de "bit stuffing". Descreva sucintamente o motivo por que esta técnica é aplicada e em que consiste.
+``` 
+```
+
+### 132. No barramento CAN, na composição de uma trama de dados existe um campo de 11 bits designado por “identifier”. Descreva sucintamente qual a finalidade deste campo.
+``` 
+```
+
+### 133. É ou não é verdade que, no barramento CAN, qualquer nó da rede pode desempenhar o papel de master. Se sim, será possível que dois masters enviem mensagens em simultâneo? Porquê?
+``` 
+```
+
+### 134. Descreva sucintamente o mecanismo através do qual, no barramento CAN, é realizado o controlo de acesso ao meio (arbitragem) quando mais do que um master tentam enviar mensagens em simultâneo. 
+``` 
+```
+
+### 135. Quando, num barramento CAN, um master envia uma trama de dados, quantos dispositivos irão receber essa mensagem? Porquê?
+``` 
+```
+
+### 136. O protocolo adotado pelos barramentos CAN apresenta uma muito elevada capacidade de detetar erros do lado dos recetores (probabilidade de não detetar um erro inferior a 4,7x10-11). Para tal, este protocolo recorre a um total de cinco técnicas complementares para detetar erros. Nomeie e descreva sucintamente cada uma dessas técnicas. 
+``` 
+```
+
+### 137. Admita que, numa aplicação a usar CAN 2.0A (trama com identificador standard), o mecanismo de aceitação de mensagens do controlador CAN foi configurado com os seguintes valores: máscara=0x7FA, filtro=0x5C0. Determine, nesta situação, quais os identificadores de mensagens que são aceites e passadas ao software que está a usar o controlador.
+``` 
+```
+
+### 138. Resolva novamente o problema anterior admitindo que o mecanismo de aceitação de mensagens do controlador CAN foi configurado com os seguintes valores:
+a. máscara=0x4CC, filtro=0x088.
+``` 
+```
+b. máscara=0x7FF, filtro=0x253.
+``` 
+```
+c. máscara=0x7F0, filtro=0x0A0.
+``` 
+```
+
+### 139. No barramento CAN existem quatro tipos de tramas: “Data Frame”, “Remote Transmission Request Frame”, “Error Frame” e “Overload Frame”. Descreva de forma sucinta qual a finalidade de cada um destes tipos de tramas. 
+``` 
+```
+
+# USB
+
+### 140. O protocolo USB suporta quatro tipos de transferência de dados. Descreva, para cada uma delas, as suas principais características no que se refere à sua periodicidade, largura de banda, latência e garantia de entrega. Dê exemplos de cenários de aplicação em que cada um destes tipos de transferência é ou pode ser usado:
+a. transferências de controlo
+``` 
+```
+b. transferências "bulk"
+``` 
+```
+c. transferências isócronas
+``` 
+```
+d. transferências de interrupção
+``` 
+```
+
+### 141. Descreva sucintamente a topologia das ligações físicas, no protocolo USB, nomeadamente quanto à sua configuração, número de níveis e número máximo de dispositivos suportados.
+``` 
+```
+
+### 142. Como classificaria o protocolo USB (2.0) relativamente:
+a. à topologia da ligação (ponto a ponto, multi-drop, multi-master, …)
+``` 
+```
+b. direccionalidade das comunicações (half duplex, full-duplex, …)
+``` 
+```
+c. codificação e transmissão de dados
+``` 
+```
+d. formatação da informação (byte oriented, bit oriented, …)
+``` 
+```
+
+### 143. No protocolo USB cada dispositivo ligado ao host-controller é genericamente designado por “function”. Uma function pode assumir um de dois papeis. Identifique esses papeis e as suas principais características.
+``` 
+```
+
+### 144. Descreva sucintamente, no protocolo USB, os objetivos do processo normalmente designado por enumeração.
+``` 
+```
+
+### 145. No protocolo USB, o sistema de endereçamento é composto por três campos. Descreva sucintamente o objetivo de cada um desses campos e os valores mínimo e máximo que cada um pode ter. 
+``` 
+```
+
+
+### 146. O mecanismo de comunicação um dispositivo USB e o "host controller" é feito através de canais virtuais. Qual a designação desses canais e o que interligam? Esses canais permitem comunicação bi-direcional? Porquê? 
+``` 
+```
+
+# TECNOLOGIA, ORGANIZAÇÃO E FUNCIONAMENTO DE RAMs
+
+### 147. Numa memória estática SRAM, uma célula de um bit é composta por seis transístores. Descreva sucintamente as vantagens e desvantagens entre a solução SRAM quando comparada com e a versão de uma célula DRAM de um bit.
+``` 
+```
+
+### 148. A solução de organização matricial de uma memória RAM apresenta vantagens quando comparada com uma organização linear. Explique qual é essa vantagem e dê um exemplo que demonstre essa vantagem.
+``` 
+```
+
+### 149. Quando falamos em tRC (Read Cycle Time) de uma memória nas operações de leitura estamos a referir-nos especificamente a que tempo? 
+``` 
+```
+
+### 150. Descreva sucintamente os conceitos de:
+a. Access Time
+``` 
+```
+b. taxa de transferência
+``` 
+```
+
+### 151. Para construir um módulo de memória SRAM de 128k x 8 bits, são necessários quantos circuitos, admitindo que dispõe de:
+a. circuitos de 32k x 1 bit
+``` 
+```
+b. circuitos de 32k x 4 bits
+``` 
+```
+c. circuitos de 16k x 8 bits
+``` 
+```
+d. circuitos de 64k x 8 bits
+``` 
+```
+e. circuitos de 128k x 1 bit
+``` 
+```
+
+### 152. Admita que dispõe de uma memória estática SRAM de 256k × 8 (num único circuito) com uma organização matricial. Determine por quantas matrizes de células é constituída e qual é o número de linhas e colunas que compõe cada matriz.
+``` 
+```
+
+### 153. Suponha que dispõe de 16 circuitos de memória de 1Mx4. Usando todos estes circuitos, determine qual a dimensão da memória quando:
+a. a largura da palavra é 4bits
+``` 
+```
+b. a largura da palavra é 8bits
+``` 
+```
+c. a largura da palavra é 32bits
+``` 
+```
+d. a memória tem 2M endereços
+``` 
+```
+e. a memória tem 8M endereços
+``` 
+```
+
+### 154. Determine o número de bits do barramento de endereços de uma memória dinâmica DRAM, se este tiver as seguintes características:
+a. 512M x 8 bits, implementada com uma matriz de células com 16k linhas
+``` 
+```
+b. 256M x 1 bit, implementada com uma matriz de células com 16k linhas
+``` 
+```
+c. 4G x 4 bit, implementada com uma matriz quadrada
+``` 
+```
+d. 1G x 1 bit, implementada com uma matriz de células com 32k linhas
+``` 
+```
+e. 2G x 8 bit, implementada com uma matriz de células com 64k linhas
+``` 
+```
+f. 256M x 1 bit, implementada com uma matriz de células com 8K linhas
+``` 
+```
+
+### 155. Considere uma memória DRAM de 2Mx16, implementada com matrizes de armazenamento de 2048 colunas. Determine aproximadamente o tempo necessário para efetuar um refrescamento completo dessa memória se os seus parâmetros relativos a um ciclo de refrescamento, do tipo RAS Only, forem os seguintes:
+a. RAS width=50 ns; Precharge time=25 ns:
+``` 
+```
+b. RAS width=40 ns; Precharge time=15 ns:
+``` 
+```
+c. RAS width=65 ns; Precharge time=30 ns:
+``` 
+```
+
+### 156. Repita o exercício anterior admitindo agora:
+a. uma memória DRAM de 8Mx16, implementada com matrizes de armazenamento de 1024 colunas
+``` 
+```
+b. uma memória DRAM de 512Mx16, implementada com uma matriz de células com 16k linhas
+``` 
+```
+c. uma memória DRAM de 4Mx32, implementada com matrizes de armazenamento de 4096 colunas
+``` 
+```
+d. uma memória DRAM de 8Mx16, implementada com matrizes de armazenamento de 1024 colunas.
+``` 
+```
+
+### 157. Descreva os passos necessários para efetuar uma operação de leitura de uma célula numa memória do tipo DRAM.
+``` 
+```
+
+### 158. O diagrama apresentado abaixo representa uma operação efetuada numa memória DRAM. Identifique o modo adotado nesta operação, a natureza da operação e descreva sucintamente o seu funcionamento. 
+``` 
+```
+
+# MEMÓRIA CACHE 
+
+### 159. Determine o número de comparadores necessário para a implementação de uma cache:
+a. de mapeamento direto, dimensão de 16 kB, blocos de 64 bytes e 256 linhas
+``` 
+```
+b. de mapeamento direto, dimensão de 32 kB, blocos de 128 bytes e 256 linhas
+``` 
+```
+c. parcialmente associativa, dimensão de 64 kB, com associatividade de 4 e blocos de 64 bytes
+``` 
+```
+d. parcialmente associativa, dimensão de 128 kB, com associatividade de 8 e blocos de 64 bytes
+``` 
+```
+e. totalmente associativa, dimensão de 256 kB e blocos de 256 bytes 
+``` 
+```
