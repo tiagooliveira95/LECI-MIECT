@@ -2069,24 +2069,49 @@ e. a memória tem 8M endereços
 ### 154. Determine o número de bits do barramento de endereços de uma memória dinâmica DRAM, se este tiver as seguintes características:
 a. 512M x 8 bits, implementada com uma matriz de células com 16k linhas
 ``` 
+columns: log2(16000) ~= 14 
+row: log2(512) = 9
+
+O barramento vai ter 14bits
 ```
 b. 256M x 1 bit, implementada com uma matriz de células com 16k linhas
 ``` 
+columns: log2(16000) ~= 14 
+row: log2(256,000,000) ~= 28
+
+O barramento vai ter 28bits
 ```
 c. 4G x 4 bit, implementada com uma matriz quadrada
 ``` 
+columns/row: log2(4,000,000) ~= 22 
+
+
+O barramento vai ter 22bits
 ```
 d. 1G x 1 bit, implementada com uma matriz de células com 32k linhas
 ``` 
+columns: log2(32000) ~= 14 
+row: log2(1*10^9) = 30
+
+O barramento vai ter 30bits
 ```
 e. 2G x 8 bit, implementada com uma matriz de células com 64k linhas
 ``` 
+columns: log2(64000) ~= 16 
+row: log2(2*10^9) = 31
+
+O barramento vai ter 31bits
 ```
 f. 256M x 1 bit, implementada com uma matriz de células com 8K linhas
 ``` 
+columns: log2(8000) ~= 12 
+row: log2(256*10^6) ~= 28
+
+O barramento vai ter 28bits
 ```
 
 ### 155. Considere uma memória DRAM de 2Mx16, implementada com matrizes de armazenamento de 2048 colunas. Determine aproximadamente o tempo necessário para efetuar um refrescamento completo dessa memória se os seus parâmetros relativos a um ciclo de refrescamento, do tipo RAS Only, forem os seguintes:
+
 a. RAS width=50 ns; Precharge time=25 ns:
 ``` 
 ```
@@ -2113,6 +2138,11 @@ d. uma memória DRAM de 8Mx16, implementada com matrizes de armazenamento de 102
 
 ### 157. Descreva os passos necessários para efetuar uma operação de leitura de uma célula numa memória do tipo DRAM.
 ``` 
+Antes de ler, a linha deve ser carregada a VDD/2, de seguinda deve ser ativo a linha "select"
+
+O valor lógico é detetado pela diferença da tensão na linha bit relativamente a VDD / 2, se for superior significa que o valor lógico guardado na célula é 1, caso seja inferior significa que o valor lógico é 0.
+
+A operação de leitura é destrutiva, o que significa que após a leitura o valor no célula deve ser reposto (repor a carga do condensador)
 ```
 
 ### 158. O diagrama apresentado abaixo representa uma operação efetuada numa memória DRAM. Identifique o modo adotado nesta operação, a natureza da operação e descreva sucintamente o seu funcionamento. 
