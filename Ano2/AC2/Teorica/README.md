@@ -1796,39 +1796,52 @@ do trecho de código critico.
 ### 130. Como classificaria o protocolo CAN relativamente:
 a. à topologia da ligação (ponto a ponto, muiti-drop, multi-master, …) e número de ligações físicas do barramento
 ``` 
+multi-master
 ```
 b. direccionalidade das comunicações (half duplex, full-duplex, …)
 ``` 
+half duplex
 ```
 c. natureza da sincronização (síncrona com relógio explícito, síncrona com relógio implícito, assíncrona, …)
 ``` 
+assíncrona
 ```
 d. formatação da informação (byte oriented, bit oriented, …)
 ``` 
+bit oriented
 ```
 
 ### 131. No barramento CAN a codificação das tramas de dados utiliza a técnica de "bit stuffing". Descreva sucintamente o motivo por que esta técnica é aplicada e em que consiste.
 ``` 
+Bit stuffing é usado para efeitos de sincronização, a cada 5 bits iguais é inserido 1 de polaridade oposta, quando ocorre uma alteração de 0 para 1
+ou vice versa o recetor re-sincroniza o relógio
+
+Logo, ao adicionar um bit oposto a cada 5 bits iguais garante a sincronização.
 ```
 
 ### 132. No barramento CAN, na composição de uma trama de dados existe um campo de 11 bits designado por “identifier”. Descreva sucintamente qual a finalidade deste campo.
 ``` 
+O identifier é o que identifica o tipo de informação que vai ser enviada
 ```
 
 ### 133. É ou não é verdade que, no barramento CAN, qualquer nó da rede pode desempenhar o papel de master. Se sim, será possível que dois masters enviem mensagens em simultâneo? Porquê?
 ``` 
+Sim, qualquer nó consegue enviar e receber informação do barramento CAN
 ```
 
 ### 134. Descreva sucintamente o mecanismo através do qual, no barramento CAN, é realizado o controlo de acesso ao meio (arbitragem) quando mais do que um master tentam enviar mensagens em simultâneo. 
 ``` 
+
 ```
 
 ### 135. Quando, num barramento CAN, um master envia uma trama de dados, quantos dispositivos irão receber essa mensagem? Porquê?
 ``` 
+Todos os dispositivos recebem a mensagem pois não existe um processo de endereçamento.
 ```
 
-### 136. O protocolo adotado pelos barramentos CAN apresenta uma muito elevada capacidade de detetar erros do lado dos recetores (probabilidade de não detetar um erro inferior a 4,7x10-11). Para tal, este protocolo recorre a um total de cinco técnicas complementares para detetar erros. Nomeie e descreva sucintamente cada uma dessas técnicas. 
+### 136. O protocolo adotado pelos barramentos CAN apresenta uma muito elevada capacidade de detetar erros do lado dos recetores (probabilidade de não detetar um erro inferior a 4,7x10^-11). Para tal, este protocolo recorre a um total de cinco técnicas complementares para detetar erros. Nomeie e descreva sucintamente cada uma dessas técnicas. 
 ``` 
+
 ```
 
 ### 137. Admita que, numa aplicação a usar CAN 2.0A (trama com identificador standard), o mecanismo de aceitação de mensagens do controlador CAN foi configurado com os seguintes valores: máscara=0x7FA, filtro=0x5C0. Determine, nesta situação, quais os identificadores de mensagens que são aceites e passadas ao software que está a usar o controlador.
