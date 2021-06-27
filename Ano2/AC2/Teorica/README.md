@@ -2268,6 +2268,17 @@ Taccess = 0.85 * 4 + 0.15* (120+4) = 22
 ### 170. Considere uma cache parcialmente associativa, com associatividade de 4, dimensão de 8 kBytes e com blocos de 32 bytes. Determine a linha em que será colocado o bloco que contém o endereço de memória:
 a. 0x12B8
 ```
+8kB / 4 = 2kB por via
+
+2 kB / 32B = 63 linhas
+
+00010010 101110 00
+
+hit = 0x12
+Set/group = 0x2E
+Byte = 0x0
+
+Grupo 0x2E, Posição 0
 ```
 b. 0x355f
 ```
