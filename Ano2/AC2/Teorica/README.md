@@ -2166,19 +2166,19 @@ modo paging, a ram seleciona uma row, e lê a coluna dessa row que corresponde a
 ### 159. Determine o número de comparadores necessário para a implementação de uma cache:
 a. de mapeamento direto, dimensão de 16 kB, blocos de 64 bytes e 256 linhas
 ``` 
-
+1 comparador?
 ```
 b. de mapeamento direto, dimensão de 32 kB, blocos de 128 bytes e 256 linhas
 ``` 
-
+1 comparador?
 ```
 c. parcialmente associativa, dimensão de 64 kB, com associatividade de 4 e blocos de 64 bytes
 ``` 
-
+500 comparadores?
 ```
 d. parcialmente associativa, dimensão de 128 kB, com associatividade de 8 e blocos de 64 bytes
 ``` 
-
+250 comparadores?
 ```
 e. totalmente associativa, dimensão de 256 kB e blocos de 256 bytes 
 ``` 
@@ -2187,11 +2187,18 @@ e. totalmente associativa, dimensão de 256 kB e blocos de 256 bytes
 
 ### 160. Para o problema anterior, determine, para cada alínea, a dimensão em bits dos registos da Tag Memory, assumindo que o espaço de endereçamento é de 32 bits.
 ``` 
+a) 
+b) 
+c) 
+d)
+e) 
 
 ```
 ### 161. Descreva, sucintamente, as vantagens e desvantagens de uma cache totalmente associativa quando comparada com uma cache de mapeamento direto.
 ``` 
+Mais complexa por ter mais comparadores, as vantagens é a menor probabilidade de um miss.
 
+O mapeamento direto tem menos complexidade mais maior probabildiade de um miss
 ```
 ### 162. Descreva, sucintamente, as várias técnicas de substituição no caso de ocorrência de um miss e de não haver blocos livres na cache.
 ``` 
@@ -2260,90 +2267,179 @@ Taccess = 0.85 * 4 + 0.15* (120+4) = 22
 
 ### 170. Considere uma cache parcialmente associativa, com associatividade de 4, dimensão de 8 kBytes e com blocos de 32 bytes. Determine a linha em que será colocado o bloco que contém o endereço de memória:
 a. 0x12B8
+```
+```
 b. 0x355f
+```
+```
 c. 0X2760
+```
+```
 
 ### 171. Considere uma cache parcialmente associativa, com associatividade de 8, dimensão de 16 kBytes e com blocos de 32 bytes. Determine a linha em que será colocado o bloco que contém o endereço de memória:
 a. 0x56B9
+```
+```
 b. 0X7041
+```
+```
 c. 0X23F2
+```
+```
 
 ### 172. Numa cache com mapeamento direto, ao dividir-se o endereço real pela dimensão do bloco obtém-se o quê?
-
+```
+```
 ### 173. Indique como pode ser obtido aritmeticamente o endereço do “grupo” (linha da cache), numa cache com mapeamento direto.
-
+```
+```
 ### 174. Considere um espaço de endereçamento de 16 bits, em que se encontra implementada uma cache parcialmente associativa. Determine o número de bits respetivamente da Tag address, do Group address e do Byte address, admitindo que:
 a. a cache é de 64Kbyes, a associatividade é 4 e o bloco é composto por 16 bytes
+```
+```
 b. a cache é de 128Kbyes, a associatividade é 8 e o bloco é composto por 64 bytes
+```
+```
 c. a cache é de 256Kbyes, a associatividade é 4 e o bloco é composto por 32 bytes
+```
+```
 d. a cache é de 1Mbye, a associatividade é 16 e o bloco é composto por 32 bytes
+```
+```
 
 ### 175. Considere a estrutura de uma memória cache totalmente associativa de acordo com o esquema da figura abaixo. Admita ainda que o espaço de endereçamento é de 16 bits e que entre o grupo 6 e o grupo 3D todos os Valid bits têm o valor zero.
 a. determine os valores de k e n, e ainda a dimensão da cache em bytes
+```
+```
 b. determine o valor entregue ao CPU (ou a eventual existência de um cache miss) para os seguintes endereços de leitura: 0x3785, 0xF0A3, 0x1932, 0x6D51, 0x0FB7, 0x59E5, 0x04CF 
-
+```
+```
 
 # MEMÓRIA VIRTUAL 
 
 ### 176. Determine o número de bits de um espaço de endereçamento virtual quando:
 a. as páginas têm 8 kBytes, e a page table de cada processo tem 256k entradas
+```
+```
 b. as páginas têm 4 kBytes, e a page table de cada processo tem 1M entradas
+```
+```
 c. as páginas têm 4 kBytes, e a page table de cada processo tem 256k entradas
+```
+```
 d. as páginas têm 16 kBytes, e a page table de cada processo tem 128k entradas
+```
+```
 
 
-### 177. Num sistema com memória virtual, descreva sucintamente qual a finalidade do TLB (Translation-Lookaside
-Buffer), que tipo de tecnologia usa e qual a dimensão relativa quando comparado com a page table.
+### 177. Num sistema com memória virtual, descreva sucintamente qual a finalidade do TLB (Translation-Lookaside Buffer), que tipo de tecnologia usa e qual a dimensão relativa quando comparado com a page table.
+```
+```
 
 ### 178. Num sistema que suporte memória virtual e cache classifique as seguintes situações como podendo ou não podendo ocorrer:
 a. TLB miss, page table miss, cache hit
+```
+```
 b. TLB miss, page table hit, cache miss
+```
+```
 c. TLB hit, page table miss, cache miss
+```
+```
 d. TLB hit, page table miss, cache hit
+```
+```
 e. TLB hit, page table hit, cache hit
+```
+```
 
 ### 179. Na técnica normalmente designada por "memória virtual" a que é igual o número de entradas da page table?
+```
+```
 
 ### 180. Descreva sucintamente no que consiste a tradução de endereços virtuais em endereços físicos.
+```
+```
 
-### 181. Considere um sistema de memória virtual. Determine a dimensão (em endereços) das páginas de memória sabendo
-que:
+### 181. Considere um sistema de memória virtual. Determine a dimensão (em endereços) das páginas de memória sabendo que:
 a. o espaço de endereçamento virtual é 32 bits e o número de entradas da page table é 512 k
+```
+```
 b. o espaço de endereçamento virtual é 48 bits e o número de entradas da page table é 2 M
+```
+```
 c. o espaço de endereçamento virtual é 30 bits e o número de entradas da page table é 128 k
+```
+```
 
 ### 182. Na técnica normalmente designada por "memória virtual" o número de entradas da page table é sempre igual a quê?
+```
+```
 
 ### 183. Qual o significado do valid bit de uma entrada da page table, quando este se encontra ativo?
+```
+```
 
-### 184. Para aumentar a performance de uma TLB (Translation-lookaside buffer) esta adota uma organização particular.
-Descreva-a sucintamente.
+### 184. Para aumentar a performance de uma TLB (Translation-lookaside buffer) esta adota uma organização particular. Descreva-a sucintamente.
+```
+```
 
-### 185. Descreva sucintamente algumas das vantagens da organização de memória designada por memória virtual, em
-particular em sistemas operativos que suportam múltiplos processos em modo concorrente.
+### 185. Descreva sucintamente algumas das vantagens da organização de memória designada por memória virtual, em particular em sistemas operativos que suportam múltiplos processos em modo concorrente.
+```
+```
 
 ### 186. Caracterize as principais vantagens de um sistema de memória virtual, nomeadamente no que se refere a:
 a. eficiência na utilização da memória
+```
+```
 b. segurança
+```
+```
 c. transparência
+```
+```
 d. partilha de memória entre processos
+```
+```
 
 ### 187. Descreva sucintamente o procedimento adotado quando ocorre um Page Fault, evidenciando os vários passos que são adotados para resolver o problema.
+```
+```
 
 ### 188. Descreva sucintamente qual a política de substituição de páginas de memória quando ocorre um Page Fault e todas as páginas da memória física estão ocupadas.
+```
+```
 
 ### 189. A política de escrita adotada num esquema de memória virtual é designada por Write-back. Descreva sucintamente em que consiste esta política e qual o papel que o “Dirty bit” desempenha na mesma.
+```
+```
 
 ### 190. Considere um sistema de memória virtual com um espaço de endereçamento virtual de 26 bits, páginas de 512 bytes, em que cada entrada da "Page Table" está alinhada em endereços múltiplos de 2, tem 16 bits de dimensão, e está organizada do seguinte modo:
 a. em quantas páginas está organizado o espaço de endereçamento virtual? Quantas entradas tem a "Page Table"?
+```
+```
 b. qual a dimensão do espaço de endereçamento físico?
+```
+```
 c. em quantas páginas está organizado o espaço de endereçamento físico?
+```
+```
 
 
 ### 191. Ainda relativamente ao problema anterior, suponha que o "Page Table register" de um processo em execução tem o valor 0x1A0 e que no endereço 0x252 (e 0x253) está armazenado o valor 0xA26C
 a. quais os atributos da página física referenciada por essa entrada da tabela? Onde reside a página física?
+```
+```
 b. qual é o VPN representado nessa entrada da "Page Table"?
+```
+```
 c. qual o endereço inicial e final da página física?
+```
+```
 d. qual a gama de endereços virtuais que indexa esta entrada da "Page Table"?
+```
+```
 
 ### 192. Complete a seguinte tabela, preenchendo as quadrículas em falta e substituindo o ? pelo valor adequado. Utilize as seguintes unidades: K = 210 (Kilo), M = 220 (Mega), G = 230 (Giga), T = 240 (Tera), P = 250 (Peta) ou E = 260 (Exa). 
+```
+```
