@@ -2166,16 +2166,184 @@ modo paging, a ram seleciona uma row, e lê a coluna dessa row que corresponde a
 ### 159. Determine o número de comparadores necessário para a implementação de uma cache:
 a. de mapeamento direto, dimensão de 16 kB, blocos de 64 bytes e 256 linhas
 ``` 
+
 ```
 b. de mapeamento direto, dimensão de 32 kB, blocos de 128 bytes e 256 linhas
 ``` 
+
 ```
 c. parcialmente associativa, dimensão de 64 kB, com associatividade de 4 e blocos de 64 bytes
 ``` 
+
 ```
 d. parcialmente associativa, dimensão de 128 kB, com associatividade de 8 e blocos de 64 bytes
 ``` 
+
 ```
 e. totalmente associativa, dimensão de 256 kB e blocos de 256 bytes 
 ``` 
+
 ```
+
+### 160. Para o problema anterior, determine, para cada alínea, a dimensão em bits dos registos da Tag Memory, assumindo que o espaço de endereçamento é de 32 bits.
+``` 
+
+```
+### 161. Descreva, sucintamente, as vantagens e desvantagens de uma cache totalmente associativa quando comparada com uma cache de mapeamento direto.
+``` 
+
+```
+### 162. Descreva, sucintamente, as várias técnicas de substituição no caso de ocorrência de um miss e de não haver blocos livres na cache.
+``` 
+
+```
+### 163. Descreva, sucintamente, as duas técnicas de política de escrita na cache, por forma a assegurar a consistência entre esta memória (SRAM) e a memória principal (DRAM).
+``` 
+
+```
+### 164. Explique, sucintamente, qual a finalidade do dirty bit e em que condições este bit é necessário.
+``` 
+
+```
+### 165. Considere uma memória cache parcialmente associativa. Determine o número de bits do campo "group/set" do endereço quando:
+a. a cache é de 512 kByte, o espaço de endereçamento é de 32 bits, o nível de associatividade é 4, e os blocos são compostos por 32 bytes.
+``` 
+
+```
+b. a cache é de 64 kByte, o espaço de endereçamento é de 32 bits, o nível de associatividade é 8, e os blocos são compostos por 64 bytes.
+``` 
+
+```
+c. a cache é de 512 kByte, o espaço de endereçamento é de 32 bits, o nível de associatividade é 4, e os blocos são compostos por 64 bytes.
+``` 
+
+```
+d. a cache é de 1 MByte, o espaço de endereçamento é de 32 bits, o nível de associatividade é 4, e os blocos são compostos por 128 bytes.
+``` 
+```
+
+### 166. Explique, sucintamente, qual a finalidade do valid bit e quantos destes bits são necessários para uma determinada cache com N linhas.
+``` 
+```
+
+### 167. Explique, sucintamente, o conceito de princípio da localidade, incluindo em quantas formas este se apresenta e mdando exemplos que justificam a sua existência.
+``` 
+```
+
+### 168. Determine o tempo médio de acesso (em ns) a uma memória hierárquica sabendo que:
+a. o hit_ratio é 90%, o tempo de acesso ao nível superior é de 6ns e o tempo de acesso ao nível inferior é de 60ns
+``` 
+Taccess = 0.90 * 6 + 0.10 * (60+6) = 40.5
+```
+b. o hit_ratio é 95%, o tempo de acesso ao nível superior é de 4ns e o tempo de acesso ao nível inferior é de 35ns
+``` 
+Taccess = 0.95 * 4 + 0.05 * (35+4) = 8.75
+```
+c. o hit_ratio é 85%, o tempo de acesso ao nível superior é de 5ns e o tempo de acesso ao nível inferior é de 50ns
+``` 
+Taccess = 0.85 * 5 + 0.15* (50+5) = 42.1
+```
+
+### 169. Determine o tempo médio de acesso (em ciclos de relógio) a uma memória hierárquica sabendo que:
+a. o hit_ratio é 90%, o tempo de acesso à cache é de 2 ciclos de relógio e o tempo de acesso à memória principal é de 100 ciclos de relógio
+``` 
+Taccess = 0.9 * 2 + 0.01* (2+100) = 2.82
+```
+b. o hit_ratio é 95%, o tempo de acesso à cache é de 2 ciclos de relógio e o tempo de acesso à memória principal é 80 ciclos de relógio
+``` 
+Taccess = 0.95 * 2 + 0.05* (80+2) = 6
+```
+c. o hit_ratio é 85%, o tempo de acesso à cache é de 4 ciclos de relógio e o tempo de acesso à memória principal é 120 ciclos de relógio
+``` 
+Taccess = 0.85 * 4 + 0.15* (120+4) = 22
+```
+
+### 170. Considere uma cache parcialmente associativa, com associatividade de 4, dimensão de 8 kBytes e com blocos de 32 bytes. Determine a linha em que será colocado o bloco que contém o endereço de memória:
+a. 0x12B8
+b. 0x355f
+c. 0X2760
+
+### 171. Considere uma cache parcialmente associativa, com associatividade de 8, dimensão de 16 kBytes e com blocos de 32 bytes. Determine a linha em que será colocado o bloco que contém o endereço de memória:
+a. 0x56B9
+b. 0X7041
+c. 0X23F2
+
+### 172. Numa cache com mapeamento direto, ao dividir-se o endereço real pela dimensão do bloco obtém-se o quê?
+
+### 173. Indique como pode ser obtido aritmeticamente o endereço do “grupo” (linha da cache), numa cache com mapeamento direto.
+
+### 174. Considere um espaço de endereçamento de 16 bits, em que se encontra implementada uma cache parcialmente associativa. Determine o número de bits respetivamente da Tag address, do Group address e do Byte address, admitindo que:
+a. a cache é de 64Kbyes, a associatividade é 4 e o bloco é composto por 16 bytes
+b. a cache é de 128Kbyes, a associatividade é 8 e o bloco é composto por 64 bytes
+c. a cache é de 256Kbyes, a associatividade é 4 e o bloco é composto por 32 bytes
+d. a cache é de 1Mbye, a associatividade é 16 e o bloco é composto por 32 bytes
+
+### 175. Considere a estrutura de uma memória cache totalmente associativa de acordo com o esquema da figura abaixo. Admita ainda que o espaço de endereçamento é de 16 bits e que entre o grupo 6 e o grupo 3D todos os Valid bits têm o valor zero.
+a. determine os valores de k e n, e ainda a dimensão da cache em bytes
+b. determine o valor entregue ao CPU (ou a eventual existência de um cache miss) para os seguintes endereços de leitura: 0x3785, 0xF0A3, 0x1932, 0x6D51, 0x0FB7, 0x59E5, 0x04CF 
+
+
+# MEMÓRIA VIRTUAL 
+
+### 176. Determine o número de bits de um espaço de endereçamento virtual quando:
+a. as páginas têm 8 kBytes, e a page table de cada processo tem 256k entradas
+b. as páginas têm 4 kBytes, e a page table de cada processo tem 1M entradas
+c. as páginas têm 4 kBytes, e a page table de cada processo tem 256k entradas
+d. as páginas têm 16 kBytes, e a page table de cada processo tem 128k entradas
+
+
+### 177. Num sistema com memória virtual, descreva sucintamente qual a finalidade do TLB (Translation-Lookaside
+Buffer), que tipo de tecnologia usa e qual a dimensão relativa quando comparado com a page table.
+
+### 178. Num sistema que suporte memória virtual e cache classifique as seguintes situações como podendo ou não podendo ocorrer:
+a. TLB miss, page table miss, cache hit
+b. TLB miss, page table hit, cache miss
+c. TLB hit, page table miss, cache miss
+d. TLB hit, page table miss, cache hit
+e. TLB hit, page table hit, cache hit
+
+### 179. Na técnica normalmente designada por "memória virtual" a que é igual o número de entradas da page table?
+
+### 180. Descreva sucintamente no que consiste a tradução de endereços virtuais em endereços físicos.
+
+### 181. Considere um sistema de memória virtual. Determine a dimensão (em endereços) das páginas de memória sabendo
+que:
+a. o espaço de endereçamento virtual é 32 bits e o número de entradas da page table é 512 k
+b. o espaço de endereçamento virtual é 48 bits e o número de entradas da page table é 2 M
+c. o espaço de endereçamento virtual é 30 bits e o número de entradas da page table é 128 k
+
+### 182. Na técnica normalmente designada por "memória virtual" o número de entradas da page table é sempre igual a quê?
+
+### 183. Qual o significado do valid bit de uma entrada da page table, quando este se encontra ativo?
+
+### 184. Para aumentar a performance de uma TLB (Translation-lookaside buffer) esta adota uma organização particular.
+Descreva-a sucintamente.
+
+### 185. Descreva sucintamente algumas das vantagens da organização de memória designada por memória virtual, em
+particular em sistemas operativos que suportam múltiplos processos em modo concorrente.
+
+### 186. Caracterize as principais vantagens de um sistema de memória virtual, nomeadamente no que se refere a:
+a. eficiência na utilização da memória
+b. segurança
+c. transparência
+d. partilha de memória entre processos
+
+### 187. Descreva sucintamente o procedimento adotado quando ocorre um Page Fault, evidenciando os vários passos que são adotados para resolver o problema.
+
+### 188. Descreva sucintamente qual a política de substituição de páginas de memória quando ocorre um Page Fault e todas as páginas da memória física estão ocupadas.
+
+### 189. A política de escrita adotada num esquema de memória virtual é designada por Write-back. Descreva sucintamente em que consiste esta política e qual o papel que o “Dirty bit” desempenha na mesma.
+
+### 190. Considere um sistema de memória virtual com um espaço de endereçamento virtual de 26 bits, páginas de 512 bytes, em que cada entrada da "Page Table" está alinhada em endereços múltiplos de 2, tem 16 bits de dimensão, e está organizada do seguinte modo:
+a. em quantas páginas está organizado o espaço de endereçamento virtual? Quantas entradas tem a "Page Table"?
+b. qual a dimensão do espaço de endereçamento físico?
+c. em quantas páginas está organizado o espaço de endereçamento físico?
+
+
+### 191. Ainda relativamente ao problema anterior, suponha que o "Page Table register" de um processo em execução tem o valor 0x1A0 e que no endereço 0x252 (e 0x253) está armazenado o valor 0xA26C
+a. quais os atributos da página física referenciada por essa entrada da tabela? Onde reside a página física?
+b. qual é o VPN representado nessa entrada da "Page Table"?
+c. qual o endereço inicial e final da página física?
+d. qual a gama de endereços virtuais que indexa esta entrada da "Page Table"?
+
+### 192. Complete a seguinte tabela, preenchendo as quadrículas em falta e substituindo o ? pelo valor adequado. Utilize as seguintes unidades: K = 210 (Kilo), M = 220 (Mega), G = 230 (Giga), T = 240 (Tera), P = 250 (Peta) ou E = 260 (Exa). 
