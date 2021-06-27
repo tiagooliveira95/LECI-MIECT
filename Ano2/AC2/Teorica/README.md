@@ -2282,6 +2282,8 @@ Grupo 0x2E, Posição 0
 ```
 b. 0x355f
 ```
+
+
 ```
 c. 0X2760
 ```
@@ -2325,6 +2327,7 @@ a. determine os valores de k e n, e ainda a dimensão da cache em bytes
 b. determine o valor entregue ao CPU (ou a eventual existência de um cache miss) para os seguintes endereços de leitura: 0x3785, 0xF0A3, 0x1932, 0x6D51, 0x0FB7, 0x59E5, 0x04CF 
 ```
 ```
+
 
 # MEMÓRIA VIRTUAL 
 
@@ -2370,25 +2373,32 @@ e. TLB hit, page table hit, cache hit
 
 ### 180. Descreva sucintamente no que consiste a tradução de endereços virtuais em endereços físicos.
 ```
+Os endereços virtuais gerados pelo CPU são convertidos para endereços físicos através de uma tabela, designada por "Page Table"
+A tradução de endereços tem que ser temporalmente eficiente
 ```
 
 ### 181. Considere um sistema de memória virtual. Determine a dimensão (em endereços) das páginas de memória sabendo que:
 a. o espaço de endereçamento virtual é 32 bits e o número de entradas da page table é 512 k
 ```
+
 ```
 b. o espaço de endereçamento virtual é 48 bits e o número de entradas da page table é 2 M
 ```
+
 ```
 c. o espaço de endereçamento virtual é 30 bits e o número de entradas da page table é 128 k
 ```
+
 ```
 
 ### 182. Na técnica normalmente designada por "memória virtual" o número de entradas da page table é sempre igual a quê?
 ```
+A page table contém um número de entradas igual ao número máximo de páginas virtuais.
 ```
 
 ### 183. Qual o significado do valid bit de uma entrada da page table, quando este se encontra ativo?
 ```
+Quando o bit se encontra ativo significa que a Page Table forneceo número da página física, (endereço inicial da página em memória)
 ```
 
 ### 184. Para aumentar a performance de uma TLB (Translation-lookaside buffer) esta adota uma organização particular. Descreva-a sucintamente.
@@ -2397,28 +2407,37 @@ c. o espaço de endereçamento virtual é 30 bits e o número de entradas da pag
 
 ### 185. Descreva sucintamente algumas das vantagens da organização de memória designada por memória virtual, em particular em sistemas operativos que suportam múltiplos processos em modo concorrente.
 ```
+A memória que um programa acede é feita de forma mais eficiente.
 ```
 
 ### 186. Caracterize as principais vantagens de um sistema de memória virtual, nomeadamente no que se refere a:
 a. eficiência na utilização da memória
 ```
+Memória deve ser partilhada pelos vários processos em execução.
+EM memória apenas deve residir a informação necessária.
 ```
 b. segurança
 ```
+Não existe nenhum mecanismo que impessa que outro programa aceda aos dados de outro
 ```
 c. transparência
 ```
+Um processo deve ter acesso á memoria de que necessita.
+Um processo deve correr como se toda a memória lhe pertencesse.
 ```
 d. partilha de memória entre processos
 ```
+Vários processos devem poder aceder à mesma zona de memória (de forma controlada)
 ```
 
 ### 187. Descreva sucintamente o procedimento adotado quando ocorre um Page Fault, evidenciando os vários passos que são adotados para resolver o problema.
 ```
+Após um page fault deve se copiar do disco para a mem+oria interna e atualizar a page table com o endereço da página.
 ```
 
 ### 188. Descreva sucintamente qual a política de substituição de páginas de memória quando ocorre um Page Fault e todas as páginas da memória física estão ocupadas.
 ```
+Se não houver uma página disponivel o CPU antes de fazer a transferencia deve copiar uma página existente para o disco.
 ```
 
 ### 189. A política de escrita adotada num esquema de memória virtual é designada por Write-back. Descreva sucintamente em que consiste esta política e qual o papel que o “Dirty bit” desempenha na mesma.
@@ -2454,3 +2473,32 @@ d. qual a gama de endereços virtuais que indexa esta entrada da "Page Table"?
 ### 192. Complete a seguinte tabela, preenchendo as quadrículas em falta e substituindo o ? pelo valor adequado. Utilize as seguintes unidades: K = 210 (Kilo), M = 220 (Mega), G = 230 (Giga), T = 240 (Tera), P = 250 (Peta) ou E = 260 (Exa). 
 ```
 ```
+
+
+
+### 193. Determine o número de entradas da Page Table (PTE) para as seguintes combinações de número de bits do espaço de endereçamento virtual (n) e dimensão da página (P): 
+
+
+### 194. Suponha um espaço de endereçamento virtual de 32 bits e um espaço de endereçamento físico de 24 bits:
+
+a. determine o número de bits dos campos: VPN (virtual page number), VPO (virtual page offset), PPN (physical page number), PPO (physical page offset) para as dimensões de página P: 
+b. para cada dimensão de página, determine o número de páginas virtuais e físicas Considere que num sistema computacional, com memória virtual, cada entrada de page table tem 32 bits, está alinhada em endereços múltiplos de 4 e contém a seguinte informação e flags: Considere ainda que o espaço de endereçamento virtual é de 4 GBytes, as páginas de memória são de 4 kBytes e o espaço de endereçamento físico é de 1 GByte. Considere também que o Page Table Register tem o valor 0x03C14300 e que a tabela seguinte representa um conjunto de valores armazenados num segmento contíguo de endereços da memória principal (DRAM): 
+
+
+
+
+### 195. Considerando a informação fornecida, determine o valor de NN e KK:
+
+### 196. Numa sequência de acessos à memória, o CPU produz os endereços 0x000031F8, 0x000031FC, 0x000062C0, 0x00009FFC e 0x000091E4.
+a. determine qual a página de memória física acedida por cada um destes endereços
+b. determine os endereços físicos em que são traduzidos cada um destes mesmos endereços virtuais
+
+### 197. Admita que ao ler uma instrução, o CPU gera o endereço 0x000079C0. Indique, descrevendo sucintamente, o que acontece neste caso.
+
+### 198. Repita o exercício anterior supondo agora que, ao ler uma instrução, o CPU gera o endereço 0x00004238. Indique, descrevendo sucintamente, o que acontece neste caso.
+
+### 199. Num acesso do CPU ao endereço virtual 0x0000620C, identifique se, e quais são, as instruções assembly do MIPS que poderiam estar em execução.
+
+### 200. Para o endereço do problema anterior, indique, justificando, o que vai acontecer se vier a ser necessário substituir a página em causa, na memória física, por uma outra obtida do disco.
+
+### 201. Repita os exercícios 195 a 200, admitindo agora que a dimensão das páginas é de 64KBytes. 
