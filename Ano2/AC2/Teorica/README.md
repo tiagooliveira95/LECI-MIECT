@@ -1831,7 +1831,7 @@ Sim, qualquer nó consegue enviar e receber informação do barramento CAN
 
 ### 134. Descreva sucintamente o mecanismo através do qual, no barramento CAN, é realizado o controlo de acesso ao meio (arbitragem) quando mais do que um master tentam enviar mensagens em simultâneo. 
 ``` 
-
+O dispositivo verifica se a infomração que enviou para o barramento é a mesma que esta lá, se não for este perde a arbitragem.
 ```
 
 ### 135. Quando, num barramento CAN, um master envia uma trama de dados, quantos dispositivos irão receber essa mensagem? Porquê?
@@ -1841,16 +1841,48 @@ Todos os dispositivos recebem a mensagem pois não existe um processo de endere�
 
 ### 136. O protocolo adotado pelos barramentos CAN apresenta uma muito elevada capacidade de detetar erros do lado dos recetores (probabilidade de não detetar um erro inferior a 4,7x10^-11). Para tal, este protocolo recorre a um total de cinco técnicas complementares para detetar erros. Nomeie e descreva sucintamente cada uma dessas técnicas. 
 ``` 
-
+- Verificar se o CRC calculado coincide com o CRC recebido.
+- Verificar se o produtor recebeu o bit dominate (0) no camo ACK, se não receber significa que nenhum nó recebeu a informação.
+- Analizar os campos da mensagem que devem ter sempro o valor lógico 1 (From error): EOF, ACK e CRC, se for detetado um bit dominante (0)
+em qualquer um deles é gerado um erro.
+- Analizar cada bit transmitido e verificar se cada bit corresponde ao bit enviado (exceções: identificados e ACK)
+- Verificar se o bit stuffing esta a ser respeitado.
 ```
 
 ### 137. Admita que, numa aplicação a usar CAN 2.0A (trama com identificador standard), o mecanismo de aceitação de mensagens do controlador CAN foi configurado com os seguintes valores: máscara=0x7FA, filtro=0x5C0. Determine, nesta situação, quais os identificadores de mensagens que são aceites e passadas ao software que está a usar o controlador.
 ``` 
+
+M: 111 1111 1010
+F: 101 1100 0000
+
+I: 101 1100 0x0x
+
+Ids = [
+101 1100 0000
+101 1100 0001
+101 1100 0100
+101 1100 0101
+]
+
 ```
 
 ### 138. Resolva novamente o problema anterior admitindo que o mecanismo de aceitação de mensagens do controlador CAN foi configurado com os seguintes valores:
 a. máscara=0x4CC, filtro=0x088.
 ``` 
+
+
+M: 100 1111 1111
+F: 000 1000 1000
+
+I: 0xx 1000 1000
+
+Ids = [
+000 1000 1000
+001 1000 1000
+010 1000 1000
+011 1000 1000
+]
+
 ```
 b. máscara=0x7FF, filtro=0x253.
 ``` 
@@ -1861,6 +1893,10 @@ c. máscara=0x7F0, filtro=0x0A0.
 
 ### 139. No barramento CAN existem quatro tipos de tramas: “Data Frame”, “Remote Transmission Request Frame”, “Error Frame” e “Overload Frame”. Descreva de forma sucinta qual a finalidade de cada um destes tipos de tramas. 
 ``` 
+Data Frame: Usado para nevio de dados para o consumidos (RTR está a 0)
+Remote Transmission Request Frame: Eniviada po um nó consumidor para solicitar ao produtor a re-trasnmissão da trama
+Error Frame: Usado para reporter um erro na receção, esta comunicação sobrepôes-se a qualquer comunicação.
+Overload Frame: Usado para atrasar o envio da próxima trama (equivalente ao wait-state)
 ```
 
 # USB
