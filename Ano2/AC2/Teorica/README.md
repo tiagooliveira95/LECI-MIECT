@@ -1902,52 +1902,81 @@ Overload Frame: Usado para atrasar o envio da próxima trama (equivalente ao wai
 # USB
 
 ### 140. O protocolo USB suporta quatro tipos de transferência de dados. Descreva, para cada uma delas, as suas principais características no que se refere à sua periodicidade, largura de banda, latência e garantia de entrega. Dê exemplos de cenários de aplicação em que cada um destes tipos de transferência é ou pode ser usado:
+
 a. transferências de controlo
 ``` 
+Não periodica, sem período definido, iniciativa do host, sem garantia de taxa de transmição ou latência
+
+Usado para consultar ou verificar o estado do dispositivo.
 ```
 b. transferências "bulk"
 ``` 
+Não periodica, sem período definido, iniciativa do host, sem garantia de taxa de transmição ou latência
+
+Transferir, por exemplo um ficheiro para um dispositivo USB
 ```
 c. transferências isócronas
 ``` 
+Periódica, periodo definido na fase de enumeração, garantido um limite máximo de latência
+
+USado para, por exemplo, áudio e video.
 ```
 d. transferências de interrupção
 ``` 
+Periódica, periodo definido na fase de enumeração, garantido um limite máximo de latência
+
+O host periodicamente interrompe o dispositivo para saber se tem alguma informação
+
+Usado por exemplo em ratos, teclados, joystikes, etc.
 ```
 
 ### 141. Descreva sucintamente a topologia das ligações físicas, no protocolo USB, nomeadamente quanto à sua configuração, número de níveis e número máximo de dispositivos suportados.
-``` 
+```
+127
 ```
 
 ### 142. Como classificaria o protocolo USB (2.0) relativamente:
 a. à topologia da ligação (ponto a ponto, multi-drop, multi-master, …)
 ``` 
+ponto a ponto
 ```
 b. direccionalidade das comunicações (half duplex, full-duplex, …)
 ``` 
+half duplex (USB 1.0 - 2.0)
+full-duplex (USB 3.x apenas em super speed mode)
 ```
 c. codificação e transmissão de dados
 ``` 
+codificação NRZI inverte o valor quando recebe um 0.
+Bit-stuffing se nº de 1 >= 6
 ```
 d. formatação da informação (byte oriented, bit oriented, …)
 ``` 
+bit oriented
 ```
 
 ### 143. No protocolo USB cada dispositivo ligado ao host-controller é genericamente designado por “function”. Uma function pode assumir um de dois papeis. Identifique esses papeis e as suas principais características.
 ``` 
+Pode ser um hub ou ou periférico.
 ```
 
 ### 144. Descreva sucintamente, no protocolo USB, os objetivos do processo normalmente designado por enumeração.
 ``` 
+A enumeração tem ocmo objectivo descobrir se há dispositivos ligados e identifica os.
+
+Após isto, passa ao procedimento de enumeração de cada um dos dispositivos usando o endereço 0
 ```
 
 ### 145. No protocolo USB, o sistema de endereçamento é composto por três campos. Descreva sucintamente o objetivo de cada um desses campos e os valores mínimo e máximo que cada um pode ter. 
 ``` 
+Device Id
+Vendor Id
+Identificador
 ```
-
 
 ### 146. O mecanismo de comunicação um dispositivo USB e o "host controller" é feito através de canais virtuais. Qual a designação desses canais e o que interligam? Esses canais permitem comunicação bi-direcional? Porquê? 
 ``` 
+É feito atraves de 2 endpoints o IN e o OUT, estes canais são uni-direcionais para USB1.0 e 2.0
 ```
 
 # TECNOLOGIA, ORGANIZAÇÃO E FUNCIONAMENTO DE RAMs
