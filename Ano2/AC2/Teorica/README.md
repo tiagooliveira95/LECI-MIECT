@@ -2353,18 +2353,23 @@ d. as páginas têm 16 kBytes, e a page table de cada processo tem 128k entradas
 ### 178. Num sistema que suporte memória virtual e cache classifique as seguintes situações como podendo ou não podendo ocorrer:
 a. TLB miss, page table miss, cache hit
 ```
+Pode ocorer?
 ```
 b. TLB miss, page table hit, cache miss
 ```
+Pode ocorer
 ```
 c. TLB hit, page table miss, cache miss
 ```
+Pode ocorer?
 ```
 d. TLB hit, page table miss, cache hit
 ```
+Pode ocorer
 ```
 e. TLB hit, page table hit, cache hit
 ```
+Pode ocorer
 ```
 
 ### 179. Na técnica normalmente designada por "memória virtual" a que é igual o número de entradas da page table?
@@ -2442,6 +2447,9 @@ Se não houver uma página disponivel o CPU antes de fazer a transferencia deve 
 
 ### 189. A política de escrita adotada num esquema de memória virtual é designada por Write-back. Descreva sucintamente em que consiste esta política e qual o papel que o “Dirty bit” desempenha na mesma.
 ```
+Write back é uma prática que a alteraçao da memoria digital so ocorre quando existe a necessidade de transferir um bloco ou página completa entre 2 niveis de memória destintos, para isso exite um firty bit, se o valor for 0 a página nºao precisa de ser escrita no disco aquanto da sua substituição.
+
+Se for 1 a página que vai ser substituida foi alterada, logo antes se ser substituída esta vai ser copiada para o disco, a nova página é depois copiada para a zona de memória que ficou livre. 
 ```
 
 ### 190. Considere um sistema de memória virtual com um espaço de endereçamento virtual de 26 bits, páginas de 512 bytes, em que cada entrada da "Page Table" está alinhada em endereços múltiplos de 2, tem 16 bits de dimensão, e está organizada do seguinte modo:
@@ -2473,8 +2481,6 @@ d. qual a gama de endereços virtuais que indexa esta entrada da "Page Table"?
 ### 192. Complete a seguinte tabela, preenchendo as quadrículas em falta e substituindo o ? pelo valor adequado. Utilize as seguintes unidades: K = 210 (Kilo), M = 220 (Mega), G = 230 (Giga), T = 240 (Tera), P = 250 (Peta) ou E = 260 (Exa). 
 ```
 ```
-
-
 
 ### 193. Determine o número de entradas da Page Table (PTE) para as seguintes combinações de número de bits do espaço de endereçamento virtual (n) e dimensão da página (P): 
 
