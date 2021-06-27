@@ -1782,7 +1782,7 @@ A aplicação manipula a váriavel head, o head aponta para a posição do buffe
 
 A tail e geridos pelo device driver
 
-A count é partilhada com o device driver e o hardware
+A count é partilhada com o device driver e o software
 ```
 
 ### 129. Descreva por palavras suas o que se entende por secção crítica num trecho de código? 
@@ -2114,20 +2114,31 @@ O barramento vai ter 28bits
 
 a. RAS width=50 ns; Precharge time=25 ns:
 ``` 
+O tempo para fazer o refresh de cada 16bit é 50+25 = 75ns
+
+2*10⁶ * 75ns = 150s
 ```
 b. RAS width=40 ns; Precharge time=15 ns:
 ``` 
+O tempo para fazer o refresh de cada 16bit é 40+15 = 55ns
+
+2*10⁶ * 55ns = 110s
 ```
 c. RAS width=65 ns; Precharge time=30 ns:
 ``` 
+O tempo para fazer o refresh de cada 16bit é 65+30 = 95ns
+
+2*10⁶ * 95ns = 190s
 ```
 
 ### 156. Repita o exercício anterior admitindo agora:
 a. uma memória DRAM de 8Mx16, implementada com matrizes de armazenamento de 1024 colunas
 ``` 
+8*10⁶ * 75ns = 760s
 ```
 b. uma memória DRAM de 512Mx16, implementada com uma matriz de células com 16k linhas
 ``` 
+512*10⁶ * 75ns = 150s
 ```
 c. uma memória DRAM de 4Mx32, implementada com matrizes de armazenamento de 4096 colunas
 ``` 
@@ -2147,6 +2158,7 @@ A operação de leitura é destrutiva, o que significa que após a leitura o val
 
 ### 158. O diagrama apresentado abaixo representa uma operação efetuada numa memória DRAM. Identifique o modo adotado nesta operação, a natureza da operação e descreva sucintamente o seu funcionamento. 
 ``` 
+modo paging, a ram seleciona uma row, e lê a coluna dessa row que corresponde ao endereço enviado
 ```
 
 # MEMÓRIA CACHE 
