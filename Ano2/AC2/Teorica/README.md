@@ -1983,60 +1983,87 @@ Identificador
 
 ### 147. Numa memória estática SRAM, uma célula de um bit é composta por seis transístores. Descreva sucintamente as vantagens e desvantagens entre a solução SRAM quando comparada com e a versão de uma célula DRAM de um bit.
 ``` 
+A SRAM é menos densa comparada com a DRAM pois é necessário 6 trransistors por célula, o que faz com que o seu custo seja mais elevado.
+
+É mais rápida comparada com a DRAM e a informação permanece até a alimentação ser cortada, no caso da DRAM a informação apenas permanece durante uns mili-segundos tendo esta que ser refrescada regularmente
 ```
 
 ### 148. A solução de organização matricial de uma memória RAM apresenta vantagens quando comparada com uma organização linear. Explique qual é essa vantagem e dê um exemplo que demonstre essa vantagem.
 ``` 
+Usar uma matriz é mais eficiente em termos do nº de componentes que têm de ser usados.
+
+Numa matriz basta usarmos um decoder para linha e coluna, o que reduz dignificativamente o número de componentes comparado
+com uma implementação linear.
 ```
 
 ### 149. Quando falamos em tRC (Read Cycle Time) de uma memória nas operações de leitura estamos a referir-nos especificamente a que tempo? 
 ``` 
+Ao tRC que é o tempo mínimo tempo que tem de ser cumprido
 ```
 
 ### 150. Descreva sucintamente os conceitos de:
 a. Access Time
 ``` 
+É o tempo desque se ativa o CE até que a informação fica disponível no barramento de dados.
 ```
 b. taxa de transferência
 ``` 
+Taxa a que os dados podem ser transferidos de/para uma memória ( 1 / cycle_time )
 ```
 
 ### 151. Para construir um módulo de memória SRAM de 128k x 8 bits, são necessários quantos circuitos, admitindo que dispõe de:
 a. circuitos de 32k x 1 bit
 ``` 
+32 circuitos
 ```
 b. circuitos de 32k x 4 bits
 ``` 
+8 circuitos
 ```
 c. circuitos de 16k x 8 bits
 ``` 
+8 circuitos
 ```
 d. circuitos de 64k x 8 bits
 ``` 
+2 circuitos
 ```
 e. circuitos de 128k x 1 bit
 ``` 
+8 circuitos
 ```
 
 ### 152. Admita que dispõe de uma memória estática SRAM de 256k × 8 (num único circuito) com uma organização matricial. Determine por quantas matrizes de células é constituída e qual é o número de linhas e colunas que compõe cada matriz.
 ``` 
+É constituida por 8 matrizes com a dimenção de 16 ~ 16 x 16 
 ```
 
 ### 153. Suponha que dispõe de 16 circuitos de memória de 1Mx4. Usando todos estes circuitos, determine qual a dimensão da memória quando:
 a. a largura da palavra é 4bits
-``` 
+```
+16M 
+
+1 coluna 16 linha
 ```
 b. a largura da palavra é 8bits
 ``` 
+8M
+
+2 colunas 8 linha
 ```
 c. a largura da palavra é 32bits
 ``` 
+2M
+
+8 colunas 2 linha
 ```
 d. a memória tem 2M endereços
-``` 
+```
+32 bits
 ```
 e. a memória tem 8M endereços
 ``` 
+8 bits
 ```
 
 ### 154. Determine o número de bits do barramento de endereços de uma memória dinâmica DRAM, se este tiver as seguintes características:
