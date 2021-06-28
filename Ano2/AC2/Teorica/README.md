@@ -2353,7 +2353,7 @@ d. as páginas têm 16 kBytes, e a page table de cada processo tem 128k entradas
 ### 178. Num sistema que suporte memória virtual e cache classifique as seguintes situações como podendo ou não podendo ocorrer:
 a. TLB miss, page table miss, cache hit
 ```
-Pode ocorer?
+Não pode ocorer
 ```
 b. TLB miss, page table hit, cache miss
 ```
@@ -2361,11 +2361,11 @@ Pode ocorer
 ```
 c. TLB hit, page table miss, cache miss
 ```
-Pode ocorer?
+Não pode ocorer
 ```
 d. TLB hit, page table miss, cache hit
 ```
-Pode ocorer
+Não pode ocorer
 ```
 e. TLB hit, page table hit, cache hit
 ```
