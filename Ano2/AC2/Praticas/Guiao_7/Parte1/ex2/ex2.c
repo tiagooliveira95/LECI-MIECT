@@ -14,4 +14,5 @@ void _int_(VECTOR) isr_T3(void) // Replace VECTOR by the timer T3
 {
     putChar('.');
     // Reset T3 interrupt flag
+
 }
