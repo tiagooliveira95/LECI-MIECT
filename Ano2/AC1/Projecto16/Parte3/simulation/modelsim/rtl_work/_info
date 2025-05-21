@@ -1,0 +1,460 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/simulation/modelsim
+Ealu
+Z1 w1591071030
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ALU.vhd
+Z6 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ALU.vhd
+l0
+L5
+VWf=]NK5R7]QF?Zb^X]GY]1
+!s100 MBQ[^d1[dU8[U[gbJ;[dD3
+Z7 OV;C;10.5b;63
+33
+Z8 !s110 1591076856
+!i10b 1
+Z9 !s108 1591076856.000000
+Z10 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ALU.vhd|
+Z11 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ALU.vhd|
+!i113 1
+Z12 o-2008 -work work
+Z13 tExplicit 1 CvgOpt 0
+Abehavioral
+R2
+R3
+R4
+Z14 DEx4 work 3 alu 0 22 Wf=]NK5R7]QF?Zb^X]GY]1
+l22
+L17
+VN=>m8Ch[;VkQK;CIG0@UB1
+!s100 PJXT9hKWI5W=9d8_2_mbe0
+R7
+33
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Econtrolunit
+Z15 w1591076740
+R3
+R4
+R0
+Z16 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte2/ControlUnit.vhd
+Z17 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte2/ControlUnit.vhd
+l0
+L4
+V1BSS0<ZT7UjWoXU7GnD7l1
+!s100 [R;9o@Wb9HDdcLdBkZ1AD0
+R7
+33
+R8
+!i10b 1
+R9
+Z18 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte2/ControlUnit.vhd|
+Z19 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte2/ControlUnit.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+Z20 DEx4 work 11 controlunit 0 22 1BSS0<ZT7UjWoXU7GnD7l1
+l25
+L21
+VhM<XR:[0D0L?[NWX`:[=H2
+!s100 RDJ^TJXjH]9j5Qjo`k3992
+R7
+33
+R8
+!i10b 1
+R9
+R18
+R19
+!i113 1
+R12
+R13
+Edmemory
+Z21 w1590888100
+R2
+R3
+R4
+R0
+Z22 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/DMemory.vhd
+Z23 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/DMemory.vhd
+l0
+L5
+VMe>fCiD>o7c`MS>Uk>AC23
+!s100 kWTNA@0WTSQTPfBC40^zd1
+R7
+33
+R8
+!i10b 1
+R9
+Z24 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/DMemory.vhd|
+Z25 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/DMemory.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+Z26 DEx4 work 7 dmemory 0 22 Me>fCiD>o7c`MS>Uk>AC23
+l26
+L20
+Vl=HM<<OR7?1SZoaC4]Qj:2
+!s100 c@lY>SDnNBA?I`SSk>1Tc1
+R7
+33
+R8
+!i10b 1
+R9
+R24
+R25
+!i113 1
+R12
+R13
+Efase1
+Z27 w1591061740
+R3
+R4
+R0
+Z28 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Fase1.vhd
+Z29 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Fase1.vhd
+l0
+L4
+V>B2FBOF@gISHc5F1aR[Hm2
+!s100 C2VZozPeJTk?FSIBcdbVM0
+R7
+33
+R8
+!i10b 1
+R9
+Z30 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Fase1.vhd|
+Z31 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Fase1.vhd|
+!i113 1
+R12
+R13
+Astructural
+Z32 DEx4 work 10 signextend 0 22 Ln4X;V0@<PM@U0zgJh;>G2
+R26
+R14
+Z33 DEx4 work 9 registers 0 22 Q49@b[Q<k3I^:0gjEHB1J2
+Z34 DEx4 work 5 mux_2 0 22 j[;92_O:XYG4PQZG=ml:A0
+Z35 DEx4 work 7 imemory 0 22 5FAXQ>WQEBKXnc2SCKCo^3
+R2
+Z36 DEx4 work 14 programcounter 0 22 z]G73H[[2L5@LTNzSFdPZ2
+R3
+R4
+Z37 DEx4 work 5 fase1 0 22 >B2FBOF@gISHc5F1aR[Hm2
+l47
+L21
+VTWU2mKH<z>gZG4e@e6]IX3
+!s100 OCQMBKHHFc7MbFzScjCl>3
+R7
+33
+R8
+!i10b 1
+R9
+R30
+R31
+!i113 1
+R12
+R13
+Eimemory
+Z38 w1591069754
+R2
+R3
+R4
+R0
+Z39 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/IMemory.vhd
+Z40 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/IMemory.vhd
+l0
+L5
+V5FAXQ>WQEBKXnc2SCKCo^3
+!s100 5^<T]CDEChJ:h7LUiMNYL3
+R7
+33
+R8
+!i10b 1
+R9
+Z41 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/IMemory.vhd|
+Z42 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/IMemory.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+R35
+l43
+L18
+VSR;2aleAE=XDN0ZSOFM9h2
+!s100 `05k7P`NDj`;CBSH]A[Cn1
+R7
+33
+R8
+!i10b 1
+R9
+R41
+R42
+!i113 1
+R12
+R13
+Emux_2
+Z43 w1590888215
+R3
+R4
+R0
+Z44 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/MUX_2.vhd
+Z45 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/MUX_2.vhd
+l0
+L4
+Vj[;92_O:XYG4PQZG=ml:A0
+!s100 ibL:TOSbFUFGjcWieCY<l1
+R7
+33
+R8
+!i10b 1
+R9
+Z46 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/MUX_2.vhd|
+Z47 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/MUX_2.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+R34
+l19
+L18
+VO[3L4g>D2=OQgb2cj88k`2
+!s100 bN6L^Kj_4f94E[CiK2EgR1
+R7
+33
+R8
+!i10b 1
+R9
+R46
+R47
+!i113 1
+R12
+R13
+Eprocessor
+Z48 w1591073863
+R3
+R4
+R0
+Z49 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor.vhd
+Z50 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor.vhd
+l0
+L4
+V[H9YXcVX[4hG435PCU]j80
+!s100 KZ>SU5C_O75mj6MWHC`mH0
+R7
+33
+R8
+!i10b 1
+R9
+Z51 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor.vhd|
+Z52 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor.vhd|
+!i113 1
+R12
+R13
+Astructural
+R20
+R37
+R3
+R4
+Z53 DEx4 work 9 processor 0 22 [H9YXcVX[4hG435PCU]j80
+l22
+L11
+VP`WAM?f1WIf]CYd4V5;R21
+!s100 >5a4k^kbO3@YD2DXiTXWe1
+R7
+33
+R8
+!i10b 1
+R9
+R51
+R52
+!i113 1
+R12
+R13
+Eprocessor_tb
+Z54 w1591073052
+R3
+R4
+R0
+Z55 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd
+Z56 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd
+l0
+L4
+VCVF5miIn9`@D=C@MKOfD=1
+!s100 :JU4G;mNlg7Z3FM8fALX02
+R7
+32
+Z57 !s110 1591076872
+!i10b 1
+Z58 !s108 1591076872.000000
+Z59 !s90 -reportprogress|300|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd|
+Z60 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd|
+!i113 1
+Z61 o-work work
+R13
+Astimulus
+R53
+R3
+R4
+Z62 DEx4 work 12 processor_tb 0 22 CVF5miIn9`@D=C@MKOfD=1
+l10
+L7
+Z63 VK:onegX;i2@cJK5oR0NLN3
+Z64 !s100 hQK[G1nT5b7iZLZ?n3SXf2
+R7
+32
+R57
+!i10b 1
+R58
+R59
+R60
+!i113 1
+R61
+R13
+Eprogramcounter
+Z65 w1590937768
+R2
+R3
+R4
+R0
+Z66 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ProgramCounter.vhd
+Z67 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ProgramCounter.vhd
+l0
+L5
+Vz]G73H[[2L5@LTNzSFdPZ2
+!s100 m<0cHQ^@`XX6S0UG=?G4d0
+R7
+33
+R8
+!i10b 1
+R9
+Z68 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ProgramCounter.vhd|
+Z69 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ProgramCounter.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+R36
+l25
+L23
+V1K71cPgcccdYe3:kmQZIE0
+!s100 H3m_DX`cDmm9z<`X@m]IY1
+R7
+33
+R8
+!i10b 1
+R9
+R68
+R69
+!i113 1
+R12
+R13
+Eregisters
+Z70 w1590949129
+R2
+R3
+R4
+R0
+Z71 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Registers.vhd
+Z72 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Registers.vhd
+l0
+L5
+VQ49@b[Q<k3I^:0gjEHB1J2
+!s100 ?ClZzLj_C:hzdn3nHOAkS3
+R7
+33
+R8
+!i10b 1
+Z73 !s108 1591076855.000000
+Z74 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Registers.vhd|
+Z75 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Registers.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+R33
+l25
+L20
+VnFzb6T:Yh2KOL>Y[;SF[m0
+!s100 6Z^@DEU7kdeZH[JH3n0[c1
+R7
+33
+R8
+!i10b 1
+R73
+R74
+R75
+!i113 1
+R12
+R13
+Esignextend
+R70
+R3
+R4
+R0
+Z76 8C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/SignExtend.vhd
+Z77 FC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/SignExtend.vhd
+l0
+L4
+VLn4X;V0@<PM@U0zgJh;>G2
+!s100 GH;2T0WzR9=MFLITJWJY03
+R7
+33
+Z78 !s110 1591076855
+!i10b 1
+R73
+Z79 !s90 -reportprogress|300|-2008|-work|work|C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/SignExtend.vhd|
+Z80 !s107 C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/SignExtend.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+R32
+l12
+L11
+Vlgjz>=][Q2l`KmM53Qa3k0
+!s100 7OYC4Y^O4FYDENDb^OZ6K2
+R7
+33
+R78
+!i10b 1
+R73
+R79
+R80
+!i113 1
+R12
+R13

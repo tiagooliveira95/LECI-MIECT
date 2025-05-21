@@ -1,0 +1,23 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity Processor is
+	
+end of Processor;
+
+architecture Structural of Processor is
+	
+
+begin
+	
+	DataPath: entity work.Fase1(Structural)
+		port map(
+		
+		);
+		
+	ControllUnit: entity work.ControlUnit(Structural)
+		port map(
+			
+		);
+
+end Structural;

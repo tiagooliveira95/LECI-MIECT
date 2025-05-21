@@ -1,0 +1,837 @@
+$comment
+	File created using the following command:
+		vcd file ControlUnit.msim.vcd -direction
+$end
+$date
+	Tue Jun 02 03:42:15 2020
+$end
+$version
+	ModelSim Version 10.5b
+$end
+$timescale
+	1ps
+$end
+
+$scope module controlunit_vhd_vec_tst $end
+$var wire 1 ! ALUOp [3] $end
+$var wire 1 " ALUOp [2] $end
+$var wire 1 # ALUOp [1] $end
+$var wire 1 $ ALUOp [0] $end
+$var wire 1 % ALUSrc $end
+$var wire 1 & clk $end
+$var wire 1 ' EnPC $end
+$var wire 1 ( func [3] $end
+$var wire 1 ) func [2] $end
+$var wire 1 * func [1] $end
+$var wire 1 + func [0] $end
+$var wire 1 , MemToReg $end
+$var wire 1 - MemWr $end
+$var wire 1 . opcode [2] $end
+$var wire 1 / opcode [1] $end
+$var wire 1 0 opcode [0] $end
+$var wire 1 1 RegDst $end
+$var wire 1 2 RegWr $end
+$var wire 1 3 RI $end
+$var wire 1 4 rst $end
+
+$scope module i1 $end
+$var wire 1 5 gnd $end
+$var wire 1 6 vcc $end
+$var wire 1 7 unknown $end
+$var wire 1 8 devoe $end
+$var wire 1 9 devclrn $end
+$var wire 1 : devpor $end
+$var wire 1 ; ww_devoe $end
+$var wire 1 < ww_devclrn $end
+$var wire 1 = ww_devpor $end
+$var wire 1 > ww_clk $end
+$var wire 1 ? ww_opcode [2] $end
+$var wire 1 @ ww_opcode [1] $end
+$var wire 1 A ww_opcode [0] $end
+$var wire 1 B ww_func [3] $end
+$var wire 1 C ww_func [2] $end
+$var wire 1 D ww_func [1] $end
+$var wire 1 E ww_func [0] $end
+$var wire 1 F ww_EnPC $end
+$var wire 1 G ww_RI $end
+$var wire 1 H ww_RegDst $end
+$var wire 1 I ww_RegWr $end
+$var wire 1 J ww_ALUSrc $end
+$var wire 1 K ww_ALUOp [3] $end
+$var wire 1 L ww_ALUOp [2] $end
+$var wire 1 M ww_ALUOp [1] $end
+$var wire 1 N ww_ALUOp [0] $end
+$var wire 1 O ww_MemWr $end
+$var wire 1 P ww_MemToReg $end
+$var wire 1 Q ww_rst $end
+$var wire 1 R \EnPC~output_o\ $end
+$var wire 1 S \RI~output_o\ $end
+$var wire 1 T \RegDst~output_o\ $end
+$var wire 1 U \RegWr~output_o\ $end
+$var wire 1 V \ALUSrc~output_o\ $end
+$var wire 1 W \ALUOp[0]~output_o\ $end
+$var wire 1 X \ALUOp[1]~output_o\ $end
+$var wire 1 Y \ALUOp[2]~output_o\ $end
+$var wire 1 Z \ALUOp[3]~output_o\ $end
+$var wire 1 [ \MemWr~output_o\ $end
+$var wire 1 \ \MemToReg~output_o\ $end
+$var wire 1 ] \rst~output_o\ $end
+$var wire 1 ^ \clk~input_o\ $end
+$var wire 1 _ \opcode[2]~input_o\ $end
+$var wire 1 ` \opcode[1]~input_o\ $end
+$var wire 1 a \opcode[0]~input_o\ $end
+$var wire 1 b \RegDst~1_combout\ $end
+$var wire 1 c \Selector11~0_combout\ $end
+$var wire 1 d \n_state.Decode_329~combout\ $end
+$var wire 1 e \s_state.Decode~q\ $end
+$var wire 1 f \Selector15~2_combout\ $end
+$var wire 1 g \n_state.Execute_312~combout\ $end
+$var wire 1 h \s_state.Execute~q\ $end
+$var wire 1 i \Selector7~0_combout\ $end
+$var wire 1 j \n_state.RegUpdate_298~combout\ $end
+$var wire 1 k \s_state.RegUpdate~q\ $end
+$var wire 1 l \Selector5~0_combout\ $end
+$var wire 1 m \n_state.WriteMem_281~combout\ $end
+$var wire 1 n \s_state.WriteMem~q\ $end
+$var wire 1 o \Selector10~0_combout\ $end
+$var wire 1 p \s_state.Reset~q\ $end
+$var wire 1 q \Selector10~1_combout\ $end
+$var wire 1 r \n_state.Fetch_346~combout\ $end
+$var wire 1 s \s_state.Fetch~q\ $end
+$var wire 1 t \WideOr0~combout\ $end
+$var wire 1 u \EnPC~2_combout\ $end
+$var wire 1 v \EnPC$latch~combout\ $end
+$var wire 1 w \Selector14~0_combout\ $end
+$var wire 1 x \Selector15~0_combout\ $end
+$var wire 1 y \Selector15~1_combout\ $end
+$var wire 1 z \RegDst$latch~combout\ $end
+$var wire 1 { \WideOr1~combout\ $end
+$var wire 1 | \RegWr$latch~combout\ $end
+$var wire 1 } \Selector13~0_combout\ $end
+$var wire 1 ~ \ALUSrc$latch~combout\ $end
+$var wire 1 !! \func[0]~input_o\ $end
+$var wire 1 "! \ALUOp[0]~0_combout\ $end
+$var wire 1 #! \ALUOp[0]$latch~combout\ $end
+$var wire 1 $! \func[1]~input_o\ $end
+$var wire 1 %! \ALUOp[1]~1_combout\ $end
+$var wire 1 &! \ALUOp[1]$latch~combout\ $end
+$var wire 1 '! \func[2]~input_o\ $end
+$var wire 1 (! \ALUOp[2]~2_combout\ $end
+$var wire 1 )! \ALUOp[2]$latch~combout\ $end
+$var wire 1 *! \func[3]~input_o\ $end
+$var wire 1 +! \ALUOp[3]~3_combout\ $end
+$var wire 1 ,! \ALUOp[3]$latch~combout\ $end
+$var wire 1 -! \WideOr4~combout\ $end
+$var wire 1 .! \MemWr$latch~combout\ $end
+$var wire 1 /! \ALT_INV_s_state.Reset~q\ $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0%
+0&
+0'
+0,
+0-
+01
+02
+03
+14
+05
+16
+x7
+18
+19
+1:
+1;
+1<
+1=
+0>
+0F
+0G
+0H
+0I
+0J
+0O
+0P
+1Q
+0R
+0S
+0T
+0U
+0V
+xW
+xX
+xY
+xZ
+0[
+0\
+1]
+0^
+0_
+0`
+1a
+1b
+1c
+0d
+0e
+0f
+0g
+0h
+0i
+0j
+0k
+0l
+0m
+0n
+0o
+0p
+1q
+1r
+0s
+0t
+1u
+0v
+0w
+0x
+1y
+0z
+0{
+0|
+0}
+0~
+0!!
+0"!
+x#!
+0$!
+0%!
+x&!
+0'!
+0(!
+x)!
+0*!
+0+!
+x,!
+0-!
+0.!
+1/!
+0(
+0)
+0*
+0+
+0.
+0/
+10
+0?
+0@
+1A
+0B
+0C
+0D
+0E
+xK
+xL
+xM
+xN
+x!
+x"
+x#
+x$
+$end
+#20000
+1&
+1>
+1^
+1p
+1s
+0/!
+1d
+1t
+0q
+1}
+0r
+1v
+0]
+0Q
+04
+1R
+1S
+1F
+1G
+1'
+13
+#40000
+0&
+0>
+0^
+#60000
+1&
+1>
+1^
+1e
+0s
+0d
+0y
+1f
+1x
+1{
+1-!
+1y
+0}
+0#!
+0&!
+0)!
+0,!
+1g
+0Z
+0Y
+0X
+0W
+0K
+0L
+0M
+0N
+0$
+0#
+0"
+0!
+#80000
+0&
+0>
+0^
+#90000
+1+
+1E
+1!!
+1"!
+1#!
+1W
+1N
+1$
+#100000
+1&
+1>
+1^
+0e
+1h
+1i
+0f
+0x
+0y
+1}
+0g
+1j
+#120000
+0&
+0>
+0^
+#140000
+1&
+1>
+1^
+0h
+1k
+1q
+0u
+0i
+0t
+0{
+1|
+0j
+1r
+1U
+1I
+12
+#160000
+0&
+0>
+0^
+#180000
+1&
+0+
+1.
+00
+1>
+0E
+0A
+1?
+1_
+0a
+0!!
+1^
+0k
+1s
+0"!
+1d
+1t
+1y
+0q
+1u
+0|
+0-!
+0r
+0U
+0I
+02
+#200000
+0&
+0>
+0^
+#220000
+1&
+1>
+1^
+1e
+0s
+0d
+0y
+1f
+1w
+1x
+1{
+1-!
+1y
+0}
+0#!
+1g
+1~
+1z
+0W
+0N
+1T
+1V
+0$
+1H
+1J
+11
+1%
+#240000
+0&
+0>
+0^
+#260000
+1&
+1>
+1^
+0e
+1h
+1i
+0f
+0w
+0x
+0y
+1}
+0z
+0~
+0g
+1j
+0V
+0T
+0J
+0H
+0%
+01
+#280000
+0&
+0>
+0^
+#300000
+1&
+1>
+1^
+0h
+1k
+1q
+0u
+0i
+0t
+0{
+1|
+0j
+1r
+1U
+1I
+12
+#320000
+0&
+0>
+0^
+#340000
+1&
+1>
+1^
+0k
+1s
+1d
+1t
+1y
+0q
+1u
+0|
+0-!
+0r
+0U
+0I
+02
+#360000
+0&
+1/
+0>
+1@
+1`
+0^
+#380000
+1&
+1>
+1^
+1e
+0s
+0d
+0y
+1f
+1x
+1{
+1-!
+1y
+0}
+1g
+#400000
+0&
+0>
+0^
+#420000
+1&
+1>
+1^
+0e
+1h
+1l
+0f
+0x
+0y
+1}
+0g
+1m
+#440000
+0&
+0>
+0^
+#460000
+1&
+1>
+1^
+0h
+1n
+1q
+0u
+0l
+0t
+0-!
+1.!
+0m
+1r
+1[
+1O
+1-
+#480000
+0&
+0>
+0^
+#500000
+1&
+1>
+1^
+0n
+1s
+1d
+1t
+1y
+0q
+1u
+0{
+0.!
+0r
+0[
+0O
+0-
+#510000
+10
+1A
+1a
+#520000
+0&
+0>
+0^
+#540000
+1&
+1>
+1^
+1e
+0s
+0d
+0y
+1f
+1w
+1x
+1{
+1-!
+1y
+0}
+1g
+1~
+1z
+1T
+1V
+1H
+1J
+11
+1%
+#560000
+0&
+0>
+0^
+#580000
+1&
+1>
+1^
+0e
+1h
+1i
+0f
+0w
+0x
+0y
+1}
+0z
+0~
+0g
+1j
+0V
+0T
+0J
+0H
+0%
+01
+#600000
+0&
+0>
+0^
+#620000
+1&
+1>
+1^
+0h
+1k
+1q
+0u
+0i
+0t
+0{
+1|
+0j
+1r
+1U
+1I
+12
+#640000
+0&
+0>
+0^
+#660000
+1&
+1>
+1^
+0k
+1s
+1d
+1t
+1y
+0q
+1u
+0|
+0-!
+0r
+0U
+0I
+02
+#680000
+0&
+0>
+0^
+#700000
+1&
+0/
+0.
+1)
+1>
+0@
+0?
+1C
+1'!
+0_
+0`
+1^
+1e
+0s
+1(!
+0d
+0y
+1f
+1x
+1{
+1-!
+1y
+0}
+1)!
+1g
+1Y
+1L
+1"
+#720000
+0&
+0>
+0^
+#740000
+1&
+1>
+1^
+0e
+1h
+1i
+0f
+0x
+0y
+1}
+0g
+1j
+#760000
+0&
+0>
+0^
+#780000
+1&
+1>
+1^
+0h
+1k
+1q
+0u
+0i
+0t
+0{
+1|
+0j
+1r
+1U
+1I
+12
+#800000
+0&
+0>
+0^
+#820000
+1&
+1>
+1^
+0k
+1s
+1d
+1t
+1y
+0q
+1u
+0|
+0-!
+0r
+0U
+0I
+02
+#840000
+0&
+0>
+0^
+#850000
+1+
+1E
+1!!
+1"!
+#860000
+1&
+1>
+1^
+1e
+0s
+0d
+0y
+1f
+1x
+1{
+1-!
+1y
+0}
+1#!
+1g
+1W
+1N
+1$
+#880000
+0&
+0>
+0^
+#900000
+1&
+1>
+1^
+0e
+1h
+1i
+0f
+0x
+0y
+1}
+0g
+1j
+#920000
+0&
+0>
+0^
+#940000
+1&
+1>
+1^
+0h
+1k
+1q
+0u
+0i
+0t
+0{
+1|
+0j
+1r
+1U
+1I
+12
+#960000
+0&
+0>
+0^
+#980000
+1&
+1>
+1^
+0k
+1s
+1d
+1t
+1y
+0q
+1u
+0|
+0-!
+0r
+0U
+0I
+02
+#1000000

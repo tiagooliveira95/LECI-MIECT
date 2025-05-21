@@ -1,0 +1,203 @@
+# Reading C:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
+# ERROR: No extended dataflow license exists
+# do Parte3_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/17.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/SignExtend.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:35 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/SignExtend.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity SignExtend
+# -- Compiling architecture Behavioral of SignExtend
+# End time: 06:47:35 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Registers.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:35 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Registers.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity Registers
+# -- Compiling architecture Behavioral of Registers
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ProgramCounter.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:36 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ProgramCounter.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ProgramCounter
+# -- Compiling architecture Behavioral of ProgramCounter
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/MUX_2.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:36 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/MUX_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity MUX_2
+# -- Compiling architecture Behavioral of MUX_2
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/IMemory.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:36 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/IMemory.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity IMemory
+# -- Compiling architecture Behavioral of IMemory
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/DMemory.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:36 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/DMemory.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity DMemory
+# -- Compiling architecture Behavioral of DMemory
+# ** Warning: C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/DMemory.vhd(24): (vcom-1074) Non-locally static OTHERS choice is allowed only if it is the only choice of the only association.
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ALU.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:36 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/ALU.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ALU
+# -- Compiling architecture Behavioral of ALU
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Fase1.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:36 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte1/Fase1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Fase1
+# -- Compiling architecture Structural of Fase1
+# -- Loading package NUMERIC_STD
+# -- Loading entity ProgramCounter
+# -- Loading entity IMemory
+# -- Loading entity MUX_2
+# -- Loading entity Registers
+# -- Loading entity ALU
+# -- Loading entity DMemory
+# -- Loading entity SignExtend
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte2/ControlUnit.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:36 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte2/ControlUnit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ControlUnit
+# -- Compiling architecture Behavioral of ControlUnit
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:36 on Jun 02,2020
+# vcom -reportprogress 300 -2008 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Processor
+# -- Compiling architecture Structural of Processor
+# -- Loading entity Fase1
+# -- Loading entity ControlUnit
+# End time: 06:47:36 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vcom -reportprogress 300 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:50 on Jun 02,2020
+# vcom -reportprogress 300 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Processor_Tb
+# -- Compiling architecture Stimulus of Processor_Tb
+# -- Loading entity Processor
+# ** Warning: C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd(21): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd(23): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 06:47:51 on Jun 02,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 2
+vcom -reportprogress 300 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:47:52 on Jun 02,2020
+# vcom -reportprogress 300 -work work C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Processor_Tb
+# -- Compiling architecture Stimulus of Processor_Tb
+# -- Loading entity Processor
+# ** Warning: C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd(21): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: C:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte3/Processor_Tb.vhd(23): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 06:47:52 on Jun 02,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+vsim work.processor_tb(stimulus)
+# vsim work.processor_tb(stimulus) 
+# Start time: 06:47:57 on Jun 02,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.processor_tb(stimulus)
+# Loading work.processor(structural)
+# Loading ieee.numeric_std(body)
+# Loading work.fase1(structural)
+# Loading work.programcounter(behavioral)
+# Loading work.imemory(behavioral)
+# Loading work.mux_2(behavioral)
+# Loading work.registers(behavioral)
+# Loading work.alu(behavioral)
+# Loading work.dmemory(behavioral)
+# Loading work.signextend(behavioral)
+# Loading work.controlunit(behavioral)
+add wave -position insertpoint sim:/processor_tb/uut/DataPath/*
+add wave -position insertpoint sim:/processor_tb/uut/ControllUnit/*
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor_tb/uut/DataPath/DMemory
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 0  Instance: /processor_tb/uut/DataPath/ALU
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor_tb/uut/DataPath/Registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor_tb/uut/DataPath/Registers
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 1  Instance: /processor_tb/uut/DataPath/ALU
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 2  Instance: /processor_tb/uut/DataPath/ALU
+# End time: 06:53:17 on Jun 02,2020, Elapsed time: 0:05:20
+# Errors: 0, Warnings: 6

@@ -1,0 +1,100 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/tiago/Documents/GitHub/Projectos-ECT/Ano1/LSD/AulasFPGA/Proj16/Parte2/simulation/qsim
+Econtrolunit
+Z1 w1591065732
+Z2 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 N5CzKW88F^ShIK@<7Vek12
+Z3 DPx10 cycloneive 21 cycloneive_components 0 22 K8IbX`K5[Y1gJUKg2X_071
+Z4 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z5 DPx6 altera 11 dffeas_pack 0 22 ?bDUB9Db2N8iCCALNL;CT3
+Z6 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z7 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z8 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z9 DPx6 altera 28 altera_primitives_components 0 22 c]VUMXSEi8Z`KM1bem<:B3
+R0
+Z10 8ControlUnit.vho
+Z11 FControlUnit.vho
+l0
+L36
+VdL^BN?Kd3Fg;FGh_;27dl2
+!s100 a8b39G;f2n3Ka[Hc[=OlB2
+Z12 OV;C;10.5b;63
+32
+Z13 !s110 1591065734
+!i10b 1
+Z14 !s108 1591065734.000000
+Z15 !s90 -work|work|ControlUnit.vho|
+Z16 !s107 ControlUnit.vho|
+!i113 1
+Z17 o-work work
+Z18 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+DEx4 work 11 controlunit 0 22 dL^BN?Kd3Fg;FGh_;27dl2
+l136
+L53
+VjK7YbI`M30d`TB@M6P5aO3
+!s100 FkP@TAdMT62VDZXno[Gfm3
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 1
+R17
+R18
+Econtrolunit_vhd_vec_tst
+Z19 w1591065730
+R7
+R8
+R0
+Z20 8Waveform.vwf.vht
+Z21 FWaveform.vwf.vht
+l0
+L31
+V8M8[Wm[V_8]o`JjD748HZ0
+!s100 2KDTXFR0aeKzX<n1]>]ZF0
+R12
+32
+R13
+!i10b 1
+R14
+Z22 !s90 -work|work|Waveform.vwf.vht|
+Z23 !s107 Waveform.vwf.vht|
+!i113 1
+R17
+R18
+Acontrolunit_arch
+R7
+R8
+Z24 DEx4 work 23 controlunit_vhd_vec_tst 0 22 8M8[Wm[V_8]o`JjD748HZ0
+l64
+L33
+Z25 VJhz=<dhAk;h5LcWSzkDLX2
+Z26 !s100 oAiHoc[`;==XW]beRJTUV3
+R12
+32
+R13
+!i10b 1
+R14
+R22
+R23
+!i113 1
+R17
+R18
